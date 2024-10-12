@@ -1,0 +1,28 @@
+.empty-msg{
+    margin: 10px;
+    width: 100%;
+}
+
+.pagination{
+    flex-wrap: wrap;
+    row-gap: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+table[role=table]{
+    width: 100%;
+}
+
+div.table-container{
+    max-height: calc(100vh - 60px);
+    width: 100%;
+}
+
+.react-tabs{
+    height: calc(100vh - 10px);
+}
+
+div.nav-link:hover{
+    cursor: pointer;
+}
