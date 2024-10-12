@@ -3,7 +3,7 @@ import { SET_START_DATE, SET_END_DATE, SET_TICKER_LIST } from '../types'
 import { CONSTANTS } from '../../constants'
 
 const startDate = moment()
-                    .subtract(7, 'days')
+                    .subtract(90, 'days')
                     .format('YYYY-MM-DD')
                     .toString()
 

@@ -14,7 +14,7 @@ export const FilterByLastDay30 = () => {
                 <button
                     style={{
                         margin: 5,
-                        width: 250
+                        width: 100
                     }}
                     className="btn btn-outline-primary"
                     onClick={() => {
@@ -26,7 +26,7 @@ export const FilterByLastDay30 = () => {
                             .format("YYYY-MM-DD")
                             .toString()))
                     }}
-                >Последние 30 дней</button>
+                >30 дней</button>
             </div>
 
         </React.Fragment>

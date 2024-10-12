@@ -3,17 +3,3 @@
     display: flex;
     justify-content: flex-start;
 }
-
-.report-container:first-child{
-    width: 260px;
-}
-
-.table-container, 
-.table-container table{
-    width: calc(100vw - 350px) !important;
-}
-
-.table-container.full-screen, 
-.table-container.full-screen table{
-    width: calc(100vw - 50px) !important;
-}

@@ -6,5 +6,9 @@ export const CONSTANTS = {
 
     TICKER_LIST_MOEX_INDEX: 'MoexIndexStocks',
     TICKER_LIST_PORTFOLIO: 'PortfolioStocks',
-    TICKER_LIST_WATCH_LIST: 'WatchListStocks'
+    TICKER_LIST_WATCH_LIST: 'WatchListStocks',
+
+    COLOR_RED: '#FF6633',
+    COLOR_GREEN: '#00CC66',
+    COLOR_GRAY: '#D3D3D3'
 }

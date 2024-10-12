@@ -4,7 +4,7 @@ import moment from 'moment'
 import {useDispatch} from "react-redux";
 import {setEndDate, setStartDate} from "../../redux/actions/filterActions";
 
-export const FilterByLastDay7 = () => {
+export const FilterByLastDay365 = () => {
 
     const dispatch = useDispatch()
 
@@ -19,14 +19,14 @@ export const FilterByLastDay7 = () => {
                     className="btn btn-outline-primary"
                     onClick={() => {
                         dispatch(setStartDate(moment()
-                            .subtract(6, "days")
+                            .subtract(364, "days")
                             .format("YYYY-MM-DD")
                             .toString()))
                         dispatch(setEndDate(moment()
                             .format("YYYY-MM-DD")
                             .toString()))
                     }}
-                >7 дней</button>
+                >365 дней</button>
             </div>
 
         </React.Fragment>

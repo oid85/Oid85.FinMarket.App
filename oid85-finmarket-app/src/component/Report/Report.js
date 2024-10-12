@@ -4,6 +4,7 @@ import Loader from '../Loader/Loader'
 import { Filter } from '../Filter/Filter'
 import { sagaGetReport } from '../../redux/actions/reportActions'
 import './Report.css'
+import { TableCell } from './TableCell'
 
 export const Report = () => {
 
@@ -35,15 +36,18 @@ export const Report = () => {
     return (
         <React.Fragment>
             {
-                loading
+                !reportData.result || loading
                     ? <Loader/>
                     :                    
                     <div className='report-container'>
                         <div>
                             <Filter/>
                         </div>
-                        <div className='table-container'>                             
-                        <table>
+                        <div>
+                            <div>
+                                <h6>{reportData.result.title}: {startDate} - {endDate}</h6>
+                            </div>
+                            <table>
                                 <thead>
                                     <tr>
                                         {reportData.result.header.map((head, headId) => (
@@ -54,7 +58,7 @@ export const Report = () => {
                                 <tbody>
                                     {reportData.result.data.map((rowContent, rowId) => (
                                         <tr>{rowContent.map((val, rowId) => (
-                                            <td key={rowId}>{val}</td>
+                                            <TableCell id={rowId} value={val} />
                                         ))}</tr>
                                     ))} 
                                 </tbody>

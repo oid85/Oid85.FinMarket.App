@@ -14,13 +14,13 @@ export const FilterByWatchList = () => {
                 <button
                     style={{
                         margin: 5,
-                        width: 250
+                        width: 100
                     }}
                     className="btn btn-outline-primary"
                     onClick={() => {
                         dispatch(setTickerList(CONSTANTS.TICKER_LIST_WATCH_LIST))
                     }}
-                >Список наблюдения</button>
+                >Список набл.</button>
             </div>
 
         </React.Fragment>

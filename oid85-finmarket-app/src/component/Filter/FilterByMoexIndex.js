@@ -14,7 +14,7 @@ export const FilterByMoexIndex = () => {
                 <button
                     style={{
                         margin: 5,
-                        width: 250
+                        width: 100
                     }}
                     className="btn btn-outline-primary"
                     onClick={() => {
