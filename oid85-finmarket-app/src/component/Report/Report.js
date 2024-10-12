@@ -30,6 +30,8 @@ export const Report = () => {
         dispatch(sagaGetReport())
     }, [tickerList])
 
+    console.log(reportData.result)
+
     return (
         <React.Fragment>
             {
@@ -40,8 +42,23 @@ export const Report = () => {
                         <div>
                             <Filter/>
                         </div>
-                        <div className='table-container'>                        
-                        
+                        <div className='table-container'>                             
+                        <table>
+                                <thead>
+                                    <tr>
+                                        {reportData.result.header.map((head, headId) => (
+                                            <th key={headId}></th>
+                                        ))}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {reportData.result.data.map((rowContent, rowId) => (
+                                        <tr>{rowContent.map((val, rowId) => (
+                                            <td key={rowId}>{val}</td>
+                                        ))}</tr>
+                                    ))} 
+                                </tbody>
+                            </table>                        
                         </div>
                     </div>                    
             }
