@@ -4,7 +4,7 @@ import Loader from '../Loader/Loader'
 import { Filter } from '../Filter/Filter'
 import { sagaGetReport } from '../../redux/actions/reportActions'
 import './Report.css'
-import { ReportTableCell } from './ReportTableCell'
+import { ReportTableRow } from './ReportTableRow'
 
 export const Report = () => {
 
@@ -57,9 +57,7 @@ export const Report = () => {
                                 </thead>
                                 <tbody>
                                     {reportData.result.data.map((rowValue) => (
-                                        <tr>{rowValue.map((cellValue, rowId) => (
-                                            <ReportTableCell rowId={rowId} cellValue={cellValue} />
-                                        ))}</tr>
+                                        <ReportTableRow rowValue = {rowValue} />
                                     ))} 
                                 </tbody>
                             </table>                        
