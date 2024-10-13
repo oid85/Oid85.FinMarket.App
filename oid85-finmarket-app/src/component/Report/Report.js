@@ -33,8 +33,6 @@ export const Report = () => {
 
     console.log(reportData.result)
 
-    let title = `${reportData.result.title}: ${startDate} - ${endDate}`
-
     return (
         <React.Fragment>
             {
@@ -44,7 +42,7 @@ export const Report = () => {
                     <div className='report-container'>
                         <Filter/>
                         <ReportTable 
-                            title = {title}
+                            title = {`${reportData.result.title}: ${startDate} - ${endDate}`}
                             reportTableData = {reportData.result} />
                     </div>                    
             }
