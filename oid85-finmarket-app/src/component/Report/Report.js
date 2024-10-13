@@ -4,7 +4,7 @@ import Loader from '../Loader/Loader'
 import { Filter } from '../Filter/Filter'
 import { sagaGetReport } from '../../redux/actions/reportActions'
 import './Report.css'
-import { ReportTableRow } from './ReportTableRow'
+import { ReportTable } from './ReportTable'
 
 export const Report = () => {
 
@@ -33,6 +33,8 @@ export const Report = () => {
 
     console.log(reportData.result)
 
+    let title = `${reportData.result.title}: ${startDate} - ${endDate}`
+
     return (
         <React.Fragment>
             {
@@ -40,28 +42,10 @@ export const Report = () => {
                     ? <Loader/>
                     :                    
                     <div className='report-container'>
-                        <div>
-                            <Filter/>
-                        </div>
-                        <div>
-                            <div>
-                                <h6>{reportData.result.title}: {startDate} - {endDate}</h6>
-                            </div>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        {reportData.result.header.map((head, headId) => (
-                                            <th key={headId}></th>
-                                        ))}
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {reportData.result.data.map((rowValue) => (
-                                        <ReportTableRow rowValue = {rowValue} />
-                                    ))} 
-                                </tbody>
-                            </table>                        
-                        </div>
+                        <Filter/>
+                        <ReportTable 
+                            title = {title}
+                            reportTableData = {reportData.result} />
                     </div>                    
             }
         </React.Fragment>
