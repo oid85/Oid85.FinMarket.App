@@ -13,8 +13,8 @@ export const FilterByLastDay30 = () => {
             <div>
                 <button
                     style={{
-                        margin: 5,
-                        width: 100
+                        width: 100,
+                        margin: 5
                     }}
                     className="btn btn-outline-primary"
                     onClick={() => {
