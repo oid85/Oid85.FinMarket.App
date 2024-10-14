@@ -4,6 +4,7 @@ import {FilterByLastDay30} from "./FilterByLastDay30"
 import {FilterByLastDay90} from "./FilterByLastDay90"
 import {FilterByLastDay180} from "./FilterByLastDay180"
 import {FilterByLastDay365} from "./FilterByLastDay365"
+import {FilterByAllStocks} from "./FilterByAllStocks"
 import {FilterByMoexIndex} from "./FilterByMoexIndex"
 import {FilterByPortfolio} from "./FilterByPortfolio"
 import {FilterByWatchList} from "./FilterByWatchList"
@@ -22,6 +23,7 @@ export const Filter = () => {
                         <FilterByLastDay90 />
                         <FilterByLastDay180 />
                         <FilterByLastDay365 />
+                        <FilterByAllStocks />
                         <FilterByMoexIndex />
                         <FilterByPortfolio />
                         <FilterByWatchList />
