@@ -3,7 +3,8 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import { useSelector } from 'react-redux'
 import 'react-tabs/style/react-tabs.css'
 import { Alert } from '../Alert/Alert'
-import { Report } from '../Report/Report'
+import { ReportSuperTrend } from '../Report/ReportSuperTrend'
+import { ReportCandleSequence } from '../Report/ReportCandleSequence'
 
 export const Workspace = () => {
     const alert = useSelector(state => state.app.alert)
@@ -12,16 +13,16 @@ export const Workspace = () => {
         <React.Fragment>            
             {alert && <Alert text={alert} />}
             <Tabs>
-                <TabList
-                    style={{
-                        margin: 5,
-                        height: 39,                   
-                    }}>
-                    <Tab>Направление рынка</Tab>
+                <TabList>
+                    <Tab>Супертренд</Tab>
+                    <Tab>Свечи подряд</Tab>
                 </TabList>                
                 <TabPanel>
-                    <Report />
-                </TabPanel>           
+                    <ReportSuperTrend />
+                </TabPanel>  
+                <TabPanel>
+                    <ReportCandleSequence />
+                </TabPanel>                          
             </Tabs>
         </React.Fragment>
     )    
