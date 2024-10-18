@@ -4,8 +4,8 @@ export const ReportTableHead = ({ header }) => {
     return (
         <thead>
             <tr>
-                {header.map((head, headId) => (
-                    <th key={headId}></th>
+                {header.map((head, key) => (
+                    <th key={key}></th>
                 ))}
             </tr>
         </thead>

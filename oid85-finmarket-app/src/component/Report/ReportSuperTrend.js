@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import Loader from '../Loader/Loader'
 import { Filter } from '../Filter/Filter'
-import { sagaGetReportSuperTrend } from '../../redux/actions/reportActions'
+import { sagaReportSuperTrend } from '../../redux/actions/reportActions'
 import './Report.css'
 import { ReportTable } from './ReportTable'
 
@@ -16,22 +16,20 @@ export const ReportSuperTrend = () => {
     const tickerList = useSelector(state => state.filter.tickerList)
 
     useEffect(() => {
-        dispatch(sagaGetReportSuperTrend())
+        dispatch(sagaReportSuperTrend())
     }, [])
 
     useEffect(() => {
-        dispatch(sagaGetReportSuperTrend())
+        dispatch(sagaReportSuperTrend())
     }, [startDate])
 
     useEffect(() => {
-        dispatch(sagaGetReportSuperTrend())
+        dispatch(sagaReportSuperTrend())
     }, [endDate])
 
     useEffect(() => {
-        dispatch(sagaGetReportSuperTrend())
+        dispatch(sagaReportSuperTrend())
     }, [tickerList])
-
-    console.log(reportData.result)
 
     return (
         <React.Fragment>

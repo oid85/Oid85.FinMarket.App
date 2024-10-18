@@ -1,7 +1,7 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.css'
-import {useDispatch} from "react-redux";
-import {setTickerList} from "../../redux/actions/filterActions";
+import {useDispatch} from 'react-redux';
+import {setTickerList} from '../../redux/actions/filterActions';
 import { CONSTANTS } from '../../constants';
 
 export const FilterByMoexIndex = () => {
@@ -16,13 +16,12 @@ export const FilterByMoexIndex = () => {
                         width: 100,
                         margin: 5
                     }}
-                    className="btn btn-outline-primary"
+                    className='btn btn-outline-primary'
                     onClick={() => {
                         dispatch(setTickerList(CONSTANTS.TICKER_LIST_MOEX_INDEX))
                     }}
                 >IMOEX</button>
             </div>
-
         </React.Fragment>
     )
 }

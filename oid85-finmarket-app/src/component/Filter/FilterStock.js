@@ -4,12 +4,9 @@ import {FilterByLastDay30} from './FilterByLastDay30'
 import {FilterByLastDay90} from './FilterByLastDay90'
 import {FilterByLastDay180} from './FilterByLastDay180'
 import {FilterByLastDay365} from './FilterByLastDay365'
-import {FilterByAllStocks} from './FilterByAllStocks'
-import {FilterByMoexIndex} from './FilterByMoexIndex'
-import {FilterByPortfolio} from './FilterByPortfolio'
-import {FilterByWatchList} from './FilterByWatchList'
+import {FilterByTicker} from './FilterByTicker'
 
-export const Filter = () => {
+export const FilterStock = () => {
     
     return (
         <React.Fragment>
@@ -24,10 +21,7 @@ export const Filter = () => {
                         <FilterByLastDay180 />
                         <FilterByLastDay365 />
                         <br />
-                        <FilterByAllStocks />
-                        <FilterByMoexIndex />
-                        <FilterByPortfolio />
-                        <FilterByWatchList />
+                        <FilterByTicker />
                 </div>
         </React.Fragment>
     )
