@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import Loader from '../Loader/Loader'
-import { Filter } from '../Filter/Filter'
-import { sagaGetReportCandleSequence } from '../../redux/actions/reportActions'
+import { FilterMarket } from '../Filter/FilterMarket'
+import { sagaReportCandleSequence } from '../../redux/actions/reportActions'
 import './Report.css'
 import { ReportTable } from './ReportTable'
 
@@ -16,22 +16,20 @@ export const ReportCandleSequence = () => {
     const tickerList = useSelector(state => state.filter.tickerList)
 
     useEffect(() => {
-        dispatch(sagaGetReportCandleSequence())
+        dispatch(sagaReportCandleSequence())
     }, [])
 
     useEffect(() => {
-        dispatch(sagaGetReportCandleSequence())
+        dispatch(sagaReportCandleSequence())
     }, [startDate])
 
     useEffect(() => {
-        dispatch(sagaGetReportCandleSequence())
+        dispatch(sagaReportCandleSequence())
     }, [endDate])
 
     useEffect(() => {
-        dispatch(sagaGetReportCandleSequence())
+        dispatch(sagaReportCandleSequence())
     }, [tickerList])
-
-    console.log(reportData.result)
 
     return (
         <React.Fragment>
@@ -40,7 +38,7 @@ export const ReportCandleSequence = () => {
                     ? <Loader/>
                     :                    
                     <div className='report-container'>
-                        <Filter/>
+                        <FilterMarket />
                         <ReportTable 
                             title = {`${reportData.result.title}: ${startDate} - ${endDate}`}
                             reportTableData = {reportData.result} />

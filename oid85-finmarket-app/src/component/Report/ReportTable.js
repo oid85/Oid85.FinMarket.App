@@ -6,7 +6,7 @@ export const ReportTable = ({ title, reportTableData }) => {
     return (
         <div>
             <div>
-                <h6>{title}</h6>
+                <h5>{title}</h5>
             </div>
             <table>
                 <ReportTableHead header = {reportTableData.header} />

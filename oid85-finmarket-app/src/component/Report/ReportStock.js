@@ -1,35 +1,40 @@
 import React, { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import Loader from '../Loader/Loader'
-import { FilterMarket } from '../Filter/FilterMarket'
-import { sagaReportSuperTrend } from '../../redux/actions/reportActions'
+import { sagaReportStock } from '../../redux/actions/reportActions'
+import { sagaWatchListTickers } from '../../redux/actions/filterActions'
 import './Report.css'
 import { ReportTable } from './ReportTable'
+import { FilterStock } from '../Filter/FilterStock'
 
-export const ReportSuperTrend = () => {
+export const ReportStock = () => {
 
     const dispatch = useDispatch()
     const loading = useSelector(state => state.app.loading)
     const reportData = useSelector(state => state.report.reportData)   
     const startDate = useSelector(state => state.filter.startDate)
     const endDate = useSelector(state => state.filter.endDate)
-    const tickerList = useSelector(state => state.filter.tickerList)
+    const ticker = useSelector(state => state.filter.ticker)
 
     useEffect(() => {
-        dispatch(sagaReportSuperTrend())
+        dispatch(sagaWatchListTickers())
     }, [])
 
     useEffect(() => {
-        dispatch(sagaReportSuperTrend())
+        dispatch(sagaReportStock())
+    }, [])
+
+    useEffect(() => {
+        dispatch(sagaReportStock())
     }, [startDate])
 
     useEffect(() => {
-        dispatch(sagaReportSuperTrend())
+        dispatch(sagaReportStock())
     }, [endDate])
 
     useEffect(() => {
-        dispatch(sagaReportSuperTrend())
-    }, [tickerList])
+        dispatch(sagaReportStock())
+    }, [ticker])
 
     return (
         <React.Fragment>
@@ -38,7 +43,7 @@ export const ReportSuperTrend = () => {
                     ? <Loader/>
                     :                    
                     <div className='report-container'>
-                        <FilterMarket />
+                        <FilterStock/>
                         <ReportTable 
                             title = {`${reportData.result.title}: ${startDate} - ${endDate}`}
                             reportTableData = {reportData.result} />
