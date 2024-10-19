@@ -1,28 +1,24 @@
 import React from 'react'
-import {FilterByLastDay7} from './FilterByLastDay7'
-import {FilterByLastDay30} from './FilterByLastDay30'
-import {FilterByLastDay90} from './FilterByLastDay90'
-import {FilterByLastDay180} from './FilterByLastDay180'
-import {FilterByLastDay365} from './FilterByLastDay365'
+import {FilterByLastDays} from './FilterByLastDays'
 import {FilterByTicker} from './FilterByTicker'
+import './Filter.css'
 
 export const FilterStock = () => {
     
+    let days = [7, 30, 90, 180, 365]
+
     return (
         <React.Fragment>
-                <div
-                    style={{
-                            margin: 5
-                    }}>
-                        <h6>Выбрать</h6>
-                        <FilterByLastDay7 />
-                        <FilterByLastDay30 />
-                        <FilterByLastDay90 />
-                        <FilterByLastDay180 />
-                        <FilterByLastDay365 />
-                        <br />
-                        <FilterByTicker />
-                </div>
+            <div className='filter-container'>
+                {
+                    days.map((item, key) => (
+                        <FilterByLastDays 
+                        key={key} 
+                        days={item} />
+                    ))
+                }
+                <FilterByTicker />
+            </div>
         </React.Fragment>
     )
 }

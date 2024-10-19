@@ -1,30 +1,28 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import 'bootstrap/dist/css/bootstrap.css'
-import {useDispatch, useSelector} from 'react-redux'
-import {sagaWatchListTickers, setTicker} from '../../redux/actions/filterActions'
+import {useSelector} from 'react-redux'
+import { FilterTickerButton } from './FilterTickerButton'
 import Loader from '../Loader/Loader'
+import './Filter.css'
 
 export const FilterByTicker = () => {
 
-    const dispatch = useDispatch()
     const loading = useSelector(state => state.app.loading)
-    const watchListData = useSelector(state => state.filter.watchListData)   
-
-    useEffect(() => {
-        dispatch(sagaWatchListTickers())
-    }, )
-
-    console.log(watchListData.result)
+    const watchListData = useSelector(state => state.filter.watchListData)
 
     return (
         <React.Fragment>
             {
                 !watchListData.result || loading
                 ? <Loader/>
-                : 
-                <div>
-                    qwe
-                </div>
+                :  
+                <div className='filter-container'>
+                {watchListData.result.map((item, key) => (
+                <FilterTickerButton 
+                    key={key} 
+                    ticker={item.ticker} />
+                ))}
+            </div>
             }
         </React.Fragment>
     )

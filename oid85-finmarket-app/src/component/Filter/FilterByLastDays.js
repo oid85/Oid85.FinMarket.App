@@ -1,32 +1,35 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.css'
 import moment from 'moment'
-import {useDispatch} from 'react-redux';
-import {setEndDate, setStartDate} from '../../redux/actions/filterActions';
+import {useDispatch} from 'react-redux'
+import {setEndDate, setStartDate} from '../../redux/actions/filterActions'
 
-export const FilterByLastDay30 = () => {
+export const FilterByLastDays = ({key, days}) => {
 
     const dispatch = useDispatch()
+
+    console.log('FilterByLastDays', days)
 
     return (
         <React.Fragment>
             <div>
                 <button
-                    style={{
-                        width: 100,
-                        margin: 5
-                    }}
+                style={{
+                    width: 75,
+                    margin: 1
+                }}
+                    key={key}
                     className='btn btn-outline-primary'
                     onClick={() => {
                         dispatch(setStartDate(moment()
-                            .subtract(29, 'days')
+                            .subtract(parseInt(days) - 1, 'days')
                             .format('YYYY-MM-DD')
                             .toString()))
                         dispatch(setEndDate(moment()
                             .format('YYYY-MM-DD')
                             .toString()))
                     }}
-                >30 дней</button>
+                >{parseInt(days)} дн</button>
             </div>
         </React.Fragment>
     )

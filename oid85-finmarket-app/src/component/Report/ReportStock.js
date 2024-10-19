@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import Loader from '../Loader/Loader'
 import { sagaReportStock } from '../../redux/actions/reportActions'
+import { sagaWatchListTickers } from '../../redux/actions/filterActions'
 import './Report.css'
 import { ReportTable } from './ReportTable'
 import { FilterStock } from '../Filter/FilterStock'
@@ -14,6 +15,10 @@ export const ReportStock = () => {
     const startDate = useSelector(state => state.filter.startDate)
     const endDate = useSelector(state => state.filter.endDate)
     const ticker = useSelector(state => state.filter.ticker)
+
+    useEffect(() => {
+        dispatch(sagaWatchListTickers())
+    }, [])
 
     useEffect(() => {
         dispatch(sagaReportStock())
