@@ -1,8 +1,19 @@
 export const CONSTANTS = {
     FINMARKET_API: 'http://localhost:1001',
 
-    TREND_UP: 'Вверх',
-    TREND_DOWN: 'Вниз',
+    DEFAULT_PERIOD: 30,
+
+    TREND_DIRECTION_UP: 'Тренд вверх',
+    TREND_DIRECTION_DOWN: 'Тренд вниз',
+
+    VOLUME_DIRECTION_UP: 'Объем растет',
+    VOLUME_DIRECTION_DOWN: 'Объем падает',
+
+    CANDLE_SECUENCE_WHITE: 'Белые свечи',
+    CANDLE_SECUENCE_BLACK: 'Черные свечи',
+
+    RSI_INTERPRETATION_OVERBOUGHT: 'Перекупленность',
+    RSI_INTERPRETATION_OVERSOLD: 'Перепроданность',
 
     TICKER_LIST_ALL: 'AllStocks',
     TICKER_LIST_MOEX_INDEX: 'MoexIndexStocks',
@@ -12,7 +23,5 @@ export const CONSTANTS = {
     COLOR_RED: '#FF6633',
     COLOR_GREEN: '#00CC66',
     COLOR_YELLOW: '#FFFF99',
-    COLOR_GRAY: '#D3D3D3',
-
-    SBER: 'SBER'
+    COLOR_GRAY: '#D3D3D3'
 }

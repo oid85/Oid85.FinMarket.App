@@ -6,6 +6,7 @@ import { Alert } from '../Alert/Alert'
 import { ReportSuperTrend } from '../Report/ReportSuperTrend'
 import { ReportCandleSequence } from '../Report/ReportCandleSequence'
 import { ReportCandleVolume } from '../Report/ReportCandleVolume'
+import { ReportRsi } from '../Report/ReportRsi'
 import { ReportStock } from '../Report/ReportStock'
 
 export const Workspace = () => {
@@ -19,6 +20,7 @@ export const Workspace = () => {
                     <Tab>Тренд</Tab>
                     <Tab>Свечи</Tab>
                     <Tab>Объем</Tab>
+                    <Tab>RSI</Tab>
                     <Tab>Акция</Tab>
                 </TabList>                
                 <TabPanel>
@@ -29,7 +31,10 @@ export const Workspace = () => {
                 </TabPanel> 
                 <TabPanel>
                     <ReportCandleVolume />
-                </TabPanel>                
+                </TabPanel> 
+                <TabPanel>
+                    <ReportRsi />
+                </TabPanel>                                
                 <TabPanel>
                     <ReportStock />
                 </TabPanel>                                         
