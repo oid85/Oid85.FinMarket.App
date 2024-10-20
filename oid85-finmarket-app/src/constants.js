@@ -12,5 +12,7 @@ export const CONSTANTS = {
     COLOR_RED: '#FF6633',
     COLOR_GREEN: '#00CC66',
     COLOR_YELLOW: '#FFFF99',
-    COLOR_GRAY: '#D3D3D3'
+    COLOR_GRAY: '#D3D3D3',
+
+    SBER: 'SBER'
 }

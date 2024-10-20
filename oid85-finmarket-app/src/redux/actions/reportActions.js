@@ -1,9 +1,11 @@
 import { 
     SAGA_REPORT_SUPERTREND,
     SAGA_REPORT_CANDLE_SEQUENCE, 
+    SAGA_REPORT_CANDLE_VOLUME, 
     SAGA_REPORT_STOCK,
     FETCH_REPORT_SUPERTREND,
     FETCH_REPORT_CANDLE_SEQUENCE, 
+    FETCH_REPORT_CANDLE_VOLUME, 
     FETCH_REPORT_STOCK
 } from '../types'
 
@@ -16,6 +18,12 @@ export const sagaReportSuperTrend = () => {
 export const sagaReportCandleSequence = () => {
     return {
         type: SAGA_REPORT_CANDLE_SEQUENCE
+    }
+}
+
+export const sagaReportCandleVolume = () => {
+    return {
+        type: SAGA_REPORT_CANDLE_VOLUME
     }
 }
 
@@ -35,6 +43,13 @@ export const fetchReportSuperTrend = (reportData) => {
 export const fetchReportCandleSequence = (reportData) => {    
     return {
         type: FETCH_REPORT_CANDLE_SEQUENCE,
+        payload: reportData
+    }
+}
+
+export const fetchReportCandleVolume = (reportData) => {    
+    return {
+        type: FETCH_REPORT_CANDLE_VOLUME,
         payload: reportData
     }
 }

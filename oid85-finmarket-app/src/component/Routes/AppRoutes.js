@@ -3,6 +3,7 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import {Workspace} from '../Workspace/Workspace'
 import {ReportSuperTrend} from '../Report/ReportSuperTrend'
 import {ReportCandleSequence} from '../Report/ReportCandleSequence'
+import {ReportCandleVolume} from '../Report/ReportCandleVolume'
 import {ReportStock} from '../Report/ReportStock'
 
 export const AppRoutes = () => {
@@ -13,6 +14,7 @@ export const AppRoutes = () => {
                     <Route exact path='/' element={<Workspace />} />
                     <Route exact path='/report-supertrend' element={<ReportSuperTrend />} />
                     <Route exact path='/report-candle-sequence' element={<ReportCandleSequence />} />
+                    <Route exact path='/report-candle-volume' element={<ReportCandleVolume />} />
                     <Route exact path='/report-stock' element={<ReportStock />} />
                 </Routes>
             </BrowserRouter>

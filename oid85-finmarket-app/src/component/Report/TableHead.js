@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const ReportTableHead = ({ header }) => {
+export const TableHead = ({ header }) => {
     return (
         <thead>
             <tr>

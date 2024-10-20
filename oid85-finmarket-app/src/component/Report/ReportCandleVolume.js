@@ -2,11 +2,11 @@ import React, { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import Loader from '../Loader/Loader'
 import { FilterMarket } from '../Filter/FilterMarket'
-import { sagaReportCandleSequence } from '../../redux/actions/reportActions'
+import { sagaReportCandleVolume } from '../../redux/actions/reportActions'
 import './Report.css'
 import { Table } from './Table'
 
-export const ReportCandleSequence = () => {
+export const ReportCandleVolume = () => {
 
     const dispatch = useDispatch()
     const loading = useSelector(state => state.app.loading)
@@ -16,19 +16,19 @@ export const ReportCandleSequence = () => {
     const tickerList = useSelector(state => state.filter.tickerList)
 
     useEffect(() => {
-        dispatch(sagaReportCandleSequence())
+        dispatch(sagaReportCandleVolume())
     }, [])
 
     useEffect(() => {
-        dispatch(sagaReportCandleSequence())
+        dispatch(sagaReportCandleVolume())
     }, [startDate])
 
     useEffect(() => {
-        dispatch(sagaReportCandleSequence())
+        dispatch(sagaReportCandleVolume())
     }, [endDate])
 
     useEffect(() => {
-        dispatch(sagaReportCandleSequence())
+        dispatch(sagaReportCandleVolume())
     }, [tickerList])
 
     return (

@@ -5,6 +5,7 @@ import 'react-tabs/style/react-tabs.css'
 import { Alert } from '../Alert/Alert'
 import { ReportSuperTrend } from '../Report/ReportSuperTrend'
 import { ReportCandleSequence } from '../Report/ReportCandleSequence'
+import { ReportCandleVolume } from '../Report/ReportCandleVolume'
 import { ReportStock } from '../Report/ReportStock'
 
 export const Workspace = () => {
@@ -17,6 +18,7 @@ export const Workspace = () => {
                 <TabList>
                     <Tab>Тренд</Tab>
                     <Tab>Свечи</Tab>
+                    <Tab>Объем</Tab>
                     <Tab>Акция</Tab>
                 </TabList>                
                 <TabPanel>
@@ -25,6 +27,9 @@ export const Workspace = () => {
                 <TabPanel>
                     <ReportCandleSequence />
                 </TabPanel> 
+                <TabPanel>
+                    <ReportCandleVolume />
+                </TabPanel>                
                 <TabPanel>
                     <ReportStock />
                 </TabPanel>                                         

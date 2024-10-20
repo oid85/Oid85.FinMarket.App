@@ -4,11 +4,13 @@ import { CONSTANTS } from '../../constants'
 import {
     fetchReportSuperTrend, 
     fetchReportCandleSequence,
+    fetchReportCandleVolume,
     fetchReportStock
 } from '../actions/reportActions'
-import { 
+import {
     SAGA_REPORT_SUPERTREND,
     SAGA_REPORT_CANDLE_SEQUENCE,
+    SAGA_REPORT_CANDLE_VOLUME,
     SAGA_REPORT_STOCK
 } from '../types'
 
@@ -16,6 +18,7 @@ import {
 export function* eventSagaWatcherReport() {
     yield takeEvery(SAGA_REPORT_SUPERTREND, sagaWorkerReportSuperTrend)
     yield takeEvery(SAGA_REPORT_CANDLE_SEQUENCE, sagaWorkerReportCandleSequence)
+    yield takeEvery(SAGA_REPORT_CANDLE_VOLUME, sagaWorkerReportCandleVolume)
     yield takeEvery(SAGA_REPORT_STOCK, sagaWorkerReportStock)
 }
 
@@ -49,6 +52,25 @@ function* sagaWorkerReportCandleSequence() {
         let reportData = yield call(getReportCandleSequenceFromApi, startDate, endDate, tickerList)
         
         yield put(fetchReportCandleSequence(reportData))        
+        yield put(hideLoader())
+    }
+    
+    catch (error) {
+        yield put(showAlert('Ошибка при получении данных'))
+        yield put(hideLoader())
+    }
+}
+
+function* sagaWorkerReportCandleVolume() {
+    try {
+        yield put(showLoader())
+        
+        let startDate = yield select(getStartDate)
+        let endDate = yield select(getEndDate)
+        let tickerList = yield select(getTickerList)
+        let reportData = yield call(getReportCandleVolumeFromApi, startDate, endDate, tickerList)
+        
+        yield put(fetchReportCandleVolume(reportData))        
         yield put(hideLoader())
     }
     
@@ -103,6 +125,24 @@ const getReportSuperTrendFromApi = async (startDate, endDate, tickerList) => {
 
 const getReportCandleSequenceFromApi = async (startDate, endDate, tickerList) => {
     const response = await fetch(`${CONSTANTS.FINMARKET_API}/api/report/analyse-candle-sequence/stocks`, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            from: startDate, 
+            to: endDate, 
+            tickerList: tickerList})
+    })
+    
+    if (response.ok) {
+        return await response.json()
+    }
+}
+
+const getReportCandleVolumeFromApi = async (startDate, endDate, tickerList) => {
+    const response = await fetch(`${CONSTANTS.FINMARKET_API}/api/report/analyse-candle-volume/stocks`, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
