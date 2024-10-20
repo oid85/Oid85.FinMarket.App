@@ -1,15 +1,18 @@
 import React from 'react'
 import { CONSTANTS } from '../../constants'
+import { Bull } from '../Icon/Bull'
+import { Bear } from '../Icon/Bear'
+import { Icon } from '../Icon/Icon'
 
 export const ReportTableCell = ({ key, cellValue }) => {
     if (cellValue == CONSTANTS.TREND_UP)
         return (
-            <td style={{ fontSize: 16, background: CONSTANTS.COLOR_GREEN }} key={key}>&#128046;</td>
+            <td style={{ fontSize: 16, background: CONSTANTS.COLOR_GREEN }} key={key}><Bull /></td>
         )
 
     if (cellValue == CONSTANTS.TREND_DOWN)
         return (
-            <td style={{ fontSize: 16, background: CONSTANTS.COLOR_RED }} key={key}>&#128059;</td>
+            <td style={{ fontSize: 16, background: CONSTANTS.COLOR_RED }} key={key}><Bull /></td>
         )    
         
     if (cellValue == '')
@@ -18,6 +21,6 @@ export const ReportTableCell = ({ key, cellValue }) => {
         )
 
     return (
-        <td style={{ fontSize: 16 }} key={key}>{cellValue}</td>
+        <td style={{ fontSize: 16 }} key={key}><Icon value={cellValue} /></td>
     )        
 }
