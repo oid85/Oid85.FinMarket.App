@@ -9,7 +9,7 @@ import {
 import { CONSTANTS } from '../../constants'
 
 const startDate = moment()
-                    .subtract(90, 'days')
+                    .subtract(CONSTANTS.DEFAULT_PERIOD, 'days')
                     .format('YYYY-MM-DD')
                     .toString()
 
