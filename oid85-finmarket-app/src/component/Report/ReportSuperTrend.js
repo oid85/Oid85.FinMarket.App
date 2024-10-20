@@ -4,7 +4,7 @@ import Loader from '../Loader/Loader'
 import { FilterMarket } from '../Filter/FilterMarket'
 import { sagaReportSuperTrend } from '../../redux/actions/reportActions'
 import './Report.css'
-import { ReportTable } from './ReportTable'
+import { Table } from './Table'
 
 export const ReportSuperTrend = () => {
 
@@ -39,7 +39,7 @@ export const ReportSuperTrend = () => {
                     :                    
                     <div className='report-container'>
                         <FilterMarket />
-                        <ReportTable 
+                        <Table 
                             title = {`${reportData.result.title}: ${startDate} - ${endDate}`}
                             reportTableData = {reportData.result} />
                     </div>                    

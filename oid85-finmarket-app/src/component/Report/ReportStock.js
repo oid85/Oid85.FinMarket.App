@@ -4,7 +4,7 @@ import Loader from '../Loader/Loader'
 import { sagaReportStock } from '../../redux/actions/reportActions'
 import { sagaWatchListTickers } from '../../redux/actions/filterActions'
 import './Report.css'
-import { ReportTable } from './ReportTable'
+import { Table } from './Table'
 import { FilterStock } from '../Filter/FilterStock'
 
 export const ReportStock = () => {
@@ -44,7 +44,7 @@ export const ReportStock = () => {
                     :                    
                     <div className='report-container'>
                         <FilterStock/>
-                        <ReportTable 
+                        <Table 
                             title = {`${reportData.result.title}: ${startDate} - ${endDate}`}
                             reportTableData = {reportData.result} />
                     </div>                    
