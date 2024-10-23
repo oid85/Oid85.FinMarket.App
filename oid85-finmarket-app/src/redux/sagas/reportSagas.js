@@ -6,6 +6,7 @@ import {
     fetchReportCandleSequence,
     fetchReportCandleVolume,
     fetchReportRsi,
+    fetchReportDividends,
     fetchReportStock
 } from '../actions/reportActions'
 import {
@@ -13,6 +14,7 @@ import {
     SAGA_REPORT_CANDLE_SEQUENCE,
     SAGA_REPORT_CANDLE_VOLUME,
     SAGA_REPORT_RSI,
+    SAGA_REPORT_DIVIDENDS,
     SAGA_REPORT_STOCK
 } from '../types'
 
@@ -22,6 +24,7 @@ export function* eventSagaWatcherReport() {
     yield takeEvery(SAGA_REPORT_CANDLE_SEQUENCE, sagaWorkerReportCandleSequence)
     yield takeEvery(SAGA_REPORT_CANDLE_VOLUME, sagaWorkerReportCandleVolume)
     yield takeEvery(SAGA_REPORT_RSI, sagaWorkerReportRsi)
+    yield takeEvery(SAGA_REPORT_DIVIDENDS, sagaWorkerReportDividends)
     yield takeEvery(SAGA_REPORT_STOCK, sagaWorkerReportStock)
 }
 
@@ -91,6 +94,22 @@ function* sagaWorkerReportRsi() {
         let endDate = yield select(getEndDate)
         let tickerList = yield select(getTickerList)
         let reportData = yield call(getReportRsiFromApi, startDate, endDate, tickerList)
+        
+        yield put(fetchReportRsi(reportData))        
+        yield put(hideLoader())
+    }
+    
+    catch (error) {
+        yield put(showAlert('Ошибка при получении данных'))
+        yield put(hideLoader())
+    }
+}
+
+function* sagaWorkerReportDividends() {
+    try {
+        yield put(showLoader())
+        
+        let reportData = yield call(getReportDividendsFromApi)
         
         yield put(fetchReportRsi(reportData))        
         yield put(hideLoader())
@@ -193,6 +212,14 @@ const getReportRsiFromApi = async (startDate, endDate, tickerList) => {
             to: endDate, 
             tickerList: tickerList})
     })
+    
+    if (response.ok) {
+        return await response.json()
+    }
+}
+
+const getReportDividendsFromApi = async () => {
+    const response = await fetch(`${CONSTANTS.FINMARKET_API}/api/report/dividends/stocks`)
     
     if (response.ok) {
         return await response.json()
