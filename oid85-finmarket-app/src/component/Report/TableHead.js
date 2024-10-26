@@ -3,9 +3,12 @@ import React from 'react'
 export const TableHead = ({ header }) => {
     return (
         <thead>
-            <tr>
-                {header.map((head, key) => (
-                    <th key={key}></th>
+            <tr 
+            style={{ 
+                border: '1px solid darkgray' 
+                }}>
+                {header.map((headValue, key) => (
+                    <th key={key}>{headValue}</th>
                 ))}
             </tr>
         </thead>

@@ -2,15 +2,19 @@ import React from 'react'
 import { CONSTANTS } from '../../constants'
 import './Icon.css'
 
-export const Bear = () => {
+export const Date = ({value}) => {
     
+    let date = Date.parse(value)
+    let year = date.getFullYear()
+    let month = date.getMonth() + 1
+    let day = date.getDate()
+
     return (
         <React.Fragment>
             <div style={{ 
-                    textAlign: 'center',
-                    background: CONSTANTS.COLOR_RED
+                    textAlign: 'center'
                 }}>
-                &#128059;
+                {value}
             </div>
         </React.Fragment>
     )

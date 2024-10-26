@@ -2,15 +2,15 @@ import React from 'react'
 import { CONSTANTS } from '../../constants'
 import './Icon.css'
 
-export const Bull = () => {
+export const Dividend = ({value}) => {
     
     return (
         <React.Fragment>
-            <div style={{
-                    textAlign: 'center', 
-                    background: CONSTANTS.COLOR_GREEN 
+            <div style={{ 
+                    textAlign: 'center',
+                    background: CONSTANTS.COLOR_GREEN
                 }}>
-                &#128046;
+                {value}
             </div>
         </React.Fragment>
     )
