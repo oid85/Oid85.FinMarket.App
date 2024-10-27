@@ -1,10 +1,13 @@
 import React from 'react'
 import { TableCell } from './TableCell'
 
-export const TableRow = ({ rowValue }) => {
+export const TableRow = ({ key, rowValue }) => {
     return (
-        <tr>{rowValue.map((cellValue, key) => (
-            <TableCell key={key} cellValue={cellValue} />
+        <tr key = {key}>
+            {rowValue.map((cellValue, index) => (
+            <TableCell
+                key={index} 
+                cellValue={cellValue} />
         ))}
         </tr>
     )        

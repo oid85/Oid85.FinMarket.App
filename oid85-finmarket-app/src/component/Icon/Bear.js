@@ -7,6 +7,7 @@ export const Bear = () => {
     return (
         <React.Fragment>
             <div style={{ 
+                    textAlign: 'center',
                     background: CONSTANTS.COLOR_RED
                 }}>
                 &#128059;

@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import {useDispatch} from 'react-redux'
 import {setTicker} from '../../redux/actions/filterActions'
 
-export const FilterTickerButton = ({ticker, key}) => {
+export const FilterTickerButton = ({key, ticker}) => {
 
     const dispatch = useDispatch()  
 

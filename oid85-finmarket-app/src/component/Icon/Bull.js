@@ -6,7 +6,8 @@ export const Bull = () => {
     
     return (
         <React.Fragment>
-            <div style={{ 
+            <div style={{
+                    textAlign: 'center', 
                     background: CONSTANTS.COLOR_GREEN 
                 }}>
                 &#128046;
