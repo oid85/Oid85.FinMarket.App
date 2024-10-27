@@ -3,16 +3,11 @@ import { CONSTANTS } from '../../constants'
 import { Bull } from './Bull'
 import { Bear } from './Bear'
 import { Dividend } from './Dividend'
-import { Date } from './Date'
 import './Icon.css'
 
 export const Icon = ({value}) => {
 
-    if (value.match('[0-9][0-9][0-9][0-9]-[0,1][0-9]-[0,1,2,3][0-9]')) { 
-        return (<Date date={value} />)    
-    }
-
-    else if (value.match('Dividend:\s*\d+\s*%')) { 
+if (value.match('Dividend: ')) {     
         return (<Dividend percent={value} />) 
     }
 

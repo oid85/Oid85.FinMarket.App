@@ -7,9 +7,7 @@ import {setEndDate, setStartDate} from '../../redux/actions/filterActions'
 export const FilterByLastDays = ({key, days}) => {
 
     const dispatch = useDispatch()
-
-    console.log('FilterByLastDays', days)
-
+    
     return (
         <React.Fragment>
             <div>

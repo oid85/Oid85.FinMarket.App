@@ -20,8 +20,10 @@ export const CONSTANTS = {
     TICKER_LIST_PORTFOLIO: 'PortfolioStocks',
     TICKER_LIST_WATCH_LIST: 'WatchListStocks',
 
+    COLOR_WHITE: '#FFFFFF',
     COLOR_RED: '#FF6633',
     COLOR_GREEN: '#00CC66',
     COLOR_YELLOW: '#FFFF99',
-    COLOR_GRAY: '#D3D3D3'
+    COLOR_GRAY: '#D3D3D3',
+    COLOR_STATEBLUE: '#6A5ACD'
 }
