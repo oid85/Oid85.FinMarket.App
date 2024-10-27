@@ -3,8 +3,6 @@ import { CONSTANTS } from '../../constants'
 import './Icon.css'
 
 export const Dividend = ({percent}) => {
-
-    console.log(percent)
     
     let displayValue = percent.replace('Dividend: ', '')
     displayValue = `${displayValue} %`

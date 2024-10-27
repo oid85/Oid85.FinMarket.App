@@ -11,9 +11,9 @@ export const FilterStock = () => {
         <React.Fragment>
             <div className='filter-container'>
                 {
-                    days.map((item, key) => (
+                    days.map((item, index) => (
                         <FilterByLastDays 
-                        key={key} 
+                        key={index} 
                         days={item} />
                     ))
                 }

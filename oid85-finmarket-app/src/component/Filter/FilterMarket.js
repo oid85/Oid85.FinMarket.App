@@ -18,16 +18,16 @@ export const FilterMarket = () => {
         <React.Fragment>
             <div className='filter-container'>
                 {
-                    days.map((item, key) => (
+                    days.map((item, index) => (
                         <FilterByLastDays 
-                        key={key} 
+                        key={index} 
                         days={item} />
                     ))
                 }
                 {
-                    tickerLists.map((item, key) => (
+                    tickerLists.map((item, index) => (
                         <FilterByTickerList 
-                        key={key} 
+                        key={index} 
                         name={item.name}
                         text={item.text} />
                     ))

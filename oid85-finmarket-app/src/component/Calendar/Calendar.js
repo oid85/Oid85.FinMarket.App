@@ -1,13 +1,14 @@
 import React from 'react'
 import './Calendar.css'
 
-export const Calendar = ({value}) => {
+export const Calendar = ({date}) => {
     
-    let date = Date.parse(value)
-    let year = date.getFullYear()
-    let month = date.getMonth() + 1
-    let day = date.getDate()
-
+    let dt = new Date(Date.parse(date))
+    let month = dt.toLocaleString('default', { month: 'long' })
+        .toUpperCase().substring(0, 3);
+    let day = dt.toLocaleString('default', { day: '2-digit' });
+    let year = dt.toLocaleString('default', { year: 'numeric' });    
+    
     return (
         <React.Fragment>
             <div className='calendar'>
