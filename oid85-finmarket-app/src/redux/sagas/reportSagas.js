@@ -7,6 +7,7 @@ import {
     fetchReportCandleVolume,
     fetchReportRsi,
     fetchReportDividends,
+    fetchReportBonds,
     fetchReportStock
 } from '../actions/reportActions'
 import {
@@ -15,6 +16,7 @@ import {
     SAGA_REPORT_CANDLE_VOLUME,
     SAGA_REPORT_RSI,
     SAGA_REPORT_DIVIDENDS,
+    SAGA_REPORT_BONDS,
     SAGA_REPORT_STOCK
 } from '../types'
 
@@ -25,6 +27,7 @@ export function* eventSagaWatcherReport() {
     yield takeEvery(SAGA_REPORT_CANDLE_VOLUME, sagaWorkerReportCandleVolume)
     yield takeEvery(SAGA_REPORT_RSI, sagaWorkerReportRsi)
     yield takeEvery(SAGA_REPORT_DIVIDENDS, sagaWorkerReportDividends)
+    yield takeEvery(SAGA_REPORT_BONDS, sagaWorkerReportBonds)
     yield takeEvery(SAGA_REPORT_STOCK, sagaWorkerReportStock)
 }
 
@@ -111,10 +114,26 @@ function* sagaWorkerReportDividends() {
         
         let reportData = yield call(getReportDividendsFromApi)
         
-        yield put(fetchReportRsi(reportData))        
+        yield put(fetchReportDividends(reportData))
         yield put(hideLoader())
     }
     
+    catch (error) {
+        yield put(showAlert('Ошибка при получении данных'))
+        yield put(hideLoader())
+    }
+}
+
+function* sagaWorkerReportBonds() {
+    try {
+        yield put(showLoader())
+
+        let reportData = yield call(getReportBondsFromApi)
+
+        yield put(fetchReportBonds(reportData))
+        yield put(hideLoader())
+    }
+
     catch (error) {
         yield put(showAlert('Ошибка при получении данных'))
         yield put(hideLoader())
@@ -220,7 +239,15 @@ const getReportRsiFromApi = async (startDate, endDate, tickerList) => {
 
 const getReportDividendsFromApi = async () => {
     const response = await fetch(`${CONSTANTS.FINMARKET_API}/api/report/dividends/stocks`)
-    
+
+    if (response.ok) {
+        return await response.json()
+    }
+}
+
+const getReportBondsFromApi = async () => {
+    const response = await fetch(`${CONSTANTS.FINMARKET_API}/api/report/bonds`)
+
     if (response.ok) {
         return await response.json()
     }
