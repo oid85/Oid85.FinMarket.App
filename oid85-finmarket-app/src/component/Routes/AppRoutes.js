@@ -8,6 +8,8 @@ import {ReportCandleVolume} from '../Report/ReportCandleVolume'
 import {ReportRsi} from '../Report/ReportRsi'
 import {ReportStock} from '../Report/ReportStock'
 import {ReportDividends} from '../Report/ReportDividends'
+import {ReportBonds} from '../Report/ReportBonds'
+
 
 export const AppRoutes = () => {
     return (
@@ -21,6 +23,7 @@ export const AppRoutes = () => {
                     <Route exact path='/report-candle-volume' element={<ReportCandleVolume />} />
                     <Route exact path='/report-rsi' element={<ReportRsi />} />
                     <Route exact path='/report-dividends' element={<ReportDividends />} />
+                    <Route exact path='/report-bonds' element={<ReportBonds />} />
                     <Route exact path='/report-stock' element={<ReportStock />} />
                 </Routes>
             </BrowserRouter>

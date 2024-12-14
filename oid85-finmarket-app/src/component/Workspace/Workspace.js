@@ -6,6 +6,7 @@ import { Alert } from '../Alert/Alert'
 import { TechAnalyse } from './TechAnalyse'
 import { ReportStock } from '../Report/ReportStock'
 import { ReportDividends } from '../Report/ReportDividends'
+import { ReportBonds } from '../Report/ReportBonds'
 
 export const Workspace = () => {
     const alert = useSelector(state => state.app.alert)
@@ -17,6 +18,7 @@ export const Workspace = () => {
                 <TabList>
                     <Tab>Техн. анализ</Tab>
                     <Tab>Дивиденды</Tab>
+                    <Tab>Облигации</Tab>
                     <Tab>Акция</Tab>
                 </TabList>                
                 <TabPanel>
@@ -24,7 +26,10 @@ export const Workspace = () => {
                 </TabPanel>
                 <TabPanel>
                     <ReportDividends />
-                </TabPanel>  
+                </TabPanel>
+                <TabPanel>
+                    <ReportBonds />
+                </TabPanel>
                 <TabPanel>
                     <ReportStock />
                 </TabPanel>                                                        
