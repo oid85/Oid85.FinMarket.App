@@ -1,35 +1,30 @@
 import React, { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import Loader from '../Loader/Loader'
-import { FilterMarket } from '../Filter/FilterMarket'
-import { sagaReportCandleSequence } from '../../redux/actions/reportActions'
-import './Report.css'
-import { Table } from './Table'
+import Loader from '../../Loader/Loader'
+import { FilterMarket } from '../../Filter/FilterMarket'
+import { sagaReportSharesSuperTrend } from '../../../redux/actions/reportSharesActions'
+import '../../Report/Report.css'
+import { Table } from '../../Report/Table'
 
-export const ReportCandleSequence = () => {
+export const ReportSharesSuperTrend = () => {
 
     const dispatch = useDispatch()
     const loading = useSelector(state => state.app.loading)
-    const reportData = useSelector(state => state.report.reportData)   
+    const reportData = useSelector(state => state.reportShares.reportData)
     const startDate = useSelector(state => state.filter.startDate)
     const endDate = useSelector(state => state.filter.endDate)
-    const tickerList = useSelector(state => state.filter.tickerList)
 
     useEffect(() => {
-        dispatch(sagaReportCandleSequence())
+        dispatch(sagaReportSharesSuperTrend())
     }, [])
 
     useEffect(() => {
-        dispatch(sagaReportCandleSequence())
+        dispatch(sagaReportSharesSuperTrend())
     }, [startDate])
 
     useEffect(() => {
-        dispatch(sagaReportCandleSequence())
+        dispatch(sagaReportSharesSuperTrend())
     }, [endDate])
-
-    useEffect(() => {
-        dispatch(sagaReportCandleSequence())
-    }, [tickerList])
 
     return (
         <React.Fragment>

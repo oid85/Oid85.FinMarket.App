@@ -15,11 +15,6 @@ export const CONSTANTS = {
     RSI_INTERPRETATION_OVERBOUGHT: 'Перекупленность',
     RSI_INTERPRETATION_OVERSOLD: 'Перепроданность',
 
-    TICKER_LIST_ALL: 'AllStocks',
-    TICKER_LIST_MOEX_INDEX: 'MoexIndexStocks',
-    TICKER_LIST_PORTFOLIO: 'PortfolioStocks',
-    TICKER_LIST_WATCH_LIST: 'WatchListStocks',
-
     COLOR_WHITE: '#FFFFFF',
     COLOR_RED: '#FF6633',
     COLOR_GREEN: '#00CC66',

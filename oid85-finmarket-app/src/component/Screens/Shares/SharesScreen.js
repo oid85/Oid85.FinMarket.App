@@ -2,13 +2,14 @@ import React from 'react'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import { useSelector } from 'react-redux'
 import 'react-tabs/style/react-tabs.css'
-import { Alert } from '../Alert/Alert'
-import { ReportSuperTrend } from '../Report/ReportSuperTrend'
-import { ReportCandleSequence } from '../Report/ReportCandleSequence'
-import { ReportCandleVolume } from '../Report/ReportCandleVolume'
-import { ReportRsi } from '../Report/ReportRsi'
+import { Alert } from '../../Alert/Alert'
+import { ReportSharesSuperTrend } from './ReportSharesSuperTrend'
+import { ReportSharesCandleSequence } from './ReportSharesCandleSequence'
+import { ReportSharesCandleVolume } from './ReportSharesCandleVolume'
+import { ReportSharesRsi } from './ReportSharesRsi'
+import {ReportDividends} from "./ReportDividends";
 
-export const TechAnalyse = () => {
+export const SharesScreen = () => {
     const alert = useSelector(state => state.app.alert)
 
     return (
@@ -20,19 +21,23 @@ export const TechAnalyse = () => {
                     <Tab>Свечи</Tab>
                     <Tab>Объем</Tab>
                     <Tab>RSI</Tab>
+                    <Tab>Дивиденды</Tab>
                 </TabList>                
                 <TabPanel>
-                    <ReportSuperTrend />
+                    <ReportSharesSuperTrend />
                 </TabPanel>  
                 <TabPanel>
-                    <ReportCandleSequence />
+                    <ReportSharesCandleSequence />
                 </TabPanel> 
                 <TabPanel>
-                    <ReportCandleVolume />
+                    <ReportSharesCandleVolume />
                 </TabPanel> 
                 <TabPanel>
-                    <ReportRsi />
-                </TabPanel>                                                                     
+                    <ReportSharesRsi />
+                </TabPanel>
+                <TabPanel>
+                    <ReportDividends />
+                </TabPanel>
             </Tabs>
         </React.Fragment>
     )    

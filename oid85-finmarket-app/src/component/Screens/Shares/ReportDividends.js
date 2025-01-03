@@ -1,18 +1,18 @@
 import React, { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import Loader from '../Loader/Loader'
-import { sagaReportBonds } from '../../redux/actions/reportActions'
-import './Report.css'
-import { Table } from './Table'
+import Loader from '../../Loader/Loader'
+import {sagaReportDividends} from '../../../redux/actions/reportSharesActions'
+import '../../Report/Report.css'
+import { Table } from '../../Report/Table'
 
-export const ReportBonds = () => {
+export const ReportDividends = () => {
 
     const dispatch = useDispatch()
     const loading = useSelector(state => state.app.loading)
-    const reportData = useSelector(state => state.report.reportData)   
+    const reportData = useSelector(state => state.reportShares.reportData)
 
     useEffect(() => {
-        dispatch(sagaReportBonds())
+        dispatch(sagaReportDividends())
     }, [])
 
     return (

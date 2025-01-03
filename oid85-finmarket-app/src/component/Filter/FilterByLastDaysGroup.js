@@ -3,7 +3,7 @@ import {FilterByLastDays} from './FilterByLastDays'
 import {FilterByTicker} from './FilterByTicker'
 import './Filter.css'
 
-export const FilterStock = () => {
+export const FilterByLastDaysGroup = () => {
     
     let days = [7, 30, 90, 180, 365]
 

@@ -2,46 +2,60 @@ import {call, put, select, takeEvery} from 'redux-saga/effects'
 import {hideLoader, showAlert, showLoader} from '../actions/appActions'
 import { CONSTANTS } from '../../constants'
 import {
-    fetchReportSuperTrend, 
-    fetchReportCandleSequence,
-    fetchReportCandleVolume,
-    fetchReportRsi,
+    fetchReportSharesSuperTrend,
+    fetchReportSharesCandleSequence,
+    fetchReportSharesCandleVolume,
+    fetchReportSharesRsi,
     fetchReportDividends,
-    fetchReportBonds,
-    fetchReportStock
-} from '../actions/reportActions'
+    fetchReportSharesAnalyse, fetchSharesWatchListTickers
+} from '../actions/reportSharesActions'
 import {
-    SAGA_REPORT_SUPERTREND,
-    SAGA_REPORT_CANDLE_SEQUENCE,
-    SAGA_REPORT_CANDLE_VOLUME,
-    SAGA_REPORT_RSI,
+    SAGA_SHARES_WATCH_LIST_TICKERS,
+    SAGA_REPORT_SHARES_SUPERTREND,
+    SAGA_REPORT_SHARES_CANDLE_SEQUENCE,
+    SAGA_REPORT_SHARES_CANDLE_VOLUME,
+    SAGA_REPORT_SHARES_RSI,
     SAGA_REPORT_DIVIDENDS,
-    SAGA_REPORT_BONDS,
-    SAGA_REPORT_STOCK
+    SAGA_REPORT_SHARE_ANALYSE
 } from '../types'
 
 // SagaWatcher'ы
-export function* eventSagaWatcherReport() {
-    yield takeEvery(SAGA_REPORT_SUPERTREND, sagaWorkerReportSuperTrend)
-    yield takeEvery(SAGA_REPORT_CANDLE_SEQUENCE, sagaWorkerReportCandleSequence)
-    yield takeEvery(SAGA_REPORT_CANDLE_VOLUME, sagaWorkerReportCandleVolume)
-    yield takeEvery(SAGA_REPORT_RSI, sagaWorkerReportRsi)
+export function* eventSagaWatcherReportShares() {
+    yield takeEvery(SAGA_SHARES_WATCH_LIST_TICKERS, sagaWorkerSharesWatchListTickers)
+    yield takeEvery(SAGA_REPORT_SHARES_SUPERTREND, sagaWorkerReportSharesSuperTrend)
+    yield takeEvery(SAGA_REPORT_SHARES_CANDLE_SEQUENCE, sagaWorkerReportSharesCandleSequence)
+    yield takeEvery(SAGA_REPORT_SHARES_CANDLE_VOLUME, sagaWorkerReportSharesCandleVolume)
+    yield takeEvery(SAGA_REPORT_SHARES_RSI, sagaWorkerReportSharesRsi)
     yield takeEvery(SAGA_REPORT_DIVIDENDS, sagaWorkerReportDividends)
-    yield takeEvery(SAGA_REPORT_BONDS, sagaWorkerReportBonds)
-    yield takeEvery(SAGA_REPORT_STOCK, sagaWorkerReportStock)
+    yield takeEvery(SAGA_REPORT_SHARE_ANALYSE, sagaWorkerReportShareAnalyse)
 }
 
 // SagaWorker'ы
-function* sagaWorkerReportSuperTrend() {
+function* sagaWorkerSharesWatchListTickers() {
+    try {
+        yield put(showLoader())
+
+        let watchListTickers = yield call(getSharesWatchListTickersFromApi)
+
+        yield put(fetchSharesWatchListTickers(watchListTickers))
+        yield put(hideLoader())
+    }
+
+    catch (error) {
+        yield put(showAlert('Ошибка при получении данных'))
+        yield put(hideLoader())
+    }
+}
+
+function* sagaWorkerReportSharesSuperTrend() {
     try {
         yield put(showLoader())
         
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
-        let tickerList = yield select(getTickerList)
-        let reportData = yield call(getReportSuperTrendFromApi, startDate, endDate, tickerList)
+        let reportData = yield call(getReportSharesSuperTrendFromApi, startDate, endDate)
         
-        yield put(fetchReportSuperTrend(reportData))
+        yield put(fetchReportSharesSuperTrend(reportData))
         yield put(hideLoader())
     } 
     
@@ -51,16 +65,15 @@ function* sagaWorkerReportSuperTrend() {
     }
 }
 
-function* sagaWorkerReportCandleSequence() {
+function* sagaWorkerReportSharesCandleSequence() {
     try {
         yield put(showLoader())
         
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
-        let tickerList = yield select(getTickerList)
-        let reportData = yield call(getReportCandleSequenceFromApi, startDate, endDate, tickerList)
+        let reportData = yield call(getReportSharesCandleSequenceFromApi, startDate, endDate)
         
-        yield put(fetchReportCandleSequence(reportData))        
+        yield put(fetchReportSharesCandleSequence(reportData))
         yield put(hideLoader())
     }
     
@@ -70,16 +83,15 @@ function* sagaWorkerReportCandleSequence() {
     }
 }
 
-function* sagaWorkerReportCandleVolume() {
+function* sagaWorkerReportSharesCandleVolume() {
     try {
         yield put(showLoader())
         
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
-        let tickerList = yield select(getTickerList)
-        let reportData = yield call(getReportCandleVolumeFromApi, startDate, endDate, tickerList)
+        let reportData = yield call(getReportSharesCandleVolumeFromApi, startDate, endDate)
         
-        yield put(fetchReportCandleVolume(reportData))        
+        yield put(fetchReportSharesCandleVolume(reportData))
         yield put(hideLoader())
     }
     
@@ -89,16 +101,15 @@ function* sagaWorkerReportCandleVolume() {
     }
 }
 
-function* sagaWorkerReportRsi() {
+function* sagaWorkerReportSharesRsi() {
     try {
         yield put(showLoader())
         
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
-        let tickerList = yield select(getTickerList)
-        let reportData = yield call(getReportRsiFromApi, startDate, endDate, tickerList)
+        let reportData = yield call(getReportRsiFromApi, startDate, endDate)
         
-        yield put(fetchReportRsi(reportData))        
+        yield put(fetchReportSharesRsi(reportData))
         yield put(hideLoader())
     }
     
@@ -124,32 +135,16 @@ function* sagaWorkerReportDividends() {
     }
 }
 
-function* sagaWorkerReportBonds() {
-    try {
-        yield put(showLoader())
-
-        let reportData = yield call(getReportBondsFromApi)
-
-        yield put(fetchReportBonds(reportData))
-        yield put(hideLoader())
-    }
-
-    catch (error) {
-        yield put(showAlert('Ошибка при получении данных'))
-        yield put(hideLoader())
-    }
-}
-
-function* sagaWorkerReportStock() {
+function* sagaWorkerReportShareAnalyse() {
     try {
         yield put(showLoader())
         
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
         let ticker = yield select(getTicker)
-        let reportData = yield call(getReportStockFromApi, startDate, endDate, ticker)
+        let reportData = yield call(getReportShareAnalyseFromApi, startDate, endDate, ticker)
         
-        yield put(fetchReportStock(reportData))        
+        yield put(fetchReportSharesAnalyse(reportData))
         yield put(hideLoader())
     }
     
@@ -162,11 +157,20 @@ function* sagaWorkerReportStock() {
 // Методы
 export const getStartDate = (state) => state.filter.startDate
 export const getEndDate = (state) => state.filter.endDate
-export const getTickerList = (state) => state.filter.tickerList
 export const getTicker = (state) => state.filter.ticker
 
-const getReportSuperTrendFromApi = async (startDate, endDate, tickerList) => {
-    const response = await fetch(`${CONSTANTS.FINMARKET_API}/api/report/analyse-supertrend/stocks`, {
+const getSharesWatchListTickersFromApi = async () => {
+    const response = await fetch(
+        `${CONSTANTS.FINMARKET_API}/api/shares/watch-list-tickers`)
+
+    if (response.ok) {
+        return await response.json()
+    }
+}
+
+const getReportSharesSuperTrendFromApi = async (startDate, endDate) => {
+    const response = await fetch(
+        `${CONSTANTS.FINMARKET_API}/api/shares/report/analyse-supertrend`, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -174,8 +178,7 @@ const getReportSuperTrendFromApi = async (startDate, endDate, tickerList) => {
           },
           body: JSON.stringify({
             from: startDate, 
-            to: endDate, 
-            tickerList: tickerList})
+            to: endDate})
     })
     
     if (response.ok) {
@@ -183,8 +186,9 @@ const getReportSuperTrendFromApi = async (startDate, endDate, tickerList) => {
     }
 }
 
-const getReportCandleSequenceFromApi = async (startDate, endDate, tickerList) => {
-    const response = await fetch(`${CONSTANTS.FINMARKET_API}/api/report/analyse-candle-sequence/stocks`, {
+const getReportSharesCandleSequenceFromApi = async (startDate, endDate) => {
+    const response = await fetch(
+        `${CONSTANTS.FINMARKET_API}/api/shares/report/analyse-candle-sequence`, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -192,8 +196,7 @@ const getReportCandleSequenceFromApi = async (startDate, endDate, tickerList) =>
           },
           body: JSON.stringify({
             from: startDate, 
-            to: endDate, 
-            tickerList: tickerList})
+            to: endDate})
     })
     
     if (response.ok) {
@@ -201,8 +204,9 @@ const getReportCandleSequenceFromApi = async (startDate, endDate, tickerList) =>
     }
 }
 
-const getReportCandleVolumeFromApi = async (startDate, endDate, tickerList) => {
-    const response = await fetch(`${CONSTANTS.FINMARKET_API}/api/report/analyse-candle-volume/stocks`, {
+const getReportSharesCandleVolumeFromApi = async (startDate, endDate) => {
+    const response = await fetch(
+        `${CONSTANTS.FINMARKET_API}/api/shares/report/analyse-candle-volume`, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -210,8 +214,7 @@ const getReportCandleVolumeFromApi = async (startDate, endDate, tickerList) => {
           },
           body: JSON.stringify({
             from: startDate, 
-            to: endDate, 
-            tickerList: tickerList})
+            to: endDate})
     })
     
     if (response.ok) {
@@ -219,8 +222,9 @@ const getReportCandleVolumeFromApi = async (startDate, endDate, tickerList) => {
     }
 }
 
-const getReportRsiFromApi = async (startDate, endDate, tickerList) => {
-    const response = await fetch(`${CONSTANTS.FINMARKET_API}/api/report/analyse-rsi/stocks`, {
+const getReportRsiFromApi = async (startDate, endDate) => {
+    const response = await fetch(
+        `${CONSTANTS.FINMARKET_API}/api/shares/report/analyse-rsi`, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -228,8 +232,7 @@ const getReportRsiFromApi = async (startDate, endDate, tickerList) => {
           },
           body: JSON.stringify({
             from: startDate, 
-            to: endDate, 
-            tickerList: tickerList})
+            to: endDate})
     })
     
     if (response.ok) {
@@ -238,23 +241,17 @@ const getReportRsiFromApi = async (startDate, endDate, tickerList) => {
 }
 
 const getReportDividendsFromApi = async () => {
-    const response = await fetch(`${CONSTANTS.FINMARKET_API}/api/report/dividends/stocks`)
+    const response = await fetch(
+        `${CONSTANTS.FINMARKET_API}/api/shares/report/dividends`)
 
     if (response.ok) {
         return await response.json()
     }
 }
 
-const getReportBondsFromApi = async () => {
-    const response = await fetch(`${CONSTANTS.FINMARKET_API}/api/report/bonds`)
-
-    if (response.ok) {
-        return await response.json()
-    }
-}
-
-const getReportStockFromApi = async (startDate, endDate, ticker) => {
-    const response = await fetch(`${CONSTANTS.FINMARKET_API}/api/report/analyse/stocks`, {
+const getReportShareAnalyseFromApi = async (startDate, endDate, ticker) => {
+    const response = await fetch(
+        `${CONSTANTS.FINMARKET_API}/api/shares/report/total-analyse`, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',

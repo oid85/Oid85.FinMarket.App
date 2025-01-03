@@ -1,35 +1,40 @@
 import React, { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import Loader from '../Loader/Loader'
-import { FilterMarket } from '../Filter/FilterMarket'
-import { sagaReportRsi } from '../../redux/actions/reportActions'
-import './Report.css'
-import { Table } from './Table'
+import Loader from '../../Loader/Loader'
+import {sagaReportShareAnalyse, sagaSharesWatchListTickers} from '../../../redux/actions/reportSharesActions'
+import '../../Report/Report.css'
+import { Table } from '../../Report/Table'
+import { FilterByLastDaysGroup } from '../../Filter/FilterByLastDaysGroup'
 
-export const ReportRsi = () => {
+export const ReportShareAnalyse = () => {
 
     const dispatch = useDispatch()
     const loading = useSelector(state => state.app.loading)
-    const reportData = useSelector(state => state.report.reportData)   
+    const reportData = useSelector(state => state.reportShares.reportData)
+    const watchListTickers = useSelector(state => state.reportShares.watchListTickers)
     const startDate = useSelector(state => state.filter.startDate)
     const endDate = useSelector(state => state.filter.endDate)
-    const tickerList = useSelector(state => state.filter.tickerList)
+    const ticker = useSelector(state => state.filter.ticker)
 
     useEffect(() => {
-        dispatch(sagaReportRsi())
+        dispatch(sagaSharesWatchListTickers())
     }, [])
 
     useEffect(() => {
-        dispatch(sagaReportRsi())
+        dispatch(sagaReportShareAnalyse())
+    }, [])
+
+    useEffect(() => {
+        dispatch(sagaReportShareAnalyse())
     }, [startDate])
 
     useEffect(() => {
-        dispatch(sagaReportRsi())
+        dispatch(sagaReportShareAnalyse())
     }, [endDate])
 
     useEffect(() => {
-        dispatch(sagaReportRsi())
-    }, [tickerList])
+        dispatch(sagaReportShareAnalyse())
+    }, [ticker])
 
     return (
         <React.Fragment>
@@ -38,7 +43,7 @@ export const ReportRsi = () => {
                     ? <Loader/>
                     :                    
                     <div className='report-container'>
-                        <FilterMarket />
+                        <FilterByLastDaysGroup/>
                         <Table 
                             title = {`${reportData.result.title}: ${startDate} - ${endDate}`}
                             reportTableData = {reportData.result} />
