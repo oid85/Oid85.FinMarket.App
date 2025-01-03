@@ -1,6 +1,5 @@
 import React from 'react'
 import {FilterByLastDays} from './FilterByLastDays'
-import {FilterByTicker} from './FilterByTicker'
 import './Filter.css'
 
 export const FilterByLastDaysGroup = () => {
@@ -17,7 +16,6 @@ export const FilterByLastDaysGroup = () => {
                         days={item} />
                     ))
                 }
-                <FilterByTicker />
             </div>
         </React.Fragment>
     )

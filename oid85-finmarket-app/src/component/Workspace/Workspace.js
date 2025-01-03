@@ -14,23 +14,10 @@ export const Workspace = () => {
             <Tabs>
                 <TabList>
                     <Tab>Акции</Tab>
-                    <Tab>Облигации</Tab>
-                    <Tab>Фьючерсы</Tab>
-                    <Tab>Валюты</Tab>
-                    <Tab>Индексы</Tab>
                 </TabList>                
                 <TabPanel>
                     <SharesScreen />
                 </TabPanel>
-                <TabPanel>
-
-                </TabPanel>
-                <TabPanel>
-
-                </TabPanel>
-                <TabPanel>
-
-                </TabPanel>                                                        
             </Tabs>
         </React.Fragment>
     )    

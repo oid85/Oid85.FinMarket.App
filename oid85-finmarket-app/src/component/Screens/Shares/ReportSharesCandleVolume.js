@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import Loader from '../../Loader/Loader'
-import { FilterMarket } from '../../Filter/FilterMarket'
 import {sagaReportSharesCandleVolume, sagaSharesWatchListTickers} from '../../../redux/actions/reportSharesActions'
 import '../../Report/Report.css'
 import { Table } from '../../Report/Table'
+import {FilterByLastDaysGroup} from "../../Filter/FilterByLastDaysGroup";
 
 export const ReportSharesCandleVolume = () => {
 
@@ -37,7 +37,7 @@ export const ReportSharesCandleVolume = () => {
                     ? <Loader/>
                     :                    
                     <div className='report-container'>
-                        <FilterMarket />
+                        <FilterByLastDaysGroup />
                         <Table 
                             title = {`${reportData.result.title}: ${startDate} - ${endDate}`}
                             reportTableData = {reportData.result} />
