@@ -1,30 +1,40 @@
 import React, { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import Loader from '../../Loader/Loader'
-import { sagaReportSharesSuperTrend } from '../../../redux/actions/reportSharesActions'
+import {sagaReportBondAnalyse, sagaBondsWatchListTickers} from '../../../redux/actions/reportBondsActions'
 import '../../Report/Report.css'
 import { Table } from '../../Report/Table'
-import {FilterByLastDaysGroup} from "../../Filter/FilterByLastDaysGroup";
+import { FilterByLastDaysGroup } from '../../Filter/FilterByLastDaysGroup'
 
-export const ReportSharesSuperTrend = () => {
+export const ReportBondAnalyse = () => {
 
     const dispatch = useDispatch()
     const loading = useSelector(state => state.app.loading)
-    const reportData = useSelector(state => state.reportShares.reportData)
+    const reportData = useSelector(state => state.reportBonds.reportData)
+    const watchListTickers = useSelector(state => state.reportBonds.watchListTickers)
     const startDate = useSelector(state => state.filter.startDate)
     const endDate = useSelector(state => state.filter.endDate)
+    const ticker = useSelector(state => state.filter.ticker)
 
     useEffect(() => {
-        dispatch(sagaReportSharesSuperTrend())
+        dispatch(sagaBondsWatchListTickers())
     }, [])
 
     useEffect(() => {
-        dispatch(sagaReportSharesSuperTrend())
+        dispatch(sagaReportBondAnalyse())
+    }, [])
+
+    useEffect(() => {
+        dispatch(sagaReportBondAnalyse())
     }, [startDate])
 
     useEffect(() => {
-        dispatch(sagaReportSharesSuperTrend())
+        dispatch(sagaReportBondAnalyse())
     }, [endDate])
+
+    useEffect(() => {
+        dispatch(sagaReportBondAnalyse())
+    }, [ticker])
 
     return (
         <React.Fragment>
@@ -33,7 +43,7 @@ export const ReportSharesSuperTrend = () => {
                     ? <Loader/>
                     :                    
                     <div className='report-container'>
-                        <FilterByLastDaysGroup />
+                        <FilterByLastDaysGroup/>
                         <Table
                             title = {`${reportData.result.title}`}
                             reportTableData = {reportData.result} />

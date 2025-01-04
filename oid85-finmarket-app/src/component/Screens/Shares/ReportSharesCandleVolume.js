@@ -39,7 +39,7 @@ export const ReportSharesCandleVolume = () => {
                     <div className='report-container'>
                         <FilterByLastDaysGroup />
                         <Table 
-                            title = {`${reportData.result.title}: ${startDate} - ${endDate}`}
+                            title = {`${reportData.result.title}`}
                             reportTableData = {reportData.result} />
                     </div>                    
             }

@@ -44,8 +44,8 @@ export const ReportShareAnalyse = () => {
                     :                    
                     <div className='report-container'>
                         <FilterByLastDaysGroup/>
-                        <Table 
-                            title = {`${reportData.result.title}: ${startDate} - ${endDate}`}
+                        <Table
+                            title = {`${reportData.result.title}`}
                             reportTableData = {reportData.result} />
                     </div>                    
             }

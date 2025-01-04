@@ -3,14 +3,13 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import { useSelector } from 'react-redux'
 import 'react-tabs/style/react-tabs.css'
 import { Alert } from '../../Alert/Alert'
-import { ReportSharesSuperTrend } from './ReportSharesSuperTrend'
-import { ReportSharesCandleSequence } from './ReportSharesCandleSequence'
-import { ReportSharesCandleVolume } from './ReportSharesCandleVolume'
-import { ReportSharesRsi } from './ReportSharesRsi'
-import {ReportDividends} from "./ReportDividends";
-import {ReportShareAnalyse} from "./ReportShareAnalyse";
+import { ReportBondsSuperTrend } from './ReportBondsSuperTrend'
+import { ReportBondsCandleSequence } from './ReportBondsCandleSequence'
+import { ReportBondsCandleVolume } from './ReportBondsCandleVolume'
+import { ReportBondsRsi } from './ReportBondsRsi'
+import {ReportBondAnalyse} from "./ReportBondAnalyse";
 
-export const SharesScreen = () => {
+export const BondsScreen = () => {
     const alert = useSelector(state => state.app.alert)
 
     return (
@@ -22,26 +21,22 @@ export const SharesScreen = () => {
                     <Tab>Свечи</Tab>
                     <Tab>Объем</Tab>
                     <Tab>RSI</Tab>
-                    <Tab>Дивиденды</Tab>
                     <Tab>Сводный</Tab>
                 </TabList>                
                 <TabPanel>
-                    <ReportSharesSuperTrend />
+                    <ReportBondsSuperTrend />
                 </TabPanel>  
                 <TabPanel>
-                    <ReportSharesCandleSequence />
+                    <ReportBondsCandleSequence />
                 </TabPanel> 
                 <TabPanel>
-                    <ReportSharesCandleVolume />
+                    <ReportBondsCandleVolume />
                 </TabPanel> 
                 <TabPanel>
-                    <ReportSharesRsi />
+                    <ReportBondsRsi />
                 </TabPanel>
                 <TabPanel>
-                    <ReportDividends />
-                </TabPanel>
-                <TabPanel>
-                    <ReportShareAnalyse />
+                    <ReportBondAnalyse />
                 </TabPanel>
             </Tabs>
         </React.Fragment>
