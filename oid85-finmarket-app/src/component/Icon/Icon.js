@@ -6,6 +6,7 @@ import {Percent} from './Percent'
 import {Ruble} from './Ruble'
 import {DarkGreen} from './DarkGreen'
 import {DarkRed} from './DarkRed'
+import {Bull} from "./Bull";
 
 export const Icon = ({displayType, displayValue}) => {
 

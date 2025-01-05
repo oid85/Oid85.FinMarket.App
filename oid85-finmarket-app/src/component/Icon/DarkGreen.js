@@ -9,7 +9,7 @@ export const DarkGreen = () => {
             <div style={{
                     textAlign: 'center', 
                     background: CONSTANTS.COLOR_DARKGREEN
-                }}>    </div>
+                }}>&emsp;</div>
         </React.Fragment>
     )
 }

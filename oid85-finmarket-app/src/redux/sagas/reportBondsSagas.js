@@ -6,8 +6,9 @@ import {
     fetchReportBondsCandleSequence,
     fetchReportBondsCandleVolume,
     fetchReportBondsRsi,
-    fetchReportBondsAnalyse, 
-	fetchBondsWatchListTickers
+    fetchReportBondsAnalyse,
+    fetchBondsWatchListTickers,
+    fetchReportCoupons
 } from '../actions/reportBondsActions'
 import {
     SAGA_BONDS_WATCH_LIST_TICKERS,
@@ -15,6 +16,7 @@ import {
     SAGA_REPORT_BONDS_CANDLE_SEQUENCE,
     SAGA_REPORT_BONDS_CANDLE_VOLUME,
     SAGA_REPORT_BONDS_RSI,
+    SAGA_REPORT_COUPONS,
     SAGA_REPORT_BOND_ANALYSE
 } from '../types'
 
@@ -25,6 +27,7 @@ export function* eventSagaWatcherReportBonds() {
     yield takeEvery(SAGA_REPORT_BONDS_CANDLE_SEQUENCE, sagaWorkerReportBondsCandleSequence)
     yield takeEvery(SAGA_REPORT_BONDS_CANDLE_VOLUME, sagaWorkerReportBondsCandleVolume)
     yield takeEvery(SAGA_REPORT_BONDS_RSI, sagaWorkerReportBondsRsi)
+    yield takeEvery(SAGA_REPORT_COUPONS, sagaWorkerReportCoupons)
     yield takeEvery(SAGA_REPORT_BOND_ANALYSE, sagaWorkerReportBondAnalyse)
 }
 
@@ -111,6 +114,22 @@ function* sagaWorkerReportBondsRsi() {
         yield put(hideLoader())
     }
     
+    catch (error) {
+        yield put(showAlert('Ошибка при получении данных'))
+        yield put(hideLoader())
+    }
+}
+
+function* sagaWorkerReportCoupons() {
+    try {
+        yield put(showLoader())
+
+        let reportData = yield call(getReportCouponsFromApi)
+
+        yield put(fetchReportCoupons(reportData))
+        yield put(hideLoader())
+    }
+
     catch (error) {
         yield put(showAlert('Ошибка при получении данных'))
         yield put(hideLoader())
@@ -225,6 +244,15 @@ const getReportBondsRsiFromApi = async (startDate, endDate) => {
             to: endDate})
     })
     
+    if (response.ok) {
+        return await response.json()
+    }
+}
+
+const getReportCouponsFromApi = async () => {
+    const response = await fetch(
+        `${CONSTANTS.FINMARKET_API}/api/bonds/report/coupons`)
+
     if (response.ok) {
         return await response.json()
     }

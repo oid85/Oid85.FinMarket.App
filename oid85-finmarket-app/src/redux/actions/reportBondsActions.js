@@ -3,6 +3,7 @@ import {
     SAGA_REPORT_BONDS_CANDLE_SEQUENCE,
     SAGA_REPORT_BONDS_CANDLE_VOLUME,
     SAGA_REPORT_BONDS_RSI,
+    SAGA_REPORT_COUPONS,
     SAGA_REPORT_BOND_ANALYSE,
     SAGA_BONDS_WATCH_LIST_TICKERS,
 
@@ -10,6 +11,7 @@ import {
     FETCH_REPORT_BONDS_CANDLE_SEQUENCE,
     FETCH_REPORT_BONDS_CANDLE_VOLUME,
     FETCH_REPORT_BONDS_RSI,
+    FETCH_REPORT_COUPONS,
     FETCH_REPORT_BOND_ANALYSE,
     FETCH_BONDS_WATCH_LIST_TICKERS
 } from '../types'
@@ -75,6 +77,19 @@ export const sagaReportBondsRsi = () => {
 export const fetchReportBondsRsi = (reportData) => {
     return {
         type: FETCH_REPORT_BONDS_RSI,
+        payload: reportData
+    }
+}
+
+export const sagaReportCoupons = () => {
+    return {
+        type: SAGA_REPORT_COUPONS
+    }
+}
+
+export const fetchReportCoupons = (reportData) => {
+    return {
+        type: FETCH_REPORT_COUPONS,
         payload: reportData
     }
 }
