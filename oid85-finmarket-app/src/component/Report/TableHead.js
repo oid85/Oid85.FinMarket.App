@@ -11,7 +11,9 @@ export const TableHead = ({ header }) => {
                         border: '1px solid darkgray'
                     }} 
                         key={index}>
-                        <Icon value={headValue} />
+                        <Icon
+                            displayType={headValue.type}
+                            displayValue={headValue.value} />
                     </th>
                 ))}
             </tr>

@@ -1,29 +1,26 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.css'
-import {useSelector} from 'react-redux'
-import { FilterTickerButton } from './FilterTickerButton'
-import Loader from '../Loader/Loader'
-import './Filter.css'
+import {useDispatch} from 'react-redux'
+import {setTicker} from '../../redux/actions/filterActions'
 
-export const FilterByTicker = () => {
+export const FilterByTicker = ({key, ticker}) => {
 
-    const loading = useSelector(state => state.app.loading)
-    const watchListData = useSelector(state => state.filter.watchListData)
+    const dispatch = useDispatch()  
 
     return (
         <React.Fragment>
-            {
-                !watchListData.result || loading
-                ? <Loader/>
-                :  
-                <div className='filter-container'>
-                {watchListData.result.map((item, key) => (
-                <FilterTickerButton 
-                    key={key} 
-                    ticker={item.ticker} />
-                ))}
+            <div>
+                <button
+                style={{
+                    width: 70,
+                    margin: 1
+                }}
+                key={key}
+                className='btn btn-outline-primary'
+                onClick={() => {
+                    dispatch(setTicker(ticker))
+                }}>{ticker}</button>
             </div>
-            }
         </React.Fragment>
     )
 }

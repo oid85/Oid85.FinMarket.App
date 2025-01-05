@@ -3,10 +3,11 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import { useSelector } from 'react-redux'
 import 'react-tabs/style/react-tabs.css'
 import { Alert } from '../Alert/Alert'
-import { TechAnalyse } from './TechAnalyse'
-import { ReportStock } from '../Report/ReportStock'
-import { ReportDividends } from '../Report/ReportDividends'
-import { ReportBonds } from '../Report/ReportBonds'
+import { SharesScreen } from '../Screens/Shares/SharesScreen'
+import {BondsScreen} from '../Screens/Bonds/BondsScreen'
+import {FuturesScreen} from '../Screens/Futures/FuturesScreen'
+import {CurrenciesScreen} from '../Screens/Currencies/CurrenciesScreen'
+import {IndexesScreen} from '../Screens/Indexes/IndexesScreen'
 
 export const Workspace = () => {
     const alert = useSelector(state => state.app.alert)
@@ -16,23 +17,27 @@ export const Workspace = () => {
             {alert && <Alert text={alert} />}
             <Tabs>
                 <TabList>
-                    <Tab>Техн. анализ</Tab>
-                    <Tab>Дивиденды</Tab>
+                    <Tab>Акции</Tab>
                     <Tab>Облигации</Tab>
-                    <Tab>Акция</Tab>
+                    <Tab>Фьючерсы</Tab>
+                    <Tab>Валюты</Tab>
+                    <Tab>Индексы</Tab>
                 </TabList>                
                 <TabPanel>
-                    <TechAnalyse />
+                    <SharesScreen />
                 </TabPanel>
                 <TabPanel>
-                    <ReportDividends />
+                    <BondsScreen />
                 </TabPanel>
                 <TabPanel>
-                    <ReportBonds />
+                    <FuturesScreen />
                 </TabPanel>
                 <TabPanel>
-                    <ReportStock />
-                </TabPanel>                                                        
+                    <CurrenciesScreen />
+                </TabPanel>
+                <TabPanel>
+                    <IndexesScreen />
+                </TabPanel>
             </Tabs>
         </React.Fragment>
     )    

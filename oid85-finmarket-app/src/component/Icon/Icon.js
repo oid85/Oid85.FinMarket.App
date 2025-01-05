@@ -1,52 +1,66 @@
 import React from 'react'
-import { CONSTANTS } from '../../constants'
-import { Bull } from './Bull'
-import { Bear } from './Bear'
-import { Dividend } from './Dividend'
-import { Calendar } from '../Calendar/Calendar'
 import './Icon.css'
+import {CONSTANTS} from '../../constants'
+import {Calendar} from '../Calendar/Calendar'
+import {Percent} from './Percent'
+import {Ruble} from './Ruble'
+import {DarkGreen} from './DarkGreen'
+import {DarkRed} from './DarkRed'
+import {Bull} from "./Bull";
 
-export const Icon = ({value}) => {
-    
-    if (value.match('[0-9][0-9][0-9][0-9]-[0,1][0-9]-[0,1,2,3][0-9]')) {
-        return (<Calendar date={value} />)
+export const Icon = ({displayType, displayValue}) => {
+
+    if (displayType.match(CONSTANTS.DISPLAY_TYPE_DATE)) {
+        return (<Calendar date={displayValue} />)
     }
 
-    else if (value.match('Dividend: ')) {     
-        return (<Dividend percent={value} />) 
+    if (displayType.match(CONSTANTS.DISPLAY_TYPE_PERCENT)) {
+        return (<Percent value={displayValue} />)
     }
 
-    else if (value.match(CONSTANTS.TREND_DIRECTION_UP)) { 
-        return (<Bull />) 
+    if (displayType.match(CONSTANTS.DISPLAY_TYPE_RUBLE)) {
+        return (<Ruble value={displayValue} />)
     }
 
-    else if (value.match(CONSTANTS.VOLUME_DIRECTION_UP)) { 
-        return (<Bull />) 
+    if (displayType.match(CONSTANTS.DISPLAY_TYPE_ANALYSE_RESULT_SUPERTREND)) {
+        if (displayValue.match(CONSTANTS.TREND_DIRECTION_UP)) {
+            return (<DarkGreen />)
+        }
+
+        if (displayValue.match(CONSTANTS.TREND_DIRECTION_DOWN)) {
+            return (<DarkRed />)
+        }
     }
 
-    else if (value.match(CONSTANTS.CANDLE_SECUENCE_WHITE)) { 
-        return (<Bull />) 
+    if (displayType.match(CONSTANTS.DISPLAY_TYPE_ANALYSE_RESULT_CANDLE_SEQUENCE)) {
+        if (displayValue.match(CONSTANTS.CANDLE_SECUENCE_WHITE)) {
+            return (<DarkGreen />)
+        }
+
+        if (displayValue.match(CONSTANTS.CANDLE_SECUENCE_BLACK)) {
+            return (<DarkRed />)
+        }
     }
 
-    else if (value.match(CONSTANTS.RSI_INTERPRETATION_OVERBOUGHT)) { 
-        return (<Bull />) 
+    if (displayType.match(CONSTANTS.DISPLAY_TYPE_ANALYSE_RESULT_CANDLE_VOLUME)) {
+        if (displayValue.match(CONSTANTS.VOLUME_DIRECTION_UP)) {
+            return (<DarkGreen />)
+        }
+
+        if (displayValue.match(CONSTANTS.VOLUME_DIRECTION_DOWN)) {
+            return (<DarkRed />)
+        }
     }
 
-    else if (value.match(CONSTANTS.TREND_DIRECTION_DOWN)) { 
-        return (<Bear />) 
+    if (displayType.match(CONSTANTS.DISPLAY_TYPE_ANALYSE_RESULT_RSI)) {
+        if (displayValue.match(CONSTANTS.RSI_INTERPRETATION_OVERSOLD)) {
+            return (<DarkGreen />)
+        }
+
+        if (displayValue.match(CONSTANTS.RSI_INTERPRETATION_OVERBOUGHT)) {
+            return (<DarkRed />)
+        }
     }
 
-    else if (value.match(CONSTANTS.VOLUME_DIRECTION_DOWN)) { 
-        return (<Bear />) 
-    }
-
-    else if (value.match(CONSTANTS.CANDLE_SECUENCE_BLACK)) { 
-        return (<Bear />) 
-    }
-    
-    else if (value.match(CONSTANTS.RSI_INTERPRETATION_OVERSOLD)) { 
-        return (<Bear />) 
-    }
-
-    return (<React.Fragment>{value}</React.Fragment>)    
+    return (<React.Fragment>{displayValue}</React.Fragment>)
 }
