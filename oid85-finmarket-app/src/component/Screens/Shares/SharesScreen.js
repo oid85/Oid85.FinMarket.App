@@ -7,8 +7,8 @@ import { ReportSharesSuperTrend } from './ReportSharesSuperTrend'
 import { ReportSharesCandleSequence } from './ReportSharesCandleSequence'
 import { ReportSharesCandleVolume } from './ReportSharesCandleVolume'
 import { ReportSharesRsi } from './ReportSharesRsi'
-import {ReportDividends} from "./ReportDividends";
-import {ReportShareAnalyse} from "./ReportShareAnalyse";
+import {ReportDividends} from './ReportDividends'
+import {ReportShareAnalyse} from './ReportShareAnalyse'
 
 export const SharesScreen = () => {
     const alert = useSelector(state => state.app.alert)

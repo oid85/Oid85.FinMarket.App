@@ -6,8 +6,8 @@ import {
     fetchReportFuturesCandleSequence,
     fetchReportFuturesCandleVolume,
     fetchReportFuturesRsi,
-    fetchReportFuturesAnalyse, 
-	fetchFuturesWatchListTickers
+    fetchReportFutureAnalyse,
+    fetchFuturesWatchListTickers
 } from '../actions/reportFuturesActions'
 import {
     SAGA_FUTURES_WATCH_LIST_TICKERS,
@@ -105,7 +105,7 @@ function* sagaWorkerReportFuturesRsi() {
         
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
-        let reportData = yield call(getReportRsiFromApi, startDate, endDate)
+        let reportData = yield call(getReportFutureRsiFromApi, startDate, endDate)
         
         yield put(fetchReportFuturesRsi(reportData))
         yield put(hideLoader())
@@ -124,9 +124,16 @@ function* sagaWorkerReportFutureAnalyse() {
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
         let ticker = yield select(getTicker)
+
+        let watchListTickers = yield select(getFuturesWatchListTickers)
+
+        if (ticker === '') {
+            ticker = watchListTickers[0]
+        }
+
         let reportData = yield call(getReportFutureAnalyseFromApi, startDate, endDate, ticker)
         
-        yield put(fetchReportFuturesAnalyse(reportData))
+        yield put(fetchReportFutureAnalyse(reportData))
         yield put(hideLoader())
     }
     
@@ -140,6 +147,7 @@ function* sagaWorkerReportFutureAnalyse() {
 export const getStartDate = (state) => state.filter.startDate
 export const getEndDate = (state) => state.filter.endDate
 export const getTicker = (state) => state.filter.ticker
+export const getFuturesWatchListTickers = (state) => state.reportFutures.watchListTickers
 
 const getFuturesWatchListTickersFromApi = async () => {
     const response = await fetch(
@@ -204,7 +212,7 @@ const getReportFuturesCandleVolumeFromApi = async (startDate, endDate) => {
     }
 }
 
-const getReportRsiFromApi = async (startDate, endDate) => {
+const getReportFutureRsiFromApi = async (startDate, endDate) => {
     const response = await fetch(
         `${CONSTANTS.FINMARKET_API}/api/futures/report/analyse-rsi`, {
         method: 'POST',

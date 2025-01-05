@@ -105,7 +105,7 @@ function* sagaWorkerReportBondsRsi() {
         
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
-        let reportData = yield call(getReportRsiFromApi, startDate, endDate)
+        let reportData = yield call(getReportBondsRsiFromApi, startDate, endDate)
         
         yield put(fetchReportBondsRsi(reportData))
         yield put(hideLoader())
@@ -124,6 +124,13 @@ function* sagaWorkerReportBondAnalyse() {
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
         let ticker = yield select(getTicker)
+
+        let watchListTickers = yield select(getBondsWatchListTickers)
+
+        if (ticker === '') {
+            ticker = watchListTickers[0]
+        }
+
         let reportData = yield call(getReportBondAnalyseFromApi, startDate, endDate, ticker)
         
         yield put(fetchReportBondsAnalyse(reportData))
@@ -140,6 +147,7 @@ function* sagaWorkerReportBondAnalyse() {
 export const getStartDate = (state) => state.filter.startDate
 export const getEndDate = (state) => state.filter.endDate
 export const getTicker = (state) => state.filter.ticker
+export const getBondsWatchListTickers = (state) => state.reportBonds.watchListTickers
 
 const getBondsWatchListTickersFromApi = async () => {
     const response = await fetch(
@@ -204,7 +212,7 @@ const getReportBondsCandleVolumeFromApi = async (startDate, endDate) => {
     }
 }
 
-const getReportRsiFromApi = async (startDate, endDate) => {
+const getReportBondsRsiFromApi = async (startDate, endDate) => {
     const response = await fetch(
         `${CONSTANTS.FINMARKET_API}/api/bonds/report/analyse-rsi`, {
         method: 'POST',

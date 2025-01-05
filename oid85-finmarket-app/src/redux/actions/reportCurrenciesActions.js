@@ -79,12 +79,6 @@ export const fetchReportCurrenciesRsi = (reportData) => {
     }
 }
 
-export const sagaReportDividends = () => {
-    return {
-        type: SAGA_REPORT_DIVIDENDS
-    }
-}
-
 export const sagaReportCurrencyAnalyse = () => {
     return {
         type: SAGA_REPORT_CURRENCY_ANALYSE

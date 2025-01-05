@@ -1,29 +1,29 @@
 import React, { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import Loader from '../../Loader/Loader'
-import { sagaReportIndexsSuperTrend } from '../../../redux/actions/reportIndexsActions'
+import { sagaReportIndexesSuperTrend } from '../../../redux/actions/reportIndexesActions'
 import '../../Report/Report.css'
 import { Table } from '../../Report/Table'
-import {FilterByLastDaysGroup} from "../../Filter/FilterByLastDaysGroup";
+import {FilterByLastDaysGroup} from '../../Filter/FilterByLastDaysGroup'
 
-export const ReportIndexsSuperTrend = () => {
+export const ReportIndexesSuperTrend = () => {
 
     const dispatch = useDispatch()
     const loading = useSelector(state => state.app.loading)
-    const reportData = useSelector(state => state.reportIndexs.reportData)
+    const reportData = useSelector(state => state.reportIndexes.reportData)
     const startDate = useSelector(state => state.filter.startDate)
     const endDate = useSelector(state => state.filter.endDate)
 
     useEffect(() => {
-        dispatch(sagaReportIndexsSuperTrend())
+        dispatch(sagaReportIndexesSuperTrend())
     }, [])
 
     useEffect(() => {
-        dispatch(sagaReportIndexsSuperTrend())
+        dispatch(sagaReportIndexesSuperTrend())
     }, [startDate])
 
     useEffect(() => {
-        dispatch(sagaReportIndexsSuperTrend())
+        dispatch(sagaReportIndexesSuperTrend())
     }, [endDate])
 
     return (

@@ -2,16 +2,14 @@ import React from 'react'
 import { CONSTANTS } from '../../constants'
 import './Icon.css'
 
-export const Bear = () => {
+export const DarkRed = () => {
     
     return (
         <React.Fragment>
             <div style={{ 
                     textAlign: 'center',
                     background: CONSTANTS.COLOR_DARKRED
-                }}>
-                &#128059;
-            </div>
+            }}>    </div>
         </React.Fragment>
     )
 }

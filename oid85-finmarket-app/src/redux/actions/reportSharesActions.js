@@ -100,7 +100,7 @@ export const sagaReportShareAnalyse = () => {
     }
 }
 
-export const fetchReportSharesAnalyse = (reportData) => {
+export const fetchReportShareAnalyse = (reportData) => {
     return {
         type: FETCH_REPORT_SHARE_ANALYSE,
         payload: reportData

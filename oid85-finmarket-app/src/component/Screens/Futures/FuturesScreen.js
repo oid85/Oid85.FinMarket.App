@@ -7,7 +7,7 @@ import { ReportFuturesSuperTrend } from './ReportFuturesSuperTrend'
 import { ReportFuturesCandleSequence } from './ReportFuturesCandleSequence'
 import { ReportFuturesCandleVolume } from './ReportFuturesCandleVolume'
 import { ReportFuturesRsi } from './ReportFuturesRsi'
-import {ReportFutureAnalyse} from "./ReportFutureAnalyse";
+import {ReportFutureAnalyse} from './ReportFutureAnalyse'
 
 export const FuturesScreen = () => {
     const alert = useSelector(state => state.app.alert)

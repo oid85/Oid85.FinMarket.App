@@ -1,33 +1,33 @@
 import React, { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import Loader from '../../Loader/Loader'
-import {sagaReportIndexsCandleVolume, sagaIndexsWatchListTickers} from '../../../redux/actions/reportIndexsActions'
+import {sagaReportIndexesCandleVolume, sagaIndexesWatchListTickers} from '../../../redux/actions/reportIndexesActions'
 import '../../Report/Report.css'
 import { Table } from '../../Report/Table'
-import {FilterByLastDaysGroup} from "../../Filter/FilterByLastDaysGroup";
+import {FilterByLastDaysGroup} from '../../Filter/FilterByLastDaysGroup'
 
-export const ReportIndexsCandleVolume = () => {
+export const ReportIndexesCandleVolume = () => {
 
     const dispatch = useDispatch()
     const loading = useSelector(state => state.app.loading)
-    const reportData = useSelector(state => state.reportIndexs.reportData)
+    const reportData = useSelector(state => state.reportIndexes.reportData)
     const startDate = useSelector(state => state.filter.startDate)
     const endDate = useSelector(state => state.filter.endDate)
 
     useEffect(() => {
-        dispatch(sagaIndexsWatchListTickers())
+        dispatch(sagaIndexesWatchListTickers())
     }, [])
 
     useEffect(() => {
-        dispatch(sagaReportIndexsCandleVolume())
+        dispatch(sagaReportIndexesCandleVolume())
     }, [])
 
     useEffect(() => {
-        dispatch(sagaReportIndexsCandleVolume())
+        dispatch(sagaReportIndexesCandleVolume())
     }, [startDate])
 
     useEffect(() => {
-        dispatch(sagaReportIndexsCandleVolume())
+        dispatch(sagaReportIndexesCandleVolume())
     }, [endDate])
 
     return (

@@ -3,11 +3,11 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import { useSelector } from 'react-redux'
 import 'react-tabs/style/react-tabs.css'
 import { Alert } from '../../Alert/Alert'
-import { ReportIndexsSuperTrend } from './ReportIndexsSuperTrend'
-import { ReportIndexsCandleSequence } from './ReportIndexsCandleSequence'
-import { ReportIndexsCandleVolume } from './ReportIndexsCandleVolume'
-import { ReportIndexsRsi } from './ReportIndexsRsi'
-import {ReportIndexAnalyse} from "./ReportIndexAnalyse";
+import { ReportIndexesSuperTrend } from './ReportIndexesSuperTrend'
+import { ReportIndexesCandleSequence } from './ReportIndexesCandleSequence'
+import { ReportIndexesCandleVolume } from './ReportIndexesCandleVolume'
+import { ReportIndexesRsi } from './ReportIndexesRsi'
+import {ReportIndexAnalyse} from './ReportIndexAnalyse'
 
 export const IndexesScreen = () => {
     const alert = useSelector(state => state.app.alert)
@@ -24,16 +24,16 @@ export const IndexesScreen = () => {
                     <Tab>Сводный</Tab>
                 </TabList>                
                 <TabPanel>
-                    <ReportIndexsSuperTrend />
+                    <ReportIndexesSuperTrend />
                 </TabPanel>  
                 <TabPanel>
-                    <ReportIndexsCandleSequence />
+                    <ReportIndexesCandleSequence />
                 </TabPanel> 
                 <TabPanel>
-                    <ReportIndexsCandleVolume />
+                    <ReportIndexesCandleVolume />
                 </TabPanel> 
                 <TabPanel>
-                    <ReportIndexsRsi />
+                    <ReportIndexesRsi />
                 </TabPanel>
                 <TabPanel>
                     <ReportIndexAnalyse />

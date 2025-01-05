@@ -4,17 +4,21 @@ import {
     FETCH_REPORT_SHARES_CANDLE_VOLUME,
     FETCH_REPORT_SHARES_RSI,
     FETCH_REPORT_DIVIDENDS,
-    FETCH_REPORT_SHARE_ANALYSE
+    FETCH_REPORT_SHARE_ANALYSE,
+    FETCH_SHARES_WATCH_LIST_TICKERS
 } from '../types'
 
 const initialState = {
     reportData: {},
-    watchListTickers: []
+    watchListTickers: {}
 }
 
 export const reportSharesReducer = (state = initialState, action) => {
     switch (action.type) {
-        
+
+        case FETCH_SHARES_WATCH_LIST_TICKERS:
+            return {...state, watchListTickers: {...action.payload}}
+
         case FETCH_REPORT_SHARES_SUPERTREND:
             return {...state, reportData: {...action.payload}}
         

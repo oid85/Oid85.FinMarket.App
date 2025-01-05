@@ -7,7 +7,7 @@ import { ReportCurrenciesSuperTrend } from './ReportCurrenciesSuperTrend'
 import { ReportCurrenciesCandleSequence } from './ReportCurrenciesCandleSequence'
 import { ReportCurrenciesCandleVolume } from './ReportCurrenciesCandleVolume'
 import { ReportCurrenciesRsi } from './ReportCurrenciesRsi'
-import {ReportCurrencyAnalyse} from "./ReportCurrencyAnalyse";
+import {ReportCurrencyAnalyse} from './ReportCurrencyAnalyse'
 
 export const CurrenciesScreen = () => {
     const alert = useSelector(state => state.app.alert)

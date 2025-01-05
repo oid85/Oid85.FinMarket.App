@@ -25,7 +25,7 @@ export function* eventSagaWatcherReportCurrencies() {
     yield takeEvery(SAGA_REPORT_CURRENCIES_CANDLE_SEQUENCE, sagaWorkerReportCurrenciesCandleSequence)
     yield takeEvery(SAGA_REPORT_CURRENCIES_CANDLE_VOLUME, sagaWorkerReportCurrenciesCandleVolume)
     yield takeEvery(SAGA_REPORT_CURRENCIES_RSI, sagaWorkerReportCurrenciesRsi)
-    yield takeEvery(SAGA_REPORT_CURRENCY_ANALYSE, sagaWorkerReportFutureAnalyse)
+    yield takeEvery(SAGA_REPORT_CURRENCY_ANALYSE, sagaWorkerReportCurrencyAnalyse)
 }
 
 // SagaWorker'ы
@@ -105,7 +105,7 @@ function* sagaWorkerReportCurrenciesRsi() {
         
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
-        let reportData = yield call(getReportRsiFromApi, startDate, endDate)
+        let reportData = yield call(getReportCurrenciesRsiFromApi, startDate, endDate)
         
         yield put(fetchReportCurrenciesRsi(reportData))
         yield put(hideLoader())
@@ -117,14 +117,21 @@ function* sagaWorkerReportCurrenciesRsi() {
     }
 }
 
-function* sagaWorkerReportFutureAnalyse() {
+function* sagaWorkerReportCurrencyAnalyse() {
     try {
         yield put(showLoader())
         
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
         let ticker = yield select(getTicker)
-        let reportData = yield call(getReportFutureAnalyseFromApi, startDate, endDate, ticker)
+
+        let watchListTickers = yield select(getCurrenciesWatchListTickers)
+
+        if (ticker === '') {
+            ticker = watchListTickers[0]
+        }
+
+        let reportData = yield call(getReportCurrencyAnalyseFromApi, startDate, endDate, ticker)
         
         yield put(fetchReportCurrenciesAnalyse(reportData))
         yield put(hideLoader())
@@ -140,6 +147,7 @@ function* sagaWorkerReportFutureAnalyse() {
 export const getStartDate = (state) => state.filter.startDate
 export const getEndDate = (state) => state.filter.endDate
 export const getTicker = (state) => state.filter.ticker
+export const getCurrenciesWatchListTickers = (state) => state.reportCurrencies.watchListTickers
 
 const getCurrenciesWatchListTickersFromApi = async () => {
     const response = await fetch(
@@ -204,7 +212,7 @@ const getReportCurrenciesCandleVolumeFromApi = async (startDate, endDate) => {
     }
 }
 
-const getReportRsiFromApi = async (startDate, endDate) => {
+const getReportCurrenciesRsiFromApi = async (startDate, endDate) => {
     const response = await fetch(
         `${CONSTANTS.FINMARKET_API}/api/currencies/report/analyse-rsi`, {
         method: 'POST',
@@ -222,7 +230,7 @@ const getReportRsiFromApi = async (startDate, endDate) => {
     }
 }
 
-const getReportFutureAnalyseFromApi = async (startDate, endDate, ticker) => {
+const getReportCurrencyAnalyseFromApi = async (startDate, endDate, ticker) => {
     const response = await fetch(
         `${CONSTANTS.FINMARKET_API}/api/currencies/report/total-analyse`, {
         method: 'POST',

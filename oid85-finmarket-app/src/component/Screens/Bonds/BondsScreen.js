@@ -7,7 +7,7 @@ import { ReportBondsSuperTrend } from './ReportBondsSuperTrend'
 import { ReportBondsCandleSequence } from './ReportBondsCandleSequence'
 import { ReportBondsCandleVolume } from './ReportBondsCandleVolume'
 import { ReportBondsRsi } from './ReportBondsRsi'
-import {ReportBondAnalyse} from "./ReportBondAnalyse";
+import {ReportBondAnalyse} from './ReportBondAnalyse'
 
 export const BondsScreen = () => {
     const alert = useSelector(state => state.app.alert)

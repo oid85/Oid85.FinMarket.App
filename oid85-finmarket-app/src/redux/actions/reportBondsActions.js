@@ -79,12 +79,6 @@ export const fetchReportBondsRsi = (reportData) => {
     }
 }
 
-export const sagaReportDividends = () => {
-    return {
-        type: SAGA_REPORT_DIVIDENDS
-    }
-}
-
 export const sagaReportBondAnalyse = () => {
     return {
         type: SAGA_REPORT_BOND_ANALYSE

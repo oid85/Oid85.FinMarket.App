@@ -1,29 +1,29 @@
 import React, { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import Loader from '../../Loader/Loader'
-import {sagaReportIndexsCandleSequence} from '../../../redux/actions/reportIndexsActions'
 import '../../Report/Report.css'
 import { Table } from '../../Report/Table'
-import {FilterByLastDaysGroup} from "../../Filter/FilterByLastDaysGroup";
+import {FilterByLastDaysGroup} from '../../Filter/FilterByLastDaysGroup'
+import {sagaReportIndexesCandleSequence} from '../../../redux/actions/reportIndexesActions'
 
-export const ReportIndexsCandleSequence = () => {
+export const ReportIndexesCandleSequence = () => {
 
     const dispatch = useDispatch()
     const loading = useSelector(state => state.app.loading)
-    const reportData = useSelector(state => state.reportIndexs.reportData)
+    const reportData = useSelector(state => state.reportIndexes.reportData)
     const startDate = useSelector(state => state.filter.startDate)
     const endDate = useSelector(state => state.filter.endDate)
 
     useEffect(() => {
-        dispatch(sagaReportIndexsCandleSequence())
+        dispatch(sagaReportIndexesCandleSequence())
     }, [])
 
     useEffect(() => {
-        dispatch(sagaReportIndexsCandleSequence())
+        dispatch(sagaReportIndexesCandleSequence())
     }, [startDate])
 
     useEffect(() => {
-        dispatch(sagaReportIndexsCandleSequence())
+        dispatch(sagaReportIndexesCandleSequence())
     }, [endDate])
 
     return (

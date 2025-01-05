@@ -14,84 +14,78 @@ import {
     FETCH_FUTURES_WATCH_LIST_TICKERS
 } from '../types'
 
-export const sagaBondsWatchListTickers = () => {
+export const sagaFuturesWatchListTickers = () => {
     return {
         type: SAGA_FUTURES_WATCH_LIST_TICKERS
     }
 }
 
-export const fetchBondsWatchListTickers = (tickers) => {
+export const fetchFuturesWatchListTickers = (tickers) => {
     return {
         type: FETCH_FUTURES_WATCH_LIST_TICKERS,
         payload: tickers
     }
 }
 
-export const sagaReportBondsSuperTrend = () => {
+export const sagaReportFuturesSuperTrend = () => {
     return {
         type: SAGA_REPORT_FUTURES_SUPERTREND
     }
 }
 
-export const fetchReportBondsSuperTrend = (reportData) => {
+export const fetchReportFuturesSuperTrend = (reportData) => {
     return {
         type: FETCH_REPORT_FUTURES_SUPERTREND,
         payload: reportData
     }
 }
 
-export const sagaReportBondsCandleSequence = () => {
+export const sagaReportFuturesCandleSequence = () => {
     return {
         type: SAGA_REPORT_FUTURES_CANDLE_SEQUENCE
     }
 }
 
-export const fetchReportBondsCandleSequence = (reportData) => {
+export const fetchReportFuturesCandleSequence = (reportData) => {
     return {
         type: FETCH_REPORT_FUTURES_CANDLE_SEQUENCE,
         payload: reportData
     }
 }
 
-export const sagaReportBondsCandleVolume = () => {
+export const sagaReportFuturesCandleVolume = () => {
     return {
         type: SAGA_REPORT_FUTURES_CANDLE_VOLUME
     }
 }
 
-export const fetchReportBondsCandleVolume = (reportData) => {
+export const fetchReportFuturesCandleVolume = (reportData) => {
     return {
         type: FETCH_REPORT_FUTURES_CANDLE_VOLUME,
         payload: reportData
     }
 }
 
-export const sagaReportBondsRsi = () => {
+export const sagaReportFuturesRsi = () => {
     return {
         type: SAGA_REPORT_FUTURES_RSI
     }
 }
 
-export const fetchReportBondsRsi = (reportData) => {
+export const fetchReportFuturesRsi = (reportData) => {
     return {
         type: FETCH_REPORT_FUTURES_RSI,
         payload: reportData
     }
 }
 
-export const sagaReportDividends = () => {
-    return {
-        type: SAGA_REPORT_DIVIDENDS
-    }
-}
-
-export const sagaReportBondAnalyse = () => {
+export const sagaReportFutureAnalyse = () => {
     return {
         type: SAGA_REPORT_FUTURE_ANALYSE
     }
 }
 
-export const fetchReportBondsAnalyse = (reportData) => {
+export const fetchReportFutureAnalyse = (reportData) => {
     return {
         type: FETCH_REPORT_FUTURE_ANALYSE,
         payload: reportData

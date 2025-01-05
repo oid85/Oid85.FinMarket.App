@@ -5,6 +5,7 @@ import {sagaReportCurrencyAnalyse, sagaCurrenciesWatchListTickers} from '../../.
 import '../../Report/Report.css'
 import { Table } from '../../Report/Table'
 import { FilterByLastDaysGroup } from '../../Filter/FilterByLastDaysGroup'
+import {FilterByTickerGroup} from '../../Filter/FilterByTickerGroup'
 
 export const ReportCurrencyAnalyse = () => {
 
@@ -39,11 +40,13 @@ export const ReportCurrencyAnalyse = () => {
     return (
         <React.Fragment>
             {
-                !reportData.result || loading
+                !reportData.result || !watchListTickers.result || loading
                     ? <Loader/>
                     :                    
                     <div className='report-container'>
-                        <FilterByLastDaysGroup/>
+                        <FilterByLastDaysGroup />
+                        <FilterByTickerGroup
+                            tickers = {watchListTickers.result} />
                         <Table
                             title = {`${reportData.result.title}`}
                             reportTableData = {reportData.result} />
