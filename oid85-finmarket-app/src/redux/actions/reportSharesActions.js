@@ -3,18 +3,22 @@ import {
     SAGA_REPORT_SHARES_CANDLE_SEQUENCE,
     SAGA_REPORT_SHARES_CANDLE_VOLUME,
     SAGA_REPORT_SHARES_RSI,
+    SAGA_REPORT_SHARES_YIELD_LTM,
+    SAGA_REPORT_SHARES_ASSET_FUNDAMENTAL,
     SAGA_REPORT_DIVIDENDS,
-    SAGA_REPORT_SHARE_ANALYSE,
+    SAGA_REPORT_SHARE_AGGREGATED_ANALYSE,
     SAGA_SHARES_WATCH_LIST_TICKERS,
 
     FETCH_REPORT_SHARES_SUPERTREND,
     FETCH_REPORT_SHARES_CANDLE_SEQUENCE,
     FETCH_REPORT_SHARES_CANDLE_VOLUME,
     FETCH_REPORT_SHARES_RSI,
+    FETCH_REPORT_SHARES_YIELD_LTM,
+    FETCH_REPORT_SHARES_ASSET_FUNDAMENTAL,
     FETCH_REPORT_DIVIDENDS,
-    FETCH_REPORT_SHARE_ANALYSE,
+    FETCH_REPORT_SHARE_AGGREGATED_ANALYSE,
     FETCH_SHARES_WATCH_LIST_TICKERS
-} from '../types/types'
+} from '../types/sharesTypes'
 
 export const sagaSharesWatchListTickers = () => {
     return {
@@ -29,13 +33,13 @@ export const fetchSharesWatchListTickers = (tickers) => {
     }
 }
 
-export const sagaReportSharesSuperTrend = () => {
+export const sagaReportSharesSupertrend = () => {
     return {
         type: SAGA_REPORT_SHARES_SUPERTREND
     }
 }
 
-export const fetchReportSharesSuperTrend = (reportData) => {
+export const fetchReportSharesSupertrend = (reportData) => {
     return {
         type: FETCH_REPORT_SHARES_SUPERTREND,
         payload: reportData
@@ -81,28 +85,54 @@ export const fetchReportSharesRsi = (reportData) => {
     }
 }
 
-export const sagaReportDividends = () => {
+export const sagaReportSharesYieldLtm = () => {
+    return {
+        type: SAGA_REPORT_SHARES_YIELD_LTM
+    }
+}
+
+export const fetchReportSharesYieldLtm = (reportData) => {
+    return {
+        type: FETCH_REPORT_SHARES_YIELD_LTM,
+        payload: reportData
+    }
+}
+
+export const sagaReportSharesAssetFundamental = () => {
+    return {
+        type: SAGA_REPORT_SHARES_ASSET_FUNDAMENTAL
+    }
+}
+
+export const fetchReportSharesAssetFundamental = (reportData) => {
+    return {
+        type: FETCH_REPORT_SHARES_ASSET_FUNDAMENTAL,
+        payload: reportData
+    }
+}
+
+export const sagaReportSharesDividends = () => {
     return {
         type: SAGA_REPORT_DIVIDENDS
     }
 }
 
-export const fetchReportDividends = (reportData) => {
+export const fetchReportSharesDividends = (reportData) => {
     return {
         type: FETCH_REPORT_DIVIDENDS,
         payload: reportData
     }
 }
 
-export const sagaReportShareAnalyse = () => {
+export const sagaReportShareAggregatedAnalyse = () => {
     return {
-        type: SAGA_REPORT_SHARE_ANALYSE
+        type: SAGA_REPORT_SHARE_AGGREGATED_ANALYSE
     }
 }
 
-export const fetchReportShareAnalyse = (reportData) => {
+export const fetchReportShareAggregatedAnalyse = (reportData) => {
     return {
-        type: FETCH_REPORT_SHARE_ANALYSE,
+        type: FETCH_REPORT_SHARE_AGGREGATED_ANALYSE,
         payload: reportData
     }
 }

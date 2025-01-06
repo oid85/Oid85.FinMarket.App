@@ -1,18 +1,18 @@
 import {
     SAGA_REPORT_CURRENCIES_SUPERTREND,
     SAGA_REPORT_CURRENCIES_CANDLE_SEQUENCE,
-    SAGA_REPORT_CURRENCIES_CANDLE_VOLUME,
     SAGA_REPORT_CURRENCIES_RSI,
-    SAGA_REPORT_CURRENCY_ANALYSE,
+    SAGA_REPORT_CURRENCIES_YIELD_LTM,
+    SAGA_REPORT_CURRENCY_AGGREGATED_ANALYSE,
     SAGA_CURRENCIES_WATCH_LIST_TICKERS,
 
     FETCH_REPORT_CURRENCIES_SUPERTREND,
     FETCH_REPORT_CURRENCIES_CANDLE_SEQUENCE,
-    FETCH_REPORT_CURRENCIES_CANDLE_VOLUME,
     FETCH_REPORT_CURRENCIES_RSI,
-    FETCH_REPORT_CURRENCY_ANALYSE,
+    FETCH_REPORT_CURRENCIES_YIELD_LTM,
+    FETCH_REPORT_CURRENCY_AGGREGATED_ANALYSE,
     FETCH_CURRENCIES_WATCH_LIST_TICKERS
-} from '../types/types'
+} from '../types/currenciesTypes'
 
 export const sagaCurrenciesWatchListTickers = () => {
     return {
@@ -27,13 +27,13 @@ export const fetchCurrenciesWatchListTickers = (tickers) => {
     }
 }
 
-export const sagaReportCurrenciesSuperTrend = () => {
+export const sagaReportCurrenciesSupertrend = () => {
     return {
         type: SAGA_REPORT_CURRENCIES_SUPERTREND
     }
 }
 
-export const fetchReportCurrenciesSuperTrend = (reportData) => {
+export const fetchReportCurrenciesSupertrend = (reportData) => {
     return {
         type: FETCH_REPORT_CURRENCIES_SUPERTREND,
         payload: reportData
@@ -53,19 +53,6 @@ export const fetchReportCurrenciesCandleSequence = (reportData) => {
     }
 }
 
-export const sagaReportCurrenciesCandleVolume = () => {
-    return {
-        type: SAGA_REPORT_CURRENCIES_CANDLE_VOLUME
-    }
-}
-
-export const fetchReportCurrenciesCandleVolume = (reportData) => {
-    return {
-        type: FETCH_REPORT_CURRENCIES_CANDLE_VOLUME,
-        payload: reportData
-    }
-}
-
 export const sagaReportCurrenciesRsi = () => {
     return {
         type: SAGA_REPORT_CURRENCIES_RSI
@@ -79,15 +66,28 @@ export const fetchReportCurrenciesRsi = (reportData) => {
     }
 }
 
-export const sagaReportCurrencyAnalyse = () => {
+export const sagaReportCurrenciesYieldLtm = () => {
     return {
-        type: SAGA_REPORT_CURRENCY_ANALYSE
+        type: SAGA_REPORT_CURRENCIES_YIELD_LTM
     }
 }
 
-export const fetchReportCurrenciesAnalyse = (reportData) => {
+export const fetchReportCurrenciesYieldLtm = (reportData) => {
     return {
-        type: FETCH_REPORT_CURRENCY_ANALYSE,
+        type: FETCH_REPORT_CURRENCIES_YIELD_LTM,
+        payload: reportData
+    }
+}
+
+export const sagaReportCurrencyAggregatedAnalyse = () => {
+    return {
+        type: SAGA_REPORT_CURRENCY_AGGREGATED_ANALYSE
+    }
+}
+
+export const fetchReportCurrencyAggregatedAnalyse = (reportData) => {
+    return {
+        type: FETCH_REPORT_CURRENCY_AGGREGATED_ANALYSE,
         payload: reportData
     }
 }

@@ -3,16 +3,20 @@ import {
     SAGA_REPORT_FUTURES_CANDLE_SEQUENCE,
     SAGA_REPORT_FUTURES_CANDLE_VOLUME,
     SAGA_REPORT_FUTURES_RSI,
-    SAGA_REPORT_FUTURE_ANALYSE,
+    SAGA_REPORT_FUTURES_YIELD_LTM,
+    SAGA_REPORT_SPREADS,
+    SAGA_REPORT_FUTURE_AGGREGATED_ANALYSE,
     SAGA_FUTURES_WATCH_LIST_TICKERS,
 
     FETCH_REPORT_FUTURES_SUPERTREND,
     FETCH_REPORT_FUTURES_CANDLE_SEQUENCE,
     FETCH_REPORT_FUTURES_CANDLE_VOLUME,
     FETCH_REPORT_FUTURES_RSI,
-    FETCH_REPORT_FUTURE_ANALYSE,
+    FETCH_REPORT_FUTURES_YIELD_LTM,
+    FETCH_REPORT_SPREADS,
+    FETCH_REPORT_FUTURE_AGGREGATED_ANALYSE,
     FETCH_FUTURES_WATCH_LIST_TICKERS
-} from '../types/types'
+} from '../types/futuresTypes'
 
 export const sagaFuturesWatchListTickers = () => {
     return {
@@ -27,13 +31,13 @@ export const fetchFuturesWatchListTickers = (tickers) => {
     }
 }
 
-export const sagaReportFuturesSuperTrend = () => {
+export const sagaReportFuturesSupertrend = () => {
     return {
         type: SAGA_REPORT_FUTURES_SUPERTREND
     }
 }
 
-export const fetchReportFuturesSuperTrend = (reportData) => {
+export const fetchReportFuturesSupertrend = (reportData) => {
     return {
         type: FETCH_REPORT_FUTURES_SUPERTREND,
         payload: reportData
@@ -79,15 +83,41 @@ export const fetchReportFuturesRsi = (reportData) => {
     }
 }
 
-export const sagaReportFutureAnalyse = () => {
+export const sagaReportFuturesYieldLtm = () => {
     return {
-        type: SAGA_REPORT_FUTURE_ANALYSE
+        type: SAGA_REPORT_FUTURES_YIELD_LTM
     }
 }
 
-export const fetchReportFutureAnalyse = (reportData) => {
+export const fetchReportFuturesYieldLtm = (reportData) => {
     return {
-        type: FETCH_REPORT_FUTURE_ANALYSE,
+        type: FETCH_REPORT_FUTURES_YIELD_LTM,
+        payload: reportData
+    }
+}
+
+export const sagaReportFuturesSpreads = () => {
+    return {
+        type: SAGA_REPORT_SPREADS
+    }
+}
+
+export const fetchReportFuturesSpreads = (reportData) => {
+    return {
+        type: FETCH_REPORT_SPREADS,
+        payload: reportData
+    }
+}
+
+export const sagaReportFutureAggregatedAnalyse = () => {
+    return {
+        type: SAGA_REPORT_FUTURE_AGGREGATED_ANALYSE
+    }
+}
+
+export const fetchReportFutureAggregatedAnalyse = (reportData) => {
+    return {
+        type: FETCH_REPORT_FUTURE_AGGREGATED_ANALYSE,
         payload: reportData
     }
 }
