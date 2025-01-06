@@ -14,7 +14,7 @@ import {
     FETCH_REPORT_COUPONS,
     FETCH_REPORT_BOND_ANALYSE,
     FETCH_BONDS_WATCH_LIST_TICKERS
-} from '../types'
+} from '../types/types'
 
 export const sagaBondsWatchListTickers = () => {
     return {

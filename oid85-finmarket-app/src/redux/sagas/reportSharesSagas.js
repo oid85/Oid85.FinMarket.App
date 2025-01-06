@@ -1,6 +1,5 @@
 import {call, put, select, takeEvery} from 'redux-saga/effects'
 import {hideLoader, showAlert, showLoader} from '../actions/appActions'
-import { CONSTANTS } from '../../constants'
 import {
     fetchReportSharesSuperTrend,
     fetchReportSharesCandleSequence,
@@ -18,7 +17,21 @@ import {
     SAGA_REPORT_SHARES_RSI,
     SAGA_REPORT_DIVIDENDS,
     SAGA_REPORT_SHARE_ANALYSE
-} from '../types'
+} from '../types/types'
+import {
+    getReportDividendsFromApi,
+    getReportShareAnalyseFromApi,
+    getReportSharesCandleSequenceFromApi,
+    getReportSharesCandleVolumeFromApi,
+    getReportSharesRsiFromApi,
+    getReportSharesSuperTrendFromApi,
+    getSharesWatchListTickersFromApi
+} from "../api/sharesApi";
+
+const getStartDate = (state) => state.filter.startDate
+const getEndDate = (state) => state.filter.endDate
+const getTicker = (state) => state.filter.ticker
+const getSharesWatchListTickers = (state) => state.reportShares.watchListTickers
 
 // SagaWatcher'ы
 export function* eventSagaWatcherReportShares() {
@@ -158,120 +171,5 @@ function* sagaWorkerReportShareAnalyse() {
     catch (error) {
         yield put(showAlert('Ошибка при получении данных'))
         yield put(hideLoader())
-    }
-}
-
-// Методы
-export const getStartDate = (state) => state.filter.startDate
-export const getEndDate = (state) => state.filter.endDate
-export const getTicker = (state) => state.filter.ticker
-export const getSharesWatchListTickers = (state) => state.reportShares.watchListTickers
-
-const getSharesWatchListTickersFromApi = async () => {
-    const response = await fetch(
-        `${CONSTANTS.FINMARKET_API}/api/shares/watch-list-tickers`)
-
-    if (response.ok) {
-        return await response.json()
-    }
-}
-
-const getReportSharesSuperTrendFromApi = async (startDate, endDate) => {
-    const response = await fetch(
-        `${CONSTANTS.FINMARKET_API}/api/shares/report/analyse-supertrend`, {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            from: startDate, 
-            to: endDate})
-    })
-    
-    if (response.ok) {
-        return await response.json()
-    }
-}
-
-const getReportSharesCandleSequenceFromApi = async (startDate, endDate) => {
-    const response = await fetch(
-        `${CONSTANTS.FINMARKET_API}/api/shares/report/analyse-candle-sequence`, {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            from: startDate, 
-            to: endDate})
-    })
-    
-    if (response.ok) {
-        return await response.json()
-    }
-}
-
-const getReportSharesCandleVolumeFromApi = async (startDate, endDate) => {
-    const response = await fetch(
-        `${CONSTANTS.FINMARKET_API}/api/shares/report/analyse-candle-volume`, {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            from: startDate, 
-            to: endDate})
-    })
-    
-    if (response.ok) {
-        return await response.json()
-    }
-}
-
-const getReportSharesRsiFromApi = async (startDate, endDate) => {
-    const response = await fetch(
-        `${CONSTANTS.FINMARKET_API}/api/shares/report/analyse-rsi`, {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            from: startDate, 
-            to: endDate})
-    })
-    
-    if (response.ok) {
-        return await response.json()
-    }
-}
-
-const getReportDividendsFromApi = async () => {
-    const response = await fetch(
-        `${CONSTANTS.FINMARKET_API}/api/shares/report/dividends`)
-
-    if (response.ok) {
-        return await response.json()
-    }
-}
-
-const getReportShareAnalyseFromApi = async (startDate, endDate, ticker) => {
-    const response = await fetch(
-        `${CONSTANTS.FINMARKET_API}/api/shares/report/total-analyse`, {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            from: startDate, 
-            to: endDate, 
-            ticker: ticker})
-    })
-    
-    if (response.ok) {
-        return await response.json()
     }
 }

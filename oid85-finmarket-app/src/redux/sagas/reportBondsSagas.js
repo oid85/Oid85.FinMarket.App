@@ -18,7 +18,7 @@ import {
     SAGA_REPORT_BONDS_RSI,
     SAGA_REPORT_COUPONS,
     SAGA_REPORT_BOND_ANALYSE
-} from '../types'
+} from '../types/types'
 
 // SagaWatcher'ы
 export function* eventSagaWatcherReportBonds() {
@@ -163,10 +163,10 @@ function* sagaWorkerReportBondAnalyse() {
 }
 
 // Методы
-export const getStartDate = (state) => state.filter.startDate
-export const getEndDate = (state) => state.filter.endDate
-export const getTicker = (state) => state.filter.ticker
-export const getBondsWatchListTickers = (state) => state.reportBonds.watchListTickers
+const getStartDate = (state) => state.filter.startDate
+const getEndDate = (state) => state.filter.endDate
+const getTicker = (state) => state.filter.ticker
+const getBondsWatchListTickers = (state) => state.reportBonds.watchListTickers
 
 const getBondsWatchListTickersFromApi = async () => {
     const response = await fetch(

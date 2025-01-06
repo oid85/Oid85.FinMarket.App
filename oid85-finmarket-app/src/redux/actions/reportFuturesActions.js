@@ -12,7 +12,7 @@ import {
     FETCH_REPORT_FUTURES_RSI,
     FETCH_REPORT_FUTURE_ANALYSE,
     FETCH_FUTURES_WATCH_LIST_TICKERS
-} from '../types'
+} from '../types/types'
 
 export const sagaFuturesWatchListTickers = () => {
     return {

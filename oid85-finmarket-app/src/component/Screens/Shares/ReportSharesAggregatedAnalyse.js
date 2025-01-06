@@ -1,33 +1,30 @@
 import React, { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import Loader from '../../Loader/Loader'
-import {sagaReportIndexesCandleVolume, sagaIndexesWatchListTickers} from '../../../redux/actions/reportIndexesActions'
+import { sagaReportSharesSuperTrend } from '../../../redux/actions/reportSharesActions'
 import '../../Report/Report.css'
 import { Table } from '../../Report/Table'
 import {FilterByLastDaysGroup} from '../../Filter/FilterByLastDaysGroup'
 
-export const ReportIndexesCandleVolume = () => {
+export const ReportSharesAggregatedAnalyse = () => {
 
     const dispatch = useDispatch()
     const loading = useSelector(state => state.app.loading)
-    const reportData = useSelector(state => state.reportIndexes.reportData)
+    const reportData = useSelector(state => state.reportShares.reportData)
     const startDate = useSelector(state => state.filter.startDate)
     const endDate = useSelector(state => state.filter.endDate)
+    const ticker = useSelector(state => state.filter.ticker)
 
     useEffect(() => {
-        dispatch(sagaIndexesWatchListTickers())
+        dispatch(sagaReportSharesSuperTrend())
     }, [])
 
     useEffect(() => {
-        dispatch(sagaReportIndexesCandleVolume())
-    }, [])
-
-    useEffect(() => {
-        dispatch(sagaReportIndexesCandleVolume())
+        dispatch(sagaReportSharesSuperTrend())
     }, [startDate])
 
     useEffect(() => {
-        dispatch(sagaReportIndexesCandleVolume())
+        dispatch(sagaReportSharesSuperTrend())
     }, [endDate])
 
     return (
@@ -38,7 +35,7 @@ export const ReportIndexesCandleVolume = () => {
                     :                    
                     <div className='report-container'>
                         <FilterByLastDaysGroup />
-                        <Table 
+                        <Table
                             title = {`${reportData.result.title}`}
                             reportTableData = {reportData.result} />
                     </div>                    

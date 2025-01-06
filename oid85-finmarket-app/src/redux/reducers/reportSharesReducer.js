@@ -6,7 +6,7 @@ import {
     FETCH_REPORT_DIVIDENDS,
     FETCH_REPORT_SHARE_ANALYSE,
     FETCH_SHARES_WATCH_LIST_TICKERS
-} from '../types'
+} from '../types/types'
 
 const initialState = {
     reportData: {},

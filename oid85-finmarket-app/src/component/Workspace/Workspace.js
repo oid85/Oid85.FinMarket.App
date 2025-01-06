@@ -17,26 +17,10 @@ export const Workspace = () => {
             {alert && <Alert text={alert} />}
             <Tabs>
                 <TabList>
-                    <Tab>Акции</Tab>
-                    <Tab>Облигации</Tab>
-                    <Tab>Фьючерсы</Tab>
-                    <Tab>Валюты</Tab>
-                    <Tab>Индексы</Tab>
+                    <Tab>Shares</Tab>
                 </TabList>                
                 <TabPanel>
                     <SharesScreen />
-                </TabPanel>
-                <TabPanel>
-                    <BondsScreen />
-                </TabPanel>
-                <TabPanel>
-                    <FuturesScreen />
-                </TabPanel>
-                <TabPanel>
-                    <CurrenciesScreen />
-                </TabPanel>
-                <TabPanel>
-                    <IndexesScreen />
                 </TabPanel>
             </Tabs>
         </React.Fragment>

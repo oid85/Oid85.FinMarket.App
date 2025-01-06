@@ -5,7 +5,7 @@ import {
     FETCH_REPORT_INDEXES_RSI,
     FETCH_REPORT_INDEX_ANALYSE,
     FETCH_INDEXES_WATCH_LIST_TICKERS
-} from '../types'
+} from '../types/types'
 
 const initialState = {
     reportData: {},

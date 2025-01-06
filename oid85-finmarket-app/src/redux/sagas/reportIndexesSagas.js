@@ -16,7 +16,7 @@ import {
     SAGA_REPORT_INDEXES_CANDLE_VOLUME,
     SAGA_REPORT_INDEXES_RSI,
     SAGA_REPORT_INDEX_ANALYSE
-} from '../types'
+} from '../types/types'
 
 // SagaWatcher'ы
 export function* eventSagaWatcherReportIndexes() {
@@ -144,10 +144,10 @@ function* sagaWorkerReportIndexAnalyse() {
 }
 
 // Методы
-export const getStartDate = (state) => state.filter.startDate
-export const getEndDate = (state) => state.filter.endDate
-export const getTicker = (state) => state.filter.ticker
-export const getIndexesWatchListTickers = (state) => state.reportIndexes.watchListTickers
+const getStartDate = (state) => state.filter.startDate
+const getEndDate = (state) => state.filter.endDate
+const getTicker = (state) => state.filter.ticker
+const getIndexesWatchListTickers = (state) => state.reportIndexes.watchListTickers
 
 const getIndexesWatchListTickersFromApi = async () => {
     const response = await fetch(

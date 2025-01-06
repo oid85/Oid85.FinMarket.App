@@ -5,7 +5,7 @@ import {
     FETCH_REPORT_BONDS_RSI,
     FETCH_REPORT_BOND_ANALYSE,
     FETCH_BONDS_WATCH_LIST_TICKERS
-} from '../types'
+} from '../types/types'
 
 const initialState = {
     reportData: {},

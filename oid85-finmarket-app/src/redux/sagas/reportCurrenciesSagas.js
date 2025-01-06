@@ -16,7 +16,7 @@ import {
     SAGA_REPORT_CURRENCIES_CANDLE_VOLUME,
     SAGA_REPORT_CURRENCIES_RSI,
     SAGA_REPORT_CURRENCY_ANALYSE
-} from '../types'
+} from '../types/types'
 
 // SagaWatcher'ы
 export function* eventSagaWatcherReportCurrencies() {
@@ -144,10 +144,10 @@ function* sagaWorkerReportCurrencyAnalyse() {
 }
 
 // Методы
-export const getStartDate = (state) => state.filter.startDate
-export const getEndDate = (state) => state.filter.endDate
-export const getTicker = (state) => state.filter.ticker
-export const getCurrenciesWatchListTickers = (state) => state.reportCurrencies.watchListTickers
+const getStartDate = (state) => state.filter.startDate
+const getEndDate = (state) => state.filter.endDate
+const getTicker = (state) => state.filter.ticker
+const getCurrenciesWatchListTickers = (state) => state.reportCurrencies.watchListTickers
 
 const getCurrenciesWatchListTickersFromApi = async () => {
     const response = await fetch(

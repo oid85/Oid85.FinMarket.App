@@ -5,7 +5,7 @@ import {
     FETCH_REPORT_CURRENCIES_RSI,
     FETCH_REPORT_CURRENCY_ANALYSE,
     FETCH_CURRENCIES_WATCH_LIST_TICKERS
-} from '../types'
+} from '../types/types'
 
 const initialState = {
     reportData: {},
