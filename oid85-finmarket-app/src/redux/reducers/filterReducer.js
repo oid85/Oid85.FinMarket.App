@@ -3,7 +3,7 @@ import {
     SET_START_DATE, 
     SET_END_DATE,
     SET_TICKER
-} from '../types/types'
+} from '../types/filterTypes'
 import { CONSTANTS } from '../../constants'
 
 const startDate = moment()
