@@ -3,11 +3,9 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import { useSelector } from 'react-redux'
 import 'react-tabs/style/react-tabs.css'
 import { Alert } from '../../Alert/Alert'
-import {ReportSharesSupertrend} from "./ReportSharesSupertrend";
-import {ReportSharesCandleSequence} from "./ReportSharesCandleSequence";
-import {ReportSharesCandleVolume} from "./ReportSharesCandleVolume";
+import {ReportCurrenciesSupertrend} from "./ReportCurrenciesSupertrend";
 
-export const SharesScreen = () => {
+export const CurrenciesScreen = () => {
     const alert = useSelector(state => state.app.alert)
 
     return (
@@ -16,17 +14,9 @@ export const SharesScreen = () => {
             <Tabs>
                 <TabList>
                     <Tab>Supertrend</Tab>
-                    <Tab>CandleSequence</Tab>
-                    <Tab>CandleVolume</Tab>
                 </TabList>
                 <TabPanel>
-                    <ReportSharesSupertrend />
-                </TabPanel>
-                <TabPanel>
-                    <ReportSharesCandleSequence />
-                </TabPanel>
-                <TabPanel>
-                    <ReportSharesCandleVolume />
+                    <ReportCurrenciesSupertrend />
                 </TabPanel>
             </Tabs>
         </React.Fragment>

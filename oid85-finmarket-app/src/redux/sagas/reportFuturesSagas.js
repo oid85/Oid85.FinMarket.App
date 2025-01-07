@@ -34,7 +34,6 @@ import {
 const getStartDate = (state) => state.filter.startDate
 const getEndDate = (state) => state.filter.endDate
 const getTicker = (state) => state.filter.ticker
-const getFuturesWatchListTickers = (state) => state.reportFutures.watchListTickers
 
 // SagaWatcher'ы
 export function* eventSagaWatcherReportFutures() {
@@ -178,11 +177,6 @@ function* sagaWorkerReportFuturesAggregateAnalyse() {
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
         let ticker = yield select(getTicker)
-        let watchListTickers = yield select(getFuturesWatchListTickers)
-
-        if (ticker === '') {
-            ticker = watchListTickers[0]
-        }
 
         let reportData = yield call(getReportAggregatedAnalyseFromApi, startDate, endDate, ticker)
 
