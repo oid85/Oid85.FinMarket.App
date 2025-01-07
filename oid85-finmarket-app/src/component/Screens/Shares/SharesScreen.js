@@ -6,6 +6,10 @@ import { Alert } from '../../Alert/Alert'
 import {ReportSharesSupertrend} from "./ReportSharesSupertrend";
 import {ReportSharesCandleSequence} from "./ReportSharesCandleSequence";
 import {ReportSharesCandleVolume} from "./ReportSharesCandleVolume";
+import {ReportSharesRsi} from "./ReportSharesRsi";
+import {ReportSharesYieldLtm} from "./ReportSharesYieldLtm";
+import {ReportSharesDividend} from "./ReportSharesDividend";
+import {ReportSharesAssetFundamental} from "./ReportSharesAssetFundamental";
 
 export const SharesScreen = () => {
     const alert = useSelector(state => state.app.alert)
@@ -18,6 +22,10 @@ export const SharesScreen = () => {
                     <Tab>Supertrend</Tab>
                     <Tab>CandleSequence</Tab>
                     <Tab>CandleVolume</Tab>
+					<Tab>Rsi</Tab>
+					<Tab>YieldLtm</Tab>
+					<Tab>Dividend</Tab>
+					<Tab>AssetFundamental</Tab>
                 </TabList>
                 <TabPanel>
                     <ReportSharesSupertrend />
@@ -28,6 +36,18 @@ export const SharesScreen = () => {
                 <TabPanel>
                     <ReportSharesCandleVolume />
                 </TabPanel>
+                <TabPanel>
+                    <ReportSharesRsi />
+                </TabPanel>
+                <TabPanel>
+                    <ReportSharesYieldLtm />
+                </TabPanel>
+                <TabPanel>
+                    <ReportSharesDividend />
+                </TabPanel>
+                <TabPanel>
+                    <ReportSharesAssetFundamental />
+                </TabPanel>				
             </Tabs>
         </React.Fragment>
     )    
