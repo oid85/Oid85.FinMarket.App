@@ -5,25 +5,22 @@ import {
     fetchReportIndexesSupertrend,
     fetchReportIndexesCandleSequence,
     fetchReportIndexesRsi,
-    fetchReportIndexesYieldLtm,
-    fetchIndexesWatchListTickers
+    fetchReportIndexesYieldLtm
 } from '../actions/reportIndexesActions'
 import {
     SAGA_REPORT_INDEXES_SUPERTREND,
     SAGA_REPORT_INDEXES_CANDLE_SEQUENCE,
     SAGA_REPORT_INDEXES_RSI,
     SAGA_REPORT_INDEXES_YIELD_LTM,
-    SAGA_REPORT_INDEX_AGGREGATED_ANALYSE,
-    SAGA_INDEXES_WATCH_LIST_TICKERS
-} from '../types/indexesTypes'
+    SAGA_REPORT_INDEXES_AGGREGATED_ANALYSE
+} from '../types/reportIndexesTypes'
 import {
     getReportAggregatedAnalyseFromApi,
     getReportSuperTrendFromApi,
     getReportCandleSequenceFromApi,
     getReportRsiFromApi,
-    getReportYieldLtmFromApi,
-    getWatchListTickersFromApi
-} from "../api/indexesApi";
+    getReportYieldLtmFromApi
+} from "../api/reportIndexesApi";
 
 const getStartDate = (state) => state.filter.startDate
 const getEndDate = (state) => state.filter.endDate
@@ -31,31 +28,14 @@ const getTicker = (state) => state.filter.ticker
 
 // SagaWatcher'ы
 export function* eventSagaWatcherReportIndexes() {
-    yield takeEvery(SAGA_INDEXES_WATCH_LIST_TICKERS, sagaWorkerIndexesWatchListTickers)
     yield takeEvery(SAGA_REPORT_INDEXES_SUPERTREND, sagaWorkerReportIndexesSuperTrend)
     yield takeEvery(SAGA_REPORT_INDEXES_CANDLE_SEQUENCE, sagaWorkerReportIndexesCandleSequence)
     yield takeEvery(SAGA_REPORT_INDEXES_RSI, sagaWorkerReportIndexesRsi)
     yield takeEvery(SAGA_REPORT_INDEXES_YIELD_LTM, sagaWorkerReportIndexesYieldLtm)
-    yield takeEvery(SAGA_REPORT_INDEX_AGGREGATED_ANALYSE, sagaWorkerReportIndexesAggregateAnalyse)
+    yield takeEvery(SAGA_REPORT_INDEXES_AGGREGATED_ANALYSE, sagaWorkerReportIndexesAggregateAnalyse)
 }
 
 // SagaWorker'ы
-function* sagaWorkerIndexesWatchListTickers() {
-    try {
-        yield put(showLoader())
-
-        let watchListTickers = yield call(getWatchListTickersFromApi)
-
-        yield put(fetchIndexesWatchListTickers(watchListTickers))
-        yield put(hideLoader())
-    }
-
-    catch (error) {
-        yield put(showAlert('Ошибка при получении данных'))
-        yield put(hideLoader())
-    }
-}
-
 function* sagaWorkerReportIndexesSuperTrend() {
     try {
         yield put(showLoader())

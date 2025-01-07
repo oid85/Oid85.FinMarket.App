@@ -3,13 +3,11 @@ import {
     FETCH_REPORT_CURRENCIES_CANDLE_SEQUENCE,
     FETCH_REPORT_CURRENCIES_RSI,
     FETCH_REPORT_CURRENCIES_YIELD_LTM,
-    FETCH_REPORT_CURRENCY_AGGREGATED_ANALYSE,
-    FETCH_CURRENCIES_WATCH_LIST_TICKERS
-} from '../types/currenciesTypes'
+    FETCH_REPORT_CURRENCIES_AGGREGATED_ANALYSE
+} from '../types/reportCurrenciesTypes'
 
 const initialState = {
-    reportData: {},
-    watchListTickers: {}
+    reportData: {}
 }
 
 export const reportCurrenciesReducer = (state = initialState, action) => {
@@ -27,10 +25,7 @@ export const reportCurrenciesReducer = (state = initialState, action) => {
         case FETCH_REPORT_CURRENCIES_YIELD_LTM:
             return {...state, reportData: {...action.payload}}
 
-        case FETCH_REPORT_CURRENCY_AGGREGATED_ANALYSE:
-            return {...state, reportData: {...action.payload}}
-
-        case FETCH_CURRENCIES_WATCH_LIST_TICKERS:
+        case FETCH_REPORT_CURRENCIES_AGGREGATED_ANALYSE:
             return {...state, reportData: {...action.payload}}
 
         default: return state

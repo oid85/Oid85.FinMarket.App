@@ -6,8 +6,7 @@ import {
     SAGA_REPORT_SHARES_YIELD_LTM,
     SAGA_REPORT_SHARES_ASSET_FUNDAMENTAL,
     SAGA_REPORT_DIVIDENDS,
-    SAGA_REPORT_SHARE_AGGREGATED_ANALYSE,
-    SAGA_SHARES_WATCH_LIST_TICKERS,
+    SAGA_REPORT_SHARES_AGGREGATED_ANALYSE,
 
     FETCH_REPORT_SHARES_SUPERTREND,
     FETCH_REPORT_SHARES_CANDLE_SEQUENCE,
@@ -16,22 +15,8 @@ import {
     FETCH_REPORT_SHARES_YIELD_LTM,
     FETCH_REPORT_SHARES_ASSET_FUNDAMENTAL,
     FETCH_REPORT_DIVIDENDS,
-    FETCH_REPORT_SHARE_AGGREGATED_ANALYSE,
-    FETCH_SHARES_WATCH_LIST_TICKERS
-} from '../types/sharesTypes'
-
-export const sagaSharesWatchListTickers = () => {
-    return {
-        type: SAGA_SHARES_WATCH_LIST_TICKERS
-    }
-}
-
-export const fetchSharesWatchListTickers = (tickers) => {
-    return {
-        type: FETCH_SHARES_WATCH_LIST_TICKERS,
-        payload: tickers
-    }
-}
+    FETCH_REPORT_SHARES_AGGREGATED_ANALYSE
+} from '../types/reportSharesTypes'
 
 export const sagaReportSharesSupertrend = () => {
     return {
@@ -126,13 +111,13 @@ export const fetchReportSharesDividends = (reportData) => {
 
 export const sagaReportShareAggregatedAnalyse = () => {
     return {
-        type: SAGA_REPORT_SHARE_AGGREGATED_ANALYSE
+        type: SAGA_REPORT_SHARES_AGGREGATED_ANALYSE
     }
 }
 
 export const fetchReportShareAggregatedAnalyse = (reportData) => {
     return {
-        type: FETCH_REPORT_SHARE_AGGREGATED_ANALYSE,
+        type: FETCH_REPORT_SHARES_AGGREGATED_ANALYSE,
         payload: reportData
     }
 }

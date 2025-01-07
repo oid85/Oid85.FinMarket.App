@@ -1,17 +1,8 @@
-import {CONSTANTS} from "../../constants";
-
-export const getWatchListTickersFromApi = async () => {
-    const response = await fetch(
-        `${CONSTANTS.FINMARKET_API}/api/indexes/watch-list-tickers`)
-
-    if (response.ok) {
-        return await response.json()
-    }
-}
+﻿import {CONSTANTS} from "../../constants";
 
 export const getReportAggregatedAnalyseFromApi = async (startDate, endDate, ticker) => {
     const response = await fetch(
-        `${CONSTANTS.FINMARKET_API}/api/indexes/report/aggregated-analyse`, {
+        `${CONSTANTS.FINMARKET_API}/api/shares/report/aggregated-analyse`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -30,7 +21,7 @@ export const getReportAggregatedAnalyseFromApi = async (startDate, endDate, tick
 
 export const getReportSuperTrendFromApi = async (startDate, endDate) => {
     const response = await fetch(
-        `${CONSTANTS.FINMARKET_API}/api/indexes/report/supertrend-analyse`, {
+        `${CONSTANTS.FINMARKET_API}/api/shares/report/supertrend-analyse`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -48,7 +39,25 @@ export const getReportSuperTrendFromApi = async (startDate, endDate) => {
 
 export const getReportCandleSequenceFromApi = async (startDate, endDate) => {
     const response = await fetch(
-        `${CONSTANTS.FINMARKET_API}/api/indexes/report/candle-sequence-analyse`, {
+        `${CONSTANTS.FINMARKET_API}/api/shares/report/candle-sequence-analyse`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                from: startDate,
+                to: endDate})
+        })
+
+    if (response.ok) {
+        return await response.json()
+    }
+}
+
+export const getReportCandleVolumeFromApi = async (startDate, endDate) => {
+    const response = await fetch(
+        `${CONSTANTS.FINMARKET_API}/api/shares/report/candle-volume-analyse`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -66,7 +75,7 @@ export const getReportCandleSequenceFromApi = async (startDate, endDate) => {
 
 export const getReportRsiFromApi = async (startDate, endDate) => {
     const response = await fetch(
-        `${CONSTANTS.FINMARKET_API}/api/indexes/report/rsi-analyse`, {
+        `${CONSTANTS.FINMARKET_API}/api/shares/report/rsi-analyse`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -84,7 +93,7 @@ export const getReportRsiFromApi = async (startDate, endDate) => {
 
 export const getReportYieldLtmFromApi = async (startDate, endDate) => {
     const response = await fetch(
-        `${CONSTANTS.FINMARKET_API}/api/indexes/report/yield-ltm-analyse`, {
+        `${CONSTANTS.FINMARKET_API}/api/shares/report/yield-ltm-analyse`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -93,6 +102,36 @@ export const getReportYieldLtmFromApi = async (startDate, endDate) => {
             body: JSON.stringify({
                 from: startDate,
                 to: endDate})
+        })
+
+    if (response.ok) {
+        return await response.json()
+    }
+}
+
+export const getReportDividendFromApi = async () => {
+    const response = await fetch(
+        `${CONSTANTS.FINMARKET_API}/api/shares/report/dividend-analyse`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+
+    if (response.ok) {
+        return await response.json()
+    }
+}
+
+export const getReportAssetFundamentalFromApi = async () => {
+    const response = await fetch(
+        `${CONSTANTS.FINMARKET_API}/api/shares/report/asset-fundamental-analyse`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
         })
 
     if (response.ok) {

@@ -3,29 +3,14 @@ import {
     SAGA_REPORT_CURRENCIES_CANDLE_SEQUENCE,
     SAGA_REPORT_CURRENCIES_RSI,
     SAGA_REPORT_CURRENCIES_YIELD_LTM,
-    SAGA_REPORT_CURRENCY_AGGREGATED_ANALYSE,
-    SAGA_CURRENCIES_WATCH_LIST_TICKERS,
+    SAGA_REPORT_CURRENCIES_AGGREGATED_ANALYSE,
 
     FETCH_REPORT_CURRENCIES_SUPERTREND,
     FETCH_REPORT_CURRENCIES_CANDLE_SEQUENCE,
     FETCH_REPORT_CURRENCIES_RSI,
     FETCH_REPORT_CURRENCIES_YIELD_LTM,
-    FETCH_REPORT_CURRENCY_AGGREGATED_ANALYSE,
-    FETCH_CURRENCIES_WATCH_LIST_TICKERS
-} from '../types/currenciesTypes'
-
-export const sagaCurrenciesWatchListTickers = () => {
-    return {
-        type: SAGA_CURRENCIES_WATCH_LIST_TICKERS
-    }
-}
-
-export const fetchCurrenciesWatchListTickers = (tickers) => {
-    return {
-        type: FETCH_CURRENCIES_WATCH_LIST_TICKERS,
-        payload: tickers
-    }
-}
+    FETCH_REPORT_CURRENCIES_AGGREGATED_ANALYSE
+} from '../types/reportCurrenciesTypes'
 
 export const sagaReportCurrenciesSupertrend = () => {
     return {
@@ -81,13 +66,13 @@ export const fetchReportCurrenciesYieldLtm = (reportData) => {
 
 export const sagaReportCurrencyAggregatedAnalyse = () => {
     return {
-        type: SAGA_REPORT_CURRENCY_AGGREGATED_ANALYSE
+        type: SAGA_REPORT_CURRENCIES_AGGREGATED_ANALYSE
     }
 }
 
 export const fetchReportCurrencyAggregatedAnalyse = (reportData) => {
     return {
-        type: FETCH_REPORT_CURRENCY_AGGREGATED_ANALYSE,
+        type: FETCH_REPORT_CURRENCIES_AGGREGATED_ANALYSE,
         payload: reportData
     }
 }

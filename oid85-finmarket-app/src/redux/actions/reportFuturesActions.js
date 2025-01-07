@@ -5,8 +5,7 @@ import {
     SAGA_REPORT_FUTURES_RSI,
     SAGA_REPORT_FUTURES_YIELD_LTM,
     SAGA_REPORT_SPREADS,
-    SAGA_REPORT_FUTURE_AGGREGATED_ANALYSE,
-    SAGA_FUTURES_WATCH_LIST_TICKERS,
+    SAGA_REPORT_FUTURES_AGGREGATED_ANALYSE,
 
     FETCH_REPORT_FUTURES_SUPERTREND,
     FETCH_REPORT_FUTURES_CANDLE_SEQUENCE,
@@ -14,22 +13,8 @@ import {
     FETCH_REPORT_FUTURES_RSI,
     FETCH_REPORT_FUTURES_YIELD_LTM,
     FETCH_REPORT_SPREADS,
-    FETCH_REPORT_FUTURE_AGGREGATED_ANALYSE,
-    FETCH_FUTURES_WATCH_LIST_TICKERS
-} from '../types/futuresTypes'
-
-export const sagaFuturesWatchListTickers = () => {
-    return {
-        type: SAGA_FUTURES_WATCH_LIST_TICKERS
-    }
-}
-
-export const fetchFuturesWatchListTickers = (tickers) => {
-    return {
-        type: FETCH_FUTURES_WATCH_LIST_TICKERS,
-        payload: tickers
-    }
-}
+    FETCH_REPORT_FUTURES_AGGREGATED_ANALYSE
+} from '../types/reportFuturesTypes'
 
 export const sagaReportFuturesSupertrend = () => {
     return {
@@ -111,13 +96,13 @@ export const fetchReportFuturesSpreads = (reportData) => {
 
 export const sagaReportFutureAggregatedAnalyse = () => {
     return {
-        type: SAGA_REPORT_FUTURE_AGGREGATED_ANALYSE
+        type: SAGA_REPORT_FUTURES_AGGREGATED_ANALYSE
     }
 }
 
 export const fetchReportFutureAggregatedAnalyse = (reportData) => {
     return {
-        type: FETCH_REPORT_FUTURE_AGGREGATED_ANALYSE,
+        type: FETCH_REPORT_FUTURES_AGGREGATED_ANALYSE,
         payload: reportData
     }
 }

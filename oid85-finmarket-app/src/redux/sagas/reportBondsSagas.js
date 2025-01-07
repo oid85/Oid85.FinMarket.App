@@ -5,25 +5,22 @@ import {
     fetchReportBondsSupertrend,
     fetchReportBondsCandleSequence,
     fetchReportBondsCandleVolume,
-    fetchReportBondsCoupons,
-    fetchBondsWatchListTickers
+    fetchReportBondsCoupons
 } from '../actions/reportBondsActions'
 import {
     SAGA_REPORT_BONDS_SUPERTREND,
     SAGA_REPORT_BONDS_CANDLE_SEQUENCE,
     SAGA_REPORT_BONDS_CANDLE_VOLUME,
     SAGA_REPORT_COUPONS,
-    SAGA_REPORT_BOND_AGGREGATED_ANALYSE,
-    SAGA_BONDS_WATCH_LIST_TICKERS
-} from '../types/bondsTypes'
+    SAGA_REPORT_BONDS_AGGREGATED_ANALYSE
+} from '../types/reportBondsTypes'
 import {
     getReportAggregatedAnalyseFromApi,
     getReportSuperTrendFromApi,
     getReportCandleSequenceFromApi,
     getReportCandleVolumeFromApi,
-    getReportCouponFromApi,
-    getWatchListTickersFromApi
-} from "../api/bondsApi";
+    getReportCouponFromApi
+} from "../api/reportBondsApi";
 
 const getStartDate = (state) => state.filter.startDate
 const getEndDate = (state) => state.filter.endDate
@@ -31,31 +28,14 @@ const getTicker = (state) => state.filter.ticker
 
 // SagaWatcher'ы
 export function* eventSagaWatcherReportBonds() {
-    yield takeEvery(SAGA_BONDS_WATCH_LIST_TICKERS, sagaWorkerBondsWatchListTickers)
     yield takeEvery(SAGA_REPORT_BONDS_SUPERTREND, sagaWorkerReportBondsSuperTrend)
     yield takeEvery(SAGA_REPORT_BONDS_CANDLE_SEQUENCE, sagaWorkerReportBondsCandleSequence)
     yield takeEvery(SAGA_REPORT_BONDS_CANDLE_VOLUME, sagaWorkerReportBondsCandleVolume)
     yield takeEvery(SAGA_REPORT_COUPONS, sagaWorkerReportCoupons)
-    yield takeEvery(SAGA_REPORT_BOND_AGGREGATED_ANALYSE, sagaWorkerReportBondsAggregateAnalyse)
+    yield takeEvery(SAGA_REPORT_BONDS_AGGREGATED_ANALYSE, sagaWorkerReportBondsAggregateAnalyse)
 }
 
 // SagaWorker'ы
-function* sagaWorkerBondsWatchListTickers() {
-    try {
-        yield put(showLoader())
-
-        let watchListTickers = yield call(getWatchListTickersFromApi)
-
-        yield put(fetchBondsWatchListTickers(watchListTickers))
-        yield put(hideLoader())
-    }
-
-    catch (error) {
-        yield put(showAlert('Ошибка при получении данных'))
-        yield put(hideLoader())
-    }
-}
-
 function* sagaWorkerReportBondsSuperTrend() {
     try {
         yield put(showLoader())

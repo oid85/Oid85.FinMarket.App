@@ -8,8 +8,7 @@ import {
     fetchReportSharesRsi,
     fetchReportSharesYieldLtm,
     fetchReportSharesAssetFundamental,
-    fetchReportSharesDividends,
-    fetchSharesWatchListTickers
+    fetchReportSharesDividends
 } from '../actions/reportSharesActions'
 import {
     SAGA_REPORT_SHARES_SUPERTREND,
@@ -19,9 +18,8 @@ import {
     SAGA_REPORT_SHARES_YIELD_LTM,
     SAGA_REPORT_SHARES_ASSET_FUNDAMENTAL,
     SAGA_REPORT_DIVIDENDS,
-    SAGA_REPORT_SHARE_AGGREGATED_ANALYSE,
-    SAGA_SHARES_WATCH_LIST_TICKERS
-} from '../types/sharesTypes'
+    SAGA_REPORT_SHARES_AGGREGATED_ANALYSE
+} from '../types/reportSharesTypes'
 import {
     getReportAggregatedAnalyseFromApi,
     getReportSuperTrendFromApi,
@@ -30,9 +28,8 @@ import {
     getReportRsiFromApi,
     getReportYieldLtmFromApi,
     getReportAssetFundamentalFromApi,
-    getReportDividendFromApi,
-    getWatchListTickersFromApi
-} from "../api/sharesApi";
+    getReportDividendFromApi
+} from "../api/reportSharesApi";
 
 const getStartDate = (state) => state.filter.startDate
 const getEndDate = (state) => state.filter.endDate
@@ -40,7 +37,6 @@ const getTicker = (state) => state.filter.ticker
 
 // SagaWatcher'ы
 export function* eventSagaWatcherReportShares() {
-    yield takeEvery(SAGA_SHARES_WATCH_LIST_TICKERS, sagaWorkerSharesWatchListTickers)
     yield takeEvery(SAGA_REPORT_SHARES_SUPERTREND, sagaWorkerReportSharesSuperTrend)
     yield takeEvery(SAGA_REPORT_SHARES_CANDLE_SEQUENCE, sagaWorkerReportSharesCandleSequence)
     yield takeEvery(SAGA_REPORT_SHARES_CANDLE_VOLUME, sagaWorkerReportSharesCandleVolume)
@@ -48,26 +44,10 @@ export function* eventSagaWatcherReportShares() {
     yield takeEvery(SAGA_REPORT_SHARES_YIELD_LTM, sagaWorkerReportSharesYieldLtm)
     yield takeEvery(SAGA_REPORT_SHARES_ASSET_FUNDAMENTAL, sagaWorkerReportSharesAssetFundamental)
     yield takeEvery(SAGA_REPORT_DIVIDENDS, sagaWorkerReportDividends)
-    yield takeEvery(SAGA_REPORT_SHARE_AGGREGATED_ANALYSE, sagaWorkerReportSharesAggregateAnalyse)
+    yield takeEvery(SAGA_REPORT_SHARES_AGGREGATED_ANALYSE, sagaWorkerReportSharesAggregateAnalyse)
 }
 
 // SagaWorker'ы
-function* sagaWorkerSharesWatchListTickers() {
-    try {
-        yield put(showLoader())
-
-        let watchListTickers = yield call(getWatchListTickersFromApi)
-
-        yield put(fetchSharesWatchListTickers(watchListTickers))
-        yield put(hideLoader())
-    }
-
-    catch (error) {
-        yield put(showAlert('Ошибка при получении данных'))
-        yield put(hideLoader())
-    }
-}
-
 function* sagaWorkerReportSharesSuperTrend() {
     try {
         yield put(showLoader())

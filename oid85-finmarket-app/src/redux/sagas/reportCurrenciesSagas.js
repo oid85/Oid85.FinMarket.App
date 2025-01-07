@@ -5,25 +5,22 @@ import {
     fetchReportCurrenciesSupertrend,
     fetchReportCurrenciesCandleSequence,
     fetchReportCurrenciesRsi,
-    fetchReportCurrenciesYieldLtm,
-    fetchCurrenciesWatchListTickers
+    fetchReportCurrenciesYieldLtm
 } from '../actions/reportCurrenciesActions'
 import {
     SAGA_REPORT_CURRENCIES_SUPERTREND,
     SAGA_REPORT_CURRENCIES_CANDLE_SEQUENCE,
     SAGA_REPORT_CURRENCIES_RSI,
     SAGA_REPORT_CURRENCIES_YIELD_LTM,
-    SAGA_REPORT_CURRENCY_AGGREGATED_ANALYSE,
-    SAGA_CURRENCIES_WATCH_LIST_TICKERS
-} from '../types/currenciesTypes'
+    SAGA_REPORT_CURRENCIES_AGGREGATED_ANALYSE
+} from '../types/reportCurrenciesTypes'
 import {
     getReportAggregatedAnalyseFromApi,
     getReportSuperTrendFromApi,
     getReportCandleSequenceFromApi,
     getReportRsiFromApi,
-    getReportYieldLtmFromApi,
-    getWatchListTickersFromApi
-} from "../api/currenciesApi";
+    getReportYieldLtmFromApi
+} from "../api/reportCurrenciesApi";
 
 const getStartDate = (state) => state.filter.startDate
 const getEndDate = (state) => state.filter.endDate
@@ -31,31 +28,14 @@ const getTicker = (state) => state.filter.ticker
 
 // SagaWatcher'ы
 export function* eventSagaWatcherReportCurrencies() {
-    yield takeEvery(SAGA_CURRENCIES_WATCH_LIST_TICKERS, sagaWorkerCurrenciesWatchListTickers)
     yield takeEvery(SAGA_REPORT_CURRENCIES_SUPERTREND, sagaWorkerReportCurrenciesSuperTrend)
     yield takeEvery(SAGA_REPORT_CURRENCIES_CANDLE_SEQUENCE, sagaWorkerReportCurrenciesCandleSequence)
     yield takeEvery(SAGA_REPORT_CURRENCIES_RSI, sagaWorkerReportCurrenciesRsi)
     yield takeEvery(SAGA_REPORT_CURRENCIES_YIELD_LTM, sagaWorkerReportCurrenciesYieldLtm)
-    yield takeEvery(SAGA_REPORT_CURRENCY_AGGREGATED_ANALYSE, sagaWorkerReportCurrenciesAggregateAnalyse)
+    yield takeEvery(SAGA_REPORT_CURRENCIES_AGGREGATED_ANALYSE, sagaWorkerReportCurrenciesAggregateAnalyse)
 }
 
 // SagaWorker'ы
-function* sagaWorkerCurrenciesWatchListTickers() {
-    try {
-        yield put(showLoader())
-
-        let watchListTickers = yield call(getWatchListTickersFromApi)
-
-        yield put(fetchCurrenciesWatchListTickers(watchListTickers))
-        yield put(hideLoader())
-    }
-
-    catch (error) {
-        yield put(showAlert('Ошибка при получении данных'))
-        yield put(hideLoader())
-    }
-}
-
 function* sagaWorkerReportCurrenciesSuperTrend() {
     try {
         yield put(showLoader())

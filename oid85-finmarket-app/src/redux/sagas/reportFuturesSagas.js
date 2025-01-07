@@ -7,8 +7,7 @@ import {
     fetchReportFuturesCandleVolume,
     fetchReportFuturesRsi,
     fetchReportFuturesYieldLtm,
-    fetchReportFuturesSpreads,
-    fetchFuturesWatchListTickers
+    fetchReportFuturesSpreads
 } from '../actions/reportFuturesActions'
 import {
     SAGA_REPORT_FUTURES_SUPERTREND,
@@ -17,9 +16,8 @@ import {
     SAGA_REPORT_FUTURES_RSI,
     SAGA_REPORT_FUTURES_YIELD_LTM,
     SAGA_REPORT_SPREADS,
-    SAGA_REPORT_FUTURE_AGGREGATED_ANALYSE,
-    SAGA_FUTURES_WATCH_LIST_TICKERS
-} from '../types/futuresTypes'
+    SAGA_REPORT_FUTURES_AGGREGATED_ANALYSE
+} from '../types/reportFuturesTypes'
 import {
     getReportAggregatedAnalyseFromApi,
     getReportSuperTrendFromApi,
@@ -27,9 +25,8 @@ import {
     getReportCandleVolumeFromApi,
     getReportRsiFromApi,
     getReportYieldLtmFromApi,
-    getReportSpreadFromApi,
-    getWatchListTickersFromApi
-} from "../api/futuresApi";
+    getReportSpreadFromApi
+} from "../api/reportFuturesApi";
 
 const getStartDate = (state) => state.filter.startDate
 const getEndDate = (state) => state.filter.endDate
@@ -37,33 +34,16 @@ const getTicker = (state) => state.filter.ticker
 
 // SagaWatcher'ы
 export function* eventSagaWatcherReportFutures() {
-    yield takeEvery(SAGA_FUTURES_WATCH_LIST_TICKERS, sagaWorkerFuturesWatchListTickers)
     yield takeEvery(SAGA_REPORT_FUTURES_SUPERTREND, sagaWorkerReportFuturesSuperTrend)
     yield takeEvery(SAGA_REPORT_FUTURES_CANDLE_SEQUENCE, sagaWorkerReportFuturesCandleSequence)
     yield takeEvery(SAGA_REPORT_FUTURES_CANDLE_VOLUME, sagaWorkerReportFuturesCandleVolume)
     yield takeEvery(SAGA_REPORT_FUTURES_RSI, sagaWorkerReportFuturesRsi)
     yield takeEvery(SAGA_REPORT_FUTURES_YIELD_LTM, sagaWorkerReportFuturesYieldLtm)
     yield takeEvery(SAGA_REPORT_SPREADS, sagaWorkerReportSpreads)
-    yield takeEvery(SAGA_REPORT_FUTURE_AGGREGATED_ANALYSE, sagaWorkerReportFuturesAggregateAnalyse)
+    yield takeEvery(SAGA_REPORT_FUTURES_AGGREGATED_ANALYSE, sagaWorkerReportFuturesAggregateAnalyse)
 }
 
 // SagaWorker'ы
-function* sagaWorkerFuturesWatchListTickers() {
-    try {
-        yield put(showLoader())
-
-        let watchListTickers = yield call(getWatchListTickersFromApi)
-
-        yield put(fetchFuturesWatchListTickers(watchListTickers))
-        yield put(hideLoader())
-    }
-
-    catch (error) {
-        yield put(showAlert('Ошибка при получении данных'))
-        yield put(hideLoader())
-    }
-}
-
 function* sagaWorkerReportFuturesSuperTrend() {
     try {
         yield put(showLoader())

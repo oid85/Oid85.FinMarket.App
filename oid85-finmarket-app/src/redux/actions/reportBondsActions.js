@@ -3,29 +3,14 @@ import {
     SAGA_REPORT_BONDS_CANDLE_SEQUENCE,
     SAGA_REPORT_BONDS_CANDLE_VOLUME,
     SAGA_REPORT_COUPONS,
-    SAGA_REPORT_BOND_AGGREGATED_ANALYSE,
-    SAGA_BONDS_WATCH_LIST_TICKERS,
+    SAGA_REPORT_BONDS_AGGREGATED_ANALYSE,
 
     FETCH_REPORT_BONDS_SUPERTREND,
     FETCH_REPORT_BONDS_CANDLE_SEQUENCE,
     FETCH_REPORT_BONDS_CANDLE_VOLUME,
     FETCH_REPORT_COUPONS,
-    FETCH_REPORT_BOND_AGGREGATED_ANALYSE,
-    FETCH_BONDS_WATCH_LIST_TICKERS
-} from '../types/bondsTypes'
-
-export const sagaBondsWatchListTickers = () => {
-    return {
-        type: SAGA_BONDS_WATCH_LIST_TICKERS
-    }
-}
-
-export const fetchBondsWatchListTickers = (tickers) => {
-    return {
-        type: FETCH_BONDS_WATCH_LIST_TICKERS,
-        payload: tickers
-    }
-}
+    FETCH_REPORT_BONDS_AGGREGATED_ANALYSE
+} from '../types/reportBondsTypes'
 
 export const sagaReportBondsSupertrend = () => {
     return {
@@ -81,13 +66,13 @@ export const fetchReportBondsCoupons = (reportData) => {
 
 export const sagaReportBondAggregatedAnalyse = () => {
     return {
-        type: SAGA_REPORT_BOND_AGGREGATED_ANALYSE
+        type: SAGA_REPORT_BONDS_AGGREGATED_ANALYSE
     }
 }
 
 export const fetchReportBondAggregatedAnalyse = (reportData) => {
     return {
-        type: FETCH_REPORT_BOND_AGGREGATED_ANALYSE,
+        type: FETCH_REPORT_BONDS_AGGREGATED_ANALYSE,
         payload: reportData
     }
 }

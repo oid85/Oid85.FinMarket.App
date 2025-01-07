@@ -5,13 +5,11 @@ import {
     FETCH_REPORT_FUTURES_RSI,
     FETCH_REPORT_FUTURES_YIELD_LTM,
     FETCH_REPORT_SPREADS,
-    FETCH_REPORT_FUTURE_AGGREGATED_ANALYSE,
-    FETCH_FUTURES_WATCH_LIST_TICKERS
-} from '../types/futuresTypes'
+    FETCH_REPORT_FUTURES_AGGREGATED_ANALYSE
+} from '../types/reportFuturesTypes'
 
 const initialState = {
-    reportData: {},
-    watchListTickers: {}
+    reportData: {}
 }
 
 export const reportFuturesReducer = (state = initialState, action) => {
@@ -35,10 +33,7 @@ export const reportFuturesReducer = (state = initialState, action) => {
         case FETCH_REPORT_SPREADS:
             return {...state, reportData: {...action.payload}}
 
-        case FETCH_REPORT_FUTURE_AGGREGATED_ANALYSE:
-            return {...state, reportData: {...action.payload}}
-
-        case FETCH_FUTURES_WATCH_LIST_TICKERS:
+        case FETCH_REPORT_FUTURES_AGGREGATED_ANALYSE:
             return {...state, reportData: {...action.payload}}
 
         default: return state

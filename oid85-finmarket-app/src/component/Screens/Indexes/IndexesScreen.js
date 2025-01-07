@@ -4,6 +4,9 @@ import { useSelector } from 'react-redux'
 import 'react-tabs/style/react-tabs.css'
 import { Alert } from '../../Alert/Alert'
 import {ReportIndexesSupertrend} from "./ReportIndexesSupertrend";
+import {ReportIndexesCandleSequence} from "./ReportIndexesCandleSequence";
+import {ReportIndexesRsi} from "./ReportIndexesRsi";
+import {ReportIndexesYieldLtm} from "./ReportIndexesYieldLtm";
 
 export const IndexesScreen = () => {
     const alert = useSelector(state => state.app.alert)
@@ -14,9 +17,21 @@ export const IndexesScreen = () => {
             <Tabs>
                 <TabList>
                     <Tab>Supertrend</Tab>
-                </TabList>                
+                    <Tab>CandleSequence</Tab>
+                    <Tab>Rsi</Tab>
+                    <Tab>YieldLtm</Tab>
+                </TabList>
                 <TabPanel>
                     <ReportIndexesSupertrend />
+                </TabPanel>
+                <TabPanel>
+                    <ReportIndexesCandleSequence />
+                </TabPanel>
+                <TabPanel>
+                    <ReportIndexesRsi />
+                </TabPanel>
+                <TabPanel>
+                    <ReportIndexesYieldLtm />
                 </TabPanel>
             </Tabs>
         </React.Fragment>
