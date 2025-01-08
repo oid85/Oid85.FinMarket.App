@@ -1,7 +1,7 @@
 import {call, put, select, takeEvery} from 'redux-saga/effects'
 import {hideLoader, showAlert, showLoader} from '../actions/appActions'
 import {
-    fetchReportShareAggregatedAnalyse,
+    fetchReportSharesAggregatedAnalyse,
     fetchReportSharesSupertrend,
     fetchReportSharesCandleSequence,
     fetchReportSharesCandleVolume,
@@ -33,7 +33,6 @@ import {
 
 const getStartDate = (state) => state.filter.startDate
 const getEndDate = (state) => state.filter.endDate
-const getTicker = (state) => state.filter.ticker
 
 // SagaWatcher'ы
 export function* eventSagaWatcherReportShares() {
@@ -176,11 +175,10 @@ function* sagaWorkerReportSharesAggregateAnalyse() {
         
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
-        let ticker = yield select(getTicker)
 
-        let reportData = yield call(getReportAggregatedAnalyseFromApi, startDate, endDate, ticker)
+        let reportData = yield call(getReportAggregatedAnalyseFromApi, startDate, endDate)
         
-        yield put(fetchReportShareAggregatedAnalyse(reportData))
+        yield put(fetchReportSharesAggregatedAnalyse(reportData))
         yield put(hideLoader())
     }
     

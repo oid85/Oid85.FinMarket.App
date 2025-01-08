@@ -64,13 +64,13 @@ export const fetchReportBondsCoupons = (reportData) => {
     }
 }
 
-export const sagaReportBondAggregatedAnalyse = () => {
+export const sagaReportBondsAggregatedAnalyse = () => {
     return {
         type: SAGA_REPORT_BONDS_AGGREGATED_ANALYSE
     }
 }
 
-export const fetchReportBondAggregatedAnalyse = (reportData) => {
+export const fetchReportBondsAggregatedAnalyse = (reportData) => {
     return {
         type: FETCH_REPORT_BONDS_AGGREGATED_ANALYSE,
         payload: reportData

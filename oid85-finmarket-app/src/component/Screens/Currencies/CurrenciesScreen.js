@@ -7,6 +7,7 @@ import {ReportCurrenciesSupertrend} from "./ReportCurrenciesSupertrend";
 import {ReportCurrenciesCandleSequence} from "./ReportCurrenciesCandleSequence";
 import {ReportCurrenciesRsi} from "./ReportCurrenciesRsi";
 import {ReportCurrenciesYieldLtm} from "./ReportCurrenciesYieldLtm";
+import {ReportCurrenciesAggregatedAnalyse} from "./ReportCurrenciesAggregatedAnalyse";
 
 export const CurrenciesScreen = () => {
     const alert = useSelector(state => state.app.alert)
@@ -20,6 +21,7 @@ export const CurrenciesScreen = () => {
                     <Tab>CandleSequence</Tab>
                     <Tab>Rsi</Tab>
                     <Tab>YieldLtm</Tab>
+                    <Tab>AggregatedAnalyse</Tab>
                 </TabList>
                 <TabPanel>
                     <ReportCurrenciesSupertrend />
@@ -32,6 +34,9 @@ export const CurrenciesScreen = () => {
                 </TabPanel>
                 <TabPanel>
                     <ReportCurrenciesYieldLtm />
+                </TabPanel>
+                <TabPanel>
+                    <ReportCurrenciesAggregatedAnalyse />
                 </TabPanel>
             </Tabs>
         </React.Fragment>

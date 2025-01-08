@@ -1,7 +1,7 @@
 import {call, put, select, takeEvery} from 'redux-saga/effects'
 import {hideLoader, showAlert, showLoader} from '../actions/appActions'
 import {
-    fetchReportFutureAggregatedAnalyse,
+    fetchReportFuturesAggregatedAnalyse,
     fetchReportFuturesSupertrend,
     fetchReportFuturesCandleSequence,
     fetchReportFuturesCandleVolume,
@@ -160,7 +160,7 @@ function* sagaWorkerReportFuturesAggregateAnalyse() {
 
         let reportData = yield call(getReportAggregatedAnalyseFromApi, startDate, endDate, ticker)
 
-        yield put(fetchReportFutureAggregatedAnalyse(reportData))
+        yield put(fetchReportFuturesAggregatedAnalyse(reportData))
         yield put(hideLoader())
     }
 

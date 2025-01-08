@@ -94,13 +94,13 @@ export const fetchReportFuturesSpreads = (reportData) => {
     }
 }
 
-export const sagaReportFutureAggregatedAnalyse = () => {
+export const sagaReportFuturesAggregatedAnalyse = () => {
     return {
         type: SAGA_REPORT_FUTURES_AGGREGATED_ANALYSE
     }
 }
 
-export const fetchReportFutureAggregatedAnalyse = (reportData) => {
+export const fetchReportFuturesAggregatedAnalyse = (reportData) => {
     return {
         type: FETCH_REPORT_FUTURES_AGGREGATED_ANALYSE,
         payload: reportData

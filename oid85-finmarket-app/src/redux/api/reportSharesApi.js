@@ -1,6 +1,6 @@
 ﻿import {CONSTANTS} from "../../constants";
 
-export const getReportAggregatedAnalyseFromApi = async (startDate, endDate, ticker) => {
+export const getReportAggregatedAnalyseFromApi = async (startDate, endDate) => {
     const response = await fetch(
         `${CONSTANTS.FINMARKET_API}/api/shares/report/aggregated-analyse`, {
             method: 'POST',
@@ -10,8 +10,7 @@ export const getReportAggregatedAnalyseFromApi = async (startDate, endDate, tick
             },
             body: JSON.stringify({
                 from: startDate,
-                to: endDate,
-                ticker: ticker})
+                to: endDate})
         })
 
     if (response.ok) {

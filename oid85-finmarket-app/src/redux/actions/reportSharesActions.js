@@ -109,13 +109,13 @@ export const fetchReportSharesDividends = (reportData) => {
     }
 }
 
-export const sagaReportShareAggregatedAnalyse = () => {
+export const sagaReportSharesAggregatedAnalyse = () => {
     return {
         type: SAGA_REPORT_SHARES_AGGREGATED_ANALYSE
     }
 }
 
-export const fetchReportShareAggregatedAnalyse = (reportData) => {
+export const fetchReportSharesAggregatedAnalyse = (reportData) => {
     return {
         type: FETCH_REPORT_SHARES_AGGREGATED_ANALYSE,
         payload: reportData

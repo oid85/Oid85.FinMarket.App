@@ -7,6 +7,7 @@ import {ReportIndexesSupertrend} from "./ReportIndexesSupertrend";
 import {ReportIndexesCandleSequence} from "./ReportIndexesCandleSequence";
 import {ReportIndexesRsi} from "./ReportIndexesRsi";
 import {ReportIndexesYieldLtm} from "./ReportIndexesYieldLtm";
+import {ReportIndexesAggregatedAnalyse} from "./ReportIndexesAggregatedAnalyse";
 
 export const IndexesScreen = () => {
     const alert = useSelector(state => state.app.alert)
@@ -20,6 +21,7 @@ export const IndexesScreen = () => {
                     <Tab>CandleSequence</Tab>
                     <Tab>Rsi</Tab>
                     <Tab>YieldLtm</Tab>
+                    <Tab>AggregatedAnalyse</Tab>
                 </TabList>
                 <TabPanel>
                     <ReportIndexesSupertrend />
@@ -32,6 +34,9 @@ export const IndexesScreen = () => {
                 </TabPanel>
                 <TabPanel>
                     <ReportIndexesYieldLtm />
+                </TabPanel>
+                <TabPanel>
+                    <ReportIndexesAggregatedAnalyse />
                 </TabPanel>
             </Tabs>
         </React.Fragment>

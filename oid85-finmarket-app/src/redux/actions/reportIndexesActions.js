@@ -64,13 +64,13 @@ export const fetchReportIndexesYieldLtm = (reportData) => {
     }
 }
 
-export const sagaReportIndexAggregatedAnalyse = () => {
+export const sagaReportIndexesAggregatedAnalyse = () => {
     return {
         type: SAGA_REPORT_INDEXES_AGGREGATED_ANALYSE
     }
 }
 
-export const fetchReportIndexAggregatedAnalyse = (reportData) => {
+export const fetchReportIndexesAggregatedAnalyse = (reportData) => {
     return {
         type: FETCH_REPORT_INDEXES_AGGREGATED_ANALYSE,
         payload: reportData

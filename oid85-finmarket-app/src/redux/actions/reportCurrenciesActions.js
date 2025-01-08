@@ -64,13 +64,13 @@ export const fetchReportCurrenciesYieldLtm = (reportData) => {
     }
 }
 
-export const sagaReportCurrencyAggregatedAnalyse = () => {
+export const sagaReportCurrenciesAggregatedAnalyse = () => {
     return {
         type: SAGA_REPORT_CURRENCIES_AGGREGATED_ANALYSE
     }
 }
 
-export const fetchReportCurrencyAggregatedAnalyse = (reportData) => {
+export const fetchReportCurrenciesAggregatedAnalyse = (reportData) => {
     return {
         type: FETCH_REPORT_CURRENCIES_AGGREGATED_ANALYSE,
         payload: reportData

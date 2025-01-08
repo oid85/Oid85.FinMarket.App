@@ -10,6 +10,7 @@ import {ReportSharesRsi} from "./ReportSharesRsi";
 import {ReportSharesYieldLtm} from "./ReportSharesYieldLtm";
 import {ReportSharesDividend} from "./ReportSharesDividend";
 import {ReportSharesAssetFundamental} from "./ReportSharesAssetFundamental";
+import {ReportSharesAggregatedAnalyse} from "./ReportSharesAggregatedAnalyse";
 
 export const SharesScreen = () => {
     const alert = useSelector(state => state.app.alert)
@@ -25,7 +26,8 @@ export const SharesScreen = () => {
 					<Tab>Rsi</Tab>
 					<Tab>YieldLtm</Tab>
 					<Tab>Dividend</Tab>
-					<Tab>AssetFundamental</Tab>
+                    <Tab>AssetFundamental</Tab>
+                    <Tab>AggregatedAnalyse</Tab>
                 </TabList>
                 <TabPanel>
                     <ReportSharesSupertrend />
@@ -47,7 +49,10 @@ export const SharesScreen = () => {
                 </TabPanel>
                 <TabPanel>
                     <ReportSharesAssetFundamental />
-                </TabPanel>				
+                </TabPanel>
+                <TabPanel>
+                    <ReportSharesAggregatedAnalyse />
+                </TabPanel>
             </Tabs>
         </React.Fragment>
     )    
