@@ -11,20 +11,10 @@ export const ReportSharesMultiplicator = () => {
     const dispatch = useDispatch()
     const loading = useSelector(state => state.app.loading)
     const reportData = useSelector(state => state.reportShares.reportData)
-    const startDate = useSelector(state => state.filter.startDate)
-    const endDate = useSelector(state => state.filter.endDate)
 
     useEffect(() => {
         dispatch(sagaReportSharesMultiplicator())
     }, [])
-
-    useEffect(() => {
-        dispatch(sagaReportSharesMultiplicator())
-    }, [startDate])
-
-    useEffect(() => {
-        dispatch(sagaReportSharesMultiplicator())
-    }, [endDate])
 
     return (
         <React.Fragment>

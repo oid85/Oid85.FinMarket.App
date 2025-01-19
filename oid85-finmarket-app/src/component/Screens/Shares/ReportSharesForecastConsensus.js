@@ -11,20 +11,10 @@ export const ReportSharesForecastConsensus = () => {
     const dispatch = useDispatch()
     const loading = useSelector(state => state.app.loading)
     const reportData = useSelector(state => state.reportShares.reportData)
-    const startDate = useSelector(state => state.filter.startDate)
-    const endDate = useSelector(state => state.filter.endDate)
 
     useEffect(() => {
         dispatch(sagaReportSharesForecastConsensus())
     }, [])
-
-    useEffect(() => {
-        dispatch(sagaReportSharesForecastConsensus())
-    }, [startDate])
-
-    useEffect(() => {
-        dispatch(sagaReportSharesForecastConsensus())
-    }, [endDate])
 
     return (
         <React.Fragment>

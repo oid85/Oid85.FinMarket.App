@@ -220,10 +220,7 @@ function* sagaWorkerReportSharesForecastTarget() {
     try {
         yield put(showLoader())
 
-        let startDate = yield select(getStartDate)
-        let endDate = yield select(getEndDate)
-
-        let reportData = yield call(getReportForecastTargetFromApi, startDate, endDate)
+        let reportData = yield call(getReportForecastTargetFromApi)
 
         yield put(fetchReportSharesForecastTarget(reportData))
         yield put(hideLoader())
@@ -239,10 +236,7 @@ function* sagaWorkerReportSharesForecastConsensus() {
     try {
         yield put(showLoader())
 
-        let startDate = yield select(getStartDate)
-        let endDate = yield select(getEndDate)
-
-        let reportData = yield call(getReportForecastConsensusFromApi, startDate, endDate)
+        let reportData = yield call(getReportForecastConsensusFromApi)
 
         yield put(fetchReportSharesForecastConsensus(reportData))
         yield put(hideLoader())

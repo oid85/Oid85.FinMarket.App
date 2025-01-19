@@ -11,20 +11,10 @@ export const ReportFuturesSpread = () => {
     const dispatch = useDispatch()
     const loading = useSelector(state => state.app.loading)
     const reportData = useSelector(state => state.reportFutures.reportData)
-    const startDate = useSelector(state => state.filter.startDate)
-    const endDate = useSelector(state => state.filter.endDate)
 
     useEffect(() => {
         dispatch(sagaReportFuturesSpread())
     }, [])
-
-    useEffect(() => {
-        dispatch(sagaReportFuturesSpread())
-    }, [startDate])
-
-    useEffect(() => {
-        dispatch(sagaReportFuturesSpread())
-    }, [endDate])
 
     return (
         <React.Fragment>

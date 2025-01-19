@@ -11,20 +11,10 @@ export const ReportSharesForecastTarget = () => {
     const dispatch = useDispatch()
     const loading = useSelector(state => state.app.loading)
     const reportData = useSelector(state => state.reportShares.reportData)
-    const startDate = useSelector(state => state.filter.startDate)
-    const endDate = useSelector(state => state.filter.endDate)
 
     useEffect(() => {
         dispatch(sagaReportSharesForecastTarget())
     }, [])
-
-    useEffect(() => {
-        dispatch(sagaReportSharesForecastTarget())
-    }, [startDate])
-
-    useEffect(() => {
-        dispatch(sagaReportSharesForecastTarget())
-    }, [endDate])
 
     return (
         <React.Fragment>
