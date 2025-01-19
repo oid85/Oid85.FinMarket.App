@@ -10,6 +10,7 @@ import {ReportSharesRsi} from "./ReportSharesRsi";
 import {ReportSharesYieldLtm} from "./ReportSharesYieldLtm";
 import {ReportSharesDividend} from "./ReportSharesDividend";
 import {ReportSharesAssetFundamental} from "./ReportSharesAssetFundamental";
+import {ReportSharesMultiplicator} from "./ReportSharesMultiplicator";
 import {ReportSharesAggregatedAnalyse} from "./ReportSharesAggregatedAnalyse";
 
 export const SharesScreen = () => {
@@ -27,6 +28,7 @@ export const SharesScreen = () => {
 					<Tab>YieldLtm</Tab>
 					<Tab>Dividend</Tab>
                     <Tab>AssetFundamental</Tab>
+                    <Tab>Multiplicator</Tab>
                     <Tab>AggregatedAnalyse</Tab>
                 </TabList>
                 <TabPanel>
@@ -49,6 +51,9 @@ export const SharesScreen = () => {
                 </TabPanel>
                 <TabPanel>
                     <ReportSharesAssetFundamental />
+                </TabPanel>
+                <TabPanel>
+                    <ReportSharesMultiplicator />
                 </TabPanel>
                 <TabPanel>
                     <ReportSharesAggregatedAnalyse />

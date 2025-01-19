@@ -5,13 +5,13 @@ import {
     fetchReportBondsSupertrend,
     fetchReportBondsCandleSequence,
     fetchReportBondsCandleVolume,
-    fetchReportBondsCoupons
+    fetchReportBondsCoupon
 } from '../actions/reportBondsActions'
 import {
     SAGA_REPORT_BONDS_SUPERTREND,
     SAGA_REPORT_BONDS_CANDLE_SEQUENCE,
     SAGA_REPORT_BONDS_CANDLE_VOLUME,
-    SAGA_REPORT_COUPONS,
+    SAGA_REPORT_COUPON,
     SAGA_REPORT_BONDS_AGGREGATED_ANALYSE
 } from '../types/reportBondsTypes'
 import {
@@ -30,8 +30,8 @@ export function* eventSagaWatcherReportBonds() {
     yield takeEvery(SAGA_REPORT_BONDS_SUPERTREND, sagaWorkerReportBondsSuperTrend)
     yield takeEvery(SAGA_REPORT_BONDS_CANDLE_SEQUENCE, sagaWorkerReportBondsCandleSequence)
     yield takeEvery(SAGA_REPORT_BONDS_CANDLE_VOLUME, sagaWorkerReportBondsCandleVolume)
-    yield takeEvery(SAGA_REPORT_COUPONS, sagaWorkerReportCoupons)
-    yield takeEvery(SAGA_REPORT_BONDS_AGGREGATED_ANALYSE, sagaWorkerReportBondsAggregateAnalyse)
+    yield takeEvery(SAGA_REPORT_COUPON, sagaWorkerReportCoupon)
+    yield takeEvery(SAGA_REPORT_BONDS_AGGREGATED_ANALYSE, sagaWorkerReportBondsAggregatedAnalyse)
 }
 
 // SagaWorker'ы
@@ -89,13 +89,13 @@ function* sagaWorkerReportBondsCandleVolume() {
     }
 }
 
-function* sagaWorkerReportCoupons() {
+function* sagaWorkerReportCoupon() {
     try {
         yield put(showLoader())
 
         let reportData = yield call(getReportCouponFromApi)
 
-        yield put(fetchReportBondsCoupons(reportData))
+        yield put(fetchReportBondsCoupon(reportData))
         yield put(hideLoader())
     }
 
@@ -105,7 +105,7 @@ function* sagaWorkerReportCoupons() {
     }
 }
 
-function* sagaWorkerReportBondsAggregateAnalyse() {
+function* sagaWorkerReportBondsAggregatedAnalyse() {
     try {
         yield put(showLoader())
 

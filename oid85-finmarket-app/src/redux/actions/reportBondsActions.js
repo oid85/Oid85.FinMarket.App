@@ -2,13 +2,13 @@ import {
     SAGA_REPORT_BONDS_SUPERTREND,
     SAGA_REPORT_BONDS_CANDLE_SEQUENCE,
     SAGA_REPORT_BONDS_CANDLE_VOLUME,
-    SAGA_REPORT_COUPONS,
+    SAGA_REPORT_COUPON,
     SAGA_REPORT_BONDS_AGGREGATED_ANALYSE,
 
     FETCH_REPORT_BONDS_SUPERTREND,
     FETCH_REPORT_BONDS_CANDLE_SEQUENCE,
     FETCH_REPORT_BONDS_CANDLE_VOLUME,
-    FETCH_REPORT_COUPONS,
+    FETCH_REPORT_COUPON,
     FETCH_REPORT_BONDS_AGGREGATED_ANALYSE
 } from '../types/reportBondsTypes'
 
@@ -51,15 +51,15 @@ export const fetchReportBondsCandleVolume = (reportData) => {
     }
 }
 
-export const sagaReportBondsCoupons = () => {
+export const sagaReportBondsCoupon = () => {
     return {
-        type: SAGA_REPORT_COUPONS
+        type: SAGA_REPORT_COUPON
     }
 }
 
-export const fetchReportBondsCoupons = (reportData) => {
+export const fetchReportBondsCoupon = (reportData) => {
     return {
-        type: FETCH_REPORT_COUPONS,
+        type: FETCH_REPORT_COUPON,
         payload: reportData
     }
 }

@@ -31,7 +31,7 @@ export function* eventSagaWatcherReportCurrencies() {
     yield takeEvery(SAGA_REPORT_CURRENCIES_CANDLE_SEQUENCE, sagaWorkerReportCurrenciesCandleSequence)
     yield takeEvery(SAGA_REPORT_CURRENCIES_RSI, sagaWorkerReportCurrenciesRsi)
     yield takeEvery(SAGA_REPORT_CURRENCIES_YIELD_LTM, sagaWorkerReportCurrenciesYieldLtm)
-    yield takeEvery(SAGA_REPORT_CURRENCIES_AGGREGATED_ANALYSE, sagaWorkerReportCurrenciesAggregateAnalyse)
+    yield takeEvery(SAGA_REPORT_CURRENCIES_AGGREGATED_ANALYSE, sagaWorkerReportCurrenciesAggregatedAnalyse)
 }
 
 // SagaWorker'ы
@@ -107,7 +107,7 @@ function* sagaWorkerReportCurrenciesYieldLtm() {
     }
 }
 
-function* sagaWorkerReportCurrenciesAggregateAnalyse() {
+function* sagaWorkerReportCurrenciesAggregatedAnalyse() {
     try {
         yield put(showLoader())
 

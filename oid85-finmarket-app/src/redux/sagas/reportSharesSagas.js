@@ -8,7 +8,8 @@ import {
     fetchReportSharesRsi,
     fetchReportSharesYieldLtm,
     fetchReportSharesAssetFundamental,
-    fetchReportSharesDividends
+    fetchReportSharesMultiplicator,
+    fetchReportSharesDividend
 } from '../actions/reportSharesActions'
 import {
     SAGA_REPORT_SHARES_SUPERTREND,
@@ -17,8 +18,9 @@ import {
     SAGA_REPORT_SHARES_RSI,
     SAGA_REPORT_SHARES_YIELD_LTM,
     SAGA_REPORT_SHARES_ASSET_FUNDAMENTAL,
-    SAGA_REPORT_DIVIDENDS,
-    SAGA_REPORT_SHARES_AGGREGATED_ANALYSE
+    SAGA_REPORT_DIVIDEND,
+    SAGA_REPORT_SHARES_AGGREGATED_ANALYSE,
+    SAGA_REPORT_SHARES_MULTIPLICATOR
 } from '../types/reportSharesTypes'
 import {
     getReportAggregatedAnalyseFromApi,
@@ -28,6 +30,7 @@ import {
     getReportRsiFromApi,
     getReportYieldLtmFromApi,
     getReportAssetFundamentalFromApi,
+    getReportMultiplicatorFromApi,
     getReportDividendFromApi
 } from "../api/reportSharesApi";
 
@@ -42,8 +45,9 @@ export function* eventSagaWatcherReportShares() {
     yield takeEvery(SAGA_REPORT_SHARES_RSI, sagaWorkerReportSharesRsi)
     yield takeEvery(SAGA_REPORT_SHARES_YIELD_LTM, sagaWorkerReportSharesYieldLtm)
     yield takeEvery(SAGA_REPORT_SHARES_ASSET_FUNDAMENTAL, sagaWorkerReportSharesAssetFundamental)
-    yield takeEvery(SAGA_REPORT_DIVIDENDS, sagaWorkerReportDividends)
-    yield takeEvery(SAGA_REPORT_SHARES_AGGREGATED_ANALYSE, sagaWorkerReportSharesAggregateAnalyse)
+    yield takeEvery(SAGA_REPORT_SHARES_MULTIPLICATOR, sagaWorkerReportSharesMultiplicator)
+    yield takeEvery(SAGA_REPORT_DIVIDEND, sagaWorkerReportDividend)
+    yield takeEvery(SAGA_REPORT_SHARES_AGGREGATED_ANALYSE, sagaWorkerReportSharesAggregatedAnalyse)
 }
 
 // SagaWorker'ы
@@ -153,13 +157,29 @@ function* sagaWorkerReportSharesAssetFundamental() {
     }
 }
 
-function* sagaWorkerReportDividends() {
+function* sagaWorkerReportSharesMultiplicator() {
+    try {
+        yield put(showLoader())
+
+        let reportData = yield call(getReportMultiplicatorFromApi)
+
+        yield put(fetchReportSharesMultiplicator(reportData))
+        yield put(hideLoader())
+    }
+
+    catch (error) {
+        yield put(showAlert('Ошибка при получении данных'))
+        yield put(hideLoader())
+    }
+}
+
+function* sagaWorkerReportDividend() {
     try {
         yield put(showLoader())
         
         let reportData = yield call(getReportDividendFromApi)
         
-        yield put(fetchReportSharesDividends(reportData))
+        yield put(fetchReportSharesDividend(reportData))
         yield put(hideLoader())
     }
     
@@ -169,7 +189,7 @@ function* sagaWorkerReportDividends() {
     }
 }
 
-function* sagaWorkerReportSharesAggregateAnalyse() {
+function* sagaWorkerReportSharesAggregatedAnalyse() {
     try {
         yield put(showLoader())
         

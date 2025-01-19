@@ -31,7 +31,7 @@ export function* eventSagaWatcherReportIndexes() {
     yield takeEvery(SAGA_REPORT_INDEXES_CANDLE_SEQUENCE, sagaWorkerReportIndexesCandleSequence)
     yield takeEvery(SAGA_REPORT_INDEXES_RSI, sagaWorkerReportIndexesRsi)
     yield takeEvery(SAGA_REPORT_INDEXES_YIELD_LTM, sagaWorkerReportIndexesYieldLtm)
-    yield takeEvery(SAGA_REPORT_INDEXES_AGGREGATED_ANALYSE, sagaWorkerReportIndexesAggregateAnalyse)
+    yield takeEvery(SAGA_REPORT_INDEXES_AGGREGATED_ANALYSE, sagaWorkerReportIndexesAggregatedAnalyse)
 }
 
 // SagaWorker'ы
@@ -107,7 +107,7 @@ function* sagaWorkerReportIndexesYieldLtm() {
     }
 }
 
-function* sagaWorkerReportIndexesAggregateAnalyse() {
+function* sagaWorkerReportIndexesAggregatedAnalyse() {
     try {
         yield put(showLoader())
 

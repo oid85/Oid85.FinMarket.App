@@ -7,7 +7,7 @@ import {
     fetchReportFuturesCandleVolume,
     fetchReportFuturesRsi,
     fetchReportFuturesYieldLtm,
-    fetchReportFuturesSpreads
+    fetchReportFuturesSpread
 } from '../actions/reportFuturesActions'
 import {
     SAGA_REPORT_FUTURES_SUPERTREND,
@@ -15,7 +15,7 @@ import {
     SAGA_REPORT_FUTURES_CANDLE_VOLUME,
     SAGA_REPORT_FUTURES_RSI,
     SAGA_REPORT_FUTURES_YIELD_LTM,
-    SAGA_REPORT_SPREADS,
+    SAGA_REPORT_SPREAD,
     SAGA_REPORT_FUTURES_AGGREGATED_ANALYSE
 } from '../types/reportFuturesTypes'
 import {
@@ -38,8 +38,8 @@ export function* eventSagaWatcherReportFutures() {
     yield takeEvery(SAGA_REPORT_FUTURES_CANDLE_VOLUME, sagaWorkerReportFuturesCandleVolume)
     yield takeEvery(SAGA_REPORT_FUTURES_RSI, sagaWorkerReportFuturesRsi)
     yield takeEvery(SAGA_REPORT_FUTURES_YIELD_LTM, sagaWorkerReportFuturesYieldLtm)
-    yield takeEvery(SAGA_REPORT_SPREADS, sagaWorkerReportSpreads)
-    yield takeEvery(SAGA_REPORT_FUTURES_AGGREGATED_ANALYSE, sagaWorkerReportFuturesAggregateAnalyse)
+    yield takeEvery(SAGA_REPORT_SPREAD, sagaWorkerReportSpread)
+    yield takeEvery(SAGA_REPORT_FUTURES_AGGREGATED_ANALYSE, sagaWorkerReportFuturesAggregatedAnalyse)
 }
 
 // SagaWorker'ы
@@ -133,13 +133,13 @@ function* sagaWorkerReportFuturesYieldLtm() {
     }
 }
 
-function* sagaWorkerReportSpreads() {
+function* sagaWorkerReportSpread() {
     try {
         yield put(showLoader())
 
         let reportData = yield call(getReportSpreadFromApi)
 
-        yield put(fetchReportFuturesSpreads(reportData))
+        yield put(fetchReportFuturesSpread(reportData))
         yield put(hideLoader())
     }
 
@@ -149,7 +149,7 @@ function* sagaWorkerReportSpreads() {
     }
 }
 
-function* sagaWorkerReportFuturesAggregateAnalyse() {
+function* sagaWorkerReportFuturesAggregatedAnalyse() {
     try {
         yield put(showLoader())
 

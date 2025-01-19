@@ -7,7 +7,7 @@ import {ReportFuturesSupertrend} from "./ReportFuturesSupertrend";
 import {ReportFuturesCandleSequence} from "./ReportSharesCandleSequence";
 import {ReportFuturesCandleVolume} from "./ReportSharesCandleVolume";
 import {ReportFuturesRsi} from "./ReportSharesRsi";
-import {ReportFuturesSpred} from "./ReportFuturesSpred";
+import {ReportFuturesSpread} from "./ReportFuturesSpread";
 import {ReportFuturesYieldLtm} from "./ReportSharesYieldLtm";
 import {ReportFuturesAggregatedAnalyse} from "./ReportFuturesAggregatedAnalyse";
 
@@ -40,7 +40,7 @@ export const FuturesScreen = () => {
                     <ReportFuturesRsi />
                 </TabPanel>
                 <TabPanel>
-                    <ReportFuturesSpred />
+                    <ReportFuturesSpread />
                 </TabPanel>
                 <TabPanel>
                     <ReportFuturesYieldLtm />

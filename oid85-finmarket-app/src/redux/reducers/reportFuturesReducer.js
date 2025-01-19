@@ -4,7 +4,7 @@ import {
     FETCH_REPORT_FUTURES_CANDLE_VOLUME,
     FETCH_REPORT_FUTURES_RSI,
     FETCH_REPORT_FUTURES_YIELD_LTM,
-    FETCH_REPORT_SPREADS,
+    FETCH_REPORT_SPREAD,
     FETCH_REPORT_FUTURES_AGGREGATED_ANALYSE
 } from '../types/reportFuturesTypes'
 
@@ -30,7 +30,7 @@ export const reportFuturesReducer = (state = initialState, action) => {
         case FETCH_REPORT_FUTURES_YIELD_LTM:
             return {...state, reportData: {...action.payload}}
 
-        case FETCH_REPORT_SPREADS:
+        case FETCH_REPORT_SPREAD:
             return {...state, reportData: {...action.payload}}
 
         case FETCH_REPORT_FUTURES_AGGREGATED_ANALYSE:

@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import Loader from '../../Loader/Loader'
-import { sagaReportFuturesDividend } from '../../../redux/actions/reportFuturesActions'
+import { sagaReportFuturesSpread } from '../../../redux/actions/reportFuturesActions'
 import '../../Report/Report.css'
 import { Table } from '../../Report/Table'
 import {FilterByLastDaysGroup} from '../../Filter/FilterByLastDaysGroup'
 
-export const ReportFuturesSpred = () => {
+export const ReportFuturesSpread = () => {
 
     const dispatch = useDispatch()
     const loading = useSelector(state => state.app.loading)
@@ -15,15 +15,15 @@ export const ReportFuturesSpred = () => {
     const endDate = useSelector(state => state.filter.endDate)
 
     useEffect(() => {
-        dispatch(sagaReportFuturesDividend())
+        dispatch(sagaReportFuturesSpread())
     }, [])
 
     useEffect(() => {
-        dispatch(sagaReportFuturesDividend())
+        dispatch(sagaReportFuturesSpread())
     }, [startDate])
 
     useEffect(() => {
-        dispatch(sagaReportFuturesDividend())
+        dispatch(sagaReportFuturesSpread())
     }, [endDate])
 
     return (
