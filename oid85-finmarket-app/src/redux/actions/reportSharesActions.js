@@ -8,6 +8,8 @@ import {
     SAGA_REPORT_DIVIDEND,
     SAGA_REPORT_SHARES_AGGREGATED_ANALYSE,
     SAGA_REPORT_SHARES_MULTIPLICATOR,
+    SAGA_REPORT_SHARES_FORECAST_TARGET,
+    SAGA_REPORT_SHARES_FORECAST_CONSENSUS,
 
     FETCH_REPORT_SHARES_SUPERTREND,
     FETCH_REPORT_SHARES_CANDLE_SEQUENCE,
@@ -17,7 +19,9 @@ import {
     FETCH_REPORT_SHARES_ASSET_FUNDAMENTAL,
     FETCH_REPORT_DIVIDEND,
     FETCH_REPORT_SHARES_AGGREGATED_ANALYSE,
-    FETCH_REPORT_SHARES_MULTIPLICATOR
+    FETCH_REPORT_SHARES_MULTIPLICATOR,
+    FETCH_REPORT_SHARES_FORECAST_TARGET,
+    FETCH_REPORT_SHARES_FORECAST_CONSENSUS
 } from '../types/reportSharesTypes'
 
 export const sagaReportSharesSupertrend = () => {
@@ -133,6 +137,32 @@ export const sagaReportSharesAggregatedAnalyse = () => {
 export const fetchReportSharesAggregatedAnalyse = (reportData) => {
     return {
         type: FETCH_REPORT_SHARES_AGGREGATED_ANALYSE,
+        payload: reportData
+    }
+}
+
+export const sagaReportSharesForecastTarget = () => {
+    return {
+        type: SAGA_REPORT_SHARES_FORECAST_TARGET
+    }
+}
+
+export const fetchReportSharesForecastTarget = (reportData) => {
+    return {
+        type: FETCH_REPORT_SHARES_FORECAST_TARGET,
+        payload: reportData
+    }
+}
+
+export const sagaReportSharesForecastConsensus = () => {
+    return {
+        type: SAGA_REPORT_SHARES_FORECAST_CONSENSUS
+    }
+}
+
+export const fetchReportSharesForecastConsensus = (reportData) => {
+    return {
+        type: FETCH_REPORT_SHARES_FORECAST_CONSENSUS,
         payload: reportData
     }
 }

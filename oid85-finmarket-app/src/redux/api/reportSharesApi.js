@@ -152,3 +152,33 @@ export const getReportMultiplicatorFromApi = async () => {
         return await response.json()
     }
 }
+
+export const getReportForecastTargetFromApi = async () => {
+    const response = await fetch(
+        `${CONSTANTS.FINMARKET_API}/api/shares/report/forecast-target-analyse`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+
+    if (response.ok) {
+        return await response.json()
+    }
+}
+
+export const getReportForecastConsensusFromApi = async () => {
+    const response = await fetch(
+        `${CONSTANTS.FINMARKET_API}/api/shares/report/forecast-consensus-analyse`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+
+    if (response.ok) {
+        return await response.json()
+    }
+}

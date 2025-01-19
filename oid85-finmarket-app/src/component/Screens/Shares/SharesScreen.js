@@ -12,6 +12,8 @@ import {ReportSharesDividend} from "./ReportSharesDividend";
 import {ReportSharesAssetFundamental} from "./ReportSharesAssetFundamental";
 import {ReportSharesMultiplicator} from "./ReportSharesMultiplicator";
 import {ReportSharesAggregatedAnalyse} from "./ReportSharesAggregatedAnalyse";
+import {ReportSharesForecastTarget} from "./ReportSharesForecastTarget";
+import {ReportSharesForecastConsensus} from "./ReportSharesForecastConsensus";
 
 export const SharesScreen = () => {
     const alert = useSelector(state => state.app.alert)
@@ -29,6 +31,8 @@ export const SharesScreen = () => {
 					<Tab>Dividend</Tab>
                     <Tab>AssetFundamental</Tab>
                     <Tab>Multiplicator</Tab>
+                    <Tab>ForecastTarget</Tab>
+                    <Tab>ForecastConsensus</Tab>
                     <Tab>AggregatedAnalyse</Tab>
                 </TabList>
                 <TabPanel>
@@ -54,6 +58,12 @@ export const SharesScreen = () => {
                 </TabPanel>
                 <TabPanel>
                     <ReportSharesMultiplicator />
+                </TabPanel>
+                <TabPanel>
+                    <ReportSharesForecastTarget />
+                </TabPanel>
+                <TabPanel>
+                    <ReportSharesForecastConsensus />
                 </TabPanel>
                 <TabPanel>
                     <ReportSharesAggregatedAnalyse />

@@ -7,7 +7,9 @@ import {
     FETCH_REPORT_SHARES_ASSET_FUNDAMENTAL,
     FETCH_REPORT_SHARES_MULTIPLICATOR,
     FETCH_REPORT_DIVIDEND,
-    FETCH_REPORT_SHARES_AGGREGATED_ANALYSE
+    FETCH_REPORT_SHARES_AGGREGATED_ANALYSE,
+    FETCH_REPORT_SHARES_FORECAST_TARGET,
+    FETCH_REPORT_SHARES_FORECAST_CONSENSUS
 } from '../types/reportSharesTypes'
 
 const initialState = {
@@ -42,6 +44,12 @@ export const reportSharesReducer = (state = initialState, action) => {
             return {...state, reportData: {...action.payload}}
 
         case FETCH_REPORT_SHARES_AGGREGATED_ANALYSE:
+            return {...state, reportData: {...action.payload}}
+
+        case FETCH_REPORT_SHARES_FORECAST_TARGET:
+            return {...state, reportData: {...action.payload}}
+
+        case FETCH_REPORT_SHARES_FORECAST_CONSENSUS:
             return {...state, reportData: {...action.payload}}
 
         default: return state

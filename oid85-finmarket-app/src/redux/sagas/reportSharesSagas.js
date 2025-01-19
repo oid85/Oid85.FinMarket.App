@@ -9,7 +9,9 @@ import {
     fetchReportSharesYieldLtm,
     fetchReportSharesAssetFundamental,
     fetchReportSharesMultiplicator,
-    fetchReportSharesDividend
+    fetchReportSharesDividend,
+    fetchReportSharesForecastTarget,
+    fetchReportSharesForecastConsensus
 } from '../actions/reportSharesActions'
 import {
     SAGA_REPORT_SHARES_SUPERTREND,
@@ -20,7 +22,9 @@ import {
     SAGA_REPORT_SHARES_ASSET_FUNDAMENTAL,
     SAGA_REPORT_DIVIDEND,
     SAGA_REPORT_SHARES_AGGREGATED_ANALYSE,
-    SAGA_REPORT_SHARES_MULTIPLICATOR
+    SAGA_REPORT_SHARES_MULTIPLICATOR,
+    SAGA_REPORT_SHARES_FORECAST_TARGET,
+    SAGA_REPORT_SHARES_FORECAST_CONSENSUS
 } from '../types/reportSharesTypes'
 import {
     getReportAggregatedAnalyseFromApi,
@@ -31,7 +35,9 @@ import {
     getReportYieldLtmFromApi,
     getReportAssetFundamentalFromApi,
     getReportMultiplicatorFromApi,
-    getReportDividendFromApi
+    getReportDividendFromApi,
+    getReportForecastTargetFromApi,
+    getReportForecastConsensusFromApi
 } from "../api/reportSharesApi";
 
 const getStartDate = (state) => state.filter.startDate
@@ -48,6 +54,8 @@ export function* eventSagaWatcherReportShares() {
     yield takeEvery(SAGA_REPORT_SHARES_MULTIPLICATOR, sagaWorkerReportSharesMultiplicator)
     yield takeEvery(SAGA_REPORT_DIVIDEND, sagaWorkerReportDividend)
     yield takeEvery(SAGA_REPORT_SHARES_AGGREGATED_ANALYSE, sagaWorkerReportSharesAggregatedAnalyse)
+    yield takeEvery(SAGA_REPORT_SHARES_FORECAST_TARGET, sagaWorkerReportSharesForecastTarget)
+    yield takeEvery(SAGA_REPORT_SHARES_FORECAST_CONSENSUS, sagaWorkerReportSharesForecastConsensus)
 }
 
 // SagaWorker'ы
@@ -202,6 +210,44 @@ function* sagaWorkerReportSharesAggregatedAnalyse() {
         yield put(hideLoader())
     }
     
+    catch (error) {
+        yield put(showAlert('Ошибка при получении данных'))
+        yield put(hideLoader())
+    }
+}
+
+function* sagaWorkerReportSharesForecastTarget() {
+    try {
+        yield put(showLoader())
+
+        let startDate = yield select(getStartDate)
+        let endDate = yield select(getEndDate)
+
+        let reportData = yield call(getReportForecastTargetFromApi, startDate, endDate)
+
+        yield put(fetchReportSharesForecastTarget(reportData))
+        yield put(hideLoader())
+    }
+
+    catch (error) {
+        yield put(showAlert('Ошибка при получении данных'))
+        yield put(hideLoader())
+    }
+}
+
+function* sagaWorkerReportSharesForecastConsensus() {
+    try {
+        yield put(showLoader())
+
+        let startDate = yield select(getStartDate)
+        let endDate = yield select(getEndDate)
+
+        let reportData = yield call(getReportForecastConsensusFromApi, startDate, endDate)
+
+        yield put(fetchReportSharesForecastConsensus(reportData))
+        yield put(hideLoader())
+    }
+
     catch (error) {
         yield put(showAlert('Ошибка при получении данных'))
         yield put(hideLoader())
