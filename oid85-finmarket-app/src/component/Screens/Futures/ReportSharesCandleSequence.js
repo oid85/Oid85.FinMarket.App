@@ -1,52 +1,39 @@
 import React, { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import Loader from '../../Loader/Loader'
-import {sagaReportBondAnalyse, sagaBondsWatchListTickers} from '../../../redux/actions/reportBondsActions'
+import { sagaReportFuturesCandleSequence } from '../../../redux/actions/reportFuturesActions'
 import '../../Report/Report.css'
 import { Table } from '../../Report/Table'
-import { FilterByLastDaysGroup } from '../../Filter/FilterByLastDaysGroup'
-import {FilterByTickerGroup} from '../../Filter/FilterByTickerGroup'
+import {FilterByLastDaysGroup} from '../../Filter/FilterByLastDaysGroup'
 
-export const ReportBondAnalyse = () => {
+export const ReportFuturesCandleSequence = () => {
 
     const dispatch = useDispatch()
     const loading = useSelector(state => state.app.loading)
-    const reportData = useSelector(state => state.reportBonds.reportData)
-    const watchListTickers = useSelector(state => state.reportBonds.watchListTickers)
+    const reportData = useSelector(state => state.reportFutures.reportData)
     const startDate = useSelector(state => state.filter.startDate)
     const endDate = useSelector(state => state.filter.endDate)
-    const ticker = useSelector(state => state.filter.ticker)
 
     useEffect(() => {
-        dispatch(sagaBondsWatchListTickers())
+        dispatch(sagaReportFuturesCandleSequence())
     }, [])
 
     useEffect(() => {
-        dispatch(sagaReportBondAnalyse())
-    }, [])
-
-    useEffect(() => {
-        dispatch(sagaReportBondAnalyse())
+        dispatch(sagaReportFuturesCandleSequence())
     }, [startDate])
 
     useEffect(() => {
-        dispatch(sagaReportBondAnalyse())
+        dispatch(sagaReportFuturesCandleSequence())
     }, [endDate])
-
-    useEffect(() => {
-        dispatch(sagaReportBondAnalyse())
-    }, [ticker])
 
     return (
         <React.Fragment>
             {
-                !reportData.result || !watchListTickers.result || loading
+                !reportData.result || loading
                     ? <Loader/>
                     :                    
                     <div className='report-container'>
                         <FilterByLastDaysGroup />
-                        <FilterByTickerGroup
-                            tickers = {watchListTickers.result} />
                         <Table
                             title = {`${reportData.result.title}`}
                             reportTableData = {reportData.result} />

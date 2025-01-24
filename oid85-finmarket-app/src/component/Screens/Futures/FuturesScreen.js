@@ -3,11 +3,13 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import { useSelector } from 'react-redux'
 import 'react-tabs/style/react-tabs.css'
 import { Alert } from '../../Alert/Alert'
-import { ReportFuturesSuperTrend } from './ReportFuturesSuperTrend'
-import { ReportFuturesCandleSequence } from './ReportFuturesCandleSequence'
-import { ReportFuturesCandleVolume } from './ReportFuturesCandleVolume'
-import { ReportFuturesRsi } from './ReportFuturesRsi'
-import {ReportFutureAnalyse} from './ReportFutureAnalyse'
+import {ReportFuturesSupertrend} from "./ReportFuturesSupertrend";
+import {ReportFuturesCandleSequence} from "./ReportSharesCandleSequence";
+import {ReportFuturesCandleVolume} from "./ReportSharesCandleVolume";
+import {ReportFuturesRsi} from "./ReportSharesRsi";
+import {ReportFuturesSpread} from "./ReportFuturesSpread";
+import {ReportFuturesYieldLtm} from "./ReportSharesYieldLtm";
+import {ReportFuturesAggregatedAnalyse} from "./ReportFuturesAggregatedAnalyse";
 
 export const FuturesScreen = () => {
     const alert = useSelector(state => state.app.alert)
@@ -17,26 +19,34 @@ export const FuturesScreen = () => {
             {alert && <Alert text={alert} />}
             <Tabs>
                 <TabList>
-                    <Tab>Тренд</Tab>
-                    <Tab>Свечи</Tab>
-                    <Tab>Объем</Tab>
-                    <Tab>RSI</Tab>
-                    <Tab>Сводный</Tab>
+                    <Tab>Supertrend</Tab>
+                    <Tab>CandleSequence</Tab>
+                    <Tab>CandleVolume</Tab>
+                    <Tab>Rsi</Tab>
+                    <Tab>Spred</Tab>
+                    <Tab>YieldLtm</Tab>
+                    <Tab>AggregatedAnalyse</Tab>
                 </TabList>                
                 <TabPanel>
-                    <ReportFuturesSuperTrend />
-                </TabPanel>  
+                    <ReportFuturesSupertrend />
+                </TabPanel>
                 <TabPanel>
                     <ReportFuturesCandleSequence />
-                </TabPanel> 
+                </TabPanel>
                 <TabPanel>
                     <ReportFuturesCandleVolume />
-                </TabPanel> 
+                </TabPanel>
                 <TabPanel>
                     <ReportFuturesRsi />
                 </TabPanel>
                 <TabPanel>
-                    <ReportFutureAnalyse />
+                    <ReportFuturesSpread />
+                </TabPanel>
+                <TabPanel>
+                    <ReportFuturesYieldLtm />
+                </TabPanel>
+                <TabPanel>
+                    <ReportFuturesAggregatedAnalyse />
                 </TabPanel>
             </Tabs>
         </React.Fragment>

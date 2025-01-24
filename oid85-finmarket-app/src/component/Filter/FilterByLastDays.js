@@ -4,7 +4,7 @@ import moment from 'moment'
 import {useDispatch} from 'react-redux'
 import {setEndDate, setStartDate} from '../../redux/actions/filterActions'
 
-export const FilterByLastDays = ({key, days}) => {
+export const FilterByLastDays = ({days}) => {
 
     const dispatch = useDispatch()
     
@@ -16,7 +16,7 @@ export const FilterByLastDays = ({key, days}) => {
                     width: 75,
                     margin: 1
                 }}
-                    key={key}
+                    key={days}
                     className='btn btn-outline-primary'
                     onClick={() => {
                         dispatch(setStartDate(moment()

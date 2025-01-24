@@ -1,62 +1,52 @@
 import {call, put, select, takeEvery} from 'redux-saga/effects'
 import {hideLoader, showAlert, showLoader} from '../actions/appActions'
-import { CONSTANTS } from '../../constants'
 import {
-    fetchReportIndexesSuperTrend,
+    fetchReportIndexesAggregatedAnalyse,
+    fetchReportIndexesSupertrend,
     fetchReportIndexesCandleSequence,
-    fetchReportIndexesCandleVolume,
     fetchReportIndexesRsi,
-    fetchReportIndexAnalyse,
-	fetchIndexesWatchListTickers
+    fetchReportIndexesYieldLtm
 } from '../actions/reportIndexesActions'
 import {
-    SAGA_INDEXES_WATCH_LIST_TICKERS,
     SAGA_REPORT_INDEXES_SUPERTREND,
     SAGA_REPORT_INDEXES_CANDLE_SEQUENCE,
-    SAGA_REPORT_INDEXES_CANDLE_VOLUME,
     SAGA_REPORT_INDEXES_RSI,
-    SAGA_REPORT_INDEX_ANALYSE
-} from '../types'
+    SAGA_REPORT_INDEXES_YIELD_LTM,
+    SAGA_REPORT_INDEXES_AGGREGATED_ANALYSE
+} from '../types/reportIndexesTypes'
+import {
+    getReportAggregatedAnalyseFromApi,
+    getReportSuperTrendFromApi,
+    getReportCandleSequenceFromApi,
+    getReportRsiFromApi,
+    getReportYieldLtmFromApi
+} from "../api/reportIndexesApi";
+
+const getStartDate = (state) => state.filter.startDate
+const getEndDate = (state) => state.filter.endDate
 
 // SagaWatcher'ы
 export function* eventSagaWatcherReportIndexes() {
-    yield takeEvery(SAGA_INDEXES_WATCH_LIST_TICKERS, sagaWorkerIndexesWatchListTickers)
     yield takeEvery(SAGA_REPORT_INDEXES_SUPERTREND, sagaWorkerReportIndexesSuperTrend)
     yield takeEvery(SAGA_REPORT_INDEXES_CANDLE_SEQUENCE, sagaWorkerReportIndexesCandleSequence)
-    yield takeEvery(SAGA_REPORT_INDEXES_CANDLE_VOLUME, sagaWorkerReportIndexesCandleVolume)
     yield takeEvery(SAGA_REPORT_INDEXES_RSI, sagaWorkerReportIndexesRsi)
-    yield takeEvery(SAGA_REPORT_INDEX_ANALYSE, sagaWorkerReportIndexAnalyse)
+    yield takeEvery(SAGA_REPORT_INDEXES_YIELD_LTM, sagaWorkerReportIndexesYieldLtm)
+    yield takeEvery(SAGA_REPORT_INDEXES_AGGREGATED_ANALYSE, sagaWorkerReportIndexesAggregatedAnalyse)
 }
 
 // SagaWorker'ы
-function* sagaWorkerIndexesWatchListTickers() {
-    try {
-        yield put(showLoader())
-
-        let watchListTickers = yield call(getIndexesWatchListTickersFromApi)
-
-        yield put(fetchIndexesWatchListTickers(watchListTickers))
-        yield put(hideLoader())
-    }
-
-    catch (error) {
-        yield put(showAlert('Ошибка при получении данных'))
-        yield put(hideLoader())
-    }
-}
-
 function* sagaWorkerReportIndexesSuperTrend() {
     try {
         yield put(showLoader())
-        
+
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
-        let reportData = yield call(getReportIndexesSuperTrendFromApi, startDate, endDate)
-        
-        yield put(fetchReportIndexesSuperTrend(reportData))
+        let reportData = yield call(getReportSuperTrendFromApi, startDate, endDate)
+
+        yield put(fetchReportIndexesSupertrend(reportData))
         yield put(hideLoader())
-    } 
-    
+    }
+
     catch (error) {
         yield put(showAlert('Ошибка при получении данных'))
         yield put(hideLoader())
@@ -66,33 +56,15 @@ function* sagaWorkerReportIndexesSuperTrend() {
 function* sagaWorkerReportIndexesCandleSequence() {
     try {
         yield put(showLoader())
-        
+
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
-        let reportData = yield call(getReportIndexesCandleSequenceFromApi, startDate, endDate)
-        
+        let reportData = yield call(getReportCandleSequenceFromApi, startDate, endDate)
+
         yield put(fetchReportIndexesCandleSequence(reportData))
         yield put(hideLoader())
     }
-    
-    catch (error) {
-        yield put(showAlert('Ошибка при получении данных'))
-        yield put(hideLoader())
-    }
-}
 
-function* sagaWorkerReportIndexesCandleVolume() {
-    try {
-        yield put(showLoader())
-        
-        let startDate = yield select(getStartDate)
-        let endDate = yield select(getEndDate)
-        let reportData = yield call(getReportIndexesCandleVolumeFromApi, startDate, endDate)
-        
-        yield put(fetchReportIndexesCandleVolume(reportData))
-        yield put(hideLoader())
-    }
-    
     catch (error) {
         yield put(showAlert('Ошибка при получении данных'))
         yield put(hideLoader())
@@ -102,149 +74,54 @@ function* sagaWorkerReportIndexesCandleVolume() {
 function* sagaWorkerReportIndexesRsi() {
     try {
         yield put(showLoader())
-        
+
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
         let reportData = yield call(getReportRsiFromApi, startDate, endDate)
-        
+
         yield put(fetchReportIndexesRsi(reportData))
         yield put(hideLoader())
     }
-    
+
     catch (error) {
         yield put(showAlert('Ошибка при получении данных'))
         yield put(hideLoader())
     }
 }
 
-function* sagaWorkerReportIndexAnalyse() {
+function* sagaWorkerReportIndexesYieldLtm() {
     try {
         yield put(showLoader())
-        
+
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
-        let ticker = yield select(getTicker)
+        let reportData = yield call(getReportYieldLtmFromApi, startDate, endDate)
 
-        let watchListTickers = yield select(getIndexesWatchListTickers)
-
-        if (ticker === '') {
-            ticker = watchListTickers[0]
-        }
-
-        let reportData = yield call(getReportIndexAnalyseFromApi, startDate, endDate, ticker)
-        
-        yield put(fetchReportIndexAnalyse(reportData))
+        yield put(fetchReportIndexesYieldLtm(reportData))
         yield put(hideLoader())
     }
-    
+
     catch (error) {
         yield put(showAlert('Ошибка при получении данных'))
         yield put(hideLoader())
     }
 }
 
-// Методы
-export const getStartDate = (state) => state.filter.startDate
-export const getEndDate = (state) => state.filter.endDate
-export const getTicker = (state) => state.filter.ticker
-export const getIndexesWatchListTickers = (state) => state.reportIndexes.watchListTickers
+function* sagaWorkerReportIndexesAggregatedAnalyse() {
+    try {
+        yield put(showLoader())
 
-const getIndexesWatchListTickersFromApi = async () => {
-    const response = await fetch(
-        `${CONSTANTS.FINMARKET_API}/api/indexes/watch-list-tickers`)
+        let startDate = yield select(getStartDate)
+        let endDate = yield select(getEndDate)
 
-    if (response.ok) {
-        return await response.json()
+        let reportData = yield call(getReportAggregatedAnalyseFromApi, startDate, endDate)
+
+        yield put(fetchReportIndexesAggregatedAnalyse(reportData))
+        yield put(hideLoader())
     }
-}
 
-const getReportIndexesSuperTrendFromApi = async (startDate, endDate) => {
-    const response = await fetch(
-        `${CONSTANTS.FINMARKET_API}/api/indexes/report/analyse-supertrend`, {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            from: startDate, 
-            to: endDate})
-    })
-    
-    if (response.ok) {
-        return await response.json()
-    }
-}
-
-const getReportIndexesCandleSequenceFromApi = async (startDate, endDate) => {
-    const response = await fetch(
-        `${CONSTANTS.FINMARKET_API}/api/indexes/report/analyse-candle-sequence`, {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            from: startDate, 
-            to: endDate})
-    })
-    
-    if (response.ok) {
-        return await response.json()
-    }
-}
-
-const getReportIndexesCandleVolumeFromApi = async (startDate, endDate) => {
-    const response = await fetch(
-        `${CONSTANTS.FINMARKET_API}/api/indexes/report/analyse-candle-volume`, {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            from: startDate, 
-            to: endDate})
-    })
-    
-    if (response.ok) {
-        return await response.json()
-    }
-}
-
-const getReportRsiFromApi = async (startDate, endDate) => {
-    const response = await fetch(
-        `${CONSTANTS.FINMARKET_API}/api/indexes/report/analyse-rsi`, {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            from: startDate, 
-            to: endDate})
-    })
-    
-    if (response.ok) {
-        return await response.json()
-    }
-}
-
-const getReportIndexAnalyseFromApi = async (startDate, endDate, ticker) => {
-    const response = await fetch(
-        `${CONSTANTS.FINMARKET_API}/api/indexes/report/total-analyse`, {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            from: startDate, 
-            to: endDate, 
-            ticker: ticker})
-    })
-    
-    if (response.ok) {
-        return await response.json()
+    catch (error) {
+        yield put(showAlert('Ошибка при получении данных'))
+        yield put(hideLoader())
     }
 }

@@ -3,12 +3,17 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import { useSelector } from 'react-redux'
 import 'react-tabs/style/react-tabs.css'
 import { Alert } from '../../Alert/Alert'
-import { ReportSharesSuperTrend } from './ReportSharesSuperTrend'
-import { ReportSharesCandleSequence } from './ReportSharesCandleSequence'
-import { ReportSharesCandleVolume } from './ReportSharesCandleVolume'
-import { ReportSharesRsi } from './ReportSharesRsi'
-import {ReportDividends} from './ReportDividends'
-import {ReportShareAnalyse} from './ReportShareAnalyse'
+import {ReportSharesSupertrend} from "./ReportSharesSupertrend";
+import {ReportSharesCandleSequence} from "./ReportSharesCandleSequence";
+import {ReportSharesCandleVolume} from "./ReportSharesCandleVolume";
+import {ReportSharesRsi} from "./ReportSharesRsi";
+import {ReportSharesYieldLtm} from "./ReportSharesYieldLtm";
+import {ReportSharesDividend} from "./ReportSharesDividend";
+import {ReportSharesAssetFundamental} from "./ReportSharesAssetFundamental";
+import {ReportSharesMultiplicator} from "./ReportSharesMultiplicator";
+import {ReportSharesAggregatedAnalyse} from "./ReportSharesAggregatedAnalyse";
+import {ReportSharesForecastTarget} from "./ReportSharesForecastTarget";
+import {ReportSharesForecastConsensus} from "./ReportSharesForecastConsensus";
 
 export const SharesScreen = () => {
     const alert = useSelector(state => state.app.alert)
@@ -18,30 +23,50 @@ export const SharesScreen = () => {
             {alert && <Alert text={alert} />}
             <Tabs>
                 <TabList>
-                    <Tab>Тренд</Tab>
-                    <Tab>Свечи</Tab>
-                    <Tab>Объем</Tab>
-                    <Tab>RSI</Tab>
-                    <Tab>Дивиденды</Tab>
-                    <Tab>Сводный</Tab>
-                </TabList>                
+                    <Tab>Supertrend</Tab>
+                    <Tab>CandleSequence</Tab>
+                    <Tab>CandleVolume</Tab>
+					<Tab>Rsi</Tab>
+					<Tab>YieldLtm</Tab>
+					<Tab>Dividend</Tab>
+                    <Tab>AssetFundamental</Tab>
+                    <Tab>Multiplicator</Tab>
+                    <Tab>ForecastTarget</Tab>
+                    <Tab>ForecastConsensus</Tab>
+                    <Tab>AggregatedAnalyse</Tab>
+                </TabList>
                 <TabPanel>
-                    <ReportSharesSuperTrend />
-                </TabPanel>  
+                    <ReportSharesSupertrend />
+                </TabPanel>
                 <TabPanel>
                     <ReportSharesCandleSequence />
-                </TabPanel> 
+                </TabPanel>
                 <TabPanel>
                     <ReportSharesCandleVolume />
-                </TabPanel> 
+                </TabPanel>
                 <TabPanel>
                     <ReportSharesRsi />
                 </TabPanel>
                 <TabPanel>
-                    <ReportDividends />
+                    <ReportSharesYieldLtm />
                 </TabPanel>
                 <TabPanel>
-                    <ReportShareAnalyse />
+                    <ReportSharesDividend />
+                </TabPanel>
+                <TabPanel>
+                    <ReportSharesAssetFundamental />
+                </TabPanel>
+                <TabPanel>
+                    <ReportSharesMultiplicator />
+                </TabPanel>
+                <TabPanel>
+                    <ReportSharesForecastTarget />
+                </TabPanel>
+                <TabPanel>
+                    <ReportSharesForecastConsensus />
+                </TabPanel>
+                <TabPanel>
+                    <ReportSharesAggregatedAnalyse />
                 </TabPanel>
             </Tabs>
         </React.Fragment>

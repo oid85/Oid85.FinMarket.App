@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import Loader from '../../Loader/Loader'
-import {sagaReportSharesCandleSequence} from '../../../redux/actions/reportSharesActions'
+import { sagaReportSharesCandleSequence } from '../../../redux/actions/reportSharesActions'
 import '../../Report/Report.css'
 import { Table } from '../../Report/Table'
 import {FilterByLastDaysGroup} from '../../Filter/FilterByLastDaysGroup'

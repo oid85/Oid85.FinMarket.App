@@ -4,10 +4,11 @@ import { useSelector } from 'react-redux'
 import 'react-tabs/style/react-tabs.css'
 import { Alert } from '../Alert/Alert'
 import { SharesScreen } from '../Screens/Shares/SharesScreen'
-import {BondsScreen} from '../Screens/Bonds/BondsScreen'
-import {FuturesScreen} from '../Screens/Futures/FuturesScreen'
-import {CurrenciesScreen} from '../Screens/Currencies/CurrenciesScreen'
-import {IndexesScreen} from '../Screens/Indexes/IndexesScreen'
+import {BondsScreen} from "../Screens/Bonds/BondsScreen";
+import {CurrenciesScreen} from "../Screens/Currencies/CurrenciesScreen";
+import {FuturesScreen} from "../Screens/Futures/FuturesScreen";
+import {IndexesScreen} from "../Screens/Indexes/IndexesScreen";
+import {MarketEventScreen} from "../Screens/MarketEvents/MarketEventScreen";
 
 export const Workspace = () => {
     const alert = useSelector(state => state.app.alert)
@@ -17,11 +18,12 @@ export const Workspace = () => {
             {alert && <Alert text={alert} />}
             <Tabs>
                 <TabList>
-                    <Tab>Акции</Tab>
-                    <Tab>Облигации</Tab>
-                    <Tab>Фьючерсы</Tab>
-                    <Tab>Валюты</Tab>
-                    <Tab>Индексы</Tab>
+                    <Tab>Shares</Tab>
+                    <Tab>Bonds</Tab>
+                    <Tab>Currencies</Tab>
+                    <Tab>Futures</Tab>
+                    <Tab>Indexes</Tab>
+                    <Tab>MarketEvents</Tab>
                 </TabList>                
                 <TabPanel>
                     <SharesScreen />
@@ -30,13 +32,16 @@ export const Workspace = () => {
                     <BondsScreen />
                 </TabPanel>
                 <TabPanel>
-                    <FuturesScreen />
-                </TabPanel>
-                <TabPanel>
                     <CurrenciesScreen />
                 </TabPanel>
                 <TabPanel>
+                    <FuturesScreen />
+                </TabPanel>
+                <TabPanel>
                     <IndexesScreen />
+                </TabPanel>
+                <TabPanel>
+                    <MarketEventScreen />
                 </TabPanel>
             </Tabs>
         </React.Fragment>

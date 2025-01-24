@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import Loader from '../../Loader/Loader'
-import {sagaReportFuturesCandleSequence} from '../../../redux/actions/reportFuturesActions'
+import { sagaReportFuturesCandleVolume } from '../../../redux/actions/reportFuturesActions'
 import '../../Report/Report.css'
 import { Table } from '../../Report/Table'
 import {FilterByLastDaysGroup} from '../../Filter/FilterByLastDaysGroup'
 
-export const ReportFuturesCandleSequence = () => {
+export const ReportFuturesCandleVolume = () => {
 
     const dispatch = useDispatch()
     const loading = useSelector(state => state.app.loading)
@@ -15,15 +15,15 @@ export const ReportFuturesCandleSequence = () => {
     const endDate = useSelector(state => state.filter.endDate)
 
     useEffect(() => {
-        dispatch(sagaReportFuturesCandleSequence())
+        dispatch(sagaReportFuturesCandleVolume())
     }, [])
 
     useEffect(() => {
-        dispatch(sagaReportFuturesCandleSequence())
+        dispatch(sagaReportFuturesCandleVolume())
     }, [startDate])
 
     useEffect(() => {
-        dispatch(sagaReportFuturesCandleSequence())
+        dispatch(sagaReportFuturesCandleVolume())
     }, [endDate])
 
     return (

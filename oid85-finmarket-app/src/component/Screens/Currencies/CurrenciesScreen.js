@@ -3,11 +3,11 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import { useSelector } from 'react-redux'
 import 'react-tabs/style/react-tabs.css'
 import { Alert } from '../../Alert/Alert'
-import { ReportCurrenciesSuperTrend } from './ReportCurrenciesSuperTrend'
-import { ReportCurrenciesCandleSequence } from './ReportCurrenciesCandleSequence'
-import { ReportCurrenciesCandleVolume } from './ReportCurrenciesCandleVolume'
-import { ReportCurrenciesRsi } from './ReportCurrenciesRsi'
-import {ReportCurrencyAnalyse} from './ReportCurrencyAnalyse'
+import {ReportCurrenciesSupertrend} from "./ReportCurrenciesSupertrend";
+import {ReportCurrenciesCandleSequence} from "./ReportCurrenciesCandleSequence";
+import {ReportCurrenciesRsi} from "./ReportCurrenciesRsi";
+import {ReportCurrenciesYieldLtm} from "./ReportCurrenciesYieldLtm";
+import {ReportCurrenciesAggregatedAnalyse} from "./ReportCurrenciesAggregatedAnalyse";
 
 export const CurrenciesScreen = () => {
     const alert = useSelector(state => state.app.alert)
@@ -17,26 +17,26 @@ export const CurrenciesScreen = () => {
             {alert && <Alert text={alert} />}
             <Tabs>
                 <TabList>
-                    <Tab>Тренд</Tab>
-                    <Tab>Свечи</Tab>
-                    <Tab>Объем</Tab>
-                    <Tab>RSI</Tab>
-                    <Tab>Сводный</Tab>
-                </TabList>                
+                    <Tab>Supertrend</Tab>
+                    <Tab>CandleSequence</Tab>
+                    <Tab>Rsi</Tab>
+                    <Tab>YieldLtm</Tab>
+                    <Tab>AggregatedAnalyse</Tab>
+                </TabList>
                 <TabPanel>
-                    <ReportCurrenciesSuperTrend />
-                </TabPanel>  
+                    <ReportCurrenciesSupertrend />
+                </TabPanel>
                 <TabPanel>
                     <ReportCurrenciesCandleSequence />
-                </TabPanel> 
-                <TabPanel>
-                    <ReportCurrenciesCandleVolume />
-                </TabPanel> 
+                </TabPanel>
                 <TabPanel>
                     <ReportCurrenciesRsi />
                 </TabPanel>
                 <TabPanel>
-                    <ReportCurrencyAnalyse />
+                    <ReportCurrenciesYieldLtm />
+                </TabPanel>
+                <TabPanel>
+                    <ReportCurrenciesAggregatedAnalyse />
                 </TabPanel>
             </Tabs>
         </React.Fragment>

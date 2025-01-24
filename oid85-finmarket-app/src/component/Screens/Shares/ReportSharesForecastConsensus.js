@@ -1,34 +1,20 @@
 import React, { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import Loader from '../../Loader/Loader'
-import {sagaReportFuturesCandleVolume, sagaFuturesWatchListTickers} from '../../../redux/actions/reportFuturesActions'
+import { sagaReportSharesForecastConsensus } from '../../../redux/actions/reportSharesActions'
 import '../../Report/Report.css'
 import { Table } from '../../Report/Table'
 import {FilterByLastDaysGroup} from '../../Filter/FilterByLastDaysGroup'
 
-export const ReportFuturesCandleVolume = () => {
+export const ReportSharesForecastConsensus = () => {
 
     const dispatch = useDispatch()
     const loading = useSelector(state => state.app.loading)
-    const reportData = useSelector(state => state.reportFutures.reportData)
-    const startDate = useSelector(state => state.filter.startDate)
-    const endDate = useSelector(state => state.filter.endDate)
+    const reportData = useSelector(state => state.reportShares.reportData)
 
     useEffect(() => {
-        dispatch(sagaFuturesWatchListTickers())
+        dispatch(sagaReportSharesForecastConsensus())
     }, [])
-
-    useEffect(() => {
-        dispatch(sagaReportFuturesCandleVolume())
-    }, [])
-
-    useEffect(() => {
-        dispatch(sagaReportFuturesCandleVolume())
-    }, [startDate])
-
-    useEffect(() => {
-        dispatch(sagaReportFuturesCandleVolume())
-    }, [endDate])
 
     return (
         <React.Fragment>
@@ -38,7 +24,7 @@ export const ReportFuturesCandleVolume = () => {
                     :                    
                     <div className='report-container'>
                         <FilterByLastDaysGroup />
-                        <Table 
+                        <Table
                             title = {`${reportData.result.title}`}
                             reportTableData = {reportData.result} />
                     </div>                    

@@ -2,40 +2,23 @@ import {
     SAGA_REPORT_BONDS_SUPERTREND,
     SAGA_REPORT_BONDS_CANDLE_SEQUENCE,
     SAGA_REPORT_BONDS_CANDLE_VOLUME,
-    SAGA_REPORT_BONDS_RSI,
-    SAGA_REPORT_COUPONS,
-    SAGA_REPORT_BOND_ANALYSE,
-    SAGA_BONDS_WATCH_LIST_TICKERS,
+    SAGA_REPORT_COUPON,
+    SAGA_REPORT_BONDS_AGGREGATED_ANALYSE,
 
     FETCH_REPORT_BONDS_SUPERTREND,
     FETCH_REPORT_BONDS_CANDLE_SEQUENCE,
     FETCH_REPORT_BONDS_CANDLE_VOLUME,
-    FETCH_REPORT_BONDS_RSI,
-    FETCH_REPORT_COUPONS,
-    FETCH_REPORT_BOND_ANALYSE,
-    FETCH_BONDS_WATCH_LIST_TICKERS
-} from '../types'
+    FETCH_REPORT_COUPON,
+    FETCH_REPORT_BONDS_AGGREGATED_ANALYSE
+} from '../types/reportBondsTypes'
 
-export const sagaBondsWatchListTickers = () => {
-    return {
-        type: SAGA_BONDS_WATCH_LIST_TICKERS
-    }
-}
-
-export const fetchBondsWatchListTickers = (tickers) => {
-    return {
-        type: FETCH_BONDS_WATCH_LIST_TICKERS,
-        payload: tickers
-    }
-}
-
-export const sagaReportBondsSuperTrend = () => {
+export const sagaReportBondsSupertrend = () => {
     return {
         type: SAGA_REPORT_BONDS_SUPERTREND
     }
 }
 
-export const fetchReportBondsSuperTrend = (reportData) => {
+export const fetchReportBondsSupertrend = (reportData) => {
     return {
         type: FETCH_REPORT_BONDS_SUPERTREND,
         payload: reportData
@@ -68,41 +51,28 @@ export const fetchReportBondsCandleVolume = (reportData) => {
     }
 }
 
-export const sagaReportBondsRsi = () => {
+export const sagaReportBondsCoupon = () => {
     return {
-        type: SAGA_REPORT_BONDS_RSI
+        type: SAGA_REPORT_COUPON
     }
 }
 
-export const fetchReportBondsRsi = (reportData) => {
+export const fetchReportBondsCoupon = (reportData) => {
     return {
-        type: FETCH_REPORT_BONDS_RSI,
+        type: FETCH_REPORT_COUPON,
         payload: reportData
     }
 }
 
-export const sagaReportCoupons = () => {
+export const sagaReportBondsAggregatedAnalyse = () => {
     return {
-        type: SAGA_REPORT_COUPONS
+        type: SAGA_REPORT_BONDS_AGGREGATED_ANALYSE
     }
 }
 
-export const fetchReportCoupons = (reportData) => {
+export const fetchReportBondsAggregatedAnalyse = (reportData) => {
     return {
-        type: FETCH_REPORT_COUPONS,
-        payload: reportData
-    }
-}
-
-export const sagaReportBondAnalyse = () => {
-    return {
-        type: SAGA_REPORT_BOND_ANALYSE
-    }
-}
-
-export const fetchReportBondsAnalyse = (reportData) => {
-    return {
-        type: FETCH_REPORT_BOND_ANALYSE,
+        type: FETCH_REPORT_BONDS_AGGREGATED_ANALYSE,
         payload: reportData
     }
 }

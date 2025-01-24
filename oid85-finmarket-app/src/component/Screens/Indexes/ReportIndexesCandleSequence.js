@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import Loader from '../../Loader/Loader'
+import { sagaReportIndexesCandleSequence } from '../../../redux/actions/reportIndexesActions'
 import '../../Report/Report.css'
 import { Table } from '../../Report/Table'
 import {FilterByLastDaysGroup} from '../../Filter/FilterByLastDaysGroup'
-import {sagaReportIndexesCandleSequence} from '../../../redux/actions/reportIndexesActions'
 
 export const ReportIndexesCandleSequence = () => {
 

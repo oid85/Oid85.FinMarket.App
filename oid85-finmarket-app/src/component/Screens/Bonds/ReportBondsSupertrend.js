@@ -1,33 +1,29 @@
 import React, { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import Loader from '../../Loader/Loader'
-import {sagaReportIndexesCandleVolume, sagaIndexesWatchListTickers} from '../../../redux/actions/reportIndexesActions'
+import { sagaReportBondsSupertrend } from '../../../redux/actions/reportBondsActions'
 import '../../Report/Report.css'
 import { Table } from '../../Report/Table'
 import {FilterByLastDaysGroup} from '../../Filter/FilterByLastDaysGroup'
 
-export const ReportIndexesCandleVolume = () => {
+export const ReportBondsSupertrend = () => {
 
     const dispatch = useDispatch()
     const loading = useSelector(state => state.app.loading)
-    const reportData = useSelector(state => state.reportIndexes.reportData)
+    const reportData = useSelector(state => state.reportBonds.reportData)
     const startDate = useSelector(state => state.filter.startDate)
     const endDate = useSelector(state => state.filter.endDate)
 
     useEffect(() => {
-        dispatch(sagaIndexesWatchListTickers())
+        dispatch(sagaReportBondsSupertrend())
     }, [])
 
     useEffect(() => {
-        dispatch(sagaReportIndexesCandleVolume())
-    }, [])
-
-    useEffect(() => {
-        dispatch(sagaReportIndexesCandleVolume())
+        dispatch(sagaReportBondsSupertrend())
     }, [startDate])
 
     useEffect(() => {
-        dispatch(sagaReportIndexesCandleVolume())
+        dispatch(sagaReportBondsSupertrend())
     }, [endDate])
 
     return (
@@ -38,7 +34,7 @@ export const ReportIndexesCandleVolume = () => {
                     :                    
                     <div className='report-container'>
                         <FilterByLastDaysGroup />
-                        <Table 
+                        <Table
                             title = {`${reportData.result.title}`}
                             reportTableData = {reportData.result} />
                     </div>                    

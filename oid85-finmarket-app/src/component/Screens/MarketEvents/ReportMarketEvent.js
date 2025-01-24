@@ -1,18 +1,19 @@
 import React, { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import Loader from '../../Loader/Loader'
-import {sagaReportDividends} from '../../../redux/actions/reportSharesActions'
+import { sagaReportMarketEvent } from '../../../redux/actions/reportMarketEventsActions'
 import '../../Report/Report.css'
 import { Table } from '../../Report/Table'
+import {FilterByLastDaysGroup} from '../../Filter/FilterByLastDaysGroup'
 
-export const ReportDividends = () => {
+export const ReportMarketEvent = () => {
 
     const dispatch = useDispatch()
     const loading = useSelector(state => state.app.loading)
     const reportData = useSelector(state => state.reportShares.reportData)
 
     useEffect(() => {
-        dispatch(sagaReportDividends())
+        dispatch(sagaReportMarketEvent())
     }, [])
 
     return (
@@ -22,7 +23,8 @@ export const ReportDividends = () => {
                     ? <Loader/>
                     :                    
                     <div className='report-container'>
-                        <Table 
+                        <FilterByLastDaysGroup />
+                        <Table
                             title = {`${reportData.result.title}`}
                             reportTableData = {reportData.result} />
                     </div>                    

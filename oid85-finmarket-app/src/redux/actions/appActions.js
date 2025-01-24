@@ -3,7 +3,7 @@ import {
     HIDE_LOADER,
     SHOW_ALERT,
     HIDE_ALERT
-} from '../types'
+} from '../types/appTypes'
 
 export const showLoader = () => {
     return {

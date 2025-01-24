@@ -1,29 +1,29 @@
 import React, { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import Loader from '../../Loader/Loader'
-import { sagaReportBondsCandleVolume } from '../../../redux/actions/reportBondsActions'
+import { sagaReportFuturesYieldLtm } from '../../../redux/actions/reportFuturesActions'
 import '../../Report/Report.css'
 import { Table } from '../../Report/Table'
 import {FilterByLastDaysGroup} from '../../Filter/FilterByLastDaysGroup'
 
-export const ReportBondsCandleVolume = () => {
+export const ReportFuturesYieldLtm = () => {
 
     const dispatch = useDispatch()
     const loading = useSelector(state => state.app.loading)
-    const reportData = useSelector(state => state.reportShares.reportData)
+    const reportData = useSelector(state => state.reportFutures.reportData)
     const startDate = useSelector(state => state.filter.startDate)
     const endDate = useSelector(state => state.filter.endDate)
 
     useEffect(() => {
-        dispatch(sagaReportBondsCandleVolume())
+        dispatch(sagaReportFuturesYieldLtm())
     }, [])
 
     useEffect(() => {
-        dispatch(sagaReportBondsCandleVolume())
+        dispatch(sagaReportFuturesYieldLtm())
     }, [startDate])
 
     useEffect(() => {
-        dispatch(sagaReportBondsCandleVolume())
+        dispatch(sagaReportFuturesYieldLtm())
     }, [endDate])
 
     return (
