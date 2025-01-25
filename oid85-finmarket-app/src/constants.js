@@ -1,5 +1,5 @@
 export const CONSTANTS = {
-    FINMARKET_API: 'http://localhost:1001',
+    FINMARKET_API: 'http://26.147.25.39/:1001',
 
     DEFAULT_PERIOD: 30,
 
