@@ -37,7 +37,7 @@ export const Icon = ({displayType, displayValue}) => {
             return (<DarkGreen />)
         }
 
-        if (displayValue.match(CONSTANTS.CANDLE_SECUENCE_BLACK)) {
+        if (displayValue.match(CONSTANTS.CANDLE_SEQUENCE_BLACK)) {
             return (<DarkRed />)
         }
     }
