@@ -1,5 +1,5 @@
 export const CONSTANTS = {
-    FINMARKET_API: 'http://localhost:1001',
+    FINMARKET_API: 'http://26.147.25.39/:1001',
 
     DEFAULT_PERIOD: 30,
 
@@ -10,7 +10,7 @@ export const CONSTANTS = {
     VOLUME_DIRECTION_DOWN: 'Объем падает',
 
     CANDLE_SECUENCE_WHITE: 'Белые свечи',
-    CANDLE_SECUENCE_BLACK: 'Черные свечи',
+    CANDLE_SEQUENCE_BLACK: 'Черные свечи',
 
     RSI_INTERPRETATION_OVERBOUGHT: 'Перекупленность',
     RSI_INTERPRETATION_OVERSOLD: 'Перепроданность',
