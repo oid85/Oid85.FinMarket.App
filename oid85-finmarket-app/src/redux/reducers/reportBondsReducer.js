@@ -3,7 +3,8 @@ import {
     FETCH_REPORT_BONDS_CANDLE_SEQUENCE,
     FETCH_REPORT_BONDS_CANDLE_VOLUME,
     FETCH_REPORT_COUPON,
-    FETCH_REPORT_BONDS_AGGREGATED_ANALYSE
+    FETCH_REPORT_BONDS_AGGREGATED_ANALYSE,
+    FETCH_REPORT_BONDS_SELECTION
 } from '../types/reportBondsTypes'
 
 const initialState = {
@@ -26,6 +27,9 @@ export const reportBondsReducer = (state = initialState, action) => {
             return {...state, reportData: {...action.payload}}
 
         case FETCH_REPORT_BONDS_AGGREGATED_ANALYSE:
+            return {...state, reportData: {...action.payload}}
+
+        case FETCH_REPORT_BONDS_SELECTION:
             return {...state, reportData: {...action.payload}}
 
         default: return state
