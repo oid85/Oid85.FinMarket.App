@@ -23,7 +23,7 @@ export const FuturesScreen = () => {
                     <Tab>CandleSequence</Tab>
                     <Tab>CandleVolume</Tab>
                     <Tab>Rsi</Tab>
-                    <Tab>Spred</Tab>
+                    <Tab>Spread</Tab>
                     <Tab>YieldLtm</Tab>
                     <Tab>AggregatedAnalyse</Tab>
                 </TabList>                
