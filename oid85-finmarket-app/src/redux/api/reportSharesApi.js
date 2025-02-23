@@ -108,6 +108,24 @@ export const getReportYieldLtmFromApi = async (startDate, endDate) => {
     }
 }
 
+export const getReportDrawdownFromMaximumFromApi = async (startDate, endDate) => {
+    const response = await fetch(
+        `${CONSTANTS.FINMARKET_API}/api/shares/report/drawdown-from-maximum-analyse`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                from: startDate,
+                to: endDate})
+        })
+
+    if (response.ok) {
+        return await response.json()
+    }
+}
+
 export const getReportDividendFromApi = async () => {
     const response = await fetch(
         `${CONSTANTS.FINMARKET_API}/api/shares/report/dividend-analyse`, {

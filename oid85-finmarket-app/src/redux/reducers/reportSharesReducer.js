@@ -4,6 +4,7 @@ import {
     FETCH_REPORT_SHARES_CANDLE_VOLUME,
     FETCH_REPORT_SHARES_RSI,
     FETCH_REPORT_SHARES_YIELD_LTM,
+    FETCH_REPORT_SHARES_DRAWDOWN_FROM_MAXIMUM,
     FETCH_REPORT_SHARES_ASSET_FUNDAMENTAL,
     FETCH_REPORT_SHARES_MULTIPLICATOR,
     FETCH_REPORT_DIVIDEND,
@@ -32,6 +33,9 @@ export const reportSharesReducer = (state = initialState, action) => {
             return {...state, reportData: {...action.payload}}
 
         case FETCH_REPORT_SHARES_YIELD_LTM:
+            return {...state, reportData: {...action.payload}}
+
+        case FETCH_REPORT_SHARES_DRAWDOWN_FROM_MAXIMUM:
             return {...state, reportData: {...action.payload}}
 
         case FETCH_REPORT_SHARES_ASSET_FUNDAMENTAL:

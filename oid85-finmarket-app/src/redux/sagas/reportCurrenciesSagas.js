@@ -5,13 +5,15 @@ import {
     fetchReportCurrenciesSupertrend,
     fetchReportCurrenciesCandleSequence,
     fetchReportCurrenciesRsi,
-    fetchReportCurrenciesYieldLtm
+    fetchReportCurrenciesYieldLtm,
+    fetchReportCurrenciesDrawdownFromMaximum
 } from '../actions/reportCurrenciesActions'
 import {
     SAGA_REPORT_CURRENCIES_SUPERTREND,
     SAGA_REPORT_CURRENCIES_CANDLE_SEQUENCE,
     SAGA_REPORT_CURRENCIES_RSI,
     SAGA_REPORT_CURRENCIES_YIELD_LTM,
+    SAGA_REPORT_CURRENCIES_DRAWDOWN_FROM_MAXIMUM,
     SAGA_REPORT_CURRENCIES_AGGREGATED_ANALYSE
 } from '../types/reportCurrenciesTypes'
 import {
@@ -19,7 +21,8 @@ import {
     getReportSuperTrendFromApi,
     getReportCandleSequenceFromApi,
     getReportRsiFromApi,
-    getReportYieldLtmFromApi
+    getReportYieldLtmFromApi,
+    getReportDrawdownFromMaximumFromApi
 } from "../api/reportCurrenciesApi";
 
 const getStartDate = (state) => state.filter.startDate
@@ -31,6 +34,7 @@ export function* eventSagaWatcherReportCurrencies() {
     yield takeEvery(SAGA_REPORT_CURRENCIES_CANDLE_SEQUENCE, sagaWorkerReportCurrenciesCandleSequence)
     yield takeEvery(SAGA_REPORT_CURRENCIES_RSI, sagaWorkerReportCurrenciesRsi)
     yield takeEvery(SAGA_REPORT_CURRENCIES_YIELD_LTM, sagaWorkerReportCurrenciesYieldLtm)
+    yield takeEvery(SAGA_REPORT_CURRENCIES_DRAWDOWN_FROM_MAXIMUM, sagaWorkerReportCurrenciesDrawdownFromMaximum)
     yield takeEvery(SAGA_REPORT_CURRENCIES_AGGREGATED_ANALYSE, sagaWorkerReportCurrenciesAggregatedAnalyse)
 }
 
@@ -98,6 +102,24 @@ function* sagaWorkerReportCurrenciesYieldLtm() {
         let reportData = yield call(getReportYieldLtmFromApi, startDate, endDate)
 
         yield put(fetchReportCurrenciesYieldLtm(reportData))
+        yield put(hideLoader())
+    }
+
+    catch (error) {
+        yield put(showAlert('Ошибка при получении данных'))
+        yield put(hideLoader())
+    }
+}
+
+function* sagaWorkerReportCurrenciesDrawdownFromMaximum() {
+    try {
+        yield put(showLoader())
+
+        let startDate = yield select(getStartDate)
+        let endDate = yield select(getEndDate)
+        let reportData = yield call(getReportDrawdownFromMaximumFromApi, startDate, endDate)
+
+        yield put(fetchReportCurrenciesDrawdownFromMaximum(reportData))
         yield put(hideLoader())
     }
 

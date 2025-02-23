@@ -5,13 +5,15 @@ import {
     fetchReportIndexesSupertrend,
     fetchReportIndexesCandleSequence,
     fetchReportIndexesRsi,
-    fetchReportIndexesYieldLtm
+    fetchReportIndexesYieldLtm,
+    fetchReportIndexesDrawdownFromMaximum
 } from '../actions/reportIndexesActions'
 import {
     SAGA_REPORT_INDEXES_SUPERTREND,
     SAGA_REPORT_INDEXES_CANDLE_SEQUENCE,
     SAGA_REPORT_INDEXES_RSI,
     SAGA_REPORT_INDEXES_YIELD_LTM,
+    SAGA_REPORT_INDEXES_DRAWDOWN_FROM_MAXIMUM,
     SAGA_REPORT_INDEXES_AGGREGATED_ANALYSE
 } from '../types/reportIndexesTypes'
 import {
@@ -19,7 +21,8 @@ import {
     getReportSuperTrendFromApi,
     getReportCandleSequenceFromApi,
     getReportRsiFromApi,
-    getReportYieldLtmFromApi
+    getReportYieldLtmFromApi,
+    getReportDrawdownFromMaximumFromApi
 } from "../api/reportIndexesApi";
 
 const getStartDate = (state) => state.filter.startDate
@@ -31,6 +34,7 @@ export function* eventSagaWatcherReportIndexes() {
     yield takeEvery(SAGA_REPORT_INDEXES_CANDLE_SEQUENCE, sagaWorkerReportIndexesCandleSequence)
     yield takeEvery(SAGA_REPORT_INDEXES_RSI, sagaWorkerReportIndexesRsi)
     yield takeEvery(SAGA_REPORT_INDEXES_YIELD_LTM, sagaWorkerReportIndexesYieldLtm)
+    yield takeEvery(SAGA_REPORT_INDEXES_DRAWDOWN_FROM_MAXIMUM, sagaWorkerReportIndexesDrawdownFromMaximum)
     yield takeEvery(SAGA_REPORT_INDEXES_AGGREGATED_ANALYSE, sagaWorkerReportIndexesAggregatedAnalyse)
 }
 
@@ -98,6 +102,24 @@ function* sagaWorkerReportIndexesYieldLtm() {
         let reportData = yield call(getReportYieldLtmFromApi, startDate, endDate)
 
         yield put(fetchReportIndexesYieldLtm(reportData))
+        yield put(hideLoader())
+    }
+
+    catch (error) {
+        yield put(showAlert('Ошибка при получении данных'))
+        yield put(hideLoader())
+    }
+}
+
+function* sagaWorkerReportIndexesDrawdownFromMaximum() {
+    try {
+        yield put(showLoader())
+
+        let startDate = yield select(getStartDate)
+        let endDate = yield select(getEndDate)
+        let reportData = yield call(getReportDrawdownFromMaximumFromApi, startDate, endDate)
+
+        yield put(fetchReportIndexesDrawdownFromMaximum(reportData))
         yield put(hideLoader())
     }
 

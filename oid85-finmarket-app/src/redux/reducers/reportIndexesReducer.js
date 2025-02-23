@@ -3,6 +3,7 @@ import {
     FETCH_REPORT_INDEXES_CANDLE_SEQUENCE,
     FETCH_REPORT_INDEXES_RSI,
     FETCH_REPORT_INDEXES_YIELD_LTM,
+    FETCH_REPORT_INDEXES_DRAWDOWN_FROM_MAXIMUM,
     FETCH_REPORT_INDEXES_AGGREGATED_ANALYSE
 } from '../types/reportIndexesTypes'
 
@@ -23,6 +24,9 @@ export const reportIndexesReducer = (state = initialState, action) => {
             return {...state, reportData: {...action.payload}}
 
         case FETCH_REPORT_INDEXES_YIELD_LTM:
+            return {...state, reportData: {...action.payload}}
+
+        case FETCH_REPORT_INDEXES_DRAWDOWN_FROM_MAXIMUM:
             return {...state, reportData: {...action.payload}}
 
         case FETCH_REPORT_INDEXES_AGGREGATED_ANALYSE:

@@ -27,6 +27,7 @@ export const CONSTANTS = {
     DISPLAY_TYPE_ANALYSE_RESULT_CANDLE_VOLUME: 'AnalyseResultCandleVolume',
     DISPLAY_TYPE_ANALYSE_RESULT_RSI: 'AnalyseResultRsi',
     DISPLAY_TYPE_ANALYSE_RESULT_YIELD_LTM: 'AnalyseResultYieldLtm',
+    DISPLAY_TYPE_ANALYSE_RESULT_DRAWDOWN_FROM_MAXIMUM: 'AnalyseResultDrawdownFromMaximum',
 
     COLOR_WHITE: '#FFFFFF',
     COLOR_RED: '#FF6633',

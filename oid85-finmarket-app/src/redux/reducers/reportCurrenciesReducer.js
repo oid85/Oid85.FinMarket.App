@@ -3,6 +3,7 @@ import {
     FETCH_REPORT_CURRENCIES_CANDLE_SEQUENCE,
     FETCH_REPORT_CURRENCIES_RSI,
     FETCH_REPORT_CURRENCIES_YIELD_LTM,
+    FETCH_REPORT_CURRENCIES_DRAWDOWN_FROM_MAXIMUM,
     FETCH_REPORT_CURRENCIES_AGGREGATED_ANALYSE
 } from '../types/reportCurrenciesTypes'
 
@@ -23,6 +24,9 @@ export const reportCurrenciesReducer = (state = initialState, action) => {
             return {...state, reportData: {...action.payload}}
 
         case FETCH_REPORT_CURRENCIES_YIELD_LTM:
+            return {...state, reportData: {...action.payload}}
+
+        case FETCH_REPORT_CURRENCIES_DRAWDOWN_FROM_MAXIMUM:
             return {...state, reportData: {...action.payload}}
 
         case FETCH_REPORT_CURRENCIES_AGGREGATED_ANALYSE:

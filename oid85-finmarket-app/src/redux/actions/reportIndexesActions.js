@@ -3,14 +3,17 @@ import {
     SAGA_REPORT_INDEXES_CANDLE_SEQUENCE,
     SAGA_REPORT_INDEXES_RSI,
     SAGA_REPORT_INDEXES_YIELD_LTM,
+    SAGA_REPORT_INDEXES_DRAWDOWN_FROM_MAXIMUM,
     SAGA_REPORT_INDEXES_AGGREGATED_ANALYSE,
 
     FETCH_REPORT_INDEXES_SUPERTREND,
     FETCH_REPORT_INDEXES_CANDLE_SEQUENCE,
     FETCH_REPORT_INDEXES_RSI,
     FETCH_REPORT_INDEXES_YIELD_LTM,
+    FETCH_REPORT_INDEXES_DRAWDOWN_FROM_MAXIMUM,
     FETCH_REPORT_INDEXES_AGGREGATED_ANALYSE
 } from '../types/reportIndexesTypes'
+import {fetchReportSharesDrawdownFromMaximum} from "./reportSharesActions";
 
 export const sagaReportIndexesSupertrend = () => {
     return {
@@ -60,6 +63,19 @@ export const sagaReportIndexesYieldLtm = () => {
 export const fetchReportIndexesYieldLtm = (reportData) => {
     return {
         type: FETCH_REPORT_INDEXES_YIELD_LTM,
+        payload: reportData
+    }
+}
+
+export const sagaReportIndexesDrawdownFromMaximum = () => {
+    return {
+        type: SAGA_REPORT_INDEXES_DRAWDOWN_FROM_MAXIMUM
+    }
+}
+
+export const fetchReportIndexesDrawdownFromMaximum = (reportData) => {
+    return {
+        type: FETCH_REPORT_INDEXES_DRAWDOWN_FROM_MAXIMUM,
         payload: reportData
     }
 }

@@ -7,6 +7,7 @@ import {ReportCurrenciesSupertrend} from "./ReportCurrenciesSupertrend";
 import {ReportCurrenciesCandleSequence} from "./ReportCurrenciesCandleSequence";
 import {ReportCurrenciesRsi} from "./ReportCurrenciesRsi";
 import {ReportCurrenciesYieldLtm} from "./ReportCurrenciesYieldLtm";
+import {ReportCurrenciesDrawdownFromMaximum} from "./ReportCurrenciesDrawdownFromMaximum";
 import {ReportCurrenciesAggregatedAnalyse} from "./ReportCurrenciesAggregatedAnalyse";
 
 export const CurrenciesScreen = () => {
@@ -21,6 +22,7 @@ export const CurrenciesScreen = () => {
                     <Tab>CandleSequence</Tab>
                     <Tab>Rsi</Tab>
                     <Tab>YieldLtm</Tab>
+                    <Tab>DrawdownFromMaximum</Tab>
                     <Tab>AggregatedAnalyse</Tab>
                 </TabList>
                 <TabPanel>
@@ -34,6 +36,9 @@ export const CurrenciesScreen = () => {
                 </TabPanel>
                 <TabPanel>
                     <ReportCurrenciesYieldLtm />
+                </TabPanel>
+                <TabPanel>
+                    <ReportCurrenciesDrawdownFromMaximum />
                 </TabPanel>
                 <TabPanel>
                     <ReportCurrenciesAggregatedAnalyse />

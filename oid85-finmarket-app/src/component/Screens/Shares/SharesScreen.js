@@ -8,6 +8,7 @@ import {ReportSharesCandleSequence} from "./ReportSharesCandleSequence";
 import {ReportSharesCandleVolume} from "./ReportSharesCandleVolume";
 import {ReportSharesRsi} from "./ReportSharesRsi";
 import {ReportSharesYieldLtm} from "./ReportSharesYieldLtm";
+import {ReportSharesDrawdownFromMaximum} from "./ReportSharesDrawdownFromMaximum";
 import {ReportSharesDividend} from "./ReportSharesDividend";
 import {ReportSharesAssetFundamental} from "./ReportSharesAssetFundamental";
 import {ReportSharesMultiplicator} from "./ReportSharesMultiplicator";
@@ -27,7 +28,8 @@ export const SharesScreen = () => {
                     <Tab>CandleSequence</Tab>
                     <Tab>CandleVolume</Tab>
 					<Tab>Rsi</Tab>
-					<Tab>YieldLtm</Tab>
+                    <Tab>YieldLtm</Tab>
+                    <Tab>DrawdownFromMaximum</Tab>
 					<Tab>Dividend</Tab>
                     <Tab>AssetFundamental</Tab>
                     <Tab>Multiplicator</Tab>
@@ -49,6 +51,9 @@ export const SharesScreen = () => {
                 </TabPanel>
                 <TabPanel>
                     <ReportSharesYieldLtm />
+                </TabPanel>
+                <TabPanel>
+                    <ReportSharesDrawdownFromMaximum />
                 </TabPanel>
                 <TabPanel>
                     <ReportSharesDividend />

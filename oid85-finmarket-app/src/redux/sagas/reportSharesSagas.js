@@ -7,6 +7,7 @@ import {
     fetchReportSharesCandleVolume,
     fetchReportSharesRsi,
     fetchReportSharesYieldLtm,
+    fetchReportSharesDrawdownFromMaximum,
     fetchReportSharesAssetFundamental,
     fetchReportSharesMultiplicator,
     fetchReportSharesDividend,
@@ -19,6 +20,7 @@ import {
     SAGA_REPORT_SHARES_CANDLE_VOLUME,
     SAGA_REPORT_SHARES_RSI,
     SAGA_REPORT_SHARES_YIELD_LTM,
+    SAGA_REPORT_SHARES_DRAWDOWN_FROM_MAXIMUM,
     SAGA_REPORT_SHARES_ASSET_FUNDAMENTAL,
     SAGA_REPORT_DIVIDEND,
     SAGA_REPORT_SHARES_AGGREGATED_ANALYSE,
@@ -33,6 +35,7 @@ import {
     getReportCandleVolumeFromApi,
     getReportRsiFromApi,
     getReportYieldLtmFromApi,
+    getReportDrawdownFromMaximumFromApi,
     getReportAssetFundamentalFromApi,
     getReportMultiplicatorFromApi,
     getReportDividendFromApi,
@@ -50,6 +53,7 @@ export function* eventSagaWatcherReportShares() {
     yield takeEvery(SAGA_REPORT_SHARES_CANDLE_VOLUME, sagaWorkerReportSharesCandleVolume)
     yield takeEvery(SAGA_REPORT_SHARES_RSI, sagaWorkerReportSharesRsi)
     yield takeEvery(SAGA_REPORT_SHARES_YIELD_LTM, sagaWorkerReportSharesYieldLtm)
+    yield takeEvery(SAGA_REPORT_SHARES_DRAWDOWN_FROM_MAXIMUM, sagaWorkerReportSharesDrawdownFromMaximum)
     yield takeEvery(SAGA_REPORT_SHARES_ASSET_FUNDAMENTAL, sagaWorkerReportSharesAssetFundamental)
     yield takeEvery(SAGA_REPORT_SHARES_MULTIPLICATOR, sagaWorkerReportSharesMultiplicator)
     yield takeEvery(SAGA_REPORT_DIVIDEND, sagaWorkerReportDividend)
@@ -140,6 +144,24 @@ function* sagaWorkerReportSharesYieldLtm() {
         let reportData = yield call(getReportYieldLtmFromApi, startDate, endDate)
 
         yield put(fetchReportSharesYieldLtm(reportData))
+        yield put(hideLoader())
+    }
+
+    catch (error) {
+        yield put(showAlert('Ошибка при получении данных'))
+        yield put(hideLoader())
+    }
+}
+
+function* sagaWorkerReportSharesDrawdownFromMaximum() {
+    try {
+        yield put(showLoader())
+
+        let startDate = yield select(getStartDate)
+        let endDate = yield select(getEndDate)
+        let reportData = yield call(getReportDrawdownFromMaximumFromApi, startDate, endDate)
+
+        yield put(fetchReportSharesDrawdownFromMaximum(reportData))
         yield put(hideLoader())
     }
 

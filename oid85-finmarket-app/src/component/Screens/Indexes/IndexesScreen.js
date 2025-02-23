@@ -7,6 +7,7 @@ import {ReportIndexesSupertrend} from "./ReportIndexesSupertrend";
 import {ReportIndexesCandleSequence} from "./ReportIndexesCandleSequence";
 import {ReportIndexesRsi} from "./ReportIndexesRsi";
 import {ReportIndexesYieldLtm} from "./ReportIndexesYieldLtm";
+import {ReportIndexesDrawdownFromMaximum} from "./ReportIndexesDrawdownFromMaximum";
 import {ReportIndexesAggregatedAnalyse} from "./ReportIndexesAggregatedAnalyse";
 
 export const IndexesScreen = () => {
@@ -21,6 +22,7 @@ export const IndexesScreen = () => {
                     <Tab>CandleSequence</Tab>
                     <Tab>Rsi</Tab>
                     <Tab>YieldLtm</Tab>
+                    <Tab>DrawdownFromMaximum</Tab>
                     <Tab>AggregatedAnalyse</Tab>
                 </TabList>
                 <TabPanel>
@@ -34,6 +36,9 @@ export const IndexesScreen = () => {
                 </TabPanel>
                 <TabPanel>
                     <ReportIndexesYieldLtm />
+                </TabPanel>
+                <TabPanel>
+                    <ReportIndexesDrawdownFromMaximum />
                 </TabPanel>
                 <TabPanel>
                     <ReportIndexesAggregatedAnalyse />

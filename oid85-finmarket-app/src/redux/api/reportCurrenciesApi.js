@@ -89,3 +89,21 @@ export const getReportYieldLtmFromApi = async (startDate, endDate) => {
         return await response.json()
     }
 }
+
+export const getReportDrawdownFromMaximumFromApi = async (startDate, endDate) => {
+    const response = await fetch(
+        `${CONSTANTS.FINMARKET_API}/api/currencies/report/drawdown-from-maximum-analyse`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                from: startDate,
+                to: endDate})
+        })
+
+    if (response.ok) {
+        return await response.json()
+    }
+}
