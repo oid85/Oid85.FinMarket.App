@@ -10,7 +10,8 @@ export const TableCell = ({ key, cellValue }) => {
         key={key}>
             <Icon
                 displayType={cellValue.type}
-                displayValue={cellValue.value} />
+                displayValue={cellValue.value}
+                displayColor={cellValue.color} />
         </td>
     )       
 }

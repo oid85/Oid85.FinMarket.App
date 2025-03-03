@@ -1,11 +1,9 @@
 import React from 'react'
-import { CONSTANTS } from '../../constants'
 import './Icon.css'
 
-export const Ruble = ({value}) => {
+export const Ruble = ({value, color}) => {
 
     let displayValue = ``
-
     if (value !== '') {
         displayValue = `${value} руб.`
     }
@@ -14,8 +12,7 @@ export const Ruble = ({value}) => {
         <React.Fragment>
             <div style={{ 
                     textAlign: 'center',
-                    color: CONSTANTS.COLOR_WHITE,
-                    background: CONSTANTS.COLOR_STATEBLUE,
+                    color: color,
                     fontSize: 12
                 }}>
                 {displayValue}

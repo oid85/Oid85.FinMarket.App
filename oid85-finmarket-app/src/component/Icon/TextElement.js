@@ -1,12 +1,7 @@
 import React from 'react'
 import './Icon.css'
 
-export const Percent = ({value, color}) => {
-
-    let displayValue = ``
-    if (value !== '') {
-        displayValue = `${value} %`
-    }
+export const TextElement = ({value, color}) => {
 
     return (
         <React.Fragment>
@@ -15,7 +10,7 @@ export const Percent = ({value, color}) => {
                     color: color,
                     fontSize: 12
                 }}>
-                {displayValue}
+                {value}
             </div>
         </React.Fragment>
     )

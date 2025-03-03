@@ -1,15 +1,17 @@
 import React from 'react'
-import { CONSTANTS } from '../../constants'
 import './Icon.css'
 
-export const DarkRed = () => {
-    
+export const Ticker = ({value, color}) => {
+
     return (
         <React.Fragment>
             <div style={{ 
                     textAlign: 'center',
-                    background: CONSTANTS.COLOR_DARKRED
-            }}>&emsp;</div>
+                    color: color,
+                    fontSize: 12
+                }}>
+                {value}
+            </div>
         </React.Fragment>
     )
 }
