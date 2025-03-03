@@ -4,7 +4,6 @@ import Loader from '../../Loader/Loader'
 import { sagaReportBondsCoupon } from '../../../redux/actions/reportBondsActions'
 import '../../Report/Report.css'
 import { Table } from '../../Report/Table'
-import {FilterByLastDaysGroup} from '../../Filter/FilterByLastDaysGroup'
 
 export const ReportBondsCoupon = () => {
 
@@ -23,7 +22,6 @@ export const ReportBondsCoupon = () => {
                     ? <Loader/>
                     :                    
                     <div className='report-container'>
-                        <FilterByLastDaysGroup />
                         <Table
                             title = {`${reportData.result.title}`}
                             reportTableData = {reportData.result} />

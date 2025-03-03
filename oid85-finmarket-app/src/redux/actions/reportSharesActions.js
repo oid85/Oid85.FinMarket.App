@@ -5,7 +5,6 @@ import {
     SAGA_REPORT_SHARES_RSI,
     SAGA_REPORT_SHARES_YIELD_LTM,
     SAGA_REPORT_SHARES_DRAWDOWN_FROM_MAXIMUM,
-    SAGA_REPORT_SHARES_ASSET_FUNDAMENTAL,
     SAGA_REPORT_DIVIDEND,
     SAGA_REPORT_SHARES_AGGREGATED_ANALYSE,
     SAGA_REPORT_SHARES_MULTIPLICATOR,
@@ -18,14 +17,12 @@ import {
     FETCH_REPORT_SHARES_RSI,
     FETCH_REPORT_SHARES_YIELD_LTM,
     FETCH_REPORT_SHARES_DRAWDOWN_FROM_MAXIMUM,
-    FETCH_REPORT_SHARES_ASSET_FUNDAMENTAL,
     FETCH_REPORT_DIVIDEND,
     FETCH_REPORT_SHARES_AGGREGATED_ANALYSE,
     FETCH_REPORT_SHARES_MULTIPLICATOR,
     FETCH_REPORT_SHARES_FORECAST_TARGET,
     FETCH_REPORT_SHARES_FORECAST_CONSENSUS
 } from '../types/reportSharesTypes'
-import {getReportDrawdownFromMaximumFromApi} from "../api/reportCurrenciesApi";
 
 export const sagaReportSharesSupertrend = () => {
     return {
@@ -101,19 +98,6 @@ export const sagaReportSharesDrawdownFromMaximum = () => {
 export const fetchReportSharesDrawdownFromMaximum = (reportData) => {
     return {
         type: FETCH_REPORT_SHARES_DRAWDOWN_FROM_MAXIMUM,
-        payload: reportData
-    }
-}
-
-export const sagaReportSharesAssetFundamental = () => {
-    return {
-        type: SAGA_REPORT_SHARES_ASSET_FUNDAMENTAL
-    }
-}
-
-export const fetchReportSharesAssetFundamental = (reportData) => {
-    return {
-        type: FETCH_REPORT_SHARES_ASSET_FUNDAMENTAL,
         payload: reportData
     }
 }

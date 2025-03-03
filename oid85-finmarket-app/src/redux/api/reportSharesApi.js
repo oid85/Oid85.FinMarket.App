@@ -141,21 +141,6 @@ export const getReportDividendFromApi = async () => {
     }
 }
 
-export const getReportAssetFundamentalFromApi = async () => {
-    const response = await fetch(
-        `${CONSTANTS.FINMARKET_API}/api/shares/report/asset-fundamental-analyse`, {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        })
-
-    if (response.ok) {
-        return await response.json()
-    }
-}
-
 export const getReportMultiplicatorFromApi = async () => {
     const response = await fetch(
         `${CONSTANTS.FINMARKET_API}/api/shares/report/multiplicator-analyse`, {

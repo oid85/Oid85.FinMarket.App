@@ -8,7 +8,6 @@ import {
     fetchReportSharesRsi,
     fetchReportSharesYieldLtm,
     fetchReportSharesDrawdownFromMaximum,
-    fetchReportSharesAssetFundamental,
     fetchReportSharesMultiplicator,
     fetchReportSharesDividend,
     fetchReportSharesForecastTarget,
@@ -21,7 +20,6 @@ import {
     SAGA_REPORT_SHARES_RSI,
     SAGA_REPORT_SHARES_YIELD_LTM,
     SAGA_REPORT_SHARES_DRAWDOWN_FROM_MAXIMUM,
-    SAGA_REPORT_SHARES_ASSET_FUNDAMENTAL,
     SAGA_REPORT_DIVIDEND,
     SAGA_REPORT_SHARES_AGGREGATED_ANALYSE,
     SAGA_REPORT_SHARES_MULTIPLICATOR,
@@ -36,7 +34,6 @@ import {
     getReportRsiFromApi,
     getReportYieldLtmFromApi,
     getReportDrawdownFromMaximumFromApi,
-    getReportAssetFundamentalFromApi,
     getReportMultiplicatorFromApi,
     getReportDividendFromApi,
     getReportForecastTargetFromApi,
@@ -54,7 +51,6 @@ export function* eventSagaWatcherReportShares() {
     yield takeEvery(SAGA_REPORT_SHARES_RSI, sagaWorkerReportSharesRsi)
     yield takeEvery(SAGA_REPORT_SHARES_YIELD_LTM, sagaWorkerReportSharesYieldLtm)
     yield takeEvery(SAGA_REPORT_SHARES_DRAWDOWN_FROM_MAXIMUM, sagaWorkerReportSharesDrawdownFromMaximum)
-    yield takeEvery(SAGA_REPORT_SHARES_ASSET_FUNDAMENTAL, sagaWorkerReportSharesAssetFundamental)
     yield takeEvery(SAGA_REPORT_SHARES_MULTIPLICATOR, sagaWorkerReportSharesMultiplicator)
     yield takeEvery(SAGA_REPORT_DIVIDEND, sagaWorkerReportDividend)
     yield takeEvery(SAGA_REPORT_SHARES_AGGREGATED_ANALYSE, sagaWorkerReportSharesAggregatedAnalyse)
@@ -162,22 +158,6 @@ function* sagaWorkerReportSharesDrawdownFromMaximum() {
         let reportData = yield call(getReportDrawdownFromMaximumFromApi, startDate, endDate)
 
         yield put(fetchReportSharesDrawdownFromMaximum(reportData))
-        yield put(hideLoader())
-    }
-
-    catch (error) {
-        yield put(showAlert('Ошибка при получении данных'))
-        yield put(hideLoader())
-    }
-}
-
-function* sagaWorkerReportSharesAssetFundamental() {
-    try {
-        yield put(showLoader())
-
-        let reportData = yield call(getReportAssetFundamentalFromApi)
-
-        yield put(fetchReportSharesAssetFundamental(reportData))
         yield put(hideLoader())
     }
 

@@ -4,7 +4,6 @@ import Loader from '../../Loader/Loader'
 import { sagaReportSharesDividend } from '../../../redux/actions/reportSharesActions'
 import '../../Report/Report.css'
 import { Table } from '../../Report/Table'
-import {FilterByLastDaysGroup} from '../../Filter/FilterByLastDaysGroup'
 
 export const ReportSharesDividend = () => {
 
@@ -23,7 +22,6 @@ export const ReportSharesDividend = () => {
                     ? <Loader/>
                     :                    
                     <div className='report-container'>
-                        <FilterByLastDaysGroup />
                         <Table
                             title = {`${reportData.result.title}`}
                             reportTableData = {reportData.result} />
