@@ -1,15 +1,12 @@
 import React from 'react'
 import './Icon.css'
+import {CONSTANTS} from "../../constants";
 
 export const TextElement = ({value, color}) => {
 
     return (
         <React.Fragment>
-            <div style={{ 
-                    textAlign: 'center',
-                    color: color,
-                    fontSize: 12
-                }}>
+            <div style={{ backgroundColor: color}}>
                 {value}
             </div>
         </React.Fragment>

@@ -10,11 +10,7 @@ export const Percent = ({value, color}) => {
 
     return (
         <React.Fragment>
-            <div style={{ 
-                    textAlign: 'center',
-                    color: color,
-                    fontSize: 12
-                }}>
+            <div style={{backgroundColor: color}}>
                 {displayValue}
             </div>
         </React.Fragment>

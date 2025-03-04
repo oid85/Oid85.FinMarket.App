@@ -1,17 +1,12 @@
 import React from 'react'
 import './Icon.css'
 
-export const Ruble = ({value, color}) => {
-
-    let displayValue = ``
-    if (value !== '') {
-        displayValue = `${value} руб.`
-    }
+export const AnalyseResult = ({value, color}) => {
 
     return (
         <React.Fragment>
             <div style={{backgroundColor: color}}>
-                {displayValue}
+                &nbsp;
             </div>
         </React.Fragment>
     )

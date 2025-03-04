@@ -8,6 +8,7 @@ import {TextElement} from "./TextElement";
 import {NumberElement} from "./NumberElement";
 import {Ticker} from "./Ticker";
 import {Sector} from "./Sector";
+import {AnalyseResult} from "./AnalyseResult";
 
 export const Icon = ({displayType, displayValue, displayColor}) => {
 
@@ -22,7 +23,7 @@ export const Icon = ({displayType, displayValue, displayColor}) => {
             return (<Ticker value={displayValue} color={displayColor}/>)
 
         case CONSTANTS.DISPLAY_TYPE_DATE:
-            return (<Calendar value={displayValue} />)
+            return (<Calendar date={displayValue} />)
 
         case CONSTANTS.DISPLAY_TYPE_PERCENT:
             return (<Percent value={displayValue} color={displayColor}/>)
@@ -32,6 +33,9 @@ export const Icon = ({displayType, displayValue, displayColor}) => {
 
         case CONSTANTS.DISPLAY_TYPE_SECTOR:
             return (<Sector value={displayValue} color={displayColor}/>)
+
+        case CONSTANTS.DISPLAY_TYPE_ANALYSE_RESULT:
+            return (<AnalyseResult value={displayValue} color={displayColor}/>)
 
         default:
             return (<React.Fragment>{displayValue}</React.Fragment>)

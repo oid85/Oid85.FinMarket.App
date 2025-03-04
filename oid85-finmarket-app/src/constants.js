@@ -15,6 +15,17 @@ export const CONSTANTS = {
     RSI_INTERPRETATION_OVERBOUGHT: 'Перекупленность',
     RSI_INTERPRETATION_OVERSOLD: 'Перепроданность',
 
+    ANALYSE_RESULTS: [
+        'Тренд вверх',
+        'Тренд вниз',
+        'Объем растет',
+        'Объем падает',
+        'Белые свечи',
+        'Черные свечи',
+        'Перекупленность',
+        'Перепроданность'
+    ],
+
     DISPLAY_TYPE_STRING: 'String',
     DISPLAY_TYPE_NUMBER: 'Number',
     DISPLAY_TYPE_TICKER: 'Ticker',
@@ -22,6 +33,7 @@ export const CONSTANTS = {
     DISPLAY_TYPE_PERCENT: 'Percent',
     DISPLAY_TYPE_RUBLE: 'Ruble',
     DISPLAY_TYPE_SECTOR: 'Sector',
+    DISPLAY_TYPE_ANALYSE_RESULT: 'AnalyseResult',
 
     COLOR_WHITE: '#FFFFFF',
     COLOR_RED: '#FF6633',
