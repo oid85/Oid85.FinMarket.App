@@ -9,7 +9,7 @@ export const ReportMarketEvent = () => {
 
     const dispatch = useDispatch()
     const loading = useSelector(state => state.app.loading)
-    const reportData = useSelector(state => state.reportShares.reportData)
+    const reportData = useSelector(state => state.reportMarketEvents.reportData)
 
     useEffect(() => {
         dispatch(sagaReportMarketEvent())

@@ -10,7 +10,7 @@ export const ReportBondsCandleVolume = () => {
 
     const dispatch = useDispatch()
     const loading = useSelector(state => state.app.loading)
-    const reportData = useSelector(state => state.reportShares.reportData)
+    const reportData = useSelector(state => state.reportBonds.reportData)
     const startDate = useSelector(state => state.filter.startDate)
     const endDate = useSelector(state => state.filter.endDate)
 
