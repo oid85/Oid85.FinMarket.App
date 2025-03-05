@@ -6,8 +6,8 @@ import {Percent} from './Percent'
 import {Ruble} from './Ruble'
 import {TextElement} from "./TextElement";
 import {NumberElement} from "./NumberElement";
-import {Ticker} from "./Ticker";
-import {Sector} from "./Sector";
+import {Ticker} from "./Tickers/Ticker";
+import {Sector} from "./Sectors/Sector";
 import {AnalyseResult} from "./AnalyseResult";
 
 export const Icon = ({displayType, displayValue, displayColor}) => {

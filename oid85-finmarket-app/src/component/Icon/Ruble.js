@@ -5,13 +5,13 @@ export const Ruble = ({value, color}) => {
 
     let displayValue = ``
     if (value !== '') {
-        displayValue = `${value} руб.`
+        displayValue = `${value}`
     }
 
     return (
         <React.Fragment>
             <div style={{backgroundColor: color}}>
-                {displayValue}
+                {displayValue}&nbsp;руб.
             </div>
         </React.Fragment>
     )

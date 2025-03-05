@@ -5,8 +5,9 @@ export const TableCell = ({ key, cellValue }) => {
     return (
         <td 
         style={{
-            border: '1px solid darkgray',
-            fontSize: 14
+            border: '1px solid black',
+            fontSize: 14,
+            backgroundColor: cellValue.color
         }} 
         key={key}>
             <Icon

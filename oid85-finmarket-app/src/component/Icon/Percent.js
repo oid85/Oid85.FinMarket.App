@@ -5,13 +5,13 @@ export const Percent = ({value, color}) => {
 
     let displayValue = ``
     if (value !== '') {
-        displayValue = `${value} %`
+        displayValue = `${value}`
     }
 
     return (
         <React.Fragment>
             <div style={{backgroundColor: color}}>
-                {displayValue}
+                {displayValue}&nbsp;%
             </div>
         </React.Fragment>
     )
