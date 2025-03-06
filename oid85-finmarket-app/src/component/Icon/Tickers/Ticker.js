@@ -245,6 +245,7 @@ export const Ticker = ({value, color}) => {
         case 'mtss': return (<img src={mtss} alt="" height={height} width={width}/>)
         case 'mvid': return (<img src={mvid} alt="" height={height} width={width}/>)
         case 'nkhp': return (<img src={nkhp} alt="" height={height} width={width}/>)
+        case 'nkncp':
         case 'nknc': return (<img src={nknc} alt="" height={height} width={width}/>)
         case 'nlmk': return (<img src={nlmk} alt="" height={height} width={width}/>)
         case 'nmtp': return (<img src={nmtp} alt="" height={height} width={width}/>)
