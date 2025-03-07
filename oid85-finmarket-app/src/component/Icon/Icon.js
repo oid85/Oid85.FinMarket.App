@@ -9,6 +9,7 @@ import {NumberElement} from "./NumberElement";
 import {Ticker} from "./Tickers/Ticker";
 import {Sector} from "./Sectors/Sector";
 import {AnalyseResult} from "./AnalyseResult";
+import {Currency} from "./Currency/Currency";
 
 export const Icon = ({displayType, displayValue, displayColor}) => {
 
@@ -33,6 +34,9 @@ export const Icon = ({displayType, displayValue, displayColor}) => {
 
         case CONSTANTS.DISPLAY_TYPE_SECTOR:
             return (<Sector value={displayValue} color={displayColor}/>)
+
+        case CONSTANTS.DISPLAY_TYPE_CURRENCY:
+            return (<Currency value={displayValue} color={displayColor}/>)
 
         case CONSTANTS.DISPLAY_TYPE_ANALYSE_RESULT:
             return (<AnalyseResult value={displayValue} color={displayColor}/>)

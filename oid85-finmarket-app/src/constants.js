@@ -33,6 +33,7 @@ export const CONSTANTS = {
     DISPLAY_TYPE_PERCENT: 'Percent',
     DISPLAY_TYPE_RUBLE: 'Ruble',
     DISPLAY_TYPE_SECTOR: 'Sector',
+    DISPLAY_TYPE_CURRENCY: 'Currency',
     DISPLAY_TYPE_ANALYSE_RESULT: 'AnalyseResult',
 
     COLOR_WHITE: '#FFFFFF',
