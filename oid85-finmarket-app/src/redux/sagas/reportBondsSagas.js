@@ -6,7 +6,8 @@ import {
     fetchReportBondsCandleSequence,
     fetchReportBondsCandleVolume,
     fetchReportBondsCoupon,
-    fetchReportBondsSelection
+    fetchReportBondsSelection,
+    fetchReportBondsMarketEvent
 } from '../actions/reportBondsActions'
 import {
     SAGA_REPORT_BONDS_SUPERTREND,
@@ -14,7 +15,8 @@ import {
     SAGA_REPORT_BONDS_CANDLE_VOLUME,
     SAGA_REPORT_COUPON,
     SAGA_REPORT_BONDS_AGGREGATED_ANALYSE,
-    SAGA_REPORT_BONDS_SELECTION
+    SAGA_REPORT_BONDS_SELECTION,
+    SAGA_REPORT_BONDS_MARKET_EVENT
 } from '../types/reportBondsTypes'
 import {
     getReportAggregatedAnalyseFromApi,
@@ -22,7 +24,8 @@ import {
     getReportCandleSequenceFromApi,
     getReportCandleVolumeFromApi,
     getReportCouponFromApi,
-    getReportSelectionFromApi
+    getReportSelectionFromApi,
+    getReportMarketEventFromApi
 } from "../api/reportBondsApi";
 
 const getStartDate = (state) => state.filter.startDate
@@ -36,6 +39,7 @@ export function* eventSagaWatcherReportBonds() {
     yield takeEvery(SAGA_REPORT_COUPON, sagaWorkerReportCoupon)
     yield takeEvery(SAGA_REPORT_BONDS_AGGREGATED_ANALYSE, sagaWorkerReportBondsAggregatedAnalyse)
     yield takeEvery(SAGA_REPORT_BONDS_SELECTION, sagaWorkerReportBondsSelection)
+    yield takeEvery(SAGA_REPORT_BONDS_MARKET_EVENT, sagaWorkerReportBondsMarketEvent)
 }
 
 // SagaWorker'ы
@@ -135,6 +139,22 @@ function* sagaWorkerReportBondsSelection() {
         let reportData = yield call(getReportSelectionFromApi)
 
         yield put(fetchReportBondsSelection(reportData))
+        yield put(hideLoader())
+    }
+
+    catch (error) {
+        yield put(showAlert('Ошибка при получении данных'))
+        yield put(hideLoader())
+    }
+}
+
+function* sagaWorkerReportBondsMarketEvent() {
+    try {
+        yield put(showLoader())
+
+        let reportData = yield call(getReportMarketEventFromApi())
+
+        yield put(fetchReportBondsMarketEvent(reportData))
         yield put(hideLoader())
     }
 

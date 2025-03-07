@@ -11,7 +11,8 @@ import {
     fetchReportSharesMultiplicator,
     fetchReportSharesDividend,
     fetchReportSharesForecastTarget,
-    fetchReportSharesForecastConsensus
+    fetchReportSharesForecastConsensus,
+    fetchReportSharesMarketEvent
 } from '../actions/reportSharesActions'
 import {
     SAGA_REPORT_SHARES_SUPERTREND,
@@ -24,7 +25,8 @@ import {
     SAGA_REPORT_SHARES_AGGREGATED_ANALYSE,
     SAGA_REPORT_SHARES_MULTIPLICATOR,
     SAGA_REPORT_SHARES_FORECAST_TARGET,
-    SAGA_REPORT_SHARES_FORECAST_CONSENSUS
+    SAGA_REPORT_SHARES_FORECAST_CONSENSUS,
+    SAGA_REPORT_SHARES_MARKET_EVENT
 } from '../types/reportSharesTypes'
 import {
     getReportAggregatedAnalyseFromApi,
@@ -37,7 +39,8 @@ import {
     getReportMultiplicatorFromApi,
     getReportDividendFromApi,
     getReportForecastTargetFromApi,
-    getReportForecastConsensusFromApi
+    getReportForecastConsensusFromApi,
+    getReportMarketEventFromApi
 } from "../api/reportSharesApi";
 
 const getStartDate = (state) => state.filter.startDate
@@ -56,6 +59,7 @@ export function* eventSagaWatcherReportShares() {
     yield takeEvery(SAGA_REPORT_SHARES_AGGREGATED_ANALYSE, sagaWorkerReportSharesAggregatedAnalyse)
     yield takeEvery(SAGA_REPORT_SHARES_FORECAST_TARGET, sagaWorkerReportSharesForecastTarget)
     yield takeEvery(SAGA_REPORT_SHARES_FORECAST_CONSENSUS, sagaWorkerReportSharesForecastConsensus)
+    yield takeEvery(SAGA_REPORT_SHARES_MARKET_EVENT, sagaWorkerReportSharesMarketEvent)
 }
 
 // SagaWorker'ы
@@ -241,6 +245,22 @@ function* sagaWorkerReportSharesForecastConsensus() {
         let reportData = yield call(getReportForecastConsensusFromApi)
 
         yield put(fetchReportSharesForecastConsensus(reportData))
+        yield put(hideLoader())
+    }
+
+    catch (error) {
+        yield put(showAlert('Ошибка при получении данных'))
+        yield put(hideLoader())
+    }
+}
+
+function* sagaWorkerReportSharesMarketEvent() {
+    try {
+        yield put(showLoader())
+
+        let reportData = yield call(getReportMarketEventFromApi())
+
+        yield put(fetchReportSharesMarketEvent(reportData))
         yield put(hideLoader())
     }
 

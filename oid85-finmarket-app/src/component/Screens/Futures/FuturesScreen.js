@@ -10,6 +10,7 @@ import {ReportFuturesRsi} from "./ReportSharesRsi";
 import {ReportFuturesSpread} from "./ReportFuturesSpread";
 import {ReportFuturesYieldLtm} from "./ReportSharesYieldLtm";
 import {ReportFuturesAggregatedAnalyse} from "./ReportFuturesAggregatedAnalyse";
+import {ReportFuturesMarketEvent} from "./ReportFuturesMarketEvent";
 
 export const FuturesScreen = () => {
     const alert = useSelector(state => state.app.alert)
@@ -26,6 +27,7 @@ export const FuturesScreen = () => {
                     <Tab>Spread</Tab>
                     <Tab>YieldLtm</Tab>
                     <Tab>AggregatedAnalyse</Tab>
+                    <Tab>MarketEvents</Tab>
                 </TabList>                
                 <TabPanel>
                     <ReportFuturesSupertrend />
@@ -47,6 +49,9 @@ export const FuturesScreen = () => {
                 </TabPanel>
                 <TabPanel>
                     <ReportFuturesAggregatedAnalyse />
+                </TabPanel>
+                <TabPanel>
+                    <ReportFuturesMarketEvent />
                 </TabPanel>
             </Tabs>
         </React.Fragment>

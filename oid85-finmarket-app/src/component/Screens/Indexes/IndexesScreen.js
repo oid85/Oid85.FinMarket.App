@@ -9,6 +9,7 @@ import {ReportIndexesRsi} from "./ReportIndexesRsi";
 import {ReportIndexesYieldLtm} from "./ReportIndexesYieldLtm";
 import {ReportIndexesDrawdownFromMaximum} from "./ReportIndexesDrawdownFromMaximum";
 import {ReportIndexesAggregatedAnalyse} from "./ReportIndexesAggregatedAnalyse";
+import {ReportIndexesMarketEvent} from "./ReportIndexesMarketEvent";
 
 export const IndexesScreen = () => {
     const alert = useSelector(state => state.app.alert)
@@ -24,6 +25,7 @@ export const IndexesScreen = () => {
                     <Tab>YieldLtm</Tab>
                     <Tab>DrawdownFromMaximum</Tab>
                     <Tab>AggregatedAnalyse</Tab>
+                    <Tab>MarketEvents</Tab>
                 </TabList>
                 <TabPanel>
                     <ReportIndexesSupertrend />
@@ -42,6 +44,9 @@ export const IndexesScreen = () => {
                 </TabPanel>
                 <TabPanel>
                     <ReportIndexesAggregatedAnalyse />
+                </TabPanel>
+                <TabPanel>
+                    <ReportIndexesMarketEvent />
                 </TabPanel>
             </Tabs>
         </React.Fragment>

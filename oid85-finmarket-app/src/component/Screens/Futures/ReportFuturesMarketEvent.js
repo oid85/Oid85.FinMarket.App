@@ -1,18 +1,18 @@
 import React, { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import Loader from '../../Loader/Loader'
-import { sagaReportMarketEvent } from '../../../redux/actions/reportMarketEventsActions'
+import { sagaReportFuturesMarketEvent } from '../../../redux/actions/reportFuturesActions'
 import '../../Report/Report.css'
 import { Table } from '../../Report/Table'
 
-export const ReportMarketEvent = () => {
+export const ReportFuturesMarketEvent = () => {
 
     const dispatch = useDispatch()
     const loading = useSelector(state => state.app.loading)
-    const reportData = useSelector(state => state.reportMarketEvents.reportData)
+    const reportData = useSelector(state => state.reportFutures.reportData)
 
     useEffect(() => {
-        dispatch(sagaReportMarketEvent())
+        dispatch(sagaReportFuturesMarketEvent())
     }, [])
 
     return (

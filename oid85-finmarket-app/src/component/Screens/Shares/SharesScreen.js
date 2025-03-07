@@ -14,6 +14,7 @@ import {ReportSharesMultiplicator} from "./ReportSharesMultiplicator";
 import {ReportSharesAggregatedAnalyse} from "./ReportSharesAggregatedAnalyse";
 import {ReportSharesForecastTarget} from "./ReportSharesForecastTarget";
 import {ReportSharesForecastConsensus} from "./ReportSharesForecastConsensus";
+import {ReportSharesMarketEvent} from "./ReportSharesMarketEvent";
 
 export const SharesScreen = () => {
     const alert = useSelector(state => state.app.alert)
@@ -34,6 +35,7 @@ export const SharesScreen = () => {
                     <Tab>ForecastTarget</Tab>
                     <Tab>ForecastConsensus</Tab>
                     <Tab>AggregatedAnalyse</Tab>
+                    <Tab>MarketEvents</Tab>
                 </TabList>
                 <TabPanel>
                     <ReportSharesSupertrend />
@@ -67,6 +69,9 @@ export const SharesScreen = () => {
                 </TabPanel>
                 <TabPanel>
                     <ReportSharesAggregatedAnalyse />
+                </TabPanel>
+                <TabPanel>
+                    <ReportSharesMarketEvent />
                 </TabPanel>
             </Tabs>
         </React.Fragment>

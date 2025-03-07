@@ -9,6 +9,7 @@ import {ReportBondsCandleVolume} from "./ReportBondsCandleVolume";
 import {ReportBondsCoupon} from "./ReportBondsCoupon";
 import {ReportBondsAggregatedAnalyse} from "./ReportBondsAggregatedAnalyse";
 import {ReportBondsSelection} from "./ReportBondsSelection";
+import {ReportBondsMarketEvent} from "./ReportBondsMarketEvent";
 
 export const BondsScreen = () => {
     const alert = useSelector(state => state.app.alert)
@@ -24,6 +25,7 @@ export const BondsScreen = () => {
                     <Tab>Coupons</Tab>
                     <Tab>AggregatedAnalyse</Tab>
                     <Tab>Selection</Tab>
+                    <Tab>MarketEvents</Tab>
                 </TabList>                
                 <TabPanel>
                     <ReportBondsSupertrend />
@@ -42,6 +44,9 @@ export const BondsScreen = () => {
                 </TabPanel>
                 <TabPanel>
                     <ReportBondsSelection />
+                </TabPanel>
+                <TabPanel>
+                    <ReportBondsMarketEvent />
                 </TabPanel>
             </Tabs>
         </React.Fragment>

@@ -6,7 +6,8 @@ import {
     fetchReportIndexesCandleSequence,
     fetchReportIndexesRsi,
     fetchReportIndexesYieldLtm,
-    fetchReportIndexesDrawdownFromMaximum
+    fetchReportIndexesDrawdownFromMaximum,
+    fetchReportIndexesMarketEvent
 } from '../actions/reportIndexesActions'
 import {
     SAGA_REPORT_INDEXES_SUPERTREND,
@@ -14,7 +15,8 @@ import {
     SAGA_REPORT_INDEXES_RSI,
     SAGA_REPORT_INDEXES_YIELD_LTM,
     SAGA_REPORT_INDEXES_DRAWDOWN_FROM_MAXIMUM,
-    SAGA_REPORT_INDEXES_AGGREGATED_ANALYSE
+    SAGA_REPORT_INDEXES_AGGREGATED_ANALYSE,
+    SAGA_REPORT_INDEXES_MARKET_EVENT
 } from '../types/reportIndexesTypes'
 import {
     getReportAggregatedAnalyseFromApi,
@@ -22,7 +24,8 @@ import {
     getReportCandleSequenceFromApi,
     getReportRsiFromApi,
     getReportYieldLtmFromApi,
-    getReportDrawdownFromMaximumFromApi
+    getReportDrawdownFromMaximumFromApi,
+    getReportMarketEventFromApi
 } from "../api/reportIndexesApi";
 
 const getStartDate = (state) => state.filter.startDate
@@ -36,6 +39,7 @@ export function* eventSagaWatcherReportIndexes() {
     yield takeEvery(SAGA_REPORT_INDEXES_YIELD_LTM, sagaWorkerReportIndexesYieldLtm)
     yield takeEvery(SAGA_REPORT_INDEXES_DRAWDOWN_FROM_MAXIMUM, sagaWorkerReportIndexesDrawdownFromMaximum)
     yield takeEvery(SAGA_REPORT_INDEXES_AGGREGATED_ANALYSE, sagaWorkerReportIndexesAggregatedAnalyse)
+    yield takeEvery(SAGA_REPORT_INDEXES_MARKET_EVENT, sagaWorkerReportIndexesMarketEvent)
 }
 
 // SagaWorker'ы
@@ -139,6 +143,22 @@ function* sagaWorkerReportIndexesAggregatedAnalyse() {
         let reportData = yield call(getReportAggregatedAnalyseFromApi, startDate, endDate)
 
         yield put(fetchReportIndexesAggregatedAnalyse(reportData))
+        yield put(hideLoader())
+    }
+
+    catch (error) {
+        yield put(showAlert('Ошибка при получении данных'))
+        yield put(hideLoader())
+    }
+}
+
+function* sagaWorkerReportIndexesMarketEvent() {
+    try {
+        yield put(showLoader())
+
+        let reportData = yield call(getReportMarketEventFromApi())
+
+        yield put(fetchReportIndexesMarketEvent(reportData))
         yield put(hideLoader())
     }
 

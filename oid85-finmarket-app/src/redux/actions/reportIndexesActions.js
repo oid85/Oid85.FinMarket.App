@@ -5,15 +5,16 @@ import {
     SAGA_REPORT_INDEXES_YIELD_LTM,
     SAGA_REPORT_INDEXES_DRAWDOWN_FROM_MAXIMUM,
     SAGA_REPORT_INDEXES_AGGREGATED_ANALYSE,
+    SAGA_REPORT_INDEXES_MARKET_EVENT,
 
     FETCH_REPORT_INDEXES_SUPERTREND,
     FETCH_REPORT_INDEXES_CANDLE_SEQUENCE,
     FETCH_REPORT_INDEXES_RSI,
     FETCH_REPORT_INDEXES_YIELD_LTM,
     FETCH_REPORT_INDEXES_DRAWDOWN_FROM_MAXIMUM,
-    FETCH_REPORT_INDEXES_AGGREGATED_ANALYSE
+    FETCH_REPORT_INDEXES_AGGREGATED_ANALYSE,
+    FETCH_REPORT_INDEXES_MARKET_EVENT
 } from '../types/reportIndexesTypes'
-import {fetchReportSharesDrawdownFromMaximum} from "./reportSharesActions";
 
 export const sagaReportIndexesSupertrend = () => {
     return {
@@ -89,6 +90,19 @@ export const sagaReportIndexesAggregatedAnalyse = () => {
 export const fetchReportIndexesAggregatedAnalyse = (reportData) => {
     return {
         type: FETCH_REPORT_INDEXES_AGGREGATED_ANALYSE,
+        payload: reportData
+    }
+}
+
+export const sagaReportIndexesMarketEvent = () => {
+    return {
+        type: SAGA_REPORT_INDEXES_MARKET_EVENT
+    }
+}
+
+export const fetchReportIndexesMarketEvent = (reportData) => {
+    return {
+        type: FETCH_REPORT_INDEXES_MARKET_EVENT,
         payload: reportData
     }
 }

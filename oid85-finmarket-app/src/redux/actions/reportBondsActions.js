@@ -5,13 +5,15 @@ import {
     SAGA_REPORT_COUPON,
     SAGA_REPORT_BONDS_AGGREGATED_ANALYSE,
     SAGA_REPORT_BONDS_SELECTION,
+    SAGA_REPORT_BONDS_MARKET_EVENT,
 
     FETCH_REPORT_BONDS_SUPERTREND,
     FETCH_REPORT_BONDS_CANDLE_SEQUENCE,
     FETCH_REPORT_BONDS_CANDLE_VOLUME,
     FETCH_REPORT_COUPON,
     FETCH_REPORT_BONDS_AGGREGATED_ANALYSE,
-    FETCH_REPORT_BONDS_SELECTION
+    FETCH_REPORT_BONDS_SELECTION,
+    FETCH_REPORT_BONDS_MARKET_EVENT
 } from '../types/reportBondsTypes'
 
 export const sagaReportBondsSupertrend = () => {
@@ -88,6 +90,19 @@ export const sagaReportBondsSelection = () => {
 export const fetchReportBondsSelection = (reportData) => {
     return {
         type: FETCH_REPORT_BONDS_SELECTION,
+        payload: reportData
+    }
+}
+
+export const sagaReportBondsMarketEvent = () => {
+    return {
+        type: SAGA_REPORT_BONDS_MARKET_EVENT
+    }
+}
+
+export const fetchReportBondsMarketEvent = (reportData) => {
+    return {
+        type: FETCH_REPORT_BONDS_MARKET_EVENT,
         payload: reportData
     }
 }

@@ -7,7 +7,8 @@ import {
     fetchReportFuturesCandleVolume,
     fetchReportFuturesRsi,
     fetchReportFuturesYieldLtm,
-    fetchReportFuturesSpread
+    fetchReportFuturesSpread,
+    fetchReportFuturesMarketEvent
 } from '../actions/reportFuturesActions'
 import {
     SAGA_REPORT_FUTURES_SUPERTREND,
@@ -16,7 +17,8 @@ import {
     SAGA_REPORT_FUTURES_RSI,
     SAGA_REPORT_FUTURES_YIELD_LTM,
     SAGA_REPORT_SPREAD,
-    SAGA_REPORT_FUTURES_AGGREGATED_ANALYSE
+    SAGA_REPORT_FUTURES_AGGREGATED_ANALYSE,
+    SAGA_REPORT_FUTURES_MARKET_EVENT
 } from '../types/reportFuturesTypes'
 import {
     getReportAggregatedAnalyseFromApi,
@@ -25,7 +27,8 @@ import {
     getReportCandleVolumeFromApi,
     getReportRsiFromApi,
     getReportYieldLtmFromApi,
-    getReportSpreadFromApi
+    getReportSpreadFromApi,
+    getReportMarketEventFromApi
 } from "../api/reportFuturesApi";
 
 const getStartDate = (state) => state.filter.startDate
@@ -40,6 +43,7 @@ export function* eventSagaWatcherReportFutures() {
     yield takeEvery(SAGA_REPORT_FUTURES_YIELD_LTM, sagaWorkerReportFuturesYieldLtm)
     yield takeEvery(SAGA_REPORT_SPREAD, sagaWorkerReportSpread)
     yield takeEvery(SAGA_REPORT_FUTURES_AGGREGATED_ANALYSE, sagaWorkerReportFuturesAggregatedAnalyse)
+    yield takeEvery(SAGA_REPORT_FUTURES_MARKET_EVENT, sagaWorkerReportFuturesMarketEvent)
 }
 
 // SagaWorker'ы
@@ -159,6 +163,22 @@ function* sagaWorkerReportFuturesAggregatedAnalyse() {
         let reportData = yield call(getReportAggregatedAnalyseFromApi, startDate, endDate)
 
         yield put(fetchReportFuturesAggregatedAnalyse(reportData))
+        yield put(hideLoader())
+    }
+
+    catch (error) {
+        yield put(showAlert('Ошибка при получении данных'))
+        yield put(hideLoader())
+    }
+}
+
+function* sagaWorkerReportFuturesMarketEvent() {
+    try {
+        yield put(showLoader())
+
+        let reportData = yield call(getReportMarketEventFromApi())
+
+        yield put(fetchReportFuturesMarketEvent(reportData))
         yield put(hideLoader())
     }
 

@@ -185,3 +185,18 @@ export const getReportForecastConsensusFromApi = async () => {
         return await response.json()
     }
 }
+
+export const getReportMarketEventFromApi = async () => {
+    const response = await fetch(
+        `${CONSTANTS.FINMARKET_API}/api/shares/active-market-events-analyse`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+
+    if (response.ok) {
+        return await response.json()
+    }
+}

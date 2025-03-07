@@ -5,15 +5,16 @@ import {
     SAGA_REPORT_CURRENCIES_YIELD_LTM,
     SAGA_REPORT_CURRENCIES_DRAWDOWN_FROM_MAXIMUM,
     SAGA_REPORT_CURRENCIES_AGGREGATED_ANALYSE,
+    SAGA_REPORT_CURRENCIES_MARKET_EVENT,
 
     FETCH_REPORT_CURRENCIES_SUPERTREND,
     FETCH_REPORT_CURRENCIES_CANDLE_SEQUENCE,
     FETCH_REPORT_CURRENCIES_RSI,
     FETCH_REPORT_CURRENCIES_YIELD_LTM,
     FETCH_REPORT_CURRENCIES_DRAWDOWN_FROM_MAXIMUM,
-    FETCH_REPORT_CURRENCIES_AGGREGATED_ANALYSE
+    FETCH_REPORT_CURRENCIES_AGGREGATED_ANALYSE,
+    FETCH_REPORT_CURRENCIES_MARKET_EVENT
 } from '../types/reportCurrenciesTypes'
-import {sagaReportIndexesDrawdownFromMaximum} from "./reportIndexesActions";
 
 export const sagaReportCurrenciesSupertrend = () => {
     return {
@@ -89,6 +90,19 @@ export const sagaReportCurrenciesAggregatedAnalyse = () => {
 export const fetchReportCurrenciesAggregatedAnalyse = (reportData) => {
     return {
         type: FETCH_REPORT_CURRENCIES_AGGREGATED_ANALYSE,
+        payload: reportData
+    }
+}
+
+export const sagaReportCurrenciesMarketEvent = () => {
+    return {
+        type: SAGA_REPORT_CURRENCIES_MARKET_EVENT
+    }
+}
+
+export const fetchReportCurrenciesMarketEvent = (reportData) => {
+    return {
+        type: FETCH_REPORT_CURRENCIES_MARKET_EVENT,
         payload: reportData
     }
 }

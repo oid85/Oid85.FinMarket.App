@@ -9,6 +9,7 @@ import {ReportCurrenciesRsi} from "./ReportCurrenciesRsi";
 import {ReportCurrenciesYieldLtm} from "./ReportCurrenciesYieldLtm";
 import {ReportCurrenciesDrawdownFromMaximum} from "./ReportCurrenciesDrawdownFromMaximum";
 import {ReportCurrenciesAggregatedAnalyse} from "./ReportCurrenciesAggregatedAnalyse";
+import {ReportCurrenciesMarketEvent} from "./ReportCurrenciesMarketEvent";
 
 export const CurrenciesScreen = () => {
     const alert = useSelector(state => state.app.alert)
@@ -24,6 +25,7 @@ export const CurrenciesScreen = () => {
                     <Tab>YieldLtm</Tab>
                     <Tab>DrawdownFromMaximum</Tab>
                     <Tab>AggregatedAnalyse</Tab>
+                    <Tab>MarketEvents</Tab>
                 </TabList>
                 <TabPanel>
                     <ReportCurrenciesSupertrend />
@@ -42,6 +44,9 @@ export const CurrenciesScreen = () => {
                 </TabPanel>
                 <TabPanel>
                     <ReportCurrenciesAggregatedAnalyse />
+                </TabPanel>
+                <TabPanel>
+                    <ReportCurrenciesMarketEvent />
                 </TabPanel>
             </Tabs>
         </React.Fragment>

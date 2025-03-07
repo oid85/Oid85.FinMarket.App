@@ -6,7 +6,8 @@ import {
     fetchReportCurrenciesCandleSequence,
     fetchReportCurrenciesRsi,
     fetchReportCurrenciesYieldLtm,
-    fetchReportCurrenciesDrawdownFromMaximum
+    fetchReportCurrenciesDrawdownFromMaximum,
+    fetchReportCurrenciesMarketEvent
 } from '../actions/reportCurrenciesActions'
 import {
     SAGA_REPORT_CURRENCIES_SUPERTREND,
@@ -14,7 +15,8 @@ import {
     SAGA_REPORT_CURRENCIES_RSI,
     SAGA_REPORT_CURRENCIES_YIELD_LTM,
     SAGA_REPORT_CURRENCIES_DRAWDOWN_FROM_MAXIMUM,
-    SAGA_REPORT_CURRENCIES_AGGREGATED_ANALYSE
+    SAGA_REPORT_CURRENCIES_AGGREGATED_ANALYSE,
+    SAGA_REPORT_CURRENCIES_MARKET_EVENT
 } from '../types/reportCurrenciesTypes'
 import {
     getReportAggregatedAnalyseFromApi,
@@ -22,7 +24,8 @@ import {
     getReportCandleSequenceFromApi,
     getReportRsiFromApi,
     getReportYieldLtmFromApi,
-    getReportDrawdownFromMaximumFromApi
+    getReportDrawdownFromMaximumFromApi,
+    getReportMarketEventFromApi
 } from "../api/reportCurrenciesApi";
 
 const getStartDate = (state) => state.filter.startDate
@@ -36,6 +39,7 @@ export function* eventSagaWatcherReportCurrencies() {
     yield takeEvery(SAGA_REPORT_CURRENCIES_YIELD_LTM, sagaWorkerReportCurrenciesYieldLtm)
     yield takeEvery(SAGA_REPORT_CURRENCIES_DRAWDOWN_FROM_MAXIMUM, sagaWorkerReportCurrenciesDrawdownFromMaximum)
     yield takeEvery(SAGA_REPORT_CURRENCIES_AGGREGATED_ANALYSE, sagaWorkerReportCurrenciesAggregatedAnalyse)
+    yield takeEvery(SAGA_REPORT_CURRENCIES_MARKET_EVENT, sagaWorkerReportCurrenciesMarketEvent)
 }
 
 // SagaWorker'ы
@@ -139,6 +143,22 @@ function* sagaWorkerReportCurrenciesAggregatedAnalyse() {
         let reportData = yield call(getReportAggregatedAnalyseFromApi, startDate, endDate)
 
         yield put(fetchReportCurrenciesAggregatedAnalyse(reportData))
+        yield put(hideLoader())
+    }
+
+    catch (error) {
+        yield put(showAlert('Ошибка при получении данных'))
+        yield put(hideLoader())
+    }
+}
+
+function* sagaWorkerReportCurrenciesMarketEvent() {
+    try {
+        yield put(showLoader())
+
+        let reportData = yield call(getReportMarketEventFromApi())
+
+        yield put(fetchReportCurrenciesMarketEvent(reportData))
         yield put(hideLoader())
     }
 

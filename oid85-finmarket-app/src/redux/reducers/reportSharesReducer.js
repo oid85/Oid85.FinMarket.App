@@ -9,7 +9,8 @@ import {
     FETCH_REPORT_DIVIDEND,
     FETCH_REPORT_SHARES_AGGREGATED_ANALYSE,
     FETCH_REPORT_SHARES_FORECAST_TARGET,
-    FETCH_REPORT_SHARES_FORECAST_CONSENSUS
+    FETCH_REPORT_SHARES_FORECAST_CONSENSUS,
+    FETCH_REPORT_SHARES_MARKET_EVENT
 } from '../types/reportSharesTypes'
 
 const initialState = {
@@ -50,6 +51,9 @@ export const reportSharesReducer = (state = initialState, action) => {
             return {...state, reportData: {...action.payload}}
 
         case FETCH_REPORT_SHARES_FORECAST_CONSENSUS:
+            return {...state, reportData: {...action.payload}}
+
+        case FETCH_REPORT_SHARES_MARKET_EVENT:
             return {...state, reportData: {...action.payload}}
 
         default: return state
