@@ -124,7 +124,7 @@ export const getReportSpreadFromApi = async () => {
 
 export const getReportMarketEventFromApi = async () => {
     const response = await fetch(
-        `${CONSTANTS.FINMARKET_API}/api/futures/active-market-events-analyse`, {
+        `${CONSTANTS.FINMARKET_API}/api/futures/report/active-market-events-analyse`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

@@ -110,7 +110,7 @@ export const getReportDrawdownFromMaximumFromApi = async (startDate, endDate) =>
 
 export const getReportMarketEventFromApi = async () => {
     const response = await fetch(
-        `${CONSTANTS.FINMARKET_API}/api/currencies/active-market-events-analyse`, {
+        `${CONSTANTS.FINMARKET_API}/api/currencies/report/active-market-events-analyse`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
