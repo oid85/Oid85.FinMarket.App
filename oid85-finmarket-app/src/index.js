@@ -12,7 +12,6 @@ import { eventSagaWatcherReportBonds } from './redux/sagas/reportBondsSagas'
 import { eventSagaWatcherReportFutures } from './redux/sagas/reportFuturesSagas'
 import { eventSagaWatcherReportCurrencies } from './redux/sagas/reportCurrenciesSagas'
 import { eventSagaWatcherReportIndexes } from './redux/sagas/reportIndexesSagas'
-import { eventSagaWatcherReportMarketEvents } from './redux/sagas/reportMarketEventsSagas'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 const saga = createSagaMiddleware()
@@ -27,7 +26,6 @@ saga.run(eventSagaWatcherReportBonds)
 saga.run(eventSagaWatcherReportFutures)
 saga.run(eventSagaWatcherReportCurrencies)
 saga.run(eventSagaWatcherReportIndexes)
-saga.run(eventSagaWatcherReportMarketEvents)
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
