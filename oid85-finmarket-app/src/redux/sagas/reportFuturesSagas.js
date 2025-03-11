@@ -176,7 +176,7 @@ function* sagaWorkerReportFuturesMarketEvent() {
     try {
         yield put(showLoader())
 
-        let reportData = yield call(getReportMarketEventFromApi())
+        let reportData = yield call(getReportMarketEventFromApi)
 
         yield put(fetchReportFuturesMarketEvent(reportData))
         yield put(hideLoader())

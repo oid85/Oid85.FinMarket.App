@@ -19,14 +19,17 @@ export const BondsScreen = () => {
             {alert && <Alert text={alert} />}
             <Tabs>
                 <TabList>
-                    <Tab>Supertrend</Tab>
-                    <Tab>CandleSequence</Tab>
-                    <Tab>CandleVolume</Tab>
-                    <Tab>Coupons</Tab>
-                    <Tab>AggregatedAnalyse</Tab>
-                    <Tab>Selection</Tab>
-                    <Tab>MarketEvents</Tab>
-                </TabList>                
+                    <Tab>Агрегация</Tab>
+                    <Tab>Тренд</Tab>
+                    <Tab>Свечи</Tab>
+                    <Tab>Рост объема</Tab>
+                    <Tab>Купоны</Tab>
+                    <Tab>Выборка</Tab>
+                    <Tab>События</Tab>
+                </TabList>
+                <TabPanel>
+                    <ReportBondsAggregatedAnalyse />
+                </TabPanel>
                 <TabPanel>
                     <ReportBondsSupertrend />
                 </TabPanel>
@@ -38,9 +41,6 @@ export const BondsScreen = () => {
                 </TabPanel>
                 <TabPanel>
                     <ReportBondsCoupon />
-                </TabPanel>
-                <TabPanel>
-                    <ReportBondsAggregatedAnalyse />
                 </TabPanel>
                 <TabPanel>
                     <ReportBondsSelection />

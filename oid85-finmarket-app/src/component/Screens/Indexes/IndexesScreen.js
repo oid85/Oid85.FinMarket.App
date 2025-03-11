@@ -19,14 +19,17 @@ export const IndexesScreen = () => {
             {alert && <Alert text={alert} />}
             <Tabs>
                 <TabList>
-                    <Tab>Supertrend</Tab>
-                    <Tab>CandleSequence</Tab>
-                    <Tab>Rsi</Tab>
-                    <Tab>YieldLtm</Tab>
-                    <Tab>DrawdownFromMaximum</Tab>
-                    <Tab>AggregatedAnalyse</Tab>
-                    <Tab>MarketEvents</Tab>
+                    <Tab>Агрегация</Tab>
+                    <Tab>Тренд</Tab>
+                    <Tab>Свечи</Tab>
+                    <Tab>RSI</Tab>
+                    <Tab>Доходность LTM</Tab>
+                    <Tab>Падение от макс.</Tab>
+                    <Tab>События</Tab>
                 </TabList>
+                <TabPanel>
+                    <ReportIndexesAggregatedAnalyse />
+                </TabPanel>
                 <TabPanel>
                     <ReportIndexesSupertrend />
                 </TabPanel>
@@ -41,9 +44,6 @@ export const IndexesScreen = () => {
                 </TabPanel>
                 <TabPanel>
                     <ReportIndexesDrawdownFromMaximum />
-                </TabPanel>
-                <TabPanel>
-                    <ReportIndexesAggregatedAnalyse />
                 </TabPanel>
                 <TabPanel>
                     <ReportIndexesMarketEvent />

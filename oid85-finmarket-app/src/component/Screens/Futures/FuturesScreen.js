@@ -20,15 +20,18 @@ export const FuturesScreen = () => {
             {alert && <Alert text={alert} />}
             <Tabs>
                 <TabList>
-                    <Tab>Supertrend</Tab>
-                    <Tab>CandleSequence</Tab>
-                    <Tab>CandleVolume</Tab>
-                    <Tab>Rsi</Tab>
-                    <Tab>Spread</Tab>
-                    <Tab>YieldLtm</Tab>
-                    <Tab>AggregatedAnalyse</Tab>
-                    <Tab>MarketEvents</Tab>
-                </TabList>                
+                    <Tab>Агрегация</Tab>
+                    <Tab>Тренд</Tab>
+                    <Tab>Свечи</Tab>
+                    <Tab>Рост объема</Tab>
+                    <Tab>RSI</Tab>
+                    <Tab>Спреды</Tab>
+                    <Tab>Доходность LTM</Tab>
+                    <Tab>События</Tab>
+                </TabList>
+                <TabPanel>
+                    <ReportFuturesAggregatedAnalyse />
+                </TabPanel>
                 <TabPanel>
                     <ReportFuturesSupertrend />
                 </TabPanel>
@@ -46,9 +49,6 @@ export const FuturesScreen = () => {
                 </TabPanel>
                 <TabPanel>
                     <ReportFuturesYieldLtm />
-                </TabPanel>
-                <TabPanel>
-                    <ReportFuturesAggregatedAnalyse />
                 </TabPanel>
                 <TabPanel>
                     <ReportFuturesMarketEvent />

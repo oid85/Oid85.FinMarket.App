@@ -8,7 +8,8 @@ export const TableHead = ({ header }) => {
                 {header.map((headValue, index) => (
                     <th 
                         style={{
-                        border: '1px solid black'
+                            border: '1px solid black',
+                            fontSize: 17
                     }} 
                         key={index}>
                         <Icon

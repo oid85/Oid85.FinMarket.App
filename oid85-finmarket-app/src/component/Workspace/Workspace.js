@@ -17,11 +17,11 @@ export const Workspace = () => {
             {alert && <Alert text={alert} />}
             <Tabs>
                 <TabList>
-                    <Tab>Shares</Tab>
-                    <Tab>Bonds</Tab>
-                    <Tab>Currencies</Tab>
-                    <Tab>Futures</Tab>
-                    <Tab>Indexes</Tab>
+                    <Tab>Акции</Tab>
+                    <Tab>Облигации</Tab>
+                    <Tab>Валюты</Tab>
+                    <Tab>Фьючерсы</Tab>
+                    <Tab>Индексы</Tab>
                 </TabList>                
                 <TabPanel>
                     <SharesScreen />
