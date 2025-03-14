@@ -200,3 +200,18 @@ export const getReportMarketEventFromApi = async () => {
         return await response.json()
     }
 }
+
+export const getReportAssetReportEventFromApi = async () => {
+    const response = await fetch(
+        `${CONSTANTS.FINMARKET_API}/api/shares/report/asset-report-events`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+
+    if (response.ok) {
+        return await response.json()
+    }
+}

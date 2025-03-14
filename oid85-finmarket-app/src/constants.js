@@ -1,7 +1,7 @@
 export const CONSTANTS = {
     FINMARKET_API: 'http://26.147.25.39:1101',
 
-    DEFAULT_PERIOD: 30,
+    DEFAULT_PERIOD: 14,
 
     TREND_DIRECTION_UP: 'Тренд вверх',
     TREND_DIRECTION_DOWN: 'Тренд вниз',
@@ -35,6 +35,7 @@ export const CONSTANTS = {
     DISPLAY_TYPE_SECTOR: 'Sector',
     DISPLAY_TYPE_CURRENCY: 'Currency',
     DISPLAY_TYPE_ANALYSE_RESULT: 'AnalyseResult',
+    DISPLAY_TYPE_ASSET_REPORT_EVENT: 'AssetReportEvent',
 
     COLOR_WHITE: '#FFFFFF',
     COLOR_RED: '#FF6633',

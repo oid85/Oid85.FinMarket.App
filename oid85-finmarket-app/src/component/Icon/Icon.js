@@ -10,6 +10,7 @@ import {Ticker} from "./Tickers/Ticker";
 import {Sector} from "./Sectors/Sector";
 import {AnalyseResult} from "./AnalyseResult";
 import {Currency} from "./Currency/Currency";
+import {AssetReportEvent} from "./AssetReportEvent/AssetReportEvent";
 
 export const Icon = ({displayType, displayValue, displayColor}) => {
 
@@ -40,6 +41,9 @@ export const Icon = ({displayType, displayValue, displayColor}) => {
 
         case CONSTANTS.DISPLAY_TYPE_ANALYSE_RESULT:
             return (<AnalyseResult value={displayValue} color={displayColor}/>)
+
+        case CONSTANTS.DISPLAY_TYPE_ASSET_REPORT_EVENT:
+            return (<AssetReportEvent value={displayValue} color={displayColor}/>)
 
         default:
             return (<React.Fragment>{displayValue}</React.Fragment>)
