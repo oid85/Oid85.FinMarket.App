@@ -11,7 +11,8 @@ import {
     FETCH_REPORT_SHARES_FORECAST_TARGET,
     FETCH_REPORT_SHARES_FORECAST_CONSENSUS,
     FETCH_REPORT_SHARES_MARKET_EVENT,
-    FETCH_REPORT_SHARES_ASSET_REPORT_EVENT
+    FETCH_REPORT_SHARES_ASSET_REPORT_EVENT,
+    FETCH_REPORT_SHARES_FEER_GREED_INDEX
 } from '../types/reportSharesTypes'
 
 const initialState = {
@@ -58,6 +59,9 @@ export const reportSharesReducer = (state = initialState, action) => {
             return {...state, reportData: {...action.payload}}
 
         case FETCH_REPORT_SHARES_ASSET_REPORT_EVENT:
+            return {...state, reportData: {...action.payload}}
+
+        case FETCH_REPORT_SHARES_FEER_GREED_INDEX:
             return {...state, reportData: {...action.payload}}
 
         default: return state

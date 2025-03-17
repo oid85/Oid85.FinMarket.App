@@ -12,6 +12,7 @@ import {
     SAGA_REPORT_SHARES_FORECAST_CONSENSUS,
     SAGA_REPORT_SHARES_MARKET_EVENT,
     SAGA_REPORT_SHARES_ASSET_REPORT_EVENT,
+    SAGA_REPORT_SHARES_FEER_GREED_INDEX,
 
     FETCH_REPORT_SHARES_SUPERTREND,
     FETCH_REPORT_SHARES_CANDLE_SEQUENCE,
@@ -25,7 +26,8 @@ import {
     FETCH_REPORT_SHARES_FORECAST_TARGET,
     FETCH_REPORT_SHARES_FORECAST_CONSENSUS,
     FETCH_REPORT_SHARES_MARKET_EVENT,
-    FETCH_REPORT_SHARES_ASSET_REPORT_EVENT
+    FETCH_REPORT_SHARES_ASSET_REPORT_EVENT,
+    FETCH_REPORT_SHARES_FEER_GREED_INDEX
 } from '../types/reportSharesTypes'
 
 export const sagaReportSharesSupertrend = () => {
@@ -193,6 +195,19 @@ export const sagaReportSharesAssetReportEvent = () => {
 export const fetchReportSharesAssetReportEvent = (reportData) => {
     return {
         type: FETCH_REPORT_SHARES_ASSET_REPORT_EVENT,
+        payload: reportData
+    }
+}
+
+export const sagaReportSharesFeerGreedIndex = () => {
+    return {
+        type: SAGA_REPORT_SHARES_FEER_GREED_INDEX
+    }
+}
+
+export const fetchReportSharesFeerGreedIndex = (reportData) => {
+    return {
+        type: FETCH_REPORT_SHARES_FEER_GREED_INDEX,
         payload: reportData
     }
 }

@@ -4,7 +4,7 @@ import './Filter.css'
 
 export const FilterByLastDaysGroup = () => {
     
-    let days = [7, 30, 90, 180, 365]
+    let days = [7, 14, 30, 90, 180, 365]
 
     return (
         <React.Fragment>

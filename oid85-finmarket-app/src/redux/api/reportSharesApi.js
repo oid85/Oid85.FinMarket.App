@@ -215,3 +215,21 @@ export const getReportAssetReportEventFromApi = async () => {
         return await response.json()
     }
 }
+
+export const getReportFeerGreedIndexFromApi = async (startDate, endDate) => {
+    const response = await fetch(
+        `${CONSTANTS.FINMARKET_API}/api/shares/report/fear-greed-index`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                from: startDate,
+                to: endDate})
+        })
+
+    if (response.ok) {
+        return await response.json()
+    }
+}
