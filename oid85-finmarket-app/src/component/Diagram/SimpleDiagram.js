@@ -6,11 +6,11 @@ export const SimpleDiagram = ({ key, title, series }) => {
         <div>
             <div>{title}</div>
             <AreaChart
-                width={270}
-                height={150}
+                width={200}
+                height={100}
                 data={series}>
                 <CartesianGrid strokeDasharray="3 3" />
-                <YAxis />
+                <YAxis type="number" domain={['auto', 'auto']} />
                 <Tooltip />
                 <Area
                     type="monotone"
