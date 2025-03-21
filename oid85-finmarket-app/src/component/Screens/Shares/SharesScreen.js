@@ -17,6 +17,7 @@ import {ReportSharesForecastConsensus} from "./ReportSharesForecastConsensus";
 import {ReportSharesMarketEvent} from "./ReportSharesMarketEvent";
 import {ReportSharesAssetReportEvent} from "./ReportSharesAssetReportEvent";
 import {ReportSharesFeerGreedIndex} from "./ReportSharesFeerGreedIndex";
+import {DiagramSharesClosePrices} from "./DiagramSharesClosePrices";
 
 export const SharesScreen = () => {
     const alert = useSelector(state => state.app.alert)
@@ -40,6 +41,7 @@ export const SharesScreen = () => {
                     <Tab>События</Tab>
                     <Tab>Отчетность</Tab>
                     <Tab>Индекс страха и жадности</Tab>
+                    <Tab>Графики</Tab>
                 </TabList>
                 <TabPanel>
                     <ReportSharesAggregatedAnalyse />
@@ -82,6 +84,9 @@ export const SharesScreen = () => {
                 </TabPanel>
                 <TabPanel>
                     <ReportSharesFeerGreedIndex />
+                </TabPanel>
+                <TabPanel>
+                    <DiagramSharesClosePrices />
                 </TabPanel>
             </Tabs>
         </React.Fragment>
