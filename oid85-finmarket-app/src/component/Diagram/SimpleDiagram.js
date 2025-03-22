@@ -6,8 +6,8 @@ export const SimpleDiagram = ({ key, title, series }) => {
         <div>
             <div>{title}</div>
             <AreaChart
-                width={200}
-                height={100}
+                width={300}
+                height={150}
                 data={series}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <YAxis type="number" domain={['auto', 'auto']} />

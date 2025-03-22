@@ -5,6 +5,9 @@ import { sagaReportCurrenciesRsi } from '../../../redux/actions/reportCurrencies
 import '../../Report/Report.css'
 import { Table } from '../../Report/Table'
 import {FilterByLastDaysGroup} from '../../Filter/FilterByLastDaysGroup'
+import {setStartDate} from "../../../redux/actions/filterActions";
+import moment from "moment";
+import {CONSTANTS} from "../../../constants";
 
 export const ReportCurrenciesRsi = () => {
 
@@ -16,6 +19,10 @@ export const ReportCurrenciesRsi = () => {
 
     useEffect(() => {
         dispatch(sagaReportCurrenciesRsi())
+        dispatch(setStartDate(moment()
+            .subtract(CONSTANTS.DEFAULT_PERIOD_DAYS_FOR_TABLES - 1, 'days')
+            .format('YYYY-MM-DD')
+            .toString()))
     }, [])
 
     useEffect(() => {

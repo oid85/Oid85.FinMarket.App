@@ -7,7 +7,7 @@ import {
 import { CONSTANTS } from '../../constants'
 
 const startDate = moment()
-                    .subtract(CONSTANTS.DEFAULT_PERIOD, 'days')
+                    .subtract(CONSTANTS.DEFAULT_PERIOD_DAYS_FOR_TABLES, 'days')
                     .format('YYYY-MM-DD')
                     .toString()
 
