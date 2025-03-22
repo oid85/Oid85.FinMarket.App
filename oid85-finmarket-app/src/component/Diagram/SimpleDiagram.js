@@ -6,6 +6,7 @@ export const SimpleDiagram = ({ key, title, series }) => {
         <div>
             <div>{title}</div>
             <AreaChart
+                key = {key}
                 width={300}
                 height={150}
                 data={series}>
