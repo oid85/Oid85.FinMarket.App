@@ -17,7 +17,8 @@ import {ReportSharesForecastConsensus} from "./ReportSharesForecastConsensus";
 import {ReportSharesMarketEvent} from "./ReportSharesMarketEvent";
 import {ReportSharesAssetReportEvent} from "./ReportSharesAssetReportEvent";
 import {ReportSharesFeerGreedIndex} from "./ReportSharesFeerGreedIndex";
-import {DiagramSharesClosePrices} from "./DiagramSharesClosePrices";
+import {DiagramSharesDailyClosePrices} from "./DiagramSharesDailyClosePrices";
+import {DiagramSharesFiveMinutesClosePrices} from "./DiagramSharesFiveMinutesClosePrices";
 
 export const SharesScreen = () => {
     const alert = useSelector(state => state.app.alert)
@@ -41,7 +42,8 @@ export const SharesScreen = () => {
                     <Tab>События</Tab>
                     <Tab>Отчетность</Tab>
                     <Tab>Индекс страха и жадности</Tab>
-                    <Tab>Графики</Tab>
+                    <Tab>Графики (днев)</Tab>
+                    <Tab>Графики (5 мин)</Tab>
                 </TabList>
                 <TabPanel>
                     <ReportSharesAggregatedAnalyse />
@@ -86,7 +88,10 @@ export const SharesScreen = () => {
                     <ReportSharesFeerGreedIndex />
                 </TabPanel>
                 <TabPanel>
-                    <DiagramSharesClosePrices />
+                    <DiagramSharesDailyClosePrices />
+                </TabPanel>
+                <TabPanel>
+                    <DiagramSharesFiveMinutesClosePrices />
                 </TabPanel>
             </Tabs>
         </React.Fragment>

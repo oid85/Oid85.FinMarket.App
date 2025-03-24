@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import Loader from '../../Loader/Loader'
-import { sagaDiagramSharesClosePrices } from '../../../redux/actions/diagramSharesActions'
+import { sagaDiagramSharesDailyClosePrices } from '../../../redux/actions/diagramSharesActions'
 import '../../Report/Report.css'
 import { SimpleDiagramContainer } from '../../Diagram/SimpleDiagramContainer'
 import {FilterByLastDaysGroup} from '../../Filter/FilterByLastDaysGroup'
@@ -9,7 +9,7 @@ import {setEndDate, setStartDate} from "../../../redux/actions/filterActions";
 import moment from "moment/moment";
 import {CONSTANTS} from "../../../constants";
 
-export const DiagramSharesClosePrices = () => {
+export const DiagramSharesDailyClosePrices = () => {
 
     const dispatch = useDispatch()
     const loading = useSelector(state => state.app.loading)
@@ -18,7 +18,7 @@ export const DiagramSharesClosePrices = () => {
     const endDate = useSelector(state => state.filter.endDate)
 
     useEffect(() => {
-        dispatch(sagaDiagramSharesClosePrices())
+        dispatch(sagaDiagramSharesDailyClosePrices())
         dispatch(setStartDate(moment()
             .subtract(CONSTANTS.DEFAULT_PERIOD_DAYS_FOR_DIAGRAMS - 1, 'days')
             .format('YYYY-MM-DD')
@@ -26,11 +26,11 @@ export const DiagramSharesClosePrices = () => {
     }, [])
 
     useEffect(() => {
-        dispatch(sagaDiagramSharesClosePrices())
+        dispatch(sagaDiagramSharesDailyClosePrices())
     }, [startDate])
 
     useEffect(() => {
-        dispatch(sagaDiagramSharesClosePrices())
+        dispatch(sagaDiagramSharesDailyClosePrices())
     }, [endDate])
 
     return (

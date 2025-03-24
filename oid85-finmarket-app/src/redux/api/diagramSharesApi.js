@@ -1,8 +1,8 @@
 ﻿import {CONSTANTS} from "../../constants";
 
-export const getDiagramClosePricesFromApi = async (startDate, endDate) => {
+export const getDiagramDailyClosePricesFromApi = async (startDate, endDate) => {
     const response = await fetch(
-        `${CONSTANTS.FINMARKET_API}/api/shares/diagram/close-prices`, {
+        `${CONSTANTS.FINMARKET_API}/api/shares/diagram/daily-close-prices`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -11,6 +11,24 @@ export const getDiagramClosePricesFromApi = async (startDate, endDate) => {
             body: JSON.stringify({
                 from: startDate,
                 to: endDate})
+        })
+
+    if (response.ok) {
+        return await response.json()
+    }
+}
+
+export const getDiagramFiveMinutesClosePricesFromApi = async (startDateTime, endDateTime) => {
+    const response = await fetch(
+        `${CONSTANTS.FINMARKET_API}/api/shares/diagram/five-minutes-close-prices`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                from: startDateTime,
+                to: endDateTime})
         })
 
     if (response.ok) {
