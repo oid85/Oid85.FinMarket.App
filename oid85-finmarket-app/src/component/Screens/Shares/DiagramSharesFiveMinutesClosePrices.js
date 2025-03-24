@@ -5,7 +5,7 @@ import { sagaDiagramSharesFiveMinutesClosePrices } from '../../../redux/actions/
 import '../../Report/Report.css'
 import { SimpleDiagramContainer } from '../../Diagram/SimpleDiagramContainer'
 import {FilterByLastHoursGroup} from '../../Filter/FilterByLastHoursGroup'
-import {setEndDateTime, setStartDateTime} from "../../../redux/actions/filterActions";
+import {setStartDateTime} from "../../../redux/actions/filterActions";
 import moment from "moment/moment";
 import {CONSTANTS} from "../../../constants";
 

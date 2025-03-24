@@ -5,7 +5,7 @@ import { sagaDiagramSharesDailyClosePrices } from '../../../redux/actions/diagra
 import '../../Report/Report.css'
 import { SimpleDiagramContainer } from '../../Diagram/SimpleDiagramContainer'
 import {FilterByLastDaysGroup} from '../../Filter/FilterByLastDaysGroup'
-import {setEndDate, setStartDate} from "../../../redux/actions/filterActions";
+import {setStartDate} from "../../../redux/actions/filterActions";
 import moment from "moment/moment";
 import {CONSTANTS} from "../../../constants";
 
