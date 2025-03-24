@@ -1,6 +1,6 @@
 import React from 'react'
 import '../Icon.css'
-import {TextElement} from "../TextElement";
+import {TextElement} from "./TextElement";
 
 export const Currency = ({value, color}) => {
     switch (value) {

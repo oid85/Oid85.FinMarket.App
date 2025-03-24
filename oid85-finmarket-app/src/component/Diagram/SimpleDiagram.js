@@ -1,10 +1,12 @@
 ﻿import React from 'react';
 import { AreaChart, Area, YAxis, CartesianGrid, Tooltip } from 'recharts';
+import {Attention} from "../Icon/Attention";
 
 export const SimpleDiagram = ({ key, title, series }) => {
     return (
         <div>
             <div>{title}</div>
+            <Attention visible={false}/>
             <AreaChart
                 key = {key}
                 width={300}

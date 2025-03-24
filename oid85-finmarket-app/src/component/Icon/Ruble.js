@@ -8,11 +8,5 @@ export const Ruble = ({value, color}) => {
         displayValue = `${value}`
     }
 
-    return (
-        <React.Fragment>
-            <div style={{backgroundColor: color}}>
-                {displayValue}&nbsp;руб.
-            </div>
-        </React.Fragment>
-    )
+    return <div style={{backgroundColor: color}}>{displayValue}&nbsp;руб.</div>
 }
