@@ -4,16 +4,16 @@ import './Filter.css'
 
 export const FilterByLastHoursGroup = () => {
     
-    let days = [6, 12, 24, 48]
+    let hours = [6, 12, 24, 48]
 
     return (
         <React.Fragment>
             <div className='filter-container'>
                 {
-                    days.map((item, index) => (
+                    hours.map((item, index) => (
                         <FilterByLastHours
-                        key={index} 
-                        days={item} />
+                        key={index}
+                        hours={item} />
                     ))
                 }
             </div>

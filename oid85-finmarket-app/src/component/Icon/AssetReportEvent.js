@@ -1,5 +1,5 @@
 import React from 'react'
-import '../Icon.css'
+import './Icon.css'
 import report from "./img/report.png";
 
 export const AssetReportEvent = ({value, color}) => {

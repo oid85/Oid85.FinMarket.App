@@ -1,5 +1,5 @@
 import React from 'react'
-import '../Icon.css'
+import './Icon.css'
 import {TextElement} from "./TextElement";
 
 export const Currency = ({value, color}) => {

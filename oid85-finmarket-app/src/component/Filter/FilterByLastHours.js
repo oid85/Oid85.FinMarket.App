@@ -16,7 +16,7 @@ export const FilterByLastHours = ({hours}) => {
                     width: 75,
                     margin: 1
                 }}
-                    key={days}
+                    key={hours}
                     className='btn btn-outline-primary'
                     onClick={() => {
                         dispatch(setStartDateTime(moment()

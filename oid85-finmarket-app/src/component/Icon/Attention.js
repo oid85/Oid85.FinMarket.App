@@ -1,5 +1,5 @@
 import React from 'react'
-import '../Icon.css'
+import './Icon.css'
 import attention from "./img/attention.png";
 
 export const Attention = ({visible}) => {
