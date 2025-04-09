@@ -20,24 +20,12 @@ export const BondsScreen = () => {
             <Tabs>
                 <TabList>
                     <Tab>Агрегация</Tab>
-                    <Tab>Тренд</Tab>
-                    <Tab>Свечи</Tab>
-                    <Tab>Рост объема</Tab>
                     <Tab>Купоны</Tab>
                     <Tab>Выборка</Tab>
                     <Tab>События</Tab>
                 </TabList>
                 <TabPanel>
                     <ReportBondsAggregatedAnalyse />
-                </TabPanel>
-                <TabPanel>
-                    <ReportBondsSupertrend />
-                </TabPanel>
-                <TabPanel>
-                    <ReportBondsCandleSequence />
-                </TabPanel>
-                <TabPanel>
-                    <ReportBondsCandleVolume />
                 </TabPanel>
                 <TabPanel>
                     <ReportBondsCoupon />

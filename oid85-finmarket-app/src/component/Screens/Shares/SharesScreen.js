@@ -29,36 +29,19 @@ export const SharesScreen = () => {
             <Tabs>
                 <TabList>
                     <Tab>Агрегация</Tab>
-                    <Tab>Тренд</Tab>
-                    <Tab>Свечи</Tab>
-                    <Tab>Рост объема</Tab>
-					<Tab>RSI</Tab>
                     <Tab>Доходность LTM</Tab>
                     <Tab>Падение от макс.</Tab>
 					<Tab>Дивиденды</Tab>
                     <Tab>Мультипликаторы</Tab>
-                    <Tab>Прогнозы</Tab>
                     <Tab>Консенсус прогнозы</Tab>
                     <Tab>События</Tab>
                     <Tab>Отчетность</Tab>
-                    <Tab>Индекс страха и жадности</Tab>
+                    <Tab>Индекс ЖиС</Tab>
                     <Tab>Графики (днев)</Tab>
                     <Tab>Графики (5 мин)</Tab>
                 </TabList>
                 <TabPanel>
                     <ReportSharesAggregatedAnalyse />
-                </TabPanel>
-                <TabPanel>
-                    <ReportSharesSupertrend />
-                </TabPanel>
-                <TabPanel>
-                    <ReportSharesCandleSequence />
-                </TabPanel>
-                <TabPanel>
-                    <ReportSharesCandleVolume />
-                </TabPanel>
-                <TabPanel>
-                    <ReportSharesRsi />
                 </TabPanel>
                 <TabPanel>
                     <ReportSharesYieldLtm />
@@ -71,9 +54,6 @@ export const SharesScreen = () => {
                 </TabPanel>
                 <TabPanel>
                     <ReportSharesMultiplicator />
-                </TabPanel>
-                <TabPanel>
-                    <ReportSharesForecastTarget />
                 </TabPanel>
                 <TabPanel>
                     <ReportSharesForecastConsensus />

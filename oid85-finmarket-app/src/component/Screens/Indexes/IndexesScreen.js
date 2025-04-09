@@ -20,24 +20,12 @@ export const IndexesScreen = () => {
             <Tabs>
                 <TabList>
                     <Tab>Агрегация</Tab>
-                    <Tab>Тренд</Tab>
-                    <Tab>Свечи</Tab>
-                    <Tab>RSI</Tab>
                     <Tab>Доходность LTM</Tab>
                     <Tab>Падение от макс.</Tab>
                     <Tab>События</Tab>
                 </TabList>
                 <TabPanel>
                     <ReportIndexesAggregatedAnalyse />
-                </TabPanel>
-                <TabPanel>
-                    <ReportIndexesSupertrend />
-                </TabPanel>
-                <TabPanel>
-                    <ReportIndexesCandleSequence />
-                </TabPanel>
-                <TabPanel>
-                    <ReportIndexesRsi />
                 </TabPanel>
                 <TabPanel>
                     <ReportIndexesYieldLtm />

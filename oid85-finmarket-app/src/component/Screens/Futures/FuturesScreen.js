@@ -21,28 +21,12 @@ export const FuturesScreen = () => {
             <Tabs>
                 <TabList>
                     <Tab>Агрегация</Tab>
-                    <Tab>Тренд</Tab>
-                    <Tab>Свечи</Tab>
-                    <Tab>Рост объема</Tab>
-                    <Tab>RSI</Tab>
                     <Tab>Спреды</Tab>
                     <Tab>Доходность LTM</Tab>
                     <Tab>События</Tab>
                 </TabList>
                 <TabPanel>
                     <ReportFuturesAggregatedAnalyse />
-                </TabPanel>
-                <TabPanel>
-                    <ReportFuturesSupertrend />
-                </TabPanel>
-                <TabPanel>
-                    <ReportFuturesCandleSequence />
-                </TabPanel>
-                <TabPanel>
-                    <ReportFuturesCandleVolume />
-                </TabPanel>
-                <TabPanel>
-                    <ReportFuturesRsi />
                 </TabPanel>
                 <TabPanel>
                     <ReportFuturesSpread />
