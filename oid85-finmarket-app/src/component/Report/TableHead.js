@@ -9,7 +9,7 @@ export const TableHead = ({ header }) => {
                     <th 
                         style={{
                             border: '1px solid black',
-                            fontSize: 17
+                            fontSize: 16
                     }} 
                         key={index}>
                         <Icon
