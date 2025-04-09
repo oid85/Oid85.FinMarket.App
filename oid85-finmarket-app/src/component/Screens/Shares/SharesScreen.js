@@ -32,7 +32,7 @@ export const SharesScreen = () => {
                     <Tab>Доходность LTM</Tab>
                     <Tab>Падение от макс.</Tab>
 					<Tab>Дивиденды</Tab>
-                    <Tab>Мультипликаторы</Tab>
+                    <Tab>Фунд. ан. (мульт.)</Tab>
                     <Tab>Консенсус прогнозы</Tab>
                     <Tab>События</Tab>
                     <Tab>Отчетность</Tab>
