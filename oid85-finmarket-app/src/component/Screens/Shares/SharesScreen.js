@@ -19,6 +19,7 @@ import {ReportSharesAssetReportEvent} from "./ReportSharesAssetReportEvent";
 import {ReportSharesFeerGreedIndex} from "./ReportSharesFeerGreedIndex";
 import {DiagramSharesDailyClosePrices} from "./DiagramSharesDailyClosePrices";
 import {DiagramSharesFiveMinutesClosePrices} from "./DiagramSharesFiveMinutesClosePrices";
+import {DiagramSharesMultiplicatorsMcapPeNetDebtEbitda} from "./DiagramSharesMultiplicatorsMcapPeNetDebtEbitda";
 
 export const SharesScreen = () => {
     const alert = useSelector(state => state.app.alert)
@@ -39,6 +40,7 @@ export const SharesScreen = () => {
                     <Tab>Индекс ЖиС</Tab>
                     <Tab>Графики (днев)</Tab>
                     <Tab>Графики (5 мин)</Tab>
+                    <Tab>Мульт. пузырьковая</Tab>
                 </TabList>
                 <TabPanel>
                     <ReportSharesAggregatedAnalyse />
@@ -72,6 +74,9 @@ export const SharesScreen = () => {
                 </TabPanel>
                 <TabPanel>
                     <DiagramSharesFiveMinutesClosePrices />
+                </TabPanel>
+                <TabPanel>
+                    <DiagramSharesMultiplicatorsMcapPeNetDebtEbitda />
                 </TabPanel>
             </Tabs>
         </React.Fragment>

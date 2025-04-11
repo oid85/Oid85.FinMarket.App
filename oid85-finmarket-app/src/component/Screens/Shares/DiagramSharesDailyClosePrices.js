@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import Loader from '../../Loader/Loader'
 import { sagaDiagramSharesDailyClosePrices } from '../../../redux/actions/diagramSharesActions'
-import '../../Report/Report.css'
+import '../../Diagram/Diagram.css'
 import { SimpleDiagramContainer } from '../../Diagram/SimpleDiagramContainer'
 import {FilterByLastDaysGroup} from '../../Filter/FilterByLastDaysGroup'
 import {setStartDate} from "../../../redux/actions/filterActions";
@@ -39,7 +39,7 @@ export const DiagramSharesDailyClosePrices = () => {
                 !diagramData.result || loading
                     ? <Loader/>
                     :                    
-                    <div className='report-container'>
+                    <div className='diagram-container'>
                         <FilterByLastDaysGroup />
                         <SimpleDiagramContainer containerData = {diagramData.result} />
                     </div>                    

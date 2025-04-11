@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import Loader from '../../Loader/Loader'
 import { sagaDiagramSharesFiveMinutesClosePrices } from '../../../redux/actions/diagramSharesActions'
-import '../../Report/Report.css'
+import '../../Diagram/Diagram.css'
 import { SimpleDiagramContainer } from '../../Diagram/SimpleDiagramContainer'
 import {FilterByLastHoursGroup} from '../../Filter/FilterByLastHoursGroup'
 import {setStartDateTime} from "../../../redux/actions/filterActions";
@@ -39,7 +39,7 @@ export const DiagramSharesFiveMinutesClosePrices = () => {
                 !diagramData.result || loading
                     ? <Loader/>
                     :                    
-                    <div className='report-container'>
+                    <div className='diagram-container'>
                         <FilterByLastHoursGroup />
                         <SimpleDiagramContainer containerData = {diagramData.result} />
                     </div>                    
