@@ -3,7 +3,8 @@ import {
     SET_END_DATE,
     SET_START_DATETIME,
     SET_END_DATETIME,
-    SET_TICKER
+    SET_TICKER,
+    SET_TICKERLIST
 } from '../types/filterTypes'
 
 export const setStartDate = (date) => {
@@ -38,5 +39,12 @@ export const setTicker = (ticker) => {
     return {
         type: SET_TICKER,
         payload: ticker
+    }
+}
+
+export const setTickerList = (tickerList) => {
+    return {
+        type: SET_TICKERLIST,
+        payload: tickerList
     }
 }

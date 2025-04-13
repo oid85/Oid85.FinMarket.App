@@ -11,9 +11,7 @@ export const FilterByLastHoursGroup = () => {
             <div className='filter-container'>
                 {
                     hours.map((item, index) => (
-                        <FilterByLastHours
-                        key={index}
-                        hours={item} />
+                        <FilterByLastHours key={index} hours={item} />
                     ))
                 }
             </div>

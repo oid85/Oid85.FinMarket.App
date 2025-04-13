@@ -8,6 +8,8 @@ import {FilterByLastDaysGroup} from '../../Filter/FilterByLastDaysGroup'
 import {setStartDate} from "../../../redux/actions/filterActions";
 import moment from "moment/moment";
 import {CONSTANTS} from "../../../constants";
+import {FilterShareByTickerListGroup} from "../../Filter/FilterShareByTickerListGroup";
+import {sagaReportSharesYieldLtm} from "../../../redux/actions/reportSharesActions";
 
 export const DiagramSharesDailyClosePrices = () => {
 
@@ -16,6 +18,7 @@ export const DiagramSharesDailyClosePrices = () => {
     const diagramData = useSelector(state => state.diagramShares.diagramData)
     const startDate = useSelector(state => state.filter.startDate)
     const endDate = useSelector(state => state.filter.endDate)
+    const tickerList = useSelector(state => state.filter.tickerList)
 
     useEffect(() => {
         dispatch(sagaDiagramSharesDailyClosePrices())
@@ -33,6 +36,10 @@ export const DiagramSharesDailyClosePrices = () => {
         dispatch(sagaDiagramSharesDailyClosePrices())
     }, [endDate])
 
+    useEffect(() => {
+        dispatch(sagaReportSharesYieldLtm())
+    }, [tickerList])
+
     return (
         <React.Fragment>
             {
@@ -41,6 +48,7 @@ export const DiagramSharesDailyClosePrices = () => {
                     :                    
                     <div className='diagram-container'>
                         <FilterByLastDaysGroup />
+                        <FilterShareByTickerListGroup />
                         <SimpleDiagramContainer containerData = {diagramData.result} />
                     </div>                    
             }

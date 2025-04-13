@@ -12,7 +12,7 @@ import { eventSagaWatcherReportBonds } from './redux/sagas/reportBondsSagas'
 import { eventSagaWatcherReportFutures } from './redux/sagas/reportFuturesSagas'
 import { eventSagaWatcherReportCurrencies } from './redux/sagas/reportCurrenciesSagas'
 import { eventSagaWatcherReportIndexes } from './redux/sagas/reportIndexesSagas'
-import {eventSagaWatcherDiagramShares} from "./redux/sagas/diagramSharesSagas";
+import { eventSagaWatcherDiagramShares } from "./redux/sagas/diagramSharesSagas";
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 const saga = createSagaMiddleware()

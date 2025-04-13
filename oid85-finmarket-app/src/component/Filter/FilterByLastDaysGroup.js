@@ -11,9 +11,7 @@ export const FilterByLastDaysGroup = () => {
             <div className='filter-container'>
                 {
                     days.map((item, index) => (
-                        <FilterByLastDays 
-                        key={index} 
-                        days={item} />
+                        <FilterByLastDays key={index} days={item} />
                     ))
                 }
             </div>

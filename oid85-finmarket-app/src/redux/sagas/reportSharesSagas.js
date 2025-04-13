@@ -51,6 +51,7 @@ import {
 
 const getStartDate = (state) => state.filter.startDate
 const getEndDate = (state) => state.filter.endDate
+const getTickerList = (state) => state.filter.tickerList
 
 // SagaWatcher'ы
 export function* eventSagaWatcherReportShares() {
@@ -77,7 +78,9 @@ function* sagaWorkerReportSharesSuperTrend() {
         
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
-        let reportData = yield call(getReportSuperTrendFromApi, startDate, endDate)
+        let tickerList = yield select(getTickerList)
+
+        let reportData = yield call(getReportSuperTrendFromApi, startDate, endDate, tickerList)
         
         yield put(fetchReportSharesSupertrend(reportData))
         yield put(hideLoader())
@@ -95,7 +98,9 @@ function* sagaWorkerReportSharesCandleSequence() {
         
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
-        let reportData = yield call(getReportCandleSequenceFromApi, startDate, endDate)
+        let tickerList = yield select(getTickerList)
+
+        let reportData = yield call(getReportCandleSequenceFromApi, startDate, endDate, tickerList)
         
         yield put(fetchReportSharesCandleSequence(reportData))
         yield put(hideLoader())
@@ -113,7 +118,9 @@ function* sagaWorkerReportSharesCandleVolume() {
         
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
-        let reportData = yield call(getReportCandleVolumeFromApi, startDate, endDate)
+        let tickerList = yield select(getTickerList)
+
+        let reportData = yield call(getReportCandleVolumeFromApi, startDate, endDate, tickerList)
         
         yield put(fetchReportSharesCandleVolume(reportData))
         yield put(hideLoader())
@@ -131,7 +138,9 @@ function* sagaWorkerReportSharesRsi() {
         
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
-        let reportData = yield call(getReportRsiFromApi, startDate, endDate)
+        let tickerList = yield select(getTickerList)
+
+        let reportData = yield call(getReportRsiFromApi, startDate, endDate, tickerList)
         
         yield put(fetchReportSharesRsi(reportData))
         yield put(hideLoader())
@@ -149,7 +158,9 @@ function* sagaWorkerReportSharesYieldLtm() {
 
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
-        let reportData = yield call(getReportYieldLtmFromApi, startDate, endDate)
+        let tickerList = yield select(getTickerList)
+
+        let reportData = yield call(getReportYieldLtmFromApi, startDate, endDate, tickerList)
 
         yield put(fetchReportSharesYieldLtm(reportData))
         yield put(hideLoader())
@@ -167,7 +178,9 @@ function* sagaWorkerReportSharesDrawdownFromMaximum() {
 
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
-        let reportData = yield call(getReportDrawdownFromMaximumFromApi, startDate, endDate)
+        let tickerList = yield select(getTickerList)
+
+        let reportData = yield call(getReportDrawdownFromMaximumFromApi, startDate, endDate, tickerList)
 
         yield put(fetchReportSharesDrawdownFromMaximum(reportData))
         yield put(hideLoader())
@@ -217,8 +230,9 @@ function* sagaWorkerReportSharesAggregatedAnalyse() {
         
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
+        let tickerList = yield select(getTickerList)
 
-        let reportData = yield call(getReportAggregatedAnalyseFromApi, startDate, endDate)
+        let reportData = yield call(getReportAggregatedAnalyseFromApi, startDate, endDate, tickerList)
         
         yield put(fetchReportSharesAggregatedAnalyse(reportData))
         yield put(hideLoader())
@@ -300,8 +314,9 @@ function* sagaWorkerReportSharesFeerGreedIndex() {
 
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
+        let tickerList = yield select(getTickerList)
 
-        let reportData = yield call(getReportFeerGreedIndexFromApi, startDate, endDate)
+        let reportData = yield call(getReportFeerGreedIndexFromApi, startDate, endDate, tickerList)
 
         yield put(fetchReportSharesFeerGreedIndex(reportData))
         yield put(hideLoader())
