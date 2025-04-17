@@ -196,7 +196,9 @@ function* sagaWorkerReportSharesMultiplicator() {
     try {
         yield put(showLoader())
 
-        let reportData = yield call(getReportMultiplicatorFromApi)
+        let tickerList = yield select(getTickerList)
+
+        let reportData = yield call(getReportMultiplicatorFromApi, tickerList)
 
         yield put(fetchReportSharesMultiplicator(reportData))
         yield put(hideLoader())
@@ -211,8 +213,10 @@ function* sagaWorkerReportSharesMultiplicator() {
 function* sagaWorkerReportDividend() {
     try {
         yield put(showLoader())
-        
-        let reportData = yield call(getReportDividendFromApi)
+
+        let tickerList = yield select(getTickerList)
+
+        let reportData = yield call(getReportDividendFromApi, tickerList)
         
         yield put(fetchReportSharesDividend(reportData))
         yield put(hideLoader())
@@ -248,7 +252,9 @@ function* sagaWorkerReportSharesForecastTarget() {
     try {
         yield put(showLoader())
 
-        let reportData = yield call(getReportForecastTargetFromApi)
+        let tickerList = yield select(getTickerList)
+
+        let reportData = yield call(getReportForecastTargetFromApi, tickerList)
 
         yield put(fetchReportSharesForecastTarget(reportData))
         yield put(hideLoader())
@@ -264,7 +270,9 @@ function* sagaWorkerReportSharesForecastConsensus() {
     try {
         yield put(showLoader())
 
-        let reportData = yield call(getReportForecastConsensusFromApi)
+        let tickerList = yield select(getTickerList)
+
+        let reportData = yield call(getReportForecastConsensusFromApi, tickerList)
 
         yield put(fetchReportSharesForecastConsensus(reportData))
         yield put(hideLoader())
@@ -280,7 +288,9 @@ function* sagaWorkerReportSharesMarketEvent() {
     try {
         yield put(showLoader())
 
-        let reportData = yield call(getReportMarketEventFromApi)
+        let tickerList = yield select(getTickerList)
+
+        let reportData = yield call(getReportMarketEventFromApi, tickerList)
 
         yield put(fetchReportSharesMarketEvent(reportData))
         yield put(hideLoader())
@@ -296,7 +306,9 @@ function* sagaWorkerReportSharesAssetReportEvent() {
     try {
         yield put(showLoader())
 
-        let reportData = yield call(getReportAssetReportEventFromApi)
+        let tickerList = yield select(getTickerList)
+
+        let reportData = yield call(getReportAssetReportEventFromApi, tickerList)
 
         yield put(fetchReportSharesAssetReportEvent(reportData))
         yield put(hideLoader())

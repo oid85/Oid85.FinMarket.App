@@ -30,6 +30,7 @@ import {
 
 const getStartDate = (state) => state.filter.startDate
 const getEndDate = (state) => state.filter.endDate
+const getTickerList = (state) => state.filter.currenciesTickerList
 
 // SagaWatcher'ы
 export function* eventSagaWatcherReportCurrencies() {
