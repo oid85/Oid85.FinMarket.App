@@ -4,7 +4,11 @@ import {
     SET_END_DATE,
     SET_START_DATETIME,
     SET_END_DATETIME,
-    SET_SHARES_TICKERLIST
+    SET_SHARES_TICKERLIST,
+    SET_BONDS_TICKERLIST,
+    SET_FUTURES_TICKERLIST,
+    SET_CURRENCIES_TICKERLIST,
+    SET_INDEXES_TICKERLIST
 } from '../types/filterTypes'
 import { CONSTANTS } from '../../constants'
 
@@ -31,8 +35,11 @@ const initialState = {
     endDate: endDate,
     startDateTime: startDateTime,
     endDateTime: endDateTime,
-    ticker: '',
-    sharesTickerList: 'all'
+    sharesTickerList: 'shares/watchlist',
+    bondsTickerList: 'bonds/watchlist',
+    futuresTickerList: 'futures/watchlist',
+    currenciesTickerList: 'currencies/watchlist',
+    indexesTickerList: 'indexes/watchlist'
 }
 
 export const filterReducer = (state = initialState, action) => {
@@ -53,6 +60,18 @@ export const filterReducer = (state = initialState, action) => {
 
         case SET_SHARES_TICKERLIST:
             return {...state, sharesTickerList: action.payload.toString()}
+
+        case SET_BONDS_TICKERLIST:
+            return {...state, bondsTickerList: action.payload.toString()}
+
+        case SET_FUTURES_TICKERLIST:
+            return {...state, futuresTickerList: action.payload.toString()}
+
+        case SET_CURRENCIES_TICKERLIST:
+            return {...state, currenciesTickerList: action.payload.toString()}
+
+        case SET_INDEXES_TICKERLIST:
+            return {...state, indexesTickerList: action.payload.toString()}
 
         default: return state
     }

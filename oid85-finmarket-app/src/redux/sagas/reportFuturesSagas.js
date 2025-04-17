@@ -33,6 +33,7 @@ import {
 
 const getStartDate = (state) => state.filter.startDate
 const getEndDate = (state) => state.filter.endDate
+const getTickerList = (state) => state.filter.futuresTickerList
 
 // SagaWatcher'ы
 export function* eventSagaWatcherReportFutures() {
@@ -53,7 +54,9 @@ function* sagaWorkerReportFuturesSuperTrend() {
 
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
-        let reportData = yield call(getReportSuperTrendFromApi, startDate, endDate)
+        let tickerList = yield select(getTickerList)
+
+        let reportData = yield call(getReportSuperTrendFromApi, startDate, endDate, tickerList)
 
         yield put(fetchReportFuturesSupertrend(reportData))
         yield put(hideLoader())
@@ -71,7 +74,9 @@ function* sagaWorkerReportFuturesCandleSequence() {
 
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
-        let reportData = yield call(getReportCandleSequenceFromApi, startDate, endDate)
+        let tickerList = yield select(getTickerList)
+
+        let reportData = yield call(getReportCandleSequenceFromApi, startDate, endDate, tickerList)
 
         yield put(fetchReportFuturesCandleSequence(reportData))
         yield put(hideLoader())
@@ -89,7 +94,9 @@ function* sagaWorkerReportFuturesCandleVolume() {
 
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
-        let reportData = yield call(getReportCandleVolumeFromApi, startDate, endDate)
+        let tickerList = yield select(getTickerList)
+
+        let reportData = yield call(getReportCandleVolumeFromApi, startDate, endDate, tickerList)
 
         yield put(fetchReportFuturesCandleVolume(reportData))
         yield put(hideLoader())
@@ -107,7 +114,9 @@ function* sagaWorkerReportFuturesRsi() {
 
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
-        let reportData = yield call(getReportRsiFromApi, startDate, endDate)
+        let tickerList = yield select(getTickerList)
+
+        let reportData = yield call(getReportRsiFromApi, startDate, endDate, tickerList)
 
         yield put(fetchReportFuturesRsi(reportData))
         yield put(hideLoader())
@@ -125,7 +134,9 @@ function* sagaWorkerReportFuturesYieldLtm() {
 
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
-        let reportData = yield call(getReportYieldLtmFromApi, startDate, endDate)
+        let tickerList = yield select(getTickerList)
+
+        let reportData = yield call(getReportYieldLtmFromApi, startDate, endDate,tickerList)
 
         yield put(fetchReportFuturesYieldLtm(reportData))
         yield put(hideLoader())
@@ -141,7 +152,9 @@ function* sagaWorkerReportSpread() {
     try {
         yield put(showLoader())
 
-        let reportData = yield call(getReportSpreadFromApi)
+        let tickerList = yield select(getTickerList)
+
+        let reportData = yield call(getReportSpreadFromApi, tickerList)
 
         yield put(fetchReportFuturesSpread(reportData))
         yield put(hideLoader())
@@ -159,8 +172,9 @@ function* sagaWorkerReportFuturesAggregatedAnalyse() {
 
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
+        let tickerList = yield select(getTickerList)
 
-        let reportData = yield call(getReportAggregatedAnalyseFromApi, startDate, endDate)
+        let reportData = yield call(getReportAggregatedAnalyseFromApi, startDate, endDate, tickerList)
 
         yield put(fetchReportFuturesAggregatedAnalyse(reportData))
         yield put(hideLoader())
@@ -176,7 +190,9 @@ function* sagaWorkerReportFuturesMarketEvent() {
     try {
         yield put(showLoader())
 
-        let reportData = yield call(getReportMarketEventFromApi)
+        let tickerList = yield select(getTickerList)
+
+        let reportData = yield call(getReportMarketEventFromApi, tickerList)
 
         yield put(fetchReportFuturesMarketEvent(reportData))
         yield put(hideLoader())

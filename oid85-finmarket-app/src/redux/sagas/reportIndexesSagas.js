@@ -30,6 +30,7 @@ import {
 
 const getStartDate = (state) => state.filter.startDate
 const getEndDate = (state) => state.filter.endDate
+const getTickerList = (state) => state.filter.indexesTickerList
 
 // SagaWatcher'ы
 export function* eventSagaWatcherReportIndexes() {
@@ -49,7 +50,9 @@ function* sagaWorkerReportIndexesSuperTrend() {
 
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
-        let reportData = yield call(getReportSuperTrendFromApi, startDate, endDate)
+        let tickerList = yield select(getTickerList)
+
+        let reportData = yield call(getReportSuperTrendFromApi, startDate, endDate, tickerList)
 
         yield put(fetchReportIndexesSupertrend(reportData))
         yield put(hideLoader())
@@ -67,7 +70,9 @@ function* sagaWorkerReportIndexesCandleSequence() {
 
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
-        let reportData = yield call(getReportCandleSequenceFromApi, startDate, endDate)
+        let tickerList = yield select(getTickerList)
+
+        let reportData = yield call(getReportCandleSequenceFromApi, startDate, endDate, tickerList)
 
         yield put(fetchReportIndexesCandleSequence(reportData))
         yield put(hideLoader())
@@ -85,7 +90,9 @@ function* sagaWorkerReportIndexesRsi() {
 
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
-        let reportData = yield call(getReportRsiFromApi, startDate, endDate)
+        let tickerList = yield select(getTickerList)
+
+        let reportData = yield call(getReportRsiFromApi, startDate, endDate, tickerList)
 
         yield put(fetchReportIndexesRsi(reportData))
         yield put(hideLoader())
@@ -103,7 +110,9 @@ function* sagaWorkerReportIndexesYieldLtm() {
 
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
-        let reportData = yield call(getReportYieldLtmFromApi, startDate, endDate)
+        let tickerList = yield select(getTickerList)
+
+        let reportData = yield call(getReportYieldLtmFromApi, startDate, endDate, tickerList)
 
         yield put(fetchReportIndexesYieldLtm(reportData))
         yield put(hideLoader())
@@ -121,7 +130,9 @@ function* sagaWorkerReportIndexesDrawdownFromMaximum() {
 
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
-        let reportData = yield call(getReportDrawdownFromMaximumFromApi, startDate, endDate)
+        let tickerList = yield select(getTickerList)
+
+        let reportData = yield call(getReportDrawdownFromMaximumFromApi, startDate, endDate, tickerList)
 
         yield put(fetchReportIndexesDrawdownFromMaximum(reportData))
         yield put(hideLoader())
@@ -139,8 +150,9 @@ function* sagaWorkerReportIndexesAggregatedAnalyse() {
 
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
+        let tickerList = yield select(getTickerList)
 
-        let reportData = yield call(getReportAggregatedAnalyseFromApi, startDate, endDate)
+        let reportData = yield call(getReportAggregatedAnalyseFromApi, startDate, endDate, tickerList)
 
         yield put(fetchReportIndexesAggregatedAnalyse(reportData))
         yield put(hideLoader())
@@ -156,7 +168,9 @@ function* sagaWorkerReportIndexesMarketEvent() {
     try {
         yield put(showLoader())
 
-        let reportData = yield call(getReportMarketEventFromApi)
+        let tickerList = yield select(getTickerList)
+
+        let reportData = yield call(getReportMarketEventFromApi, tickerList)
 
         yield put(fetchReportIndexesMarketEvent(reportData))
         yield put(hideLoader())
