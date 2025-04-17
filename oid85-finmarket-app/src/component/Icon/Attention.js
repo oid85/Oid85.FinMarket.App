@@ -1,6 +1,6 @@
 import React from 'react'
 import './Icon.css'
-import attention from "./img/attention.png";
+import attention from "./img/attention.png"
 
 export const Attention = ({visible}) => {
     const height = 10

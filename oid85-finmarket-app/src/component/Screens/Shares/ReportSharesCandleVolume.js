@@ -5,10 +5,10 @@ import {sagaReportSharesCandleVolume, sagaReportSharesYieldLtm} from '../../../r
 import '../../Report/Report.css'
 import { Table } from '../../Report/Table'
 import {FilterByLastDaysGroup} from '../../Filter/FilterByLastDaysGroup'
-import {setStartDate} from "../../../redux/actions/filterActions";
-import moment from "moment/moment";
-import {CONSTANTS} from "../../../constants";
-import {FilterShareByTickerListGroup} from "../../Filter/FilterShareByTickerListGroup";
+import {setStartDate} from "../../../redux/actions/filterActions"
+import moment from "moment/moment"
+import {CONSTANTS} from "../../../constants"
+import {FilterShareByTickerListGroup} from "../../Filter/FilterShareByTickerListGroup"
 
 export const ReportSharesCandleVolume = () => {
 
@@ -17,7 +17,7 @@ export const ReportSharesCandleVolume = () => {
     const reportData = useSelector(state => state.reportShares.reportData)
     const startDate = useSelector(state => state.filter.startDate)
     const endDate = useSelector(state => state.filter.endDate)
-    const tickerList = useSelector(state => state.filter.tickerList)
+    const tickerList = useSelector(state => state.filter.sharesTickerList)
 
     useEffect(() => {
         dispatch(sagaReportSharesCandleVolume())

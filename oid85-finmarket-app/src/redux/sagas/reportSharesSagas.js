@@ -47,11 +47,11 @@ import {
     getReportMarketEventFromApi,
     getReportAssetReportEventFromApi,
     getReportFeerGreedIndexFromApi
-} from "../api/reportSharesApi";
+} from "../api/reportSharesApi"
 
 const getStartDate = (state) => state.filter.startDate
 const getEndDate = (state) => state.filter.endDate
-const getTickerList = (state) => state.filter.tickerList
+const getTickerList = (state) => state.filter.sharesTickerList
 
 // SagaWatcher'ы
 export function* eventSagaWatcherReportShares() {

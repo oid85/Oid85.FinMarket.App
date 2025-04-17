@@ -3,14 +3,14 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import { useSelector } from 'react-redux'
 import 'react-tabs/style/react-tabs.css'
 import { Alert } from '../../Alert/Alert'
-import {ReportFuturesSupertrend} from "./ReportFuturesSupertrend";
-import {ReportFuturesCandleSequence} from "./ReportSharesCandleSequence";
-import {ReportFuturesCandleVolume} from "./ReportSharesCandleVolume";
-import {ReportFuturesRsi} from "./ReportSharesRsi";
-import {ReportFuturesSpread} from "./ReportFuturesSpread";
-import {ReportFuturesYieldLtm} from "./ReportSharesYieldLtm";
-import {ReportFuturesAggregatedAnalyse} from "./ReportFuturesAggregatedAnalyse";
-import {ReportFuturesMarketEvent} from "./ReportFuturesMarketEvent";
+import {ReportFuturesSupertrend} from "./ReportFuturesSupertrend"
+import {ReportFuturesCandleSequence} from "./ReportSharesCandleSequence"
+import {ReportFuturesCandleVolume} from "./ReportSharesCandleVolume"
+import {ReportFuturesRsi} from "./ReportSharesRsi"
+import {ReportFuturesSpread} from "./ReportFuturesSpread"
+import {ReportFuturesYieldLtm} from "./ReportSharesYieldLtm"
+import {ReportFuturesAggregatedAnalyse} from "./ReportFuturesAggregatedAnalyse"
+import {ReportFuturesMarketEvent} from "./ReportFuturesMarketEvent"
 
 export const FuturesScreen = () => {
     const alert = useSelector(state => state.app.alert)

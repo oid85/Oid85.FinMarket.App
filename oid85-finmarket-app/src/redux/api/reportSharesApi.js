@@ -1,4 +1,4 @@
-﻿import {CONSTANTS} from "../../constants";
+﻿import {CONSTANTS} from "../../constants"
 
 export const getReportAggregatedAnalyseFromApi = async (startDate, endDate, tickerList) => {
     const response = await fetch(

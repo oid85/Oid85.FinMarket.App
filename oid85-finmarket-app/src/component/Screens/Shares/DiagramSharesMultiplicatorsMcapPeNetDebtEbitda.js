@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import Loader from '../../Loader/Loader'
 import { sagaDiagramSharesMultiplicatorsMcapPeNetDebtEbitda } from '../../../redux/actions/diagramSharesActions'
 import '../../Diagram/Diagram.css'
-import {BubbleDiagram} from "../../Diagram/BubbleDiagram";
+import {BubbleDiagram} from "../../Diagram/BubbleDiagram"
 
 export const DiagramSharesMultiplicatorsMcapPeNetDebtEbitda = () => {
 

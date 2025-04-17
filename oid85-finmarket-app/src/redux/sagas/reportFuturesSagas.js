@@ -29,7 +29,7 @@ import {
     getReportYieldLtmFromApi,
     getReportSpreadFromApi,
     getReportMarketEventFromApi
-} from "../api/reportFuturesApi";
+} from "../api/reportFuturesApi"
 
 const getStartDate = (state) => state.filter.startDate
 const getEndDate = (state) => state.filter.endDate

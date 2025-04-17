@@ -26,7 +26,7 @@ import {
     getReportCouponFromApi,
     getReportSelectionFromApi,
     getReportMarketEventFromApi
-} from "../api/reportBondsApi";
+} from "../api/reportBondsApi"
 
 const getStartDate = (state) => state.filter.startDate
 const getEndDate = (state) => state.filter.endDate

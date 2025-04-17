@@ -14,7 +14,7 @@ import {
     getDiagramDailyClosePricesFromApi,
     getDiagramFiveMinutesClosePricesFromApi,
     getDiagramMultiplicatorsMcapPeNetDebtEbitdaFromApi
-} from "../api/diagramSharesApi";
+} from "../api/diagramSharesApi"
 
 const getStartDate = (state) => state.filter.startDate
 const getEndDate = (state) => state.filter.endDate

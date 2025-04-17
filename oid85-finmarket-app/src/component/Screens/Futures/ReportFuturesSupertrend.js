@@ -5,9 +5,9 @@ import { sagaReportFuturesSupertrend } from '../../../redux/actions/reportFuture
 import '../../Report/Report.css'
 import { Table } from '../../Report/Table'
 import {FilterByLastDaysGroup} from '../../Filter/FilterByLastDaysGroup'
-import {setStartDate} from "../../../redux/actions/filterActions";
-import moment from "moment";
-import {CONSTANTS} from "../../../constants";
+import {setStartDate} from "../../../redux/actions/filterActions"
+import moment from "moment"
+import {CONSTANTS} from "../../../constants"
 
 export const ReportFuturesSupertrend = () => {
 

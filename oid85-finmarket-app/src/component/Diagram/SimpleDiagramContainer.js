@@ -1,5 +1,5 @@
 import React from 'react'
-import {SimpleDiagram} from "./SimpleDiagram";
+import {SimpleDiagram} from "./SimpleDiagram"
 import './Diagram.css'
 
 export const SimpleDiagramContainer = ({ containerData }) => {

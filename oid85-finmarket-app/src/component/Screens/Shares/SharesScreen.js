@@ -3,23 +3,23 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import { useSelector } from 'react-redux'
 import 'react-tabs/style/react-tabs.css'
 import { Alert } from '../../Alert/Alert'
-import {ReportSharesSupertrend} from "./ReportSharesSupertrend";
-import {ReportSharesCandleSequence} from "./ReportSharesCandleSequence";
-import {ReportSharesCandleVolume} from "./ReportSharesCandleVolume";
-import {ReportSharesRsi} from "./ReportSharesRsi";
-import {ReportSharesYieldLtm} from "./ReportSharesYieldLtm";
-import {ReportSharesDrawdownFromMaximum} from "./ReportSharesDrawdownFromMaximum";
-import {ReportSharesDividend} from "./ReportSharesDividend";
-import {ReportSharesMultiplicator} from "./ReportSharesMultiplicator";
-import {ReportSharesAggregatedAnalyse} from "./ReportSharesAggregatedAnalyse";
-import {ReportSharesForecastTarget} from "./ReportSharesForecastTarget";
-import {ReportSharesForecastConsensus} from "./ReportSharesForecastConsensus";
-import {ReportSharesMarketEvent} from "./ReportSharesMarketEvent";
-import {ReportSharesAssetReportEvent} from "./ReportSharesAssetReportEvent";
-import {ReportSharesFeerGreedIndex} from "./ReportSharesFeerGreedIndex";
-import {DiagramSharesDailyClosePrices} from "./DiagramSharesDailyClosePrices";
-import {DiagramSharesFiveMinutesClosePrices} from "./DiagramSharesFiveMinutesClosePrices";
-import {DiagramSharesMultiplicatorsMcapPeNetDebtEbitda} from "./DiagramSharesMultiplicatorsMcapPeNetDebtEbitda";
+import {ReportSharesSupertrend} from "./ReportSharesSupertrend"
+import {ReportSharesCandleSequence} from "./ReportSharesCandleSequence"
+import {ReportSharesCandleVolume} from "./ReportSharesCandleVolume"
+import {ReportSharesRsi} from "./ReportSharesRsi"
+import {ReportSharesYieldLtm} from "./ReportSharesYieldLtm"
+import {ReportSharesDrawdownFromMaximum} from "./ReportSharesDrawdownFromMaximum"
+import {ReportSharesDividend} from "./ReportSharesDividend"
+import {ReportSharesMultiplicator} from "./ReportSharesMultiplicator"
+import {ReportSharesAggregatedAnalyse} from "./ReportSharesAggregatedAnalyse"
+import {ReportSharesForecastTarget} from "./ReportSharesForecastTarget"
+import {ReportSharesForecastConsensus} from "./ReportSharesForecastConsensus"
+import {ReportSharesMarketEvent} from "./ReportSharesMarketEvent"
+import {ReportSharesAssetReportEvent} from "./ReportSharesAssetReportEvent"
+import {ReportSharesFeerGreedIndex} from "./ReportSharesFeerGreedIndex"
+import {DiagramSharesDailyClosePrices} from "./DiagramSharesDailyClosePrices"
+import {DiagramSharesFiveMinutesClosePrices} from "./DiagramSharesFiveMinutesClosePrices"
+import {DiagramSharesMultiplicatorsMcapPeNetDebtEbitda} from "./DiagramSharesMultiplicatorsMcapPeNetDebtEbitda"
 
 export const SharesScreen = () => {
     const alert = useSelector(state => state.app.alert)

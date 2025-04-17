@@ -1,6 +1,6 @@
 import React from 'react'
 import './Icon.css'
-import report from "./img/report.png";
+import report from "./img/report.png"
 
 export const AssetReportEvent = ({value, color}) => {
     const height = 44

@@ -1,6 +1,6 @@
-﻿import React from 'react';
-import { AreaChart, Area, YAxis, CartesianGrid, Tooltip } from 'recharts';
-import {Attention} from "../Icon/Attention";
+﻿import React from 'react'
+import { AreaChart, Area, YAxis, CartesianGrid, Tooltip } from 'recharts'
+import {Attention} from "../Icon/Attention"
 
 export const SimpleDiagram = ({ key, title, series }) => {
     return (

@@ -5,11 +5,11 @@ import { sagaDiagramSharesFiveMinutesClosePrices } from '../../../redux/actions/
 import '../../Diagram/Diagram.css'
 import { SimpleDiagramContainer } from '../../Diagram/SimpleDiagramContainer'
 import {FilterByLastHoursGroup} from '../../Filter/FilterByLastHoursGroup'
-import {setStartDateTime} from "../../../redux/actions/filterActions";
-import moment from "moment/moment";
-import {CONSTANTS} from "../../../constants";
-import {FilterShareByTickerListGroup} from "../../Filter/FilterShareByTickerListGroup";
-import {sagaReportSharesYieldLtm} from "../../../redux/actions/reportSharesActions";
+import {setStartDateTime} from "../../../redux/actions/filterActions"
+import moment from "moment/moment"
+import {CONSTANTS} from "../../../constants"
+import {FilterShareByTickerListGroup} from "../../Filter/FilterShareByTickerListGroup"
+import {sagaReportSharesYieldLtm} from "../../../redux/actions/reportSharesActions"
 
 export const DiagramSharesFiveMinutesClosePrices = () => {
 
@@ -18,7 +18,7 @@ export const DiagramSharesFiveMinutesClosePrices = () => {
     const diagramData = useSelector(state => state.diagramShares.diagramData)
     const startDateTime = useSelector(state => state.filter.startDateTime)
     const endDateTime = useSelector(state => state.filter.endDateTime)
-    const tickerList = useSelector(state => state.filter.tickerList)
+    const tickerList = useSelector(state => state.filter.sharesTickerList)
 
     useEffect(() => {
         dispatch(sagaDiagramSharesFiveMinutesClosePrices())

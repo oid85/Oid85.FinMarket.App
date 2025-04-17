@@ -4,13 +4,13 @@ import {CONSTANTS} from '../../constants'
 import {Calendar} from '../Calendar/Calendar'
 import {Percent} from './Percent'
 import {Ruble} from './Ruble'
-import {TextElement} from "./TextElement";
-import {NumberElement} from "./NumberElement";
-import {Ticker} from "./Ticker";
-import {Sector} from "./Sector";
-import {AnalyseResult} from "./AnalyseResult";
-import {Currency} from "./Currency";
-import {AssetReportEvent} from "./AssetReportEvent";
+import {TextElement} from "./TextElement"
+import {NumberElement} from "./NumberElement"
+import {Ticker} from "./Ticker"
+import {Sector} from "./Sector"
+import {AnalyseResult} from "./AnalyseResult"
+import {Currency} from "./Currency"
+import {AssetReportEvent} from "./AssetReportEvent"
 
 export const Icon = ({displayType, displayValue, displayColor}) => {
 

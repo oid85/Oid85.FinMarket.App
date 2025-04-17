@@ -26,7 +26,7 @@ import {
     getReportYieldLtmFromApi,
     getReportDrawdownFromMaximumFromApi,
     getReportMarketEventFromApi
-} from "../api/reportCurrenciesApi";
+} from "../api/reportCurrenciesApi"
 
 const getStartDate = (state) => state.filter.startDate
 const getEndDate = (state) => state.filter.endDate
