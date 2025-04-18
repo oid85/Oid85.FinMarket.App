@@ -140,14 +140,17 @@ export const getReportDrawdownFromMaximumFromApi = async (startDate, endDate, ti
     }
 }
 
-export const getReportDividendFromApi = async () => {
+export const getReportDividendFromApi = async (tickerList) => {
     const response = await fetch(
         `${CONSTANTS.FINMARKET_API}/api/shares/report/dividend-analyse`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
-            }
+            },
+            body: JSON.stringify({
+                tickerList: tickerList
+            })
         })
 
     if (response.ok) {
@@ -155,14 +158,17 @@ export const getReportDividendFromApi = async () => {
     }
 }
 
-export const getReportMultiplicatorFromApi = async () => {
+export const getReportMultiplicatorFromApi = async (tickerList) => {
     const response = await fetch(
         `${CONSTANTS.FINMARKET_API}/api/shares/report/multiplicator-analyse`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
-            }
+            },
+            body: JSON.stringify({
+                tickerList: tickerList
+            })
         })
 
     if (response.ok) {
@@ -170,14 +176,17 @@ export const getReportMultiplicatorFromApi = async () => {
     }
 }
 
-export const getReportForecastTargetFromApi = async () => {
+export const getReportForecastTargetFromApi = async (tickerList) => {
     const response = await fetch(
         `${CONSTANTS.FINMARKET_API}/api/shares/report/forecast-target-analyse`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
-            }
+            },
+            body: JSON.stringify({
+                tickerList: tickerList
+            })
         })
 
     if (response.ok) {
@@ -185,14 +194,17 @@ export const getReportForecastTargetFromApi = async () => {
     }
 }
 
-export const getReportForecastConsensusFromApi = async () => {
+export const getReportForecastConsensusFromApi = async (tickerList) => {
     const response = await fetch(
         `${CONSTANTS.FINMARKET_API}/api/shares/report/forecast-consensus-analyse`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
-            }
+            },
+            body: JSON.stringify({
+                tickerList: tickerList
+            })
         })
 
     if (response.ok) {
@@ -200,14 +212,17 @@ export const getReportForecastConsensusFromApi = async () => {
     }
 }
 
-export const getReportMarketEventFromApi = async () => {
+export const getReportMarketEventFromApi = async (tickerList) => {
     const response = await fetch(
         `${CONSTANTS.FINMARKET_API}/api/shares/report/active-market-events-analyse`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
-            }
+            },
+            body: JSON.stringify({
+                tickerList: tickerList
+            })
         })
 
     if (response.ok) {
@@ -215,14 +230,17 @@ export const getReportMarketEventFromApi = async () => {
     }
 }
 
-export const getReportAssetReportEventFromApi = async () => {
+export const getReportAssetReportEventFromApi = async (tickerList) => {
     const response = await fetch(
         `${CONSTANTS.FINMARKET_API}/api/shares/report/asset-report-events`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
-            }
+            },
+            body: JSON.stringify({
+                tickerList: tickerList
+            })
         })
 
     if (response.ok) {

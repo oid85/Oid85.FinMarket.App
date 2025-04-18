@@ -1,10 +1,9 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.css'
-import moment from 'moment'
 import {useDispatch} from 'react-redux'
-import {setTickerList} from '../../redux/actions/filterActions'
+import {setSharesTickerList} from '../../redux/actions/filterActions'
 
-export const FilterByTickerList = ({key, tickerList}) => {
+export const FilterBySharesTickerList = ({key, tickerList}) => {
 
     const dispatch = useDispatch()
     
@@ -19,7 +18,7 @@ export const FilterByTickerList = ({key, tickerList}) => {
                     key={key}
                     className='btn btn-outline-primary'
                     onClick={() => {
-                        dispatch(setTickerList(tickerList))
+                        dispatch(setSharesTickerList(tickerList))
                     }}
                 >{tickerList}</button>
             </div>

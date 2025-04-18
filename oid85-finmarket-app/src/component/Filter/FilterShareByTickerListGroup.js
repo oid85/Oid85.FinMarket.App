@@ -1,5 +1,5 @@
 import React from 'react'
-import {FilterByTickerList} from './FilterByTickerList'
+import {FilterBySharesTickerList} from './FilterBySharesTickerList'
 import './Filter.css'
 
 export const FilterShareByTickerListGroup = () => {
@@ -11,7 +11,7 @@ export const FilterShareByTickerListGroup = () => {
             <div className='filter-container'>
                 {
                     tickerLists.map((item, index) => (
-                        <FilterByTickerList key={index} tickerList={item} />
+                        <FilterBySharesTickerList key={index} tickerList={item} />
                     ))
                 }
             </div>

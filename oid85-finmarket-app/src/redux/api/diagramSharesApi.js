@@ -1,6 +1,6 @@
 ﻿import {CONSTANTS} from "../../constants"
 
-export const getDiagramDailyClosePricesFromApi = async (startDate, endDate) => {
+export const getDiagramDailyClosePricesFromApi = async (startDate, endDate, tickerList) => {
     const response = await fetch(
         `${CONSTANTS.FINMARKET_API}/api/shares/diagram/daily-close-prices`, {
             method: 'POST',
@@ -10,7 +10,9 @@ export const getDiagramDailyClosePricesFromApi = async (startDate, endDate) => {
             },
             body: JSON.stringify({
                 from: startDate,
-                to: endDate})
+                to: endDate,
+                tickerList: tickerList
+            })
         })
 
     if (response.ok) {
@@ -18,7 +20,7 @@ export const getDiagramDailyClosePricesFromApi = async (startDate, endDate) => {
     }
 }
 
-export const getDiagramFiveMinutesClosePricesFromApi = async (startDateTime, endDateTime) => {
+export const getDiagramFiveMinutesClosePricesFromApi = async (startDateTime, endDateTime, tickerList) => {
     const response = await fetch(
         `${CONSTANTS.FINMARKET_API}/api/shares/diagram/five-minutes-close-prices`, {
             method: 'POST',
@@ -28,7 +30,9 @@ export const getDiagramFiveMinutesClosePricesFromApi = async (startDateTime, end
             },
             body: JSON.stringify({
                 from: startDateTime,
-                to: endDateTime})
+                to: endDateTime,
+                tickerList: tickerList
+            })
         })
 
     if (response.ok) {
@@ -36,14 +40,17 @@ export const getDiagramFiveMinutesClosePricesFromApi = async (startDateTime, end
     }
 }
 
-export const getDiagramMultiplicatorsMcapPeNetDebtEbitdaFromApi = async () => {
+export const getDiagramMultiplicatorsMcapPeNetDebtEbitdaFromApi = async (tickerList) => {
     const response = await fetch(
         `${CONSTANTS.FINMARKET_API}/api/shares/diagram/multiplicators-mcap-pe-netdebtebitda`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
-            }
+            },
+            body: JSON.stringify({
+                tickerList: tickerList
+            })
         })
 
     if (response.ok) {

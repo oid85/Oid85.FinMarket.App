@@ -50,7 +50,9 @@ function* sagaWorkerReportCurrenciesSuperTrend() {
 
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
-        let reportData = yield call(getReportSuperTrendFromApi, startDate, endDate)
+        let tickerList = yield select(getTickerList)
+
+        let reportData = yield call(getReportSuperTrendFromApi, startDate, endDate, tickerList)
 
         yield put(fetchReportCurrenciesSupertrend(reportData))
         yield put(hideLoader())
@@ -68,7 +70,9 @@ function* sagaWorkerReportCurrenciesCandleSequence() {
 
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
-        let reportData = yield call(getReportCandleSequenceFromApi, startDate, endDate)
+        let tickerList = yield select(getTickerList)
+
+        let reportData = yield call(getReportCandleSequenceFromApi, startDate, endDate, tickerList)
 
         yield put(fetchReportCurrenciesCandleSequence(reportData))
         yield put(hideLoader())
@@ -86,7 +90,9 @@ function* sagaWorkerReportCurrenciesRsi() {
 
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
-        let reportData = yield call(getReportRsiFromApi, startDate, endDate)
+        let tickerList = yield select(getTickerList)
+
+        let reportData = yield call(getReportRsiFromApi, startDate, endDate, tickerList)
 
         yield put(fetchReportCurrenciesRsi(reportData))
         yield put(hideLoader())
@@ -104,7 +110,9 @@ function* sagaWorkerReportCurrenciesYieldLtm() {
 
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
-        let reportData = yield call(getReportYieldLtmFromApi, startDate, endDate)
+        let tickerList = yield select(getTickerList)
+
+        let reportData = yield call(getReportYieldLtmFromApi, startDate, endDate, tickerList)
 
         yield put(fetchReportCurrenciesYieldLtm(reportData))
         yield put(hideLoader())
@@ -122,7 +130,9 @@ function* sagaWorkerReportCurrenciesDrawdownFromMaximum() {
 
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
-        let reportData = yield call(getReportDrawdownFromMaximumFromApi, startDate, endDate)
+        let tickerList = yield select(getTickerList)
+
+        let reportData = yield call(getReportDrawdownFromMaximumFromApi, startDate, endDate, tickerList)
 
         yield put(fetchReportCurrenciesDrawdownFromMaximum(reportData))
         yield put(hideLoader())
@@ -140,8 +150,9 @@ function* sagaWorkerReportCurrenciesAggregatedAnalyse() {
 
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
+        let tickerList = yield select(getTickerList)
 
-        let reportData = yield call(getReportAggregatedAnalyseFromApi, startDate, endDate)
+        let reportData = yield call(getReportAggregatedAnalyseFromApi, startDate, endDate, tickerList)
 
         yield put(fetchReportCurrenciesAggregatedAnalyse(reportData))
         yield put(hideLoader())
@@ -157,7 +168,9 @@ function* sagaWorkerReportCurrenciesMarketEvent() {
     try {
         yield put(showLoader())
 
-        let reportData = yield call(getReportMarketEventFromApi)
+        let tickerList = yield select(getTickerList)
+
+        let reportData = yield call(getReportMarketEventFromApi, tickerList)
 
         yield put(fetchReportCurrenciesMarketEvent(reportData))
         yield put(hideLoader())

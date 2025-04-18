@@ -1,6 +1,6 @@
 import {CONSTANTS} from "../../constants"
 
-export const getReportAggregatedAnalyseFromApi = async (startDate, endDate) => {
+export const getReportAggregatedAnalyseFromApi = async (startDate, endDate, tickerList) => {
     const response = await fetch(
         `${CONSTANTS.FINMARKET_API}/api/futures/report/aggregated-analyse`, {
             method: 'POST',
@@ -10,14 +10,16 @@ export const getReportAggregatedAnalyseFromApi = async (startDate, endDate) => {
             },
             body: JSON.stringify({
                 from: startDate,
-                to: endDate})
+                to: endDate,
+                tickerList: tickerList
+            })
         })
 
     if (response.ok) {
         return await response.json()
     }
 }
-export const getReportSuperTrendFromApi = async (startDate, endDate) => {
+export const getReportSuperTrendFromApi = async (startDate, endDate, tickerList) => {
     const response = await fetch(
         `${CONSTANTS.FINMARKET_API}/api/futures/report/supertrend-analyse`, {
             method: 'POST',
@@ -27,7 +29,9 @@ export const getReportSuperTrendFromApi = async (startDate, endDate) => {
             },
             body: JSON.stringify({
                 from: startDate,
-                to: endDate})
+                to: endDate,
+                tickerList: tickerList
+            })
         })
 
     if (response.ok) {
@@ -35,7 +39,7 @@ export const getReportSuperTrendFromApi = async (startDate, endDate) => {
     }
 }
 
-export const getReportCandleSequenceFromApi = async (startDate, endDate) => {
+export const getReportCandleSequenceFromApi = async (startDate, endDate, tickerList) => {
     const response = await fetch(
         `${CONSTANTS.FINMARKET_API}/api/futures/report/candle-sequence-analyse`, {
             method: 'POST',
@@ -45,7 +49,9 @@ export const getReportCandleSequenceFromApi = async (startDate, endDate) => {
             },
             body: JSON.stringify({
                 from: startDate,
-                to: endDate})
+                to: endDate,
+                tickerList: tickerList
+            })
         })
 
     if (response.ok) {
@@ -53,7 +59,7 @@ export const getReportCandleSequenceFromApi = async (startDate, endDate) => {
     }
 }
 
-export const getReportCandleVolumeFromApi = async (startDate, endDate) => {
+export const getReportCandleVolumeFromApi = async (startDate, endDate, tickerList) => {
     const response = await fetch(
         `${CONSTANTS.FINMARKET_API}/api/futures/report/candle-volume-analyse`, {
             method: 'POST',
@@ -63,7 +69,9 @@ export const getReportCandleVolumeFromApi = async (startDate, endDate) => {
             },
             body: JSON.stringify({
                 from: startDate,
-                to: endDate})
+                to: endDate,
+                tickerList: tickerList
+            })
         })
 
     if (response.ok) {
@@ -71,7 +79,7 @@ export const getReportCandleVolumeFromApi = async (startDate, endDate) => {
     }
 }
 
-export const getReportRsiFromApi = async (startDate, endDate) => {
+export const getReportRsiFromApi = async (startDate, endDate, tickerList) => {
     const response = await fetch(
         `${CONSTANTS.FINMARKET_API}/api/futures/report/rsi-analyse`, {
             method: 'POST',
@@ -81,7 +89,9 @@ export const getReportRsiFromApi = async (startDate, endDate) => {
             },
             body: JSON.stringify({
                 from: startDate,
-                to: endDate})
+                to: endDate,
+                tickerList: tickerList
+            })
         })
 
     if (response.ok) {
@@ -89,7 +99,7 @@ export const getReportRsiFromApi = async (startDate, endDate) => {
     }
 }
 
-export const getReportYieldLtmFromApi = async (startDate, endDate) => {
+export const getReportYieldLtmFromApi = async (startDate, endDate, tickerList) => {
     const response = await fetch(
         `${CONSTANTS.FINMARKET_API}/api/futures/report/yield-ltm-analyse`, {
             method: 'POST',
@@ -99,7 +109,9 @@ export const getReportYieldLtmFromApi = async (startDate, endDate) => {
             },
             body: JSON.stringify({
                 from: startDate,
-                to: endDate})
+                to: endDate,
+                tickerList: tickerList
+            })
         })
 
     if (response.ok) {
@@ -107,14 +119,17 @@ export const getReportYieldLtmFromApi = async (startDate, endDate) => {
     }
 }
 
-export const getReportSpreadFromApi = async () => {
+export const getReportSpreadFromApi = async (tickerList) => {
     const response = await fetch(
         `${CONSTANTS.FINMARKET_API}/api/futures/report/spread-analyse`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
-            }
+            },
+            body: JSON.stringify({
+                tickerList: tickerList
+            })
         })
 
     if (response.ok) {
@@ -122,14 +137,17 @@ export const getReportSpreadFromApi = async () => {
     }
 }
 
-export const getReportMarketEventFromApi = async () => {
+export const getReportMarketEventFromApi = async (tickerList) => {
     const response = await fetch(
         `${CONSTANTS.FINMARKET_API}/api/futures/report/active-market-events-analyse`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
-            }
+            },
+            body: JSON.stringify({
+                tickerList: tickerList
+            })
         })
 
     if (response.ok) {

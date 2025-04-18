@@ -3,7 +3,11 @@ import {
     SET_END_DATE,
     SET_START_DATETIME,
     SET_END_DATETIME,
-    SET_SHARES_TICKERLIST
+    SET_SHARES_TICKERLIST,
+    SET_BONDS_TICKERLIST,
+    SET_FUTURES_TICKERLIST,
+    SET_CURRENCIES_TICKERLIST,
+    SET_INDEXES_TICKERLIST
 } from '../types/filterTypes'
 
 export const setStartDate = (date) => {
@@ -34,9 +38,37 @@ export const setEndDateTime = (date) => {
     }
 }
 
-export const setTickerList = (sharesTickerList) => {
+export const setSharesTickerList = (sharesTickerList) => {
     return {
         type: SET_SHARES_TICKERLIST,
         payload: sharesTickerList
+    }
+}
+
+export const setBondsTickerList = (bondsTickerList) => {
+    return {
+        type: SET_BONDS_TICKERLIST,
+        payload: bondsTickerList
+    }
+}
+
+export const setFuturesTickerList = (futuresTickerList) => {
+    return {
+        type: SET_FUTURES_TICKERLIST,
+        payload: futuresTickerList
+    }
+}
+
+export const setCurrenciesTickerList = (currenciesTickerList) => {
+    return {
+        type: SET_CURRENCIES_TICKERLIST,
+        payload: currenciesTickerList
+    }
+}
+
+export const setIndexesTickerList = (indexesTickerList) => {
+    return {
+        type: SET_INDEXES_TICKERLIST,
+        payload: indexesTickerList
     }
 }
