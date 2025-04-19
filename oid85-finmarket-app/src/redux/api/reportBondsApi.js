@@ -98,17 +98,14 @@ export const getReportCouponFromApi = async (tickerList) => {
     }
 }
 
-export const getReportSelectionFromApi = async (tickerList) => {
+export const getReportSelectionFromApi = async () => {
     const response = await fetch(
         `${CONSTANTS.FINMARKET_API}/api/bonds/report/bond-selection`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                tickerList: tickerList
-            })
+            }
         })
 
     if (response.ok) {

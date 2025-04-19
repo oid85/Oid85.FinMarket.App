@@ -146,9 +146,7 @@ function* sagaWorkerReportBondsSelection() {
     try {
         yield put(showLoader())
 
-        let tickerList = yield select(getTickerList)
-
-        let reportData = yield call(getReportSelectionFromApi, tickerList)
+        let reportData = yield call(getReportSelectionFromApi)
 
         yield put(fetchReportBondsSelection(reportData))
         yield put(hideLoader())
