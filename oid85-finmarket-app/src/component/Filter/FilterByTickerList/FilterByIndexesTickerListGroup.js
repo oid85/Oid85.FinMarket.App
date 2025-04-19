@@ -8,7 +8,9 @@ export const FilterByIndexesTickerListGroup = () => {
 
     dict['Лист. набл.'] = 'indexes/watchlist'
 
-    let tickerLists = ['Лист. набл.']
+    let tickerLists = [
+        'Лист. набл.'
+    ]
 
     return (
         <React.Fragment>

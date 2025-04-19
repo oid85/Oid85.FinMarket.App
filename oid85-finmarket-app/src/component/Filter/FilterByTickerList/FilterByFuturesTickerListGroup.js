@@ -7,8 +7,12 @@ export const FilterByFuturesTickerListGroup = () => {
     let dict = {};
 
     dict['Лист. набл.'] = 'futures/watchlist'
+    dict['Портфель'] = 'futures/portfolio'
 
-    let tickerLists = ['Лист. набл.']
+    let tickerLists = [
+        'Лист. набл.',
+        'Портфель'
+    ]
 
     return (
         <React.Fragment>
