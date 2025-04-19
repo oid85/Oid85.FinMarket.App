@@ -4,16 +4,22 @@ import Loader from '../../Loader/Loader'
 import { sagaReportSharesForecastTarget } from '../../../redux/actions/reportSharesActions'
 import '../../Report/Report.css'
 import { Table } from '../../Report/Table'
+import {FilterBySharesTickerListGroup} from "../../Filter/FilterByTickerList/FilterBySharesTickerListGroup";
 
 export const ReportSharesForecastTarget = () => {
 
     const dispatch = useDispatch()
     const loading = useSelector(state => state.app.loading)
     const reportData = useSelector(state => state.reportShares.reportData)
+    const tickerList = useSelector(state => state.filter.sharesTickerList)
 
     useEffect(() => {
         dispatch(sagaReportSharesForecastTarget())
     }, [])
+
+    useEffect(() => {
+        dispatch(sagaReportSharesForecastTarget())
+    }, [tickerList])
 
     return (
         <React.Fragment>
@@ -22,6 +28,7 @@ export const ReportSharesForecastTarget = () => {
                     ? <Loader/>
                     :                    
                     <div className='report-container'>
+                        <FilterBySharesTickerListGroup />
                         <Table
                             title = {`${reportData.result.title}`}
                             reportTableData = {reportData.result} />

@@ -1,6 +1,6 @@
 import React from 'react'
 import {FilterByLastHours} from './FilterByLastHours'
-import './Filter.css'
+import '../Filter.css'
 
 export const FilterByLastHoursGroup = () => {
     

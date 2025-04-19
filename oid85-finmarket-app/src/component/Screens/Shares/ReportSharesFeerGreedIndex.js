@@ -4,11 +4,10 @@ import Loader from '../../Loader/Loader'
 import {sagaReportSharesFeerGreedIndex, sagaReportSharesYieldLtm} from '../../../redux/actions/reportSharesActions'
 import '../../Report/Report.css'
 import { Table } from '../../Report/Table'
-import {FilterByLastDaysGroup} from '../../Filter/FilterByLastDaysGroup'
+import {FilterByLastDaysGroup} from '../../Filter/FilterByLastDays/FilterByLastDaysGroup'
 import {setStartDate} from "../../../redux/actions/filterActions"
 import moment from "moment/moment"
 import {CONSTANTS} from "../../../constants"
-import {FilterShareByTickerListGroup} from "../../Filter/FilterShareByTickerListGroup"
 
 export const ReportSharesFeerGreedIndex = () => {
 
@@ -42,7 +41,6 @@ export const ReportSharesFeerGreedIndex = () => {
                     :                    
                     <div className='report-container'>
                         <FilterByLastDaysGroup />
-                        <FilterShareByTickerListGroup />
                         <Table
                             title = {`${reportData.result.title}`}
                             reportTableData = {reportData.result} />

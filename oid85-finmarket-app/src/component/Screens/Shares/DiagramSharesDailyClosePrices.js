@@ -4,11 +4,11 @@ import Loader from '../../Loader/Loader'
 import { sagaDiagramSharesDailyClosePrices } from '../../../redux/actions/diagramSharesActions'
 import '../../Diagram/Diagram.css'
 import { SimpleDiagramContainer } from '../../Diagram/SimpleDiagramContainer'
-import {FilterByLastDaysGroup} from '../../Filter/FilterByLastDaysGroup'
+import {FilterByLastDaysGroup} from '../../Filter/FilterByLastDays/FilterByLastDaysGroup'
 import {setStartDate} from "../../../redux/actions/filterActions"
 import moment from "moment/moment"
 import {CONSTANTS} from "../../../constants"
-import {FilterShareByTickerListGroup} from "../../Filter/FilterShareByTickerListGroup"
+import {FilterBySharesTickerListGroup} from "../../Filter/FilterByTickerList/FilterBySharesTickerListGroup"
 import {sagaReportSharesYieldLtm} from "../../../redux/actions/reportSharesActions"
 
 export const DiagramSharesDailyClosePrices = () => {
@@ -48,7 +48,7 @@ export const DiagramSharesDailyClosePrices = () => {
                     :                    
                     <div className='diagram-container'>
                         <FilterByLastDaysGroup />
-                        <FilterShareByTickerListGroup />
+                        <FilterBySharesTickerListGroup />
                         <SimpleDiagramContainer containerData = {diagramData.result} />
                     </div>                    
             }

@@ -4,11 +4,11 @@ import Loader from '../../Loader/Loader'
 import {sagaReportSharesRsi, sagaReportSharesYieldLtm} from '../../../redux/actions/reportSharesActions'
 import '../../Report/Report.css'
 import { Table } from '../../Report/Table'
-import {FilterByLastDaysGroup} from '../../Filter/FilterByLastDaysGroup'
+import {FilterByLastDaysGroup} from '../../Filter/FilterByLastDays/FilterByLastDaysGroup'
 import {setStartDate} from "../../../redux/actions/filterActions"
 import moment from "moment/moment"
 import {CONSTANTS} from "../../../constants"
-import {FilterShareByTickerListGroup} from "../../Filter/FilterShareByTickerListGroup"
+import {FilterBySharesTickerListGroup} from "../../Filter/FilterByTickerList/FilterBySharesTickerListGroup"
 
 export const ReportSharesRsi = () => {
 
@@ -47,7 +47,7 @@ export const ReportSharesRsi = () => {
                     :                    
                     <div className='report-container'>
                         <FilterByLastDaysGroup />
-                        <FilterShareByTickerListGroup />
+                        <FilterBySharesTickerListGroup />
                         <Table
                             title = {`${reportData.result.title}`}
                             reportTableData = {reportData.result} />

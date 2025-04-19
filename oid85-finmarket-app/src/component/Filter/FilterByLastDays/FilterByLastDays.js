@@ -2,7 +2,7 @@ import React from 'react'
 import 'bootstrap/dist/css/bootstrap.css'
 import moment from 'moment'
 import {useDispatch} from 'react-redux'
-import {setEndDate, setStartDate} from '../../redux/actions/filterActions'
+import {setEndDate, setStartDate} from '../../../redux/actions/filterActions'
 
 export const FilterByLastDays = ({days}) => {
 

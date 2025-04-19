@@ -1,17 +1,21 @@
 import React from 'react'
 import {FilterBySharesTickerList} from './FilterBySharesTickerList'
-import './Filter.css'
+import '../Filter.css'
 
-export const FilterShareByTickerListGroup = () => {
+export const FilterBySharesTickerListGroup = () => {
 
-    let tickerLists = ["all"]
+    let dict = {};
+
+    dict['Лист. набл.'] = 'shares/watchlist'
+
+    let tickerLists = ['Лист. набл.']
 
     return (
         <React.Fragment>
             <div className='filter-container'>
                 {
                     tickerLists.map((item, index) => (
-                        <FilterBySharesTickerList key={index} tickerList={item} />
+                        <FilterBySharesTickerList key={index} tickerList={dict[item]} />
                     ))
                 }
             </div>

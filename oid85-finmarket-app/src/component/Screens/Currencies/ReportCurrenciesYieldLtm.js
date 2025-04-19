@@ -4,7 +4,7 @@ import Loader from '../../Loader/Loader'
 import { sagaReportCurrenciesYieldLtm } from '../../../redux/actions/reportCurrenciesActions'
 import '../../Report/Report.css'
 import { Table } from '../../Report/Table'
-import {FilterByLastDaysGroup} from '../../Filter/FilterByLastDaysGroup'
+import {FilterByLastDaysGroup} from '../../Filter/FilterByLastDays/FilterByLastDaysGroup'
 import {setStartDate} from "../../../redux/actions/filterActions"
 import moment from "moment"
 import {CONSTANTS} from "../../../constants"
