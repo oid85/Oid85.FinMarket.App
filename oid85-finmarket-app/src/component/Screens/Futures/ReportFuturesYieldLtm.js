@@ -1,24 +1,27 @@
 import React, { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import Loader from '../../Loader/Loader'
-import { sagaReportFuturesCandleVolume } from '../../../redux/actions/reportFuturesActions'
+import { sagaReportFuturesYieldLtm } from '../../../redux/actions/reportFuturesActions'
 import '../../Report/Report.css'
 import { Table } from '../../Report/Table'
 import {FilterByLastDaysGroup} from '../../Filter/FilterByLastDays/FilterByLastDaysGroup'
 import {setStartDate} from "../../../redux/actions/filterActions"
 import moment from "moment"
 import {CONSTANTS} from "../../../constants"
+import {FilterByFuturesTickerList} from "../../Filter/FilterByTickerList/FilterByFuturesTickerList";
+import {FilterByFuturesTickerListGroup} from "../../Filter/FilterByTickerList/FilterByFuturesTickerListGroup";
 
-export const ReportFuturesCandleVolume = () => {
+export const ReportFuturesYieldLtm = () => {
 
     const dispatch = useDispatch()
     const loading = useSelector(state => state.app.loading)
     const reportData = useSelector(state => state.reportFutures.reportData)
     const startDate = useSelector(state => state.filter.startDate)
     const endDate = useSelector(state => state.filter.endDate)
+    const tickerList = useSelector(state => state.futuresTickerList)
 
     useEffect(() => {
-        dispatch(sagaReportFuturesCandleVolume())
+        dispatch(sagaReportFuturesYieldLtm())
         dispatch(setStartDate(moment()
             .subtract(CONSTANTS.DEFAULT_PERIOD_DAYS_FOR_TABLES - 1, 'days')
             .format('YYYY-MM-DD')
@@ -26,12 +29,16 @@ export const ReportFuturesCandleVolume = () => {
     }, [])
 
     useEffect(() => {
-        dispatch(sagaReportFuturesCandleVolume())
+        dispatch(sagaReportFuturesYieldLtm())
     }, [startDate])
 
     useEffect(() => {
-        dispatch(sagaReportFuturesCandleVolume())
+        dispatch(sagaReportFuturesYieldLtm())
     }, [endDate])
+
+    useEffect(() => {
+        dispatch(sagaReportFuturesYieldLtm())
+    }, [tickerList])
 
     return (
         <React.Fragment>
@@ -41,6 +48,7 @@ export const ReportFuturesCandleVolume = () => {
                     :                    
                     <div className='report-container'>
                         <FilterByLastDaysGroup />
+                        <FilterByFuturesTickerListGroup />
                         <Table
                             title = {`${reportData.result.title}`}
                             reportTableData = {reportData.result} />
