@@ -4,11 +4,11 @@ import { useSelector } from 'react-redux'
 import 'react-tabs/style/react-tabs.css'
 import { Alert } from '../../Alert/Alert'
 import {ReportFuturesSupertrend} from "./ReportFuturesSupertrend"
-import {ReportFuturesCandleSequence} from "./ReportSharesCandleSequence"
-import {ReportFuturesCandleVolume} from "./ReportSharesCandleVolume"
-import {ReportFuturesRsi} from "./ReportSharesRsi"
+import {ReportFuturesCandleSequence} from "./ReportFuturesCandleSequence"
+import {ReportFuturesCandleVolume} from "./ReportFuturesCandleVolume"
+import {ReportFuturesRsi} from "./ReportFuturesRsi"
 import {ReportFuturesSpread} from "./ReportFuturesSpread"
-import {ReportFuturesYieldLtm} from "./ReportSharesYieldLtm"
+import {ReportFuturesYieldLtm} from "./ReportFuturesYieldLtm"
 import {ReportFuturesAggregatedAnalyse} from "./ReportFuturesAggregatedAnalyse"
 import {ReportFuturesMarketEvent} from "./ReportFuturesMarketEvent"
 

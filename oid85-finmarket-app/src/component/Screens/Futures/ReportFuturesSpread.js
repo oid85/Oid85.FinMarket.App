@@ -4,16 +4,22 @@ import Loader from '../../Loader/Loader'
 import { sagaReportFuturesSpread } from '../../../redux/actions/reportFuturesActions'
 import '../../Report/Report.css'
 import { Table } from '../../Report/Table'
+import {FilterByFuturesTickerListGroup} from "../../Filter/FilterByTickerList/FilterByFuturesTickerListGroup";
 
 export const ReportFuturesSpread = () => {
 
     const dispatch = useDispatch()
     const loading = useSelector(state => state.app.loading)
     const reportData = useSelector(state => state.reportFutures.reportData)
+    const tickerList = useSelector(state => state.futuresTickerList)
 
     useEffect(() => {
         dispatch(sagaReportFuturesSpread())
     }, [])
+
+    useEffect(() => {
+        dispatch(sagaReportFuturesSpread())
+    }, [tickerList])
 
     return (
         <React.Fragment>
@@ -22,6 +28,7 @@ export const ReportFuturesSpread = () => {
                     ? <Loader/>
                     :                    
                     <div className='report-container'>
+                        <FilterByFuturesTickerListGroup />
                         <Table
                             title = {`${reportData.result.title}`}
                             reportTableData = {reportData.result} />
