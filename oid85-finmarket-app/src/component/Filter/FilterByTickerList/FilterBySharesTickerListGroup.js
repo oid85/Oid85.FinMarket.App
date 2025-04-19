@@ -11,8 +11,7 @@ export const FilterBySharesTickerListGroup = () => {
     dict['Эшелон 2'] = 'shares/echelons/echelon_2'
     dict['Эшелон 3'] = 'shares/echelons/echelon_3'
     dict['Банки'] = 'shares/sectors/banks'
-    dict['Эл. сети'] = 'shares/sectors/electricity_networks'
-    dict['Эн. ген.'] = 'shares/sectors/energy_generation'
+    dict['Энергетика'] = 'shares/sectors/energ'
     dict['Финансы'] = 'shares/sectors/finance'
     dict['ЖКХ'] = 'shares/sectors/housing_and_utilities'
     dict['Чер. мет.'] = 'shares/sectors/iron_and_steel_industry'
@@ -33,8 +32,7 @@ export const FilterBySharesTickerListGroup = () => {
         'Эшелон 2',
         'Эшелон 3',
         'Банки',
-        'Эл. сети',
-        'Эн. ген.',
+        'Энергетика',
         'Финансы',
         'ЖКХ',
         'Чер. мет.',
