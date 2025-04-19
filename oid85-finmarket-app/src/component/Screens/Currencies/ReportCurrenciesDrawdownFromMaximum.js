@@ -8,6 +8,7 @@ import {FilterByLastDaysGroup} from '../../Filter/FilterByLastDays/FilterByLastD
 import {setStartDate} from "../../../redux/actions/filterActions"
 import moment from "moment"
 import {CONSTANTS} from "../../../constants"
+import {FilterByCurrenciesTickerListGroup} from "../../Filter/FilterByTickerList/FilterByCurrenciesTickerListGroup";
 
 export const ReportCurrenciesDrawdownFromMaximum = () => {
 
@@ -16,6 +17,7 @@ export const ReportCurrenciesDrawdownFromMaximum = () => {
     const reportData = useSelector(state => state.reportCurrencies.reportData)
     const startDate = useSelector(state => state.filter.startDate)
     const endDate = useSelector(state => state.filter.endDate)
+    const tickerList = useSelector(state => state.currenciesTickerList)
 
     useEffect(() => {
         dispatch(sagaReportCurrenciesDrawdownFromMaximum())
@@ -33,6 +35,10 @@ export const ReportCurrenciesDrawdownFromMaximum = () => {
         dispatch(sagaReportCurrenciesDrawdownFromMaximum())
     }, [endDate])
 
+    useEffect(() => {
+        dispatch(sagaReportCurrenciesDrawdownFromMaximum())
+    }, [tickerList])
+
     return (
         <React.Fragment>
             {
@@ -41,6 +47,7 @@ export const ReportCurrenciesDrawdownFromMaximum = () => {
                     :                    
                     <div className='report-container'>
                         <FilterByLastDaysGroup />
+                        <FilterByCurrenciesTickerListGroup />
                         <Table
                             title = {`${reportData.result.title}`}
                             reportTableData = {reportData.result} />
