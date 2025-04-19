@@ -326,9 +326,8 @@ function* sagaWorkerReportSharesFeerGreedIndex() {
 
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
-        let tickerList = yield select(getTickerList)
 
-        let reportData = yield call(getReportFeerGreedIndexFromApi, startDate, endDate, tickerList)
+        let reportData = yield call(getReportFeerGreedIndexFromApi, startDate, endDate)
 
         yield put(fetchReportSharesFeerGreedIndex(reportData))
         yield put(hideLoader())

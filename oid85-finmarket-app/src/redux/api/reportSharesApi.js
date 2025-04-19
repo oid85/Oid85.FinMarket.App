@@ -248,7 +248,7 @@ export const getReportAssetReportEventFromApi = async (tickerList) => {
     }
 }
 
-export const getReportFeerGreedIndexFromApi = async (startDate, endDate, tickerList) => {
+export const getReportFeerGreedIndexFromApi = async (startDate, endDate) => {
     const response = await fetch(
         `${CONSTANTS.FINMARKET_API}/api/shares/report/fear-greed-index`, {
             method: 'POST',
@@ -258,8 +258,7 @@ export const getReportFeerGreedIndexFromApi = async (startDate, endDate, tickerL
             },
             body: JSON.stringify({
                 from: startDate,
-                to: endDate,
-                tickerList: tickerList
+                to: endDate
             })
         })
 

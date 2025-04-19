@@ -17,7 +17,6 @@ export const ReportSharesFeerGreedIndex = () => {
     const reportData = useSelector(state => state.reportShares.reportData)
     const startDate = useSelector(state => state.filter.startDate)
     const endDate = useSelector(state => state.filter.endDate)
-    const tickerList = useSelector(state => state.filter.sharesTickerList)
 
     useEffect(() => {
         dispatch(sagaReportSharesFeerGreedIndex())
@@ -34,10 +33,6 @@ export const ReportSharesFeerGreedIndex = () => {
     useEffect(() => {
         dispatch(sagaReportSharesFeerGreedIndex())
     }, [endDate])
-
-    useEffect(() => {
-        dispatch(sagaReportSharesYieldLtm())
-    }, [tickerList])
 
     return (
         <React.Fragment>
