@@ -8,6 +8,7 @@ import {FilterByLastDaysGroup} from '../../Filter/FilterByLastDays/FilterByLastD
 import {setStartDate} from "../../../redux/actions/filterActions"
 import moment from "moment"
 import {CONSTANTS} from "../../../constants"
+import {FilterByIndexesTickerListGroup} from "../../Filter/FilterByTickerList/FilterByIndexesTickerListGroup";
 
 export const ReportIndexesYieldLtm = () => {
 
@@ -16,6 +17,7 @@ export const ReportIndexesYieldLtm = () => {
     const reportData = useSelector(state => state.reportIndexes.reportData)
     const startDate = useSelector(state => state.filter.startDate)
     const endDate = useSelector(state => state.filter.endDate)
+    const tickerList = useSelector(state => state.filter.indexesTickerList)
 
     useEffect(() => {
         dispatch(sagaReportIndexesYieldLtm())
@@ -33,6 +35,10 @@ export const ReportIndexesYieldLtm = () => {
         dispatch(sagaReportIndexesYieldLtm())
     }, [endDate])
 
+    useEffect(() => {
+        dispatch(sagaReportIndexesYieldLtm())
+    }, [tickerList])
+
     return (
         <React.Fragment>
             {
@@ -41,6 +47,7 @@ export const ReportIndexesYieldLtm = () => {
                     :                    
                     <div className='report-container'>
                         <FilterByLastDaysGroup />
+                        <FilterByIndexesTickerListGroup />
                         <Table
                             title = {`${reportData.result.title}`}
                             reportTableData = {reportData.result} />
