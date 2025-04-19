@@ -4,16 +4,22 @@ import Loader from '../../Loader/Loader'
 import { sagaReportBondsMarketEvent } from '../../../redux/actions/reportBondsActions'
 import '../../Report/Report.css'
 import { Table } from '../../Report/Table'
+import {FilterByBondsTickerListGroup} from "../../Filter/FilterByTickerList/FilterByBondsTickerListGroup";
 
 export const ReportBondsMarketEvent = () => {
 
     const dispatch = useDispatch()
     const loading = useSelector(state => state.app.loading)
     const reportData = useSelector(state => state.reportBonds.reportData)
+    const tickerList = useSelector(state => state.bondsTickerList)
 
     useEffect(() => {
         dispatch(sagaReportBondsMarketEvent())
     }, [])
+
+    useEffect(() => {
+        dispatch(sagaReportBondsMarketEvent())
+    }, [tickerList])
 
     return (
         <React.Fragment>
@@ -22,6 +28,7 @@ export const ReportBondsMarketEvent = () => {
                     ? <Loader/>
                     :                    
                     <div className='report-container'>
+                        <FilterByBondsTickerListGroup />
                         <Table
                             title = {`${reportData.result.title}`}
                             reportTableData = {reportData.result} />

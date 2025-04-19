@@ -8,6 +8,7 @@ import {FilterByLastDaysGroup} from '../../Filter/FilterByLastDays/FilterByLastD
 import {setStartDate} from "../../../redux/actions/filterActions"
 import moment from "moment"
 import {CONSTANTS} from "../../../constants"
+import {FilterByBondsTickerListGroup} from "../../Filter/FilterByTickerList/FilterByBondsTickerListGroup";
 
 export const ReportBondsCandleSequence = () => {
 
@@ -16,6 +17,7 @@ export const ReportBondsCandleSequence = () => {
     const reportData = useSelector(state => state.reportBonds.reportData)
     const startDate = useSelector(state => state.filter.startDate)
     const endDate = useSelector(state => state.filter.endDate)
+    const tickerList = useSelector(state => state.bondsTickerList)
 
     useEffect(() => {
         dispatch(sagaReportBondsCandleSequence())
@@ -33,6 +35,10 @@ export const ReportBondsCandleSequence = () => {
         dispatch(sagaReportBondsCandleSequence())
     }, [endDate])
 
+    useEffect(() => {
+        dispatch(sagaReportBondsCandleSequence())
+    }, [tickerList])
+
     return (
         <React.Fragment>
             {
@@ -41,6 +47,7 @@ export const ReportBondsCandleSequence = () => {
                     :                    
                     <div className='report-container'>
                         <FilterByLastDaysGroup />
+                        <FilterByBondsTickerListGroup />
                         <Table
                             title = {`${reportData.result.title}`}
                             reportTableData = {reportData.result} />
