@@ -25,6 +25,7 @@ export const FilterBySharesTickerListGroup = () => {
     dict['IMOEX'] = 'shares/imoex'
     dict['Сырье'] = 'shares/materials'
     dict['Портфель'] = 'shares/portfolio'
+    dict['Россети'] = 'shares/rosseti'
 
     let tickerLists = [
         'Лист. набл.',
@@ -45,7 +46,8 @@ export const FilterBySharesTickerListGroup = () => {
         'Экспортеры',
         'IMOEX',
         'Сырье',
-        'Портфель'
+        'Портфель',
+        'Россети'
     ]
 
     return (
