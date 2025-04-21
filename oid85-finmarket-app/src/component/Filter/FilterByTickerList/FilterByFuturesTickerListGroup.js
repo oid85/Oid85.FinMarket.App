@@ -12,6 +12,7 @@ export const FilterByFuturesTickerListGroup = () => {
     dict['RI'] = 'futures/ri'
     dict['MOEX'] = 'futures/moex'
     dict['GLD'] = 'futures/gld'
+    dict['NG'] = 'futures/ng'
     dict['EUR'] = 'futures/eur'
     dict['CHY'] = 'futures/cny'
 
@@ -22,6 +23,7 @@ export const FilterByFuturesTickerListGroup = () => {
         'RI',
         'MOEX',
         'GLD',
+        'NG',
         'EUR',
         'CHY'
     ]
