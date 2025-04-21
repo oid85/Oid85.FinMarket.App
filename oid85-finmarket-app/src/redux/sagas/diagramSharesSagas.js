@@ -20,7 +20,7 @@ const getStartDate = (state) => state.filter.startDate
 const getEndDate = (state) => state.filter.endDate
 const getStartDateTime = (state) => state.filter.startDateTime
 const getEndDateTime = (state) => state.filter.endDateTime
-const getTickerList = (state) => state.filter.sharesTickerList
+const getShareTickerList = (state) => state.filter.sharesTickerList
 
 // SagaWatcher'ы
 export function* eventSagaWatcherDiagramShares() {
@@ -54,7 +54,7 @@ function* sagaWorkerDiagramSharesFiveMinutesClosePrices() {
 
         let startDateTime = yield select(getStartDateTime)
         let endDateTime = yield select(getEndDateTime)
-        let tickerList = yield select(getTickerList)
+        let tickerList = yield select(getShareTickerList)
 
         let diagramData = yield call(getDiagramFiveMinutesClosePricesFromApi, startDateTime, endDateTime, tickerList)
 
@@ -72,7 +72,7 @@ function* sagaWorkerDiagramSharesMultiplicatorsMcapPeNetDebtEbitda() {
     try {
         yield put(showLoader())
 
-        let tickerList = yield select(getTickerList)
+        let tickerList = yield select(getShareTickerList)
 
         let diagramData = yield call(getDiagramMultiplicatorsMcapPeNetDebtEbitdaFromApi, tickerList)
 

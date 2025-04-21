@@ -30,7 +30,7 @@ import {
 
 const getStartDate = (state) => state.filter.startDate
 const getEndDate = (state) => state.filter.endDate
-const getTickerList = (state) => state.filter.bondsTickerList
+const getBondsTickerList = (state) => state.filter.bondsTickerList
 
 // SagaWatcher'ы
 export function* eventSagaWatcherReportBonds() {
@@ -50,7 +50,7 @@ function* sagaWorkerReportBondsSuperTrend() {
 
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
-        let tickerList = yield select(getTickerList)
+        let tickerList = yield select(getBondsTickerList)
 
         let reportData = yield call(getReportSuperTrendFromApi, startDate, endDate, tickerList)
 
@@ -70,7 +70,7 @@ function* sagaWorkerReportBondsCandleSequence() {
 
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
-        let tickerList = yield select(getTickerList)
+        let tickerList = yield select(getBondsTickerList)
 
         let reportData = yield call(getReportCandleSequenceFromApi, startDate, endDate, tickerList)
 
@@ -90,7 +90,7 @@ function* sagaWorkerReportBondsCandleVolume() {
 
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
-        let tickerList = yield select(getTickerList)
+        let tickerList = yield select(getBondsTickerList)
 
         let reportData = yield call(getReportCandleVolumeFromApi, startDate, endDate, tickerList)
 
@@ -108,7 +108,7 @@ function* sagaWorkerReportCoupon() {
     try {
         yield put(showLoader())
 
-        let tickerList = yield select(getTickerList)
+        let tickerList = yield select(getBondsTickerList)
 
         let reportData = yield call(getReportCouponFromApi, tickerList)
 
@@ -128,7 +128,7 @@ function* sagaWorkerReportBondsAggregatedAnalyse() {
 
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
-        let tickerList = yield select(getTickerList)
+        let tickerList = yield select(getBondsTickerList)
 
         let reportData = yield call(getReportAggregatedAnalyseFromApi, startDate, endDate, tickerList)
 
@@ -162,7 +162,7 @@ function* sagaWorkerReportBondsMarketEvent() {
     try {
         yield put(showLoader())
 
-        let tickerList = yield select(getTickerList)
+        let tickerList = yield select(getBondsTickerList)
 
         let reportData = yield call(getReportMarketEventFromApi, tickerList)
 
