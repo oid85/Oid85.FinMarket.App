@@ -24,17 +24,17 @@ export const setEndDate = (date) => {
     }
 }
 
-export const setStartDateTime = (date) => {
+export const setStartDateTime = (dateTime) => {
     return {
         type: SET_START_DATETIME,
-        payload: date
+        payload: dateTime
     }
 }
 
-export const setEndDateTime = (date) => {
+export const setEndDateTime = (dateTime) => {
     return {
         type: SET_END_DATETIME,
-        payload: date
+        payload: dateTime
     }
 }
 
