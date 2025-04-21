@@ -12,10 +12,11 @@ export const FilterByLastHours = ({hours}) => {
         <React.Fragment>
             <div>
                 <button
-                style={{
-                    width: 75,
-                    margin: 1
-                }}
+                    style={{
+                        width: 80,
+                        margin: 1,
+                        fontSize: 10
+                    }}
                     key={hours}
                     className='btn btn-outline-primary'
                     onClick={() => {

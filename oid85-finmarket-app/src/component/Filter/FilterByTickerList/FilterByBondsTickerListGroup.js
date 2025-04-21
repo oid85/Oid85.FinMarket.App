@@ -6,22 +6,22 @@ export const FilterByBondsTickerListGroup = () => {
 
     let dict = {};
 
-    dict['Лист. набл.'] = 'bonds/watchlist'
-    dict['Корп.'] = 'bonds/corp'
-    dict['Ежемес. купон'] = 'bonds/coupon_every_month'
-    dict['Муниц.'] = 'bonds/municipals'
+    dict['НАБЛЮД'] = 'bonds/watchlist'
+    dict['КОРПОРАТ'] = 'bonds/corp'
+    dict['ЕЖЕМЕС'] = 'bonds/coupon_every_month'
+    dict['МУНИЦ'] = 'bonds/municipals'
     dict['ОФЗ'] = 'bonds/ofz'
-    dict['Портфель'] = 'bonds/portfolio'
-    dict['Замещ.'] = 'bonds/replacement'
+    dict['ПОРТФЕЛЬ'] = 'bonds/portfolio'
+    dict['ЗАМЕЩ'] = 'bonds/replacement'
 
     let tickerLists = [
-        'Лист. набл.',
-        'Корп.',
-        'Ежемес. купон',
-        'Муниц.',
+        'НАБЛЮД',
+        'КОРПОРАТ',
+        'ЕЖЕМЕС',
+        'МУНИЦ',
         'ОФЗ',
-        'Портфель',
-        'Замещ.'
+        'ПОРТФЕЛЬ',
+        'ЗАМЕЩ'
     ]
 
     return (
@@ -29,7 +29,10 @@ export const FilterByBondsTickerListGroup = () => {
             <div className='filter-container'>
                 {
                     tickerLists.map((item, index) => (
-                        <FilterByBondsTickerList key={index} tickerList={dict[item]} />
+                        <FilterByBondsTickerList
+                            key={index}
+                            tickerListName={item}
+                            tickerList={dict[item]} />
                     ))
                 }
             </div>

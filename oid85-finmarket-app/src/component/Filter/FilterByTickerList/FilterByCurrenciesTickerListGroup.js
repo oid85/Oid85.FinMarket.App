@@ -6,10 +6,10 @@ export const FilterByCurrenciesTickerListGroup = () => {
 
     let dict = {};
 
-    dict['Лист. набл.'] = 'currencies/watchlist'
+    dict['НАБЛЮД'] = 'currencies/watchlist'
 
     let tickerLists = [
-        'Лист. набл.'
+        'НАБЛЮД'
     ]
 
     return (
@@ -17,7 +17,10 @@ export const FilterByCurrenciesTickerListGroup = () => {
             <div className='filter-container'>
                 {
                     tickerLists.map((item, index) => (
-                        <FilterByCurrenciesTickerList key={index} tickerList={dict[item]} />
+                        <FilterByCurrenciesTickerList
+                            key={index}
+                            tickerListName={item}
+                            tickerList={dict[item]} />
                     ))
                 }
             </div>

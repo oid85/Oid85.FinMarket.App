@@ -6,48 +6,48 @@ export const FilterBySharesTickerListGroup = () => {
 
     let dict = {};
 
-    dict['Лист. набл.'] = 'shares/watchlist'
-    dict['Эшелон 1'] = 'shares/echelons/echelon_1'
-    dict['Эшелон 2'] = 'shares/echelons/echelon_2'
-    dict['Эшелон 3'] = 'shares/echelons/echelon_3'
-    dict['Банки'] = 'shares/sectors/banks'
-    dict['Энергетика'] = 'shares/sectors/energ'
-    dict['Финансы'] = 'shares/sectors/finance'
+    dict['НАБЛЮД'] = 'shares/watchlist'
+    dict['ЭШЕЛОН1'] = 'shares/echelons/echelon_1'
+    dict['ЭШЕЛОН2'] = 'shares/echelons/echelon_2'
+    dict['ЭШЕЛОН3'] = 'shares/echelons/echelon_3'
+    dict['БАНКИ'] = 'shares/sectors/banks'
+    dict['ЭНЕРГ'] = 'shares/sectors/energ'
+    dict['ФИН'] = 'shares/sectors/finance'
     dict['ЖКХ'] = 'shares/sectors/housing_and_utilities'
-    dict['Чер. мет.'] = 'shares/sectors/iron_and_steel_industry'
+    dict['ЧЕРМЕТ'] = 'shares/sectors/iron_and_steel_industry'
     dict['ИТ'] = 'shares/sectors/it'
-    dict['Горнодобыча'] = 'shares/sectors/mining'
-    dict['Цв. мет.'] = 'shares/sectors/non_ferrous_metallurgy'
-    dict['Нефтегаз'] = 'shares/sectors/oil_and_gas'
-    dict['Ретэйл'] = 'shares/sectors/retail'
-    dict['Телекомы'] = 'shares/sectors/telecom'
-    dict['Экспортеры'] = 'shares/exporters'
+    dict['ГОРДОБ'] = 'shares/sectors/mining'
+    dict['ЦВМЕТ'] = 'shares/sectors/non_ferrous_metallurgy'
+    dict['НЕФТЕГАЗ'] = 'shares/sectors/oil_and_gas'
+    dict['РЕТЭЙЛ'] = 'shares/sectors/retail'
+    dict['ТЕЛЕКОМ'] = 'shares/sectors/telecom'
+    dict['ЭКСПОРТ'] = 'shares/exporters'
     dict['IMOEX'] = 'shares/imoex'
-    dict['Сырье'] = 'shares/materials'
-    dict['Портфель'] = 'shares/portfolio'
-    dict['Россети'] = 'shares/rosseti'
+    dict['СЫРЬЕ'] = 'shares/materials'
+    dict['ПОРТФЕЛЬ'] = 'shares/portfolio'
+    dict['РОССЕТИ'] = 'shares/rosseti'
 
     let tickerLists = [
-        'Лист. набл.',
-        'Эшелон 1',
-        'Эшелон 2',
-        'Эшелон 3',
-        'Банки',
-        'Энергетика',
-        'Финансы',
+        'НАБЛЮД',
+        'ЭШЕЛОН1',
+        'ЭШЕЛОН2',
+        'ЭШЕЛОН3',
+        'БАНКИ',
+        'ЭНЕРГ',
+        'ФИН',
         'ЖКХ',
-        'Чер. мет.',
+        'ЧЕРМЕТ',
         'ИТ',
-        'Горнодобыча',
-        'Цв. мет.',
-        'Нефтегаз',
-        'Ретэйл',
-        'Телекомы',
-        'Экспортеры',
+        'ГОРДОБ',
+        'ЦВМЕТ',
+        'НЕФТЕГАЗ',
+        'РЕТЭЙЛ',
+        'ТЕЛЕКОМ',
+        'ЭКСПОРТ',
         'IMOEX',
-        'Сырье',
-        'Портфель',
-        'Россети'
+        'СЫРЬЕ',
+        'ПОРТФЕЛЬ',
+        'РОССЕТИ'
     ]
 
     return (
@@ -55,7 +55,10 @@ export const FilterBySharesTickerListGroup = () => {
             <div className='filter-container'>
                 {
                     tickerLists.map((item, index) => (
-                        <FilterBySharesTickerList key={index} tickerList={dict[item]} />
+                        <FilterBySharesTickerList
+                            key={index}
+                            tickerListName={item}
+                            tickerList={dict[item]} />
                     ))
                 }
             </div>

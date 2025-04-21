@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import {useDispatch} from 'react-redux'
 import {setIndexesTickerList} from '../../../redux/actions/filterActions'
 
-export const FilterByIndexesTickerList = ({key, tickerList}) => {
+export const FilterByIndexesTickerList = ({key, tickerListName, tickerList}) => {
 
     const dispatch = useDispatch()
     
@@ -11,16 +11,17 @@ export const FilterByIndexesTickerList = ({key, tickerList}) => {
         <React.Fragment>
             <div>
                 <button
-                style={{
-                    width: 75,
-                    margin: 1
-                }}
+                    style={{
+                        width: 80,
+                        margin: 1,
+                        fontSize: 10
+                    }}
                     key={key}
                     className='btn btn-outline-primary'
                     onClick={() => {
                         dispatch(setIndexesTickerList(tickerList))
                     }}
-                >{tickerList}</button>
+                >{tickerListName}</button>
             </div>
         </React.Fragment>
     )
