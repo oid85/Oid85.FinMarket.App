@@ -10,6 +10,7 @@ import {ReportBondsCoupon} from "./ReportBondsCoupon"
 import {ReportBondsAggregatedAnalyse} from "./ReportBondsAggregatedAnalyse"
 import {ReportBondsSelection} from "./ReportBondsSelection"
 import {ReportBondsMarketEvent} from "./ReportBondsMarketEvent"
+import {DiagramBondsDailyClosePrices} from "./DiagramBondsDailyClosePrices";
 
 export const BondsScreen = () => {
     const alert = useSelector(state => state.app.alert)
@@ -23,6 +24,7 @@ export const BondsScreen = () => {
                     <Tab>Купоны</Tab>
                     <Tab>Выборка</Tab>
                     <Tab>События</Tab>
+                    <Tab>Графики (днев)</Tab>
                 </TabList>
                 <TabPanel>
                     <ReportBondsAggregatedAnalyse />
@@ -35,6 +37,9 @@ export const BondsScreen = () => {
                 </TabPanel>
                 <TabPanel>
                     <ReportBondsMarketEvent />
+                </TabPanel>
+                <TabPanel>
+                    <DiagramBondsDailyClosePrices />
                 </TabPanel>
             </Tabs>
         </React.Fragment>

@@ -37,7 +37,7 @@ export const DiagramSharesFiveMinutesClosePrices = () => {
     }, [endDateTime])
 
     useEffect(() => {
-        dispatch(sagaReportSharesYieldLtm())
+        dispatch(sagaDiagramSharesFiveMinutesClosePrices())
     }, [tickerList])
 
     return (

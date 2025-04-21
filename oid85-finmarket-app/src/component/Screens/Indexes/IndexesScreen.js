@@ -10,6 +10,7 @@ import {ReportIndexesYieldLtm} from "./ReportIndexesYieldLtm"
 import {ReportIndexesDrawdownFromMaximum} from "./ReportIndexesDrawdownFromMaximum"
 import {ReportIndexesAggregatedAnalyse} from "./ReportIndexesAggregatedAnalyse"
 import {ReportIndexesMarketEvent} from "./ReportIndexesMarketEvent"
+import {DiagramIndexesDailyClosePrices} from "./DiagramIndexesDailyClosePrices";
 
 export const IndexesScreen = () => {
     const alert = useSelector(state => state.app.alert)
@@ -23,6 +24,7 @@ export const IndexesScreen = () => {
                     <Tab>Доходность LTM</Tab>
                     <Tab>Падение от макс.</Tab>
                     <Tab>События</Tab>
+                    <Tab>Графики (днев)</Tab>
                 </TabList>
                 <TabPanel>
                     <ReportIndexesAggregatedAnalyse />
@@ -35,6 +37,9 @@ export const IndexesScreen = () => {
                 </TabPanel>
                 <TabPanel>
                     <ReportIndexesMarketEvent />
+                </TabPanel>
+                <TabPanel>
+                    <DiagramIndexesDailyClosePrices />
                 </TabPanel>
             </Tabs>
         </React.Fragment>

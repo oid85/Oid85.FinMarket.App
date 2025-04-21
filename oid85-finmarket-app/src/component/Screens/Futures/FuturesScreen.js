@@ -11,6 +11,7 @@ import {ReportFuturesSpread} from "./ReportFuturesSpread"
 import {ReportFuturesYieldLtm} from "./ReportFuturesYieldLtm"
 import {ReportFuturesAggregatedAnalyse} from "./ReportFuturesAggregatedAnalyse"
 import {ReportFuturesMarketEvent} from "./ReportFuturesMarketEvent"
+import {DiagramFuturesDailyClosePrices} from "./DiagramFuturesDailyClosePrices";
 
 export const FuturesScreen = () => {
     const alert = useSelector(state => state.app.alert)
@@ -24,6 +25,7 @@ export const FuturesScreen = () => {
                     <Tab>Спреды</Tab>
                     <Tab>Доходность LTM</Tab>
                     <Tab>События</Tab>
+                    <Tab>Графики (днев)</Tab>
                 </TabList>
                 <TabPanel>
                     <ReportFuturesAggregatedAnalyse />
@@ -36,6 +38,9 @@ export const FuturesScreen = () => {
                 </TabPanel>
                 <TabPanel>
                     <ReportFuturesMarketEvent />
+                </TabPanel>
+                <TabPanel>
+                    <DiagramFuturesDailyClosePrices />
                 </TabPanel>
             </Tabs>
         </React.Fragment>

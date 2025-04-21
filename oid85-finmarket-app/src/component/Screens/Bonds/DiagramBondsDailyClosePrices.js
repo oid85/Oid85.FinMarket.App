@@ -1,27 +1,27 @@
 import React, { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import Loader from '../../Loader/Loader'
-import { sagaDiagramSharesDailyClosePrices } from '../../../redux/actions/diagramSharesActions'
+import { sagaDiagramBondsDailyClosePrices } from '../../../redux/actions/diagramBondsActions'
 import '../../Diagram/Diagram.css'
 import { SimpleDiagramContainer } from '../../Diagram/SimpleDiagramContainer'
 import {FilterByLastDaysGroup} from '../../Filter/FilterByLastDays/FilterByLastDaysGroup'
 import {setStartDate} from "../../../redux/actions/filterActions"
 import moment from "moment/moment"
 import {CONSTANTS} from "../../../constants"
-import {FilterBySharesTickerListGroup} from "../../Filter/FilterByTickerList/FilterBySharesTickerListGroup"
-import {sagaReportSharesYieldLtm} from "../../../redux/actions/reportSharesActions"
+import {FilterByBondsTickerListGroup} from "../../Filter/FilterByTickerList/FilterByBondsTickerListGroup"
+import {sagaReportBondsYieldLtm} from "../../../redux/actions/reportBondsActions"
 
-export const DiagramSharesDailyClosePrices = () => {
+export const DiagramBondsDailyClosePrices = () => {
 
     const dispatch = useDispatch()
     const loading = useSelector(state => state.app.loading)
-    const diagramData = useSelector(state => state.diagramShares.diagramData)
+    const diagramData = useSelector(state => state.diagramBonds.diagramData)
     const startDate = useSelector(state => state.filter.startDate)
     const endDate = useSelector(state => state.filter.endDate)
-    const tickerList = useSelector(state => state.filter.sharesTickerList)
+    const tickerList = useSelector(state => state.filter.bondsTickerList)
 
     useEffect(() => {
-        dispatch(sagaDiagramSharesDailyClosePrices())
+        dispatch(sagaDiagramBondsDailyClosePrices())
         dispatch(setStartDate(moment()
             .subtract(CONSTANTS.DEFAULT_PERIOD_DAYS_FOR_DIAGRAMS - 1, 'days')
             .format('YYYY-MM-DD')
@@ -29,15 +29,15 @@ export const DiagramSharesDailyClosePrices = () => {
     }, [])
 
     useEffect(() => {
-        dispatch(sagaDiagramSharesDailyClosePrices())
+        dispatch(sagaDiagramBondsDailyClosePrices())
     }, [startDate])
 
     useEffect(() => {
-        dispatch(sagaDiagramSharesDailyClosePrices())
+        dispatch(sagaDiagramBondsDailyClosePrices())
     }, [endDate])
 
     useEffect(() => {
-        dispatch(sagaDiagramSharesDailyClosePrices())
+        dispatch(sagaDiagramBondsDailyClosePrices())
     }, [tickerList])
 
     return (
@@ -48,7 +48,7 @@ export const DiagramSharesDailyClosePrices = () => {
                     :                    
                     <div className='diagram-container'>
                         <FilterByLastDaysGroup />
-                        <FilterBySharesTickerListGroup />
+                        <FilterByBondsTickerListGroup />
                         <SimpleDiagramContainer containerData = {diagramData.result} />
                     </div>                    
             }

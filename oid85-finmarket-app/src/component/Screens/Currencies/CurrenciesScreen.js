@@ -10,6 +10,7 @@ import {ReportCurrenciesYieldLtm} from "./ReportCurrenciesYieldLtm"
 import {ReportCurrenciesDrawdownFromMaximum} from "./ReportCurrenciesDrawdownFromMaximum"
 import {ReportCurrenciesAggregatedAnalyse} from "./ReportCurrenciesAggregatedAnalyse"
 import {ReportCurrenciesMarketEvent} from "./ReportCurrenciesMarketEvent"
+import {DiagramCurrenciesDailyClosePrices} from "./DiagramCurrenciesDailyClosePrices";
 
 export const CurrenciesScreen = () => {
     const alert = useSelector(state => state.app.alert)
@@ -23,6 +24,7 @@ export const CurrenciesScreen = () => {
                     <Tab>Доходность LTM</Tab>
                     <Tab>Падение от макс.</Tab>
                     <Tab>События</Tab>
+                    <Tab>Графики (днев)</Tab>
                 </TabList>
                 <TabPanel>
                     <ReportCurrenciesAggregatedAnalyse />
@@ -35,6 +37,9 @@ export const CurrenciesScreen = () => {
                 </TabPanel>
                 <TabPanel>
                     <ReportCurrenciesMarketEvent />
+                </TabPanel>
+                <TabPanel>
+                    <DiagramCurrenciesDailyClosePrices />
                 </TabPanel>
             </Tabs>
         </React.Fragment>

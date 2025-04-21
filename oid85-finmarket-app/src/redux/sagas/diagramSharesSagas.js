@@ -20,7 +20,7 @@ const getStartDate = (state) => state.filter.startDate
 const getEndDate = (state) => state.filter.endDate
 const getStartDateTime = (state) => state.filter.startDateTime
 const getEndDateTime = (state) => state.filter.endDateTime
-const getShareTickerList = (state) => state.filter.sharesTickerList
+const getSharesTickerList = (state) => state.filter.sharesTickerList
 
 // SagaWatcher'ы
 export function* eventSagaWatcherDiagramShares() {
@@ -36,7 +36,9 @@ function* sagaWorkerDiagramSharesDailyClosePrices() {
         
         let startDate = yield select(getStartDate)
         let endDate = yield select(getEndDate)
-        let diagramData = yield call(getDiagramDailyClosePricesFromApi, startDate, endDate)
+        let tickerList = yield select(getSharesTickerList)
+
+        let diagramData = yield call(getDiagramDailyClosePricesFromApi, startDate, endDate, tickerList)
         
         yield put(fetchDiagramSharesDailyClosePrices(diagramData))
         yield put(hideLoader())
@@ -54,7 +56,7 @@ function* sagaWorkerDiagramSharesFiveMinutesClosePrices() {
 
         let startDateTime = yield select(getStartDateTime)
         let endDateTime = yield select(getEndDateTime)
-        let tickerList = yield select(getShareTickerList)
+        let tickerList = yield select(getSharesTickerList)
 
         let diagramData = yield call(getDiagramFiveMinutesClosePricesFromApi, startDateTime, endDateTime, tickerList)
 
@@ -72,7 +74,7 @@ function* sagaWorkerDiagramSharesMultiplicatorsMcapPeNetDebtEbitda() {
     try {
         yield put(showLoader())
 
-        let tickerList = yield select(getShareTickerList)
+        let tickerList = yield select(getSharesTickerList)
 
         let diagramData = yield call(getDiagramMultiplicatorsMcapPeNetDebtEbitdaFromApi, tickerList)
 
