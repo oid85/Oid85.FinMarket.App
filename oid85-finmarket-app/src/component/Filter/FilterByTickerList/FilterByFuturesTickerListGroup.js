@@ -8,10 +8,22 @@ export const FilterByFuturesTickerListGroup = () => {
 
     dict['НАБЛЮД'] = 'futures/watchlist'
     dict['ПОРТФЕЛЬ'] = 'futures/portfolio'
+    dict['USD'] = 'futures/usd'
+    dict['RI'] = 'futures/ri'
+    dict['MOEX'] = 'futures/moex'
+    dict['GLD'] = 'futures/gld'
+    dict['EUR'] = 'futures/eur'
+    dict['CHY'] = 'futures/cny'
 
     let tickerLists = [
         'НАБЛЮД',
-        'ПОРТФЕЛЬ'
+        'ПОРТФЕЛЬ',
+        'USD',
+        'RI',
+        'MOEX',
+        'GLD',
+        'EUR',
+        'CHY'
     ]
 
     return (
