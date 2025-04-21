@@ -17,7 +17,7 @@ export const ReportBondsCandleVolume = () => {
     const reportData = useSelector(state => state.reportBonds.reportData)
     const startDate = useSelector(state => state.filter.startDate)
     const endDate = useSelector(state => state.filter.endDate)
-    const tickerList = useSelector(state => state.bondsTickerList)
+    const tickerList = useSelector(state => state.filter.bondsTickerList)
 
     useEffect(() => {
         dispatch(sagaReportBondsCandleVolume())

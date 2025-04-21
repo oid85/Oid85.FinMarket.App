@@ -11,7 +11,7 @@ export const ReportFuturesSpread = () => {
     const dispatch = useDispatch()
     const loading = useSelector(state => state.app.loading)
     const reportData = useSelector(state => state.reportFutures.reportData)
-    const tickerList = useSelector(state => state.futuresTickerList)
+    const tickerList = useSelector(state => state.filter.futuresTickerList)
 
     useEffect(() => {
         dispatch(sagaReportFuturesSpread())

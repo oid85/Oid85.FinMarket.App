@@ -17,7 +17,7 @@ export const ReportCurrenciesAggregatedAnalyse = () => {
     const reportData = useSelector(state => state.reportCurrencies.reportData)
     const startDate = useSelector(state => state.filter.startDate)
     const endDate = useSelector(state => state.filter.endDate)
-    const tickerList = useSelector(state => state.currenciesTickerList)
+    const tickerList = useSelector(state => state.filter.currenciesTickerList)
 
     useEffect(() => {
         dispatch(sagaReportCurrenciesAggregatedAnalyse())

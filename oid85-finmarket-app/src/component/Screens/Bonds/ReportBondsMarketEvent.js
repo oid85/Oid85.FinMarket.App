@@ -11,7 +11,7 @@ export const ReportBondsMarketEvent = () => {
     const dispatch = useDispatch()
     const loading = useSelector(state => state.app.loading)
     const reportData = useSelector(state => state.reportBonds.reportData)
-    const tickerList = useSelector(state => state.bondsTickerList)
+    const tickerList = useSelector(state => state.filter.bondsTickerList)
 
     useEffect(() => {
         dispatch(sagaReportBondsMarketEvent())

@@ -17,7 +17,7 @@ export const ReportFuturesAggregatedAnalyse = () => {
     const reportData = useSelector(state => state.reportFutures.reportData)
     const startDate = useSelector(state => state.filter.startDate)
     const endDate = useSelector(state => state.filter.endDate)
-    const tickerList = useSelector(state => state.futuresTickerList)
+    const tickerList = useSelector(state => state.filter.futuresTickerList)
 
     useEffect(() => {
         dispatch(sagaReportFuturesAggregatedAnalyse())
