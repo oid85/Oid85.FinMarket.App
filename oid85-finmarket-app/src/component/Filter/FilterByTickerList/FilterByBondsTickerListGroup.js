@@ -11,6 +11,7 @@ export const FilterByBondsTickerListGroup = () => {
     dict['ЕЖЕМЕС'] = 'bonds/coupon_every_month'
     dict['МУНИЦ'] = 'bonds/municipals'
     dict['ОФЗ'] = 'bonds/ofz'
+    dict['ДЛИН ОФЗ'] = 'bonds/long_ofz'
     dict['ПОРТФЕЛЬ'] = 'bonds/portfolio'
     dict['ЗАМЕЩ'] = 'bonds/replacement'
 
@@ -20,6 +21,7 @@ export const FilterByBondsTickerListGroup = () => {
         'ЕЖЕМЕС',
         'МУНИЦ',
         'ОФЗ',
+        'ДЛИН ОФЗ',
         'ПОРТФЕЛЬ',
         'ЗАМЕЩ'
     ]
