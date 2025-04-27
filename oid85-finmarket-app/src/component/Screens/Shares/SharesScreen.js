@@ -30,6 +30,7 @@ export const SharesScreen = () => {
             <Tabs>
                 <TabList>
                     <Tab>Агрегация</Tab>
+                    <Tab>Импульс объема</Tab>
                     <Tab>Доходность LTM</Tab>
                     <Tab>Падение от макс.</Tab>
 					<Tab>Дивиденды</Tab>
@@ -44,6 +45,9 @@ export const SharesScreen = () => {
                 </TabList>
                 <TabPanel>
                     <ReportSharesAggregatedAnalyse />
+                </TabPanel>
+                <TabPanel>
+                    <ReportSharesCandleVolume />
                 </TabPanel>
                 <TabPanel>
                     <ReportSharesYieldLtm />

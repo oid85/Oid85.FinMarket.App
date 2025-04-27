@@ -22,6 +22,7 @@ export const FuturesScreen = () => {
             <Tabs>
                 <TabList>
                     <Tab>Агрегация</Tab>
+                    <Tab>Импульс объема</Tab>
                     <Tab>Спреды</Tab>
                     <Tab>Доходность LTM</Tab>
                     <Tab>События</Tab>
@@ -29,6 +30,9 @@ export const FuturesScreen = () => {
                 </TabList>
                 <TabPanel>
                     <ReportFuturesAggregatedAnalyse />
+                </TabPanel>
+                <TabPanel>
+                    <ReportFuturesCandleVolume />
                 </TabPanel>
                 <TabPanel>
                     <ReportFuturesSpread />
