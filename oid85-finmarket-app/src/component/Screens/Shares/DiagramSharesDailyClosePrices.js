@@ -9,7 +9,6 @@ import {setStartDate} from "../../../redux/actions/filterActions"
 import moment from "moment/moment"
 import {CONSTANTS} from "../../../constants"
 import {FilterBySharesTickerListGroup} from "../../Filter/FilterByTickerList/FilterBySharesTickerListGroup"
-import {sagaReportSharesYieldLtm} from "../../../redux/actions/reportSharesActions"
 
 export const DiagramSharesDailyClosePrices = () => {
 
