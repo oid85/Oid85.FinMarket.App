@@ -30,15 +30,7 @@ export const DiagramFuturesDailyClosePrices = () => {
 
     useEffect(() => {
         dispatch(sagaDiagramFuturesDailyClosePrices())
-    }, [startDate])
-
-    useEffect(() => {
-        dispatch(sagaDiagramFuturesDailyClosePrices())
-    }, [endDate])
-
-    useEffect(() => {
-        dispatch(sagaDiagramFuturesDailyClosePrices())
-    }, [tickerList])
+    }, [startDate, endDate, tickerList])
 
     return (
         <React.Fragment>

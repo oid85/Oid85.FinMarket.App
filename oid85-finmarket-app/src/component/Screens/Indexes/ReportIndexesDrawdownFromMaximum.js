@@ -29,15 +29,7 @@ export const ReportIndexesDrawdownFromMaximum = () => {
 
     useEffect(() => {
         dispatch(sagaReportIndexesDrawdownFromMaximum())
-    }, [startDate])
-
-    useEffect(() => {
-        dispatch(sagaReportIndexesDrawdownFromMaximum())
-    }, [endDate])
-
-    useEffect(() => {
-        dispatch(sagaReportIndexesDrawdownFromMaximum())
-    }, [tickerList])
+    }, [startDate, endDate, tickerList])
 
     return (
         <React.Fragment>

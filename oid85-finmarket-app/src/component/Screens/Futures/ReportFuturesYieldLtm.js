@@ -30,15 +30,7 @@ export const ReportFuturesYieldLtm = () => {
 
     useEffect(() => {
         dispatch(sagaReportFuturesYieldLtm())
-    }, [startDate])
-
-    useEffect(() => {
-        dispatch(sagaReportFuturesYieldLtm())
-    }, [endDate])
-
-    useEffect(() => {
-        dispatch(sagaReportFuturesYieldLtm())
-    }, [tickerList])
+    }, [startDate, endDate, tickerList])
 
     return (
         <React.Fragment>

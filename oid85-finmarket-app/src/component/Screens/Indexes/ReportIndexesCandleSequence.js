@@ -29,15 +29,7 @@ export const ReportIndexesCandleSequence = () => {
 
     useEffect(() => {
         dispatch(sagaReportIndexesCandleSequence())
-    }, [startDate])
-
-    useEffect(() => {
-        dispatch(sagaReportIndexesCandleSequence())
-    }, [endDate])
-
-    useEffect(() => {
-        dispatch(sagaReportIndexesCandleSequence())
-    }, [tickerList])
+    }, [startDate, endDate, tickerList])
 
     return (
         <React.Fragment>

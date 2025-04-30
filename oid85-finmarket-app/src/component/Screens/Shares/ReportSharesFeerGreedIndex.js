@@ -27,11 +27,7 @@ export const ReportSharesFeerGreedIndex = () => {
 
     useEffect(() => {
         dispatch(sagaReportSharesFeerGreedIndex())
-    }, [startDate])
-
-    useEffect(() => {
-        dispatch(sagaReportSharesFeerGreedIndex())
-    }, [endDate])
+    }, [startDate, endDate])
 
     return (
         <React.Fragment>

@@ -30,27 +30,19 @@ export const DiagramBondsDailyClosePrices = () => {
 
     useEffect(() => {
         dispatch(sagaDiagramBondsDailyClosePrices())
-    }, [startDate])
-
-    useEffect(() => {
-        dispatch(sagaDiagramBondsDailyClosePrices())
-    }, [endDate])
-
-    useEffect(() => {
-        dispatch(sagaDiagramBondsDailyClosePrices())
-    }, [tickerList])
+    }, [startDate, endDate, tickerList])
 
     return (
         <React.Fragment>
             {
                 !diagramData.result || loading
                     ? <Loader/>
-                    :                    
+                    :
                     <div className='diagram-container'>
                         <FilterByLastDaysGroup />
                         <FilterByBondsTickerListGroup />
                         <SimpleDiagramContainer containerData = {diagramData.result} />
-                    </div>                    
+                    </div>
             }
         </React.Fragment>
     )

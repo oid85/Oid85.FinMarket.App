@@ -29,15 +29,7 @@ export const ReportFuturesCandleVolume = () => {
 
     useEffect(() => {
         dispatch(sagaReportFuturesCandleVolume())
-    }, [startDate])
-
-    useEffect(() => {
-        dispatch(sagaReportFuturesCandleVolume())
-    }, [endDate])
-
-    useEffect(() => {
-        dispatch(sagaReportFuturesCandleVolume())
-    }, [tickerList])
+    }, [startDate, endDate, tickerList])
 
     return (
         <React.Fragment>

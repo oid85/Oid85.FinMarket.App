@@ -29,15 +29,7 @@ export const ReportBondsAggregatedAnalyse = () => {
 
     useEffect(() => {
         dispatch(sagaReportBondsAggregatedAnalyse())
-    }, [startDate])
-
-    useEffect(() => {
-        dispatch(sagaReportBondsAggregatedAnalyse())
-    }, [endDate])
-
-    useEffect(() => {
-        dispatch(sagaReportBondsAggregatedAnalyse())
-    }, [tickerList])
+    }, [startDate, endDate, tickerList])
 
     return (
         <React.Fragment>

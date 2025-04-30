@@ -29,15 +29,7 @@ export const ReportSharesAggregatedAnalyse = () => {
 
     useEffect(() => {
         dispatch(sagaReportSharesAggregatedAnalyse())
-    }, [startDate])
-
-    useEffect(() => {
-        dispatch(sagaReportSharesAggregatedAnalyse())
-    }, [endDate])
-
-    useEffect(() => {
-        dispatch(sagaReportSharesYieldLtm())
-    }, [tickerList])
+    }, [startDate, endDate, tickerList])
 
     return (
         <React.Fragment>

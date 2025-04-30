@@ -29,15 +29,7 @@ export const ReportCurrenciesSupertrend = () => {
 
     useEffect(() => {
         dispatch(sagaReportCurrenciesSupertrend())
-    }, [startDate])
-
-    useEffect(() => {
-        dispatch(sagaReportCurrenciesSupertrend())
-    }, [endDate])
-
-    useEffect(() => {
-        dispatch(sagaReportCurrenciesSupertrend())
-    }, [tickerList])
+    }, [startDate, endDate, tickerList])
 
     return (
         <React.Fragment>

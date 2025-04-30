@@ -29,15 +29,7 @@ export const ReportIndexesRsi = () => {
 
     useEffect(() => {
         dispatch(sagaReportIndexesRsi())
-    }, [startDate])
-
-    useEffect(() => {
-        dispatch(sagaReportIndexesRsi())
-    }, [endDate])
-
-    useEffect(() => {
-        dispatch(sagaReportIndexesRsi())
-    }, [tickerList])
+    }, [startDate, endDate, tickerList])
 
     return (
         <React.Fragment>

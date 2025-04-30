@@ -29,15 +29,7 @@ export const ReportSharesDrawdownFromMaximum = () => {
 
     useEffect(() => {
         dispatch(sagaReportSharesDrawdownFromMaximum())
-    }, [startDate])
-
-    useEffect(() => {
-        dispatch(sagaReportSharesDrawdownFromMaximum())
-    }, [endDate])
-
-    useEffect(() => {
-        dispatch(sagaReportSharesYieldLtm())
-    }, [tickerList])
+    }, [startDate, endDate, tickerList])
 
     return (
         <React.Fragment>
