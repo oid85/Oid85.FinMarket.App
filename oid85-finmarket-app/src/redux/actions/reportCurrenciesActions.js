@@ -6,6 +6,8 @@ import {
     SAGA_REPORT_CURRENCIES_DRAWDOWN_FROM_MAXIMUM,
     SAGA_REPORT_CURRENCIES_AGGREGATED_ANALYSE,
     SAGA_REPORT_CURRENCIES_MARKET_EVENT,
+	SAGA_REPORT_CURRENCIES_ATR,
+	SAGA_REPORT_CURRENCIES_DONCHIAN,
 
     FETCH_REPORT_CURRENCIES_SUPERTREND,
     FETCH_REPORT_CURRENCIES_CANDLE_SEQUENCE,
@@ -13,7 +15,9 @@ import {
     FETCH_REPORT_CURRENCIES_YIELD_LTM,
     FETCH_REPORT_CURRENCIES_DRAWDOWN_FROM_MAXIMUM,
     FETCH_REPORT_CURRENCIES_AGGREGATED_ANALYSE,
-    FETCH_REPORT_CURRENCIES_MARKET_EVENT
+    FETCH_REPORT_CURRENCIES_MARKET_EVENT,
+	FETCH_REPORT_CURRENCIES_ATR,
+	FETCH_REPORT_CURRENCIES_DONCHIAN
 } from '../types/reportCurrenciesTypes'
 
 export const sagaReportCurrenciesSupertrend = () => {
@@ -103,6 +107,32 @@ export const sagaReportCurrenciesMarketEvent = () => {
 export const fetchReportCurrenciesMarketEvent = (reportData) => {
     return {
         type: FETCH_REPORT_CURRENCIES_MARKET_EVENT,
+        payload: reportData
+    }
+}
+
+export const sagaReportCurrenciesAtr = () => {
+    return {
+        type: SAGA_REPORT_CURRENCIES_ATR
+    }
+}
+
+export const fetchReportCurrenciesAtr = (reportData) => {
+    return {
+        type: FETCH_REPORT_CURRENCIES_ATR,
+        payload: reportData
+    }
+}
+
+export const sagaReportCurrenciesDonchian = () => {
+    return {
+        type: SAGA_REPORT_CURRENCIES_DONCHIAN
+    }
+}
+
+export const fetchReportCurrenciesDonchian = (reportData) => {
+    return {
+        type: FETCH_REPORT_CURRENCIES_DONCHIAN,
         payload: reportData
     }
 }

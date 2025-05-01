@@ -5,7 +5,9 @@ import {
     FETCH_REPORT_COUPON,
     FETCH_REPORT_BONDS_AGGREGATED_ANALYSE,
     FETCH_REPORT_BONDS_SELECTION,
-    FETCH_REPORT_BONDS_MARKET_EVENT
+    FETCH_REPORT_BONDS_MARKET_EVENT,
+	FETCH_REPORT_BONDS_ATR,
+	FETCH_REPORT_BONDS_DONCHIAN
 } from '../types/reportBondsTypes'
 
 const initialState = {
@@ -35,6 +37,12 @@ export const reportBondsReducer = (state = initialState, action) => {
 
         case FETCH_REPORT_BONDS_MARKET_EVENT:
             return {...state, reportData: {...action.payload}}
+
+        case FETCH_REPORT_BONDS_ATR:
+            return {...state, reportData: {...action.payload}}
+			
+        case FETCH_REPORT_BONDS_DONCHIAN:
+            return {...state, reportData: {...action.payload}}			
 
         default: return state
     }

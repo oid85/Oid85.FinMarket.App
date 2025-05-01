@@ -12,7 +12,9 @@ import {
     FETCH_REPORT_SHARES_FORECAST_CONSENSUS,
     FETCH_REPORT_SHARES_MARKET_EVENT,
     FETCH_REPORT_SHARES_ASSET_REPORT_EVENT,
-    FETCH_REPORT_SHARES_FEER_GREED_INDEX
+    FETCH_REPORT_SHARES_FEER_GREED_INDEX,
+	FETCH_REPORT_SHARES_ATR,
+	FETCH_REPORT_SHARES_DONCHIAN
 } from '../types/reportSharesTypes'
 
 const initialState = {
@@ -63,6 +65,12 @@ export const reportSharesReducer = (state = initialState, action) => {
 
         case FETCH_REPORT_SHARES_FEER_GREED_INDEX:
             return {...state, reportData: {...action.payload}}
+
+        case FETCH_REPORT_SHARES_ATR:
+            return {...state, reportData: {...action.payload}}
+			
+        case FETCH_REPORT_SHARES_DONCHIAN:
+            return {...state, reportData: {...action.payload}}			
 
         default: return state
     }

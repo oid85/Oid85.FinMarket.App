@@ -7,6 +7,8 @@ import {
     SAGA_REPORT_SPREAD,
     SAGA_REPORT_FUTURES_AGGREGATED_ANALYSE,
     SAGA_REPORT_FUTURES_MARKET_EVENT,
+	SAGA_REPORT_FUTURES_ATR,
+	SAGA_REPORT_FUTURES_DONCHIAN,
 
     FETCH_REPORT_FUTURES_SUPERTREND,
     FETCH_REPORT_FUTURES_CANDLE_SEQUENCE,
@@ -15,7 +17,9 @@ import {
     FETCH_REPORT_FUTURES_YIELD_LTM,
     FETCH_REPORT_SPREAD,
     FETCH_REPORT_FUTURES_AGGREGATED_ANALYSE,
-    FETCH_REPORT_FUTURES_MARKET_EVENT
+    FETCH_REPORT_FUTURES_MARKET_EVENT,
+	FETCH_REPORT_FUTURES_ATR,
+	FETCH_REPORT_FUTURES_DONCHIAN
 } from '../types/reportFuturesTypes'
 
 export const sagaReportFuturesSupertrend = () => {
@@ -118,6 +122,32 @@ export const sagaReportFuturesMarketEvent = () => {
 export const fetchReportFuturesMarketEvent = (reportData) => {
     return {
         type: FETCH_REPORT_FUTURES_MARKET_EVENT,
+        payload: reportData
+    }
+}
+
+export const sagaReportFuturesAtr = () => {
+    return {
+        type: SAGA_REPORT_FUTURES_ATR
+    }
+}
+
+export const fetchReportFuturesAtr = (reportData) => {
+    return {
+        type: FETCH_REPORT_FUTURES_ATR,
+        payload: reportData
+    }
+}
+
+export const sagaReportFuturesDonchian = () => {
+    return {
+        type: SAGA_REPORT_FUTURES_DONCHIAN
+    }
+}
+
+export const fetchReportFuturesDonchian = (reportData) => {
+    return {
+        type: FETCH_REPORT_FUTURES_DONCHIAN,
         payload: reportData
     }
 }

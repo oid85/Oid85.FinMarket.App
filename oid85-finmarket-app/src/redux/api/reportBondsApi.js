@@ -80,6 +80,46 @@ export const getReportCandleVolumeFromApi = async (startDate, endDate, tickerLis
     }
 }
 
+export const getReportAtrFromApi = async (startDate, endDate, tickerList) => {
+    const response = await fetch(
+        `${CONSTANTS.FINMARKET_API}/api/bonds/report/atr-analyse`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                from: startDate,
+                to: endDate,
+                tickerList: tickerList
+            })
+        })
+
+    if (response.ok) {
+        return await response.json()
+    }
+}
+
+export const getReportDonchianFromApi = async (startDate, endDate, tickerList) => {
+    const response = await fetch(
+        `${CONSTANTS.FINMARKET_API}/api/bonds/report/donchian-analyse`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                from: startDate,
+                to: endDate,
+                tickerList: tickerList
+            })
+        })
+
+    if (response.ok) {
+        return await response.json()
+    }
+}
+
 export const getReportCouponFromApi = async (tickerList) => {
     const response = await fetch(
         `${CONSTANTS.FINMARKET_API}/api/bonds/report/coupon-analyse`, {

@@ -99,6 +99,46 @@ export const getReportRsiFromApi = async (startDate, endDate, tickerList) => {
     }
 }
 
+export const getReportAtrFromApi = async (startDate, endDate, tickerList) => {
+    const response = await fetch(
+        `${CONSTANTS.FINMARKET_API}/api/futures/report/atr-analyse`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                from: startDate,
+                to: endDate,
+                tickerList: tickerList
+            })
+        })
+
+    if (response.ok) {
+        return await response.json()
+    }
+}
+
+export const getReportDonchianFromApi = async (startDate, endDate, tickerList) => {
+    const response = await fetch(
+        `${CONSTANTS.FINMARKET_API}/api/futures/report/donchian-analyse`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                from: startDate,
+                to: endDate,
+                tickerList: tickerList
+            })
+        })
+
+    if (response.ok) {
+        return await response.json()
+    }
+}
+
 export const getReportYieldLtmFromApi = async (startDate, endDate, tickerList) => {
     const response = await fetch(
         `${CONSTANTS.FINMARKET_API}/api/futures/report/yield-ltm-analyse`, {

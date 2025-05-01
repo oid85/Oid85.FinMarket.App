@@ -7,7 +7,9 @@ import {
     fetchReportIndexesRsi,
     fetchReportIndexesYieldLtm,
     fetchReportIndexesDrawdownFromMaximum,
-    fetchReportIndexesMarketEvent
+    fetchReportIndexesMarketEvent,
+	fetchReportIndexesAtr,
+	fetchReportIndexesDonchian
 } from '../actions/reportIndexesActions'
 import {
     SAGA_REPORT_INDEXES_SUPERTREND,
@@ -16,7 +18,9 @@ import {
     SAGA_REPORT_INDEXES_YIELD_LTM,
     SAGA_REPORT_INDEXES_DRAWDOWN_FROM_MAXIMUM,
     SAGA_REPORT_INDEXES_AGGREGATED_ANALYSE,
-    SAGA_REPORT_INDEXES_MARKET_EVENT
+    SAGA_REPORT_INDEXES_MARKET_EVENT,
+	SAGA_REPORT_INDEXES_ATR,
+	SAGA_REPORT_INDEXES_DONCHIAN
 } from '../types/reportIndexesTypes'
 import {
     getReportAggregatedAnalyseFromApi,
@@ -25,7 +29,9 @@ import {
     getReportRsiFromApi,
     getReportYieldLtmFromApi,
     getReportDrawdownFromMaximumFromApi,
-    getReportMarketEventFromApi
+    getReportMarketEventFromApi,
+	getReportAtrFromApi,
+	getReportDonchianFromApi
 } from "../api/reportIndexesApi"
 
 const getStartDate = (state) => state.filter.startDate
@@ -41,6 +47,8 @@ export function* eventSagaWatcherReportIndexes() {
     yield takeEvery(SAGA_REPORT_INDEXES_DRAWDOWN_FROM_MAXIMUM, sagaWorkerReportIndexesDrawdownFromMaximum)
     yield takeEvery(SAGA_REPORT_INDEXES_AGGREGATED_ANALYSE, sagaWorkerReportIndexesAggregatedAnalyse)
     yield takeEvery(SAGA_REPORT_INDEXES_MARKET_EVENT, sagaWorkerReportIndexesMarketEvent)
+	yield takeEvery(SAGA_REPORT_INDEXES_ATR, sagaWorkerReportIndexesAtr)
+	yield takeEvery(SAGA_REPORT_INDEXES_DONCHIAN, sagaWorkerReportIndexesDonchian)
 }
 
 // SagaWorker'ы
@@ -95,6 +103,46 @@ function* sagaWorkerReportIndexesRsi() {
         let reportData = yield call(getReportRsiFromApi, startDate, endDate, tickerList)
 
         yield put(fetchReportIndexesRsi(reportData))
+        yield put(hideLoader())
+    }
+
+    catch (error) {
+        yield put(showAlert('Ошибка при получении данных'))
+        yield put(hideLoader())
+    }
+}
+
+function* sagaWorkerReportIndexesAtr() {
+    try {
+        yield put(showLoader())
+
+        let startDate = yield select(getStartDate)
+        let endDate = yield select(getEndDate)
+        let tickerList = yield select(getIndexesTickerList)
+
+        let reportData = yield call(getReportAtrFromApi, startDate, endDate, tickerList)
+
+        yield put(fetchReportIndexesAtr(reportData))
+        yield put(hideLoader())
+    }
+
+    catch (error) {
+        yield put(showAlert('Ошибка при получении данных'))
+        yield put(hideLoader())
+    }
+}
+
+function* sagaWorkerReportIndexesDonchian() {
+    try {
+        yield put(showLoader())
+
+        let startDate = yield select(getStartDate)
+        let endDate = yield select(getEndDate)
+        let tickerList = yield select(getIndexesTickerList)
+
+        let reportData = yield call(getReportDonchianFromApi, startDate, endDate, tickerList)
+
+        yield put(fetchReportIndexesDonchian(reportData))
         yield put(hideLoader())
     }
 

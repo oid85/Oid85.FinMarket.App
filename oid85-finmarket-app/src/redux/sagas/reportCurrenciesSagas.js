@@ -7,7 +7,9 @@ import {
     fetchReportCurrenciesRsi,
     fetchReportCurrenciesYieldLtm,
     fetchReportCurrenciesDrawdownFromMaximum,
-    fetchReportCurrenciesMarketEvent
+    fetchReportCurrenciesMarketEvent,
+	fetchReportCurrenciesAtr,
+	fetchReportCurrenciesDonchian
 } from '../actions/reportCurrenciesActions'
 import {
     SAGA_REPORT_CURRENCIES_SUPERTREND,
@@ -16,7 +18,9 @@ import {
     SAGA_REPORT_CURRENCIES_YIELD_LTM,
     SAGA_REPORT_CURRENCIES_DRAWDOWN_FROM_MAXIMUM,
     SAGA_REPORT_CURRENCIES_AGGREGATED_ANALYSE,
-    SAGA_REPORT_CURRENCIES_MARKET_EVENT
+    SAGA_REPORT_CURRENCIES_MARKET_EVENT,
+	SAGA_REPORT_CURRENCIES_ATR,
+	SAGA_REPORT_CURRENCIES_DONCHIAN
 } from '../types/reportCurrenciesTypes'
 import {
     getReportAggregatedAnalyseFromApi,
@@ -25,7 +29,9 @@ import {
     getReportRsiFromApi,
     getReportYieldLtmFromApi,
     getReportDrawdownFromMaximumFromApi,
-    getReportMarketEventFromApi
+    getReportMarketEventFromApi,
+	getReportAtrFromApi,
+	getReportDonchianFromApi
 } from "../api/reportCurrenciesApi"
 
 const getStartDate = (state) => state.filter.startDate
@@ -41,6 +47,8 @@ export function* eventSagaWatcherReportCurrencies() {
     yield takeEvery(SAGA_REPORT_CURRENCIES_DRAWDOWN_FROM_MAXIMUM, sagaWorkerReportCurrenciesDrawdownFromMaximum)
     yield takeEvery(SAGA_REPORT_CURRENCIES_AGGREGATED_ANALYSE, sagaWorkerReportCurrenciesAggregatedAnalyse)
     yield takeEvery(SAGA_REPORT_CURRENCIES_MARKET_EVENT, sagaWorkerReportCurrenciesMarketEvent)
+	yield takeEvery(SAGA_REPORT_CURRENCIES_ATR, sagaWorkerReportCurrenciesAtr)
+	yield takeEvery(SAGA_REPORT_CURRENCIES_DONCHIAN, sagaWorkerReportCurrenciesDonchian)
 }
 
 // SagaWorker'ы
@@ -95,6 +103,46 @@ function* sagaWorkerReportCurrenciesRsi() {
         let reportData = yield call(getReportRsiFromApi, startDate, endDate, tickerList)
 
         yield put(fetchReportCurrenciesRsi(reportData))
+        yield put(hideLoader())
+    }
+
+    catch (error) {
+        yield put(showAlert('Ошибка при получении данных'))
+        yield put(hideLoader())
+    }
+}
+
+function* sagaWorkerReportCurrenciesAtr() {
+    try {
+        yield put(showLoader())
+
+        let startDate = yield select(getStartDate)
+        let endDate = yield select(getEndDate)
+        let tickerList = yield select(getCurrenciesTickerList)
+
+        let reportData = yield call(getReportAtrFromApi, startDate, endDate, tickerList)
+
+        yield put(fetchReportCurrenciesAtr(reportData))
+        yield put(hideLoader())
+    }
+
+    catch (error) {
+        yield put(showAlert('Ошибка при получении данных'))
+        yield put(hideLoader())
+    }
+}
+
+function* sagaWorkerReportCurrenciesDonchian() {
+    try {
+        yield put(showLoader())
+
+        let startDate = yield select(getStartDate)
+        let endDate = yield select(getEndDate)
+        let tickerList = yield select(getCurrenciesTickerList)
+
+        let reportData = yield call(getReportDonchianFromApi, startDate, endDate, tickerList)
+
+        yield put(fetchReportCurrenciesDonchian(reportData))
         yield put(hideLoader())
     }
 

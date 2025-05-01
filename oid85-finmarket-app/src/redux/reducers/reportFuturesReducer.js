@@ -6,7 +6,9 @@ import {
     FETCH_REPORT_FUTURES_YIELD_LTM,
     FETCH_REPORT_SPREAD,
     FETCH_REPORT_FUTURES_AGGREGATED_ANALYSE,
-    FETCH_REPORT_FUTURES_MARKET_EVENT
+    FETCH_REPORT_FUTURES_MARKET_EVENT,
+	FETCH_REPORT_FUTURES_ATR,
+	FETCH_REPORT_FUTURES_DONCHIAN
 } from '../types/reportFuturesTypes'
 
 const initialState = {
@@ -39,6 +41,12 @@ export const reportFuturesReducer = (state = initialState, action) => {
 
         case FETCH_REPORT_FUTURES_MARKET_EVENT:
             return {...state, reportData: {...action.payload}}
+
+        case FETCH_REPORT_FUTURES_ATR:
+            return {...state, reportData: {...action.payload}}
+			
+        case FETCH_REPORT_FUTURES_DONCHIAN:
+            return {...state, reportData: {...action.payload}}			
 
         default: return state
     }

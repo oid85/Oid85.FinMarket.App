@@ -8,7 +8,9 @@ import {
     fetchReportFuturesRsi,
     fetchReportFuturesYieldLtm,
     fetchReportFuturesSpread,
-    fetchReportFuturesMarketEvent
+    fetchReportFuturesMarketEvent,
+	fetchReportFuturesAtr,
+	fetchReportFuturesDonchian
 } from '../actions/reportFuturesActions'
 import {
     SAGA_REPORT_FUTURES_SUPERTREND,
@@ -18,7 +20,9 @@ import {
     SAGA_REPORT_FUTURES_YIELD_LTM,
     SAGA_REPORT_SPREAD,
     SAGA_REPORT_FUTURES_AGGREGATED_ANALYSE,
-    SAGA_REPORT_FUTURES_MARKET_EVENT
+    SAGA_REPORT_FUTURES_MARKET_EVENT,
+	SAGA_REPORT_FUTURES_ATR,
+	SAGA_REPORT_FUTURES_DONCHIAN
 } from '../types/reportFuturesTypes'
 import {
     getReportAggregatedAnalyseFromApi,
@@ -28,7 +32,9 @@ import {
     getReportRsiFromApi,
     getReportYieldLtmFromApi,
     getReportSpreadFromApi,
-    getReportMarketEventFromApi
+    getReportMarketEventFromApi,
+	getReportAtrFromApi,
+	getReportDonchianFromApi
 } from "../api/reportFuturesApi"
 
 const getStartDate = (state) => state.filter.startDate
@@ -45,6 +51,8 @@ export function* eventSagaWatcherReportFutures() {
     yield takeEvery(SAGA_REPORT_SPREAD, sagaWorkerReportSpread)
     yield takeEvery(SAGA_REPORT_FUTURES_AGGREGATED_ANALYSE, sagaWorkerReportFuturesAggregatedAnalyse)
     yield takeEvery(SAGA_REPORT_FUTURES_MARKET_EVENT, sagaWorkerReportFuturesMarketEvent)
+	yield takeEvery(SAGA_REPORT_FUTURES_ATR, sagaWorkerReportFuturesAtr)
+	yield takeEvery(SAGA_REPORT_FUTURES_DONCHIAN, sagaWorkerReportFuturesDonchian)
 }
 
 // SagaWorker'ы
@@ -119,6 +127,46 @@ function* sagaWorkerReportFuturesRsi() {
         let reportData = yield call(getReportRsiFromApi, startDate, endDate, tickerList)
 
         yield put(fetchReportFuturesRsi(reportData))
+        yield put(hideLoader())
+    }
+
+    catch (error) {
+        yield put(showAlert('Ошибка при получении данных'))
+        yield put(hideLoader())
+    }
+}
+
+function* sagaWorkerReportFuturesAtr() {
+    try {
+        yield put(showLoader())
+
+        let startDate = yield select(getStartDate)
+        let endDate = yield select(getEndDate)
+        let tickerList = yield select(getFuturesTickerList)
+
+        let reportData = yield call(getReportAtrFromApi, startDate, endDate, tickerList)
+
+        yield put(fetchReportFuturesAtr(reportData))
+        yield put(hideLoader())
+    }
+
+    catch (error) {
+        yield put(showAlert('Ошибка при получении данных'))
+        yield put(hideLoader())
+    }
+}
+
+function* sagaWorkerReportFuturesDonchian() {
+    try {
+        yield put(showLoader())
+
+        let startDate = yield select(getStartDate)
+        let endDate = yield select(getEndDate)
+        let tickerList = yield select(getFuturesTickerList)
+
+        let reportData = yield call(getReportDonchianFromApi, startDate, endDate, tickerList)
+
+        yield put(fetchReportFuturesDonchian(reportData))
         yield put(hideLoader())
     }
 

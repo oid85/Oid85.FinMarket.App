@@ -7,7 +7,9 @@ import {
     fetchReportBondsCandleVolume,
     fetchReportBondsCoupon,
     fetchReportBondsSelection,
-    fetchReportBondsMarketEvent
+    fetchReportBondsMarketEvent,
+	fetchReportBondsAtr,
+	fetchReportBondsDonchian
 } from '../actions/reportBondsActions'
 import {
     SAGA_REPORT_BONDS_SUPERTREND,
@@ -16,7 +18,9 @@ import {
     SAGA_REPORT_COUPON,
     SAGA_REPORT_BONDS_AGGREGATED_ANALYSE,
     SAGA_REPORT_BONDS_SELECTION,
-    SAGA_REPORT_BONDS_MARKET_EVENT
+    SAGA_REPORT_BONDS_MARKET_EVENT,
+	SAGA_REPORT_BONDS_ATR,
+	SAGA_REPORT_BONDS_DONCHIAN
 } from '../types/reportBondsTypes'
 import {
     getReportAggregatedAnalyseFromApi,
@@ -25,7 +29,9 @@ import {
     getReportCandleVolumeFromApi,
     getReportCouponFromApi,
     getReportSelectionFromApi,
-    getReportMarketEventFromApi
+    getReportMarketEventFromApi,
+	getReportAtrFromApi,
+	getReportDonchianFromApi
 } from "../api/reportBondsApi"
 
 const getStartDate = (state) => state.filter.startDate
@@ -41,6 +47,8 @@ export function* eventSagaWatcherReportBonds() {
     yield takeEvery(SAGA_REPORT_BONDS_AGGREGATED_ANALYSE, sagaWorkerReportBondsAggregatedAnalyse)
     yield takeEvery(SAGA_REPORT_BONDS_SELECTION, sagaWorkerReportBondsSelection)
     yield takeEvery(SAGA_REPORT_BONDS_MARKET_EVENT, sagaWorkerReportBondsMarketEvent)
+	yield takeEvery(SAGA_REPORT_BONDS_ATR, sagaWorkerReportBondsAtr)
+	yield takeEvery(SAGA_REPORT_BONDS_DONCHIAN, sagaWorkerReportBondsDonchian)
 }
 
 // SagaWorker'ы
@@ -95,6 +103,46 @@ function* sagaWorkerReportBondsCandleVolume() {
         let reportData = yield call(getReportCandleVolumeFromApi, startDate, endDate, tickerList)
 
         yield put(fetchReportBondsCandleVolume(reportData))
+        yield put(hideLoader())
+    }
+
+    catch (error) {
+        yield put(showAlert('Ошибка при получении данных'))
+        yield put(hideLoader())
+    }
+}
+
+function* sagaWorkerReportBondsAtr() {
+    try {
+        yield put(showLoader())
+
+        let startDate = yield select(getStartDate)
+        let endDate = yield select(getEndDate)
+        let tickerList = yield select(getBondsTickerList)
+
+        let reportData = yield call(getReportAtrFromApi, startDate, endDate, tickerList)
+
+        yield put(fetchReportBondsAtr(reportData))
+        yield put(hideLoader())
+    }
+
+    catch (error) {
+        yield put(showAlert('Ошибка при получении данных'))
+        yield put(hideLoader())
+    }
+}
+
+function* sagaWorkerReportBondsDonchian() {
+    try {
+        yield put(showLoader())
+
+        let startDate = yield select(getStartDate)
+        let endDate = yield select(getEndDate)
+        let tickerList = yield select(getBondsTickerList)
+
+        let reportData = yield call(getReportDonchianFromApi, startDate, endDate, tickerList)
+
+        yield put(fetchReportBondsDonchian(reportData))
         yield put(hideLoader())
     }
 
