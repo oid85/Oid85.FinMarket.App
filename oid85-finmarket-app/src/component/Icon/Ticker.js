@@ -154,8 +154,8 @@ import zillp from "./img/zillp.png"
 
 export const Ticker = ({value, color}) => {
 
-    const height = 44
-    const width = 44
+    const height = 28
+    const width = 28
 
     switch(value.toLowerCase()){
         case 'abio': return <img src={abio} alt="" height={height} width={width}/>

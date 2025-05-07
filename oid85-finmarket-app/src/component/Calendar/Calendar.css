@@ -9,10 +9,8 @@
     padding: .25rem .25rem;
     color: #fff;
     font-weight: normal;
-    font-size: .75rem;
+    font-size: .5rem;
     background-color: #f57c00;
-    border-top-left-radius: .25rem;
-    border-top-right-radius: .25rem;
 }
 
 .calendar-body {
@@ -21,7 +19,8 @@
 }
 
 .calendar-month {
-    font-size: 1.25rem;
+    font-weight: bold;
+    font-size: 0.8rem;
     text-transform: capitalize;
 }
 
@@ -32,7 +31,7 @@
 }
 
 .calendar-day {
-    font-size: 1.25rem;
+    font-size: 1.0rem;
 }
 
 .calendar-year {

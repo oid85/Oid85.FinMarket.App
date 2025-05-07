@@ -17,8 +17,8 @@ import municipal from './img/municipal.png'
 
 export const Sector = ({value, color}) => {
 
-    const height = 44
-    const width = 44
+    const height = 28
+    const width = 28
 
     switch(value){
         case 'energy':return <img src={energy} alt="" height={height} width={width}/>
