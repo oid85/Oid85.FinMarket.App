@@ -8,10 +8,10 @@ export const FilterByBondsTickerListGroup = () => {
 
     dict['НАБЛЮД'] = 'bonds/watchlist'
     dict['КОРПОРАТ'] = 'bonds/corp'
-    dict['ЕЖЕМЕС'] = 'bonds/coupon_every_month'
+    dict['ЕЖЕМЕС'] = 'bonds/couponEveryMonth'
     dict['МУНИЦ'] = 'bonds/municipals'
     dict['ОФЗ'] = 'bonds/ofz'
-    dict['ДЛИН ОФЗ'] = 'bonds/long_ofz'
+    dict['ДЛИН ОФЗ'] = 'bonds/longOfz'
     dict['ПОРТФЕЛЬ'] = 'bonds/portfolio'
     dict['ЗАМЕЩ'] = 'bonds/replacement'
 
