@@ -18,7 +18,6 @@ import {ReportSharesMarketEvent} from "./ReportSharesMarketEvent"
 import {ReportSharesAssetReportEvent} from "./ReportSharesAssetReportEvent"
 import {ReportSharesFeerGreedIndex} from "./ReportSharesFeerGreedIndex"
 import {DiagramSharesDailyClosePrices} from "./DiagramSharesDailyClosePrices"
-import {DiagramSharesFiveMinutesClosePrices} from "./DiagramSharesFiveMinutesClosePrices"
 import {DiagramSharesMultiplicatorsMcapPeNetDebtEbitda} from "./DiagramSharesMultiplicatorsMcapPeNetDebtEbitda"
 
 export const SharesScreen = () => {
@@ -40,7 +39,6 @@ export const SharesScreen = () => {
                     <Tab>Отчетность</Tab>
                     <Tab>Индекс ЖиС</Tab>
                     <Tab>Графики (днев)</Tab>
-                    <Tab>Графики (5 мин)</Tab>
                     <Tab>Мульт. пузырьковая</Tab>
                 </TabList>
                 <TabPanel>
@@ -75,9 +73,6 @@ export const SharesScreen = () => {
                 </TabPanel>
                 <TabPanel>
                     <DiagramSharesDailyClosePrices />
-                </TabPanel>
-                <TabPanel>
-                    <DiagramSharesFiveMinutesClosePrices />
                 </TabPanel>
                 <TabPanel>
                     <DiagramSharesMultiplicatorsMcapPeNetDebtEbitda />

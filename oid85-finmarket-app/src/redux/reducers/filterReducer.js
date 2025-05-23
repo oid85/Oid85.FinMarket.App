@@ -2,8 +2,6 @@ import moment from 'moment'
 import { 
     SET_START_DATE, 
     SET_END_DATE,
-    SET_START_DATETIME,
-    SET_END_DATETIME,
     SET_SHARES_TICKERLIST,
     SET_BONDS_TICKERLIST,
     SET_FUTURES_TICKERLIST,
@@ -21,20 +19,9 @@ const endDate = moment()
                     .format('YYYY-MM-DD')
                     .toString()
 
-const startDateTime = moment()
-    .subtract(CONSTANTS.DEFAULT_PERIOD_DAYS_FOR_TABLES, 'hours')
-    .format('YYYY-MM-DD HH:mm:ss')
-    .toString()
-
-const endDateTime = moment()
-    .format('YYYY-MM-DD HH:mm:ss')
-    .toString()
-
 const initialState = {
     startDate: startDate,
     endDate: endDate,
-    startDateTime: startDateTime,
-    endDateTime: endDateTime,
     sharesTickerList: 'shares/watchlist',
     bondsTickerList: 'bonds/watchlist',
     futuresTickerList: 'futures/watchlist',
@@ -51,12 +38,6 @@ export const filterReducer = (state = initialState, action) => {
 
         case SET_END_DATE:
             return {...state, endDate: action.payload.toString()}
-
-        case SET_START_DATETIME:
-            return {...state, startDateTime: action.payload.toString()}
-
-        case SET_END_DATETIME:
-            return {...state, endDateTime: action.payload.toString()}
 
         case SET_SHARES_TICKERLIST:
             return {...state, sharesTickerList: action.payload.toString()}

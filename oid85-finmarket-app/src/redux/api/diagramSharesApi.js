@@ -20,26 +20,6 @@ export const getDiagramDailyClosePricesFromApi = async (startDate, endDate, tick
     }
 }
 
-export const getDiagramFiveMinutesClosePricesFromApi = async (startDateTime, endDateTime, tickerList) => {
-    const response = await fetch(
-        `${CONSTANTS.FINMARKET_API}/api/shares/diagram/five-minutes-close-prices`, {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                from: startDateTime,
-                to: endDateTime,
-                tickerList: tickerList
-            })
-        })
-
-    if (response.ok) {
-        return await response.json()
-    }
-}
-
 export const getDiagramMultiplicatorsMcapPeNetDebtEbitdaFromApi = async (tickerList) => {
     const response = await fetch(
         `${CONSTANTS.FINMARKET_API}/api/shares/diagram/multiplicators-mcap-pe-netdebtebitda`, {
