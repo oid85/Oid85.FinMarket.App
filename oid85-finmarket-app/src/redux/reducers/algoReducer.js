@@ -7,7 +7,8 @@ import {
 const initialState = {
     strategySignals: [],
     backtestResults: [],
-    backtestResult: {}
+    backtestResult: {},
+    backtestResultId: ''
 }
 
 export const algoReducer = (state = initialState, action) => {
