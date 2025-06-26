@@ -9,8 +9,8 @@ export const SimpleDiagram = ({ key, title, series }) => {
             <div>{title}</div>
             <AreaChart
                 key = {key}
-                width={300}
-                height={150}
+                width={450}
+                height={250}
                 data={series}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <YAxis type="number" domain={['auto', 'auto']} />
