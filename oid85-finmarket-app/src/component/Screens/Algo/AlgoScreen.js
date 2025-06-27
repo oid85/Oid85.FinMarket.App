@@ -15,7 +15,7 @@ export const AlgoScreen = () => {
             <Tabs>
                 <TabList>
                     <Tab>Сигналы</Tab>
-                    <Tab>Бэктест</Tab>
+                    <Tab>Результаты бэктеста</Tab>
                 </TabList>
                 <TabPanel>
                     <ReportStrategySignals />
