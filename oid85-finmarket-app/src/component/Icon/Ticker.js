@@ -20,6 +20,7 @@ import carm from "./img/carm.png"
 import cbom from "./img/cbom.png"
 import chmf from "./img/chmf.png"
 import chmk from "./img/chmk.png"
+import cnru from "./img/cnru.png"
 import cntl from "./img/cntl.png"
 import data from "./img/data.png"
 import deli from "./img/deli.png"
@@ -177,6 +178,7 @@ export const Ticker = ({value, color}) => {
         case 'cbom': return <img src={cbom} alt="" height={height} width={width}/>
         case 'chmf': return <img src={chmf} alt="" height={height} width={width}/>
         case 'chmk': return <img src={chmk} alt="" height={height} width={width}/>
+        case 'cnru': return <img src={cnru} alt="" height={height} width={width}/>
         case 'cntlp':
         case 'cntl': return <img src={cntl} alt="" height={height} width={width}/>
         case 'data': return <img src={data} alt="" height={height} width={width}/>
