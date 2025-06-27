@@ -4,12 +4,14 @@ import Loader from '../../Loader/Loader'
 import { sagaAlgoStrategySignals } from '../../../redux/actions/algoActions'
 import '../../Report/Report.css'
 import { Table } from '../../Report/Table'
+import {FilterByLastDaysGroup} from "../../Filter/FilterByLastDays/FilterByLastDaysGroup";
+import {FilterBySharesTickerListGroup} from "../../Filter/FilterByTickerList/FilterBySharesTickerListGroup";
 
 export const ReportStrategySignals = () => {
 
     const dispatch = useDispatch()
     const loading = useSelector(state => state.app.loading)
-    const strategySignals = useSelector(state => state.algo.strategySignals)
+    const reportData = useSelector(state => state.algo.reportData)
 
     useEffect(() => {
         dispatch(sagaAlgoStrategySignals())
@@ -18,14 +20,14 @@ export const ReportStrategySignals = () => {
     return (
         <React.Fragment>
             {
-                !strategySignals || loading
+                !reportData.result || loading
                     ? <Loader/>
-                    :                    
+                    :
                     <div className='report-container'>
                         <Table
-                            title = {`Сигналы`}
-                            reportTableData = {strategySignals} />
-                    </div>                    
+                            title = {`${reportData.result.title}`}
+                            reportTableData = {reportData.result} />
+                    </div>
             }
         </React.Fragment>
     )

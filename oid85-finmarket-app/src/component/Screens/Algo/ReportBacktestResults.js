@@ -9,7 +9,7 @@ export const ReportBacktestResults = () => {
 
     const dispatch = useDispatch()
     const loading = useSelector(state => state.app.loading)
-    const backtestResults = useSelector(state => state.algo.backtestResults)
+    const reportData = useSelector(state => state.algo.reportData)
 
     useEffect(() => {
         dispatch(sagaAlgoBacktestResults())
@@ -18,13 +18,13 @@ export const ReportBacktestResults = () => {
     return (
         <React.Fragment>
             {
-                !backtestResults || loading
+                !reportData || loading
                     ? <Loader/>
                     :                    
                     <div className='report-container'>
                         <Table
-                            title = {`Бэктест`}
-                            reportTableData = {backtestResults} />
+                            title = {`${reportData.result.title}`}
+                            reportTableData = {reportData.result} />
                     </div>                    
             }
         </React.Fragment>

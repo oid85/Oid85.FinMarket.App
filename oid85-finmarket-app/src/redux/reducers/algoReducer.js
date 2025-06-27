@@ -1,27 +1,20 @@
 import {
     FETCH_STRATEGY_SIGNALS,
-    FETCH_BACKTEST_RESULTS,
-    FETCH_BACKTEST_RESULT
+    FETCH_BACKTEST_RESULTS
 } from '../types/algoTypes'
 
 const initialState = {
-    strategySignals: [],
-    backtestResults: [],
-    backtestResult: {},
-    backtestResultId: ''
+    reportData: {}
 }
 
 export const algoReducer = (state = initialState, action) => {
     switch (action.type) {
 
         case FETCH_STRATEGY_SIGNALS:
-            return {...state, strategySignals: {...action.payload}}
+            return {...state, reportData: {...action.payload}}
 
         case FETCH_BACKTEST_RESULTS:
-            return {...state, backtestResults: {...action.payload}}
-
-        case FETCH_BACKTEST_RESULT:
-            return {...state, backtestResult: {...action.payload}}
+            return {...state, reportData: {...action.payload}}
 
         default: return state
     }
