@@ -34,7 +34,7 @@ const data = [
   }
 ];
 
-export default function Example() {
+export default function BacktestResultDiagram() {
   return (
     <ResponsiveContainer width="100%" height="100%">
       <ComposedChart

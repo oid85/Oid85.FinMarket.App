@@ -6,7 +6,8 @@ import {
     SET_BONDS_TICKERLIST,
     SET_FUTURES_TICKERLIST,
     SET_CURRENCIES_TICKERLIST,
-    SET_INDEXES_TICKERLIST
+    SET_INDEXES_TICKERLIST,
+    SET_BACKTEST_RESULT_ID
 } from '../types/filterTypes'
 import { CONSTANTS } from '../../constants'
 
@@ -26,7 +27,8 @@ const initialState = {
     bondsTickerList: 'bonds/watchlist',
     futuresTickerList: 'futures/watchlist',
     currenciesTickerList: 'currencies/watchlist',
-    indexesTickerList: 'indexes/watchlist'
+    indexesTickerList: 'indexes/watchlist',
+    backtestResultId: ''
 }
 
 export const filterReducer = (state = initialState, action) => {
@@ -53,6 +55,9 @@ export const filterReducer = (state = initialState, action) => {
 
         case SET_INDEXES_TICKERLIST:
             return {...state, indexesTickerList: action.payload.toString()}
+
+        case SET_BACKTEST_RESULT_ID:
+            return {...state, backtestResultId: action.payload.toString()}
 
         default: return state
     }

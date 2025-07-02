@@ -1,13 +1,12 @@
 import { 
     SET_START_DATE, 
     SET_END_DATE,
-    SET_START_DATETIME,
-    SET_END_DATETIME,
     SET_SHARES_TICKERLIST,
     SET_BONDS_TICKERLIST,
     SET_FUTURES_TICKERLIST,
     SET_CURRENCIES_TICKERLIST,
-    SET_INDEXES_TICKERLIST
+    SET_INDEXES_TICKERLIST,
+    SET_BACKTEST_RESULT_ID
 } from '../types/filterTypes'
 
 export const setStartDate = (date) => {
@@ -21,20 +20,6 @@ export const setEndDate = (date) => {
     return {
         type: SET_END_DATE,
         payload: date
-    }
-}
-
-export const setStartDateTime = (dateTime) => {
-    return {
-        type: SET_START_DATETIME,
-        payload: dateTime
-    }
-}
-
-export const setEndDateTime = (dateTime) => {
-    return {
-        type: SET_END_DATETIME,
-        payload: dateTime
     }
 }
 
@@ -70,5 +55,12 @@ export const setIndexesTickerList = (indexesTickerList) => {
     return {
         type: SET_INDEXES_TICKERLIST,
         payload: indexesTickerList
+    }
+}
+
+export const setBacktestResultId = (backtestResultId) => {
+    return {
+        type: SET_BACKTEST_RESULT_ID,
+        payload: backtestResultId
     }
 }

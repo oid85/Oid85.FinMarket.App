@@ -37,6 +37,7 @@ export const CONSTANTS = {
     DISPLAY_TYPE_CURRENCY: 'Currency',
     DISPLAY_TYPE_ANALYSE_RESULT: 'AnalyseResult',
     DISPLAY_TYPE_ASSET_REPORT_EVENT: 'AssetReportEvent',
+    DISPLAY_TYPE_BACKTEST_RESULT_BY_ID_BUTTON: 'BacktestResultByIdButton',
 
     COLOR_WHITE: '#FFFFFF',
     COLOR_RED: '#FF6633',
