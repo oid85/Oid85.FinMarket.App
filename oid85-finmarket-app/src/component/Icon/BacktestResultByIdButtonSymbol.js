@@ -18,7 +18,7 @@ export const BacktestResultByIdButtonSymbol = ({value, color}) => {
                 className='btn btn-outline-primary'
                 onClick={() => {
                     dispatch(setBacktestResultId(value))
-                    navigate("/backtest-result")
+                    navigate("/backtest-result-by-id")
                 }}
             >...</button>
         </div>

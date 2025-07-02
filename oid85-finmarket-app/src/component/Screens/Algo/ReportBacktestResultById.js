@@ -5,7 +5,7 @@ import { sagaAlgoBacktestResults } from '../../../redux/actions/algoActions'
 import '../../Report/Report.css'
 import { Table } from '../../Report/Table'
 
-export const ReportBacktestResult = () => {
+export const ReportBacktestResultById = () => {
 
     return (
         <React.Fragment>
