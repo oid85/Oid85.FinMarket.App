@@ -1,10 +1,12 @@
 import {
     FETCH_STRATEGY_SIGNALS,
-    FETCH_BACKTEST_RESULTS
+    FETCH_BACKTEST_RESULTS,
+    FETCH_BACKTEST_RESULT_BY_ID
 } from '../types/algoTypes'
 
 const initialState = {
-    reportData: {}
+    reportData: {},
+    backtestResultData: {}
 }
 
 export const algoReducer = (state = initialState, action) => {
@@ -15,6 +17,9 @@ export const algoReducer = (state = initialState, action) => {
 
         case FETCH_BACKTEST_RESULTS:
             return {...state, reportData: {...action.payload}}
+
+        case FETCH_BACKTEST_RESULT_BY_ID:
+            return {...state, backtestResultData: {...action.payload}}
 
         default: return state
     }

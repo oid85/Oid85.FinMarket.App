@@ -31,3 +31,21 @@ export const getAlgoBacktestResultsFromApi = async () => {
         return await response.json()
     }
 }
+
+export const getAlgoBacktestResultByIdFromApi = async (backtestResultId) => {
+    const response = await fetch(
+        `${CONSTANTS.FINMARKET_API}/api/algo/backtest-result-by-id`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id: backtestResultId
+            })
+        })
+
+    if (response.ok) {
+        return await response.json()
+    }
+}

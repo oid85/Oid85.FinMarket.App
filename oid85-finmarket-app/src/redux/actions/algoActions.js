@@ -1,9 +1,11 @@
 import {
     SAGA_STRATEGY_SIGNALS,
     SAGA_BACKTEST_RESULTS,
+    SAGA_BACKTEST_RESULT_BY_ID,
 
     FETCH_STRATEGY_SIGNALS,
-    FETCH_BACKTEST_RESULTS
+    FETCH_BACKTEST_RESULTS,
+    FETCH_BACKTEST_RESULT_BY_ID
 } from '../types/algoTypes'
 
 export const sagaAlgoStrategySignals = () => {
@@ -29,5 +31,18 @@ export const fetchAlgoBacktestResults = (reportData) => {
     return {
         type: FETCH_BACKTEST_RESULTS,
         payload: reportData
+    }
+}
+
+export const sagaAlgoBacktestResultById = () => {
+    return {
+        type: SAGA_BACKTEST_RESULT_BY_ID
+    }
+}
+
+export const fetchAlgoBacktestResultById = (backtestResultData) => {
+    return {
+        type: FETCH_BACKTEST_RESULT_BY_ID,
+        payload: backtestResultData
     }
 }

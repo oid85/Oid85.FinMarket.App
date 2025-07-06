@@ -34,13 +34,13 @@ const data = [
   }
 ];
 
-export default function BacktestResultDiagram() {
+export const BacktestResultDiagram = ({ backtestResultData }) => {
   return (
     <ResponsiveContainer width="100%" height="100%">
       <ComposedChart
       width={500}
       height={400}
-      data={data}
+      data={backtestResultData}
       margin={{
           top: 10,
           right: 30,
