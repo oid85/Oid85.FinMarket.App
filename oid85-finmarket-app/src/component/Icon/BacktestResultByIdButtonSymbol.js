@@ -13,7 +13,7 @@ export const BacktestResultByIdButtonSymbol = ({value, color}) => {
     return (
         <div style={{backgroundColor: color}}>
             <button
-                style={{width: 30}}
+                style={{width: 28, height: 28}}
                 key={value}
                 className='btn btn-outline-primary'
                 onClick={() => {

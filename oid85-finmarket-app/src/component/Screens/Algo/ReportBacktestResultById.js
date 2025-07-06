@@ -9,7 +9,7 @@ export const ReportBacktestResultById = () => {
 
     return (
         <React.Fragment>
-
+qwe
         </React.Fragment>
     )
 }
