@@ -23,10 +23,7 @@ export const ReportBacktestResultById = () => {
                     ? <Loader/>
                     :
                     <div className='backtest-result-container'>
-                        <BacktestResultDiagram backtestResultData = {backtestResultData.diagramData} />
-                        <Table
-                            title = {`${backtestResultData.reportData.result.title}`}
-                            reportTableData = {backtestResultData.reportData.result} />
+                        <BacktestResultDiagram data = {{...{...{...backtestResultData.result}.diagramData}.data}.series} />
                     </div>
             }
         </React.Fragment>

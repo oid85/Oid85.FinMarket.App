@@ -10,8 +10,6 @@ export const getAlgoStrategySignalsFromApi = async () => {
             }
         })
 
-    console.log(response)
-
     if (response.ok) {
         return await response.json()
     }

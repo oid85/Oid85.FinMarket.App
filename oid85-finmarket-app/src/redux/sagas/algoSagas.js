@@ -63,7 +63,6 @@ function* sagaWorkerAlgoBacktestResultById() {
         yield put(showLoader())
 
         let backtestResultId = yield select(getBacktestResultId)
-
         let backtestResultData = yield call(getAlgoBacktestResultByIdFromApi, backtestResultId)
 
         yield put(fetchAlgoBacktestResultById(backtestResultData))
