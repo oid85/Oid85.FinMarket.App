@@ -25,7 +25,8 @@ export const ReportBacktestResultByTicker = () => {
                     ? <Loader/>
                     :
                     <div className='backtest-result-container'>
-                        <BacktestResultDiagram data = {{...{...{...backtestResultData.result}.diagramData}.data}.series} />
+                        <h3>{{...{...backtestResultData.result}.diagramData}.title}</h3>
+                        <BacktestResultDiagram data={{...{...{...backtestResultData.result}.diagramData}.data}.series}/>
                     </div>
             }
         </React.Fragment>
