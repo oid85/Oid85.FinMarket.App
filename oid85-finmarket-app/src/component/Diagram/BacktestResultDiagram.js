@@ -25,6 +25,7 @@ export const BacktestResultDiagram = ({ data }) => {
             <Tooltip/>
             <Area type="monotone" dataKey="channelBands" stroke="none" fill="#cccccc" dot={false} activeDot={false}/>
             <Line type="natural" dataKey="price" dot={false} activeDot={false} stroke={CONSTANTS.COLOR_DARKSLATEGRAY}/>
+            <Area type="natural" dataKey="price" stroke={CONSTANTS.COLOR_DARKSLATEGRAY} fill={CONSTANTS.COLOR_LIGHTSKYBLUE}/>
             <Scatter name="buy" dataKey="buyPrice" fill={CONSTANTS.COLOR_GREEN}/>
             <Scatter name="sell" dataKey="sellPrice" fill={CONSTANTS.COLOR_RED}/>
           </ComposedChart>
@@ -33,14 +34,14 @@ export const BacktestResultDiagram = ({ data }) => {
             <YAxis type="number" domain={['auto', 'auto']} />
             <Tooltip/>
             <Line type="natural" dataKey="equity" dot={false} activeDot={false} stroke={CONSTANTS.COLOR_DARKGREEN}/>
-            <Area type="monotone" dataKey="equity" stroke={CONSTANTS.COLOR_DARKGREEN} fill={CONSTANTS.COLOR_GREEN}/>
+            <Area type="natural" dataKey="equity" stroke={CONSTANTS.COLOR_DARKGREEN} fill={CONSTANTS.COLOR_GREEN}/>
           </ComposedChart>
           <ComposedChart width={1900} height={50} data={data} margin={{top: 0, right: 0, left: 0, bottom: 0,}}>
             <CartesianGrid strokeDasharray="3 3"/>
             <YAxis type="number" domain={['auto', 'auto']} />
             <Tooltip/>
             <Line type="natural" dataKey="drawdown" dot={false} activeDot={false} stroke={CONSTANTS.COLOR_DARKRED}/>
-            <Area type="monotone" dataKey="drawdown" stroke={CONSTANTS.COLOR_DARKRED} fill={CONSTANTS.COLOR_RED}/>
+            <Area type="natural" dataKey="drawdown" stroke={CONSTANTS.COLOR_DARKRED} fill={CONSTANTS.COLOR_RED}/>
           </ComposedChart>
         </div>
       </React.Fragment>
