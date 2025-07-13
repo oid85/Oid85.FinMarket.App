@@ -33,13 +33,13 @@ export const SharesScreen = () => {
                     <Tab>Доходность LTM</Tab>
                     <Tab>Падение от макс.</Tab>
 					<Tab>Дивиденды</Tab>
-                    <Tab>Фунд. ан. (мульт.)</Tab>
+                    <Tab>Фунд. ан. (таблица)</Tab>
+                    <Tab>Фунд. ан. (диаграмма)</Tab>
                     <Tab>Прогнозы</Tab>
                     <Tab>События</Tab>
                     <Tab>Отчетность</Tab>
                     <Tab>Индекс ЖиС</Tab>
                     <Tab>Графики (днев)</Tab>
-                    <Tab>Мульт. пузырьковая</Tab>
                 </TabList>
                 <TabPanel>
                     <ReportSharesAggregatedAnalyse />
@@ -60,6 +60,9 @@ export const SharesScreen = () => {
                     <ReportSharesMultiplicator />
                 </TabPanel>
                 <TabPanel>
+                    <DiagramSharesMultiplicatorsMcapPeNetDebtEbitda />
+                </TabPanel>
+                <TabPanel>
                     <ReportSharesForecastConsensus />
                 </TabPanel>
                 <TabPanel>
@@ -73,9 +76,6 @@ export const SharesScreen = () => {
                 </TabPanel>
                 <TabPanel>
                     <DiagramSharesDailyClosePrices />
-                </TabPanel>
-                <TabPanel>
-                    <DiagramSharesMultiplicatorsMcapPeNetDebtEbitda />
                 </TabPanel>
             </Tabs>
         </React.Fragment>
