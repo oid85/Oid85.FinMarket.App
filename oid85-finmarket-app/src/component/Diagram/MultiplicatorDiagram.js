@@ -1,6 +1,6 @@
 ﻿import React from 'react'
 
-export const BubbleDiagram = ({ data }) => {
+export const MultiplicatorDiagram = ({ data }) => {
     return (
         <div>
 
