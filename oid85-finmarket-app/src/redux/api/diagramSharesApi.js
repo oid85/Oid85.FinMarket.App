@@ -22,7 +22,7 @@ export const getDiagramDailyClosePricesFromApi = async (startDate, endDate, tick
 
 export const getDiagramMultiplicatorsMcapPeNetDebtEbitdaFromApi = async (tickerList) => {
     const response = await fetch(
-        `${CONSTANTS.FINMARKET_API}/api/shares/diagram/multiplicators-mcap-pe-netdebtebitda`, {
+        `${CONSTANTS.FINMARKET_API}/api/shares/diagram/share-multiplicators-mcap-pe-netdebtebitda`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
