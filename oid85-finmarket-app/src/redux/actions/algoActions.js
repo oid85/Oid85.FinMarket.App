@@ -3,11 +3,13 @@ import {
     SAGA_BACKTEST_RESULTS,
     SAGA_BACKTEST_RESULT_BY_ID,
     SAGA_BACKTEST_RESULT_BY_TICKER,
+    SAGA_BACKTEST_RESULT_PORTFOLIO,
 
     FETCH_STRATEGY_SIGNALS,
     FETCH_BACKTEST_RESULTS,
     FETCH_BACKTEST_RESULT_BY_ID,
-    FETCH_BACKTEST_RESULT_BY_TICKER
+    FETCH_BACKTEST_RESULT_BY_TICKER,
+    FETCH_BACKTEST_RESULT_PORTFOLIO
 } from '../types/algoTypes'
 
 export const sagaAlgoStrategySignals = () => {
@@ -58,6 +60,19 @@ export const sagaAlgoBacktestResultByTicker = () => {
 export const fetchAlgoBacktestResultByTicker = (backtestResultData) => {
     return {
         type: FETCH_BACKTEST_RESULT_BY_TICKER,
+        payload: backtestResultData
+    }
+}
+
+export const sagaAlgoBacktestResultPortfolio = () => {
+    return {
+        type: SAGA_BACKTEST_RESULT_PORTFOLIO
+    }
+}
+
+export const fetchAlgoBacktestResultPortfolio = (backtestResultData) => {
+    return {
+        type: FETCH_BACKTEST_RESULT_PORTFOLIO,
         payload: backtestResultData
     }
 }

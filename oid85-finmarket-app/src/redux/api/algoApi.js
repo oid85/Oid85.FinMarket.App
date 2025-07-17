@@ -65,3 +65,18 @@ export const getAlgoBacktestResultByTickerFromApi = async (backtestResultTicker)
         return await response.json()
     }
 }
+
+export const getAlgoBacktestResultPortfolioFromApi = async () => {
+    const response = await fetch(
+        `${CONSTANTS.FINMARKET_API}/api/algo/backtest-result-portfolio`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+
+    if (response.ok) {
+        return await response.json()
+    }
+}

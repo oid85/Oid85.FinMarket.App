@@ -4,19 +4,22 @@ import {
     fetchAlgoStrategySignals,
     fetchAlgoBacktestResults,
     fetchAlgoBacktestResultById,
-    fetchAlgoBacktestResultByTicker
+    fetchAlgoBacktestResultByTicker,
+    fetchAlgoBacktestResultPortfolio
 } from '../actions/algoActions'
 import {
     SAGA_STRATEGY_SIGNALS,
     SAGA_BACKTEST_RESULTS,
     SAGA_BACKTEST_RESULT_BY_ID,
-    SAGA_BACKTEST_RESULT_BY_TICKER
+    SAGA_BACKTEST_RESULT_BY_TICKER,
+    SAGA_BACKTEST_RESULT_PORTFOLIO
 } from '../types/algoTypes'
 import {
     getAlgoStrategySignalsFromApi,
     getAlgoBacktestResultsFromApi,
     getAlgoBacktestResultByIdFromApi,
-    getAlgoBacktestResultByTickerFromApi
+    getAlgoBacktestResultByTickerFromApi,
+    getAlgoBacktestResultPortfolioFromApi
 } from "../api/algoApi"
 
 // SagaWatcher'ы
@@ -25,6 +28,7 @@ export function* eventSagaWatcherAlgo() {
     yield takeEvery(SAGA_BACKTEST_RESULTS, sagaWorkerAlgoBacktestResults)
     yield takeEvery(SAGA_BACKTEST_RESULT_BY_ID, sagaWorkerAlgoBacktestResultById)
     yield takeEvery(SAGA_BACKTEST_RESULT_BY_TICKER, sagaWorkerAlgoBacktestResultByTicker)
+    yield takeEvery(SAGA_BACKTEST_RESULT_PORTFOLIO, sagaWorkerAlgoBacktestResultPortfolio)
 }
 
 const getBacktestResultId = (state) => state.filter.backtestResultId
@@ -88,6 +92,22 @@ function* sagaWorkerAlgoBacktestResultByTicker() {
         let backtestResultData = yield call(getAlgoBacktestResultByTickerFromApi, backtestResultTicker)
 
         yield put(fetchAlgoBacktestResultByTicker(backtestResultData))
+        yield put(hideLoader())
+    }
+
+    catch (error) {
+        yield put(showAlert('Ошибка при получении данных'))
+        yield put(hideLoader())
+    }
+}
+
+function* sagaWorkerAlgoBacktestResultPortfolio() {
+    try {
+        yield put(showLoader())
+
+        let backtestResultData = yield call(getAlgoBacktestResultPortfolioFromApi)
+
+        yield put(fetchAlgoBacktestResultPortfolio(backtestResultData))
         yield put(hideLoader())
     }
 
