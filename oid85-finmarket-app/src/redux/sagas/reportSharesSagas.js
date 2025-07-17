@@ -16,7 +16,8 @@ import {
     fetchReportSharesAssetReportEvent,
     fetchReportSharesFeerGreedIndex,
 	fetchReportSharesAtr,
-	fetchReportSharesDonchian
+    fetchReportSharesDonchian,
+    fetchReportSharesHurst
 } from '../actions/reportSharesActions'
 import {
     SAGA_REPORT_SHARES_SUPERTREND,
@@ -34,7 +35,8 @@ import {
     SAGA_REPORT_SHARES_ASSET_REPORT_EVENT,
     SAGA_REPORT_SHARES_FEER_GREED_INDEX,
 	SAGA_REPORT_SHARES_ATR,
-	SAGA_REPORT_SHARES_DONCHIAN
+    SAGA_REPORT_SHARES_DONCHIAN,
+    SAGA_REPORT_SHARES_HURST
 } from '../types/reportSharesTypes'
 import {
     getReportAggregatedAnalyseFromApi,
@@ -52,7 +54,8 @@ import {
     getReportAssetReportEventFromApi,
     getReportFeerGreedIndexFromApi,
 	getReportAtrFromApi,
-	getReportDonchianFromApi
+    getReportDonchianFromApi,
+    getReportHurstFromApi
 } from "../api/reportSharesApi"
 
 const getStartDate = (state) => state.filter.startDate
@@ -76,7 +79,8 @@ export function* eventSagaWatcherReportShares() {
     yield takeEvery(SAGA_REPORT_SHARES_ASSET_REPORT_EVENT, sagaWorkerReportSharesAssetReportEvent)
     yield takeEvery(SAGA_REPORT_SHARES_FEER_GREED_INDEX, sagaWorkerReportSharesFeerGreedIndex)
 	yield takeEvery(SAGA_REPORT_SHARES_ATR, sagaWorkerReportSharesAtr)
-	yield takeEvery(SAGA_REPORT_SHARES_DONCHIAN, sagaWorkerReportSharesDonchian)
+    yield takeEvery(SAGA_REPORT_SHARES_DONCHIAN, sagaWorkerReportSharesDonchian)
+    yield takeEvery(SAGA_REPORT_SHARES_HURST, sagaWorkerReportSharesHurst)
 }
 
 // SagaWorker'ы
@@ -191,6 +195,26 @@ function* sagaWorkerReportSharesDonchian() {
         let reportData = yield call(getReportDonchianFromApi, startDate, endDate, tickerList)
 
         yield put(fetchReportSharesDonchian(reportData))
+        yield put(hideLoader())
+    }
+
+    catch (error) {
+        yield put(showAlert('Ошибка при получении данных'))
+        yield put(hideLoader())
+    }
+}
+
+function* sagaWorkerReportSharesHurst() {
+    try {
+        yield put(showLoader())
+
+        let startDate = yield select(getStartDate)
+        let endDate = yield select(getEndDate)
+        let tickerList = yield select(getSharesTickerList)
+
+        let reportData = yield call(getReportHurstFromApi, startDate, endDate, tickerList)
+
+        yield put(fetchReportSharesHurst(reportData))
         yield put(hideLoader())
     }
 

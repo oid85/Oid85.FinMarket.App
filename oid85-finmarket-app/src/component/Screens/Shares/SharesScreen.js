@@ -6,6 +6,7 @@ import { Alert } from '../../Alert/Alert'
 import {ReportSharesSupertrend} from "./ReportSharesSupertrend"
 import {ReportSharesCandleSequence} from "./ReportSharesCandleSequence"
 import {ReportSharesCandleVolume} from "./ReportSharesCandleVolume"
+import {ReportSharesHurst} from "./ReportSharesHurst"
 import {ReportSharesRsi} from "./ReportSharesRsi"
 import {ReportSharesYieldLtm} from "./ReportSharesYieldLtm"
 import {ReportSharesDrawdownFromMaximum} from "./ReportSharesDrawdownFromMaximum"
@@ -29,7 +30,7 @@ export const SharesScreen = () => {
             <Tabs>
                 <TabList>
                     <Tab>Агрегация</Tab>
-                    <Tab>Импульс объема</Tab>
+                    <Tab>Хёрст</Tab>
                     <Tab>Доходность LTM</Tab>
                     <Tab>Падение от макс.</Tab>
 					<Tab>Дивиденды</Tab>
@@ -45,7 +46,7 @@ export const SharesScreen = () => {
                     <ReportSharesAggregatedAnalyse />
                 </TabPanel>
                 <TabPanel>
-                    <ReportSharesCandleVolume />
+                    <ReportSharesHurst />
                 </TabPanel>
                 <TabPanel>
                     <ReportSharesYieldLtm />

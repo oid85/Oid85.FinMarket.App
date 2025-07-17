@@ -14,7 +14,8 @@ import {
     SAGA_REPORT_SHARES_ASSET_REPORT_EVENT,
     SAGA_REPORT_SHARES_FEER_GREED_INDEX,
 	SAGA_REPORT_SHARES_ATR,
-	SAGA_REPORT_SHARES_DONCHIAN,
+    SAGA_REPORT_SHARES_DONCHIAN,
+    SAGA_REPORT_SHARES_HURST,
 
     FETCH_REPORT_SHARES_SUPERTREND,
     FETCH_REPORT_SHARES_CANDLE_SEQUENCE,
@@ -31,7 +32,8 @@ import {
     FETCH_REPORT_SHARES_ASSET_REPORT_EVENT,
     FETCH_REPORT_SHARES_FEER_GREED_INDEX,
 	FETCH_REPORT_SHARES_ATR,
-	FETCH_REPORT_SHARES_DONCHIAN
+    FETCH_REPORT_SHARES_DONCHIAN,
+    FETCH_REPORT_SHARES_HURST
 } from '../types/reportSharesTypes'
 
 export const sagaReportSharesSupertrend = () => {
@@ -238,6 +240,19 @@ export const sagaReportSharesDonchian = () => {
 export const fetchReportSharesDonchian = (reportData) => {
     return {
         type: FETCH_REPORT_SHARES_DONCHIAN,
+        payload: reportData
+    }
+}
+
+export const sagaReportSharesHurst = () => {
+    return {
+        type: SAGA_REPORT_SHARES_HURST
+    }
+}
+
+export const fetchReportSharesHurst = (reportData) => {
+    return {
+        type: FETCH_REPORT_SHARES_HURST,
         payload: reportData
     }
 }
