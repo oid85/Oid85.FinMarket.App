@@ -7,7 +7,6 @@ import {ReportFuturesSupertrend} from "./ReportFuturesSupertrend"
 import {ReportFuturesCandleSequence} from "./ReportFuturesCandleSequence"
 import {ReportFuturesCandleVolume} from "./ReportFuturesCandleVolume"
 import {ReportFuturesRsi} from "./ReportFuturesRsi"
-import {ReportFuturesSpread} from "./ReportFuturesSpread"
 import {ReportFuturesYieldLtm} from "./ReportFuturesYieldLtm"
 import {ReportFuturesAggregatedAnalyse} from "./ReportFuturesAggregatedAnalyse"
 import {ReportFuturesMarketEvent} from "./ReportFuturesMarketEvent"
@@ -23,7 +22,6 @@ export const FuturesScreen = () => {
                 <TabList>
                     <Tab>Агрегация</Tab>
                     <Tab>Импульс объема</Tab>
-                    <Tab>Спреды</Tab>
                     <Tab>Доходность LTM</Tab>
                     <Tab>События</Tab>
                     <Tab>Графики (днев)</Tab>
@@ -33,9 +31,6 @@ export const FuturesScreen = () => {
                 </TabPanel>
                 <TabPanel>
                     <ReportFuturesCandleVolume />
-                </TabPanel>
-                <TabPanel>
-                    <ReportFuturesSpread />
                 </TabPanel>
                 <TabPanel>
                     <ReportFuturesYieldLtm />

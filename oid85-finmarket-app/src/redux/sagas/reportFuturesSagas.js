@@ -7,7 +7,6 @@ import {
     fetchReportFuturesCandleVolume,
     fetchReportFuturesRsi,
     fetchReportFuturesYieldLtm,
-    fetchReportFuturesSpread,
     fetchReportFuturesMarketEvent,
 	fetchReportFuturesAtr,
 	fetchReportFuturesDonchian
@@ -18,7 +17,6 @@ import {
     SAGA_REPORT_FUTURES_CANDLE_VOLUME,
     SAGA_REPORT_FUTURES_RSI,
     SAGA_REPORT_FUTURES_YIELD_LTM,
-    SAGA_REPORT_SPREAD,
     SAGA_REPORT_FUTURES_AGGREGATED_ANALYSE,
     SAGA_REPORT_FUTURES_MARKET_EVENT,
 	SAGA_REPORT_FUTURES_ATR,
@@ -31,7 +29,6 @@ import {
     getReportCandleVolumeFromApi,
     getReportRsiFromApi,
     getReportYieldLtmFromApi,
-    getReportSpreadFromApi,
     getReportMarketEventFromApi,
 	getReportAtrFromApi,
 	getReportDonchianFromApi
@@ -48,7 +45,6 @@ export function* eventSagaWatcherReportFutures() {
     yield takeEvery(SAGA_REPORT_FUTURES_CANDLE_VOLUME, sagaWorkerReportFuturesCandleVolume)
     yield takeEvery(SAGA_REPORT_FUTURES_RSI, sagaWorkerReportFuturesRsi)
     yield takeEvery(SAGA_REPORT_FUTURES_YIELD_LTM, sagaWorkerReportFuturesYieldLtm)
-    yield takeEvery(SAGA_REPORT_SPREAD, sagaWorkerReportSpread)
     yield takeEvery(SAGA_REPORT_FUTURES_AGGREGATED_ANALYSE, sagaWorkerReportFuturesAggregatedAnalyse)
     yield takeEvery(SAGA_REPORT_FUTURES_MARKET_EVENT, sagaWorkerReportFuturesMarketEvent)
 	yield takeEvery(SAGA_REPORT_FUTURES_ATR, sagaWorkerReportFuturesAtr)
@@ -187,24 +183,6 @@ function* sagaWorkerReportFuturesYieldLtm() {
         let reportData = yield call(getReportYieldLtmFromApi, startDate, endDate,tickerList)
 
         yield put(fetchReportFuturesYieldLtm(reportData))
-        yield put(hideLoader())
-    }
-
-    catch (error) {
-        yield put(showAlert('Ошибка при получении данных'))
-        yield put(hideLoader())
-    }
-}
-
-function* sagaWorkerReportSpread() {
-    try {
-        yield put(showLoader())
-
-        let tickerList = yield select(getFuturesTickerList)
-
-        let reportData = yield call(getReportSpreadFromApi, tickerList)
-
-        yield put(fetchReportFuturesSpread(reportData))
         yield put(hideLoader())
     }
 

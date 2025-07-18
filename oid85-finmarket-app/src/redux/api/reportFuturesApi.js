@@ -159,24 +159,6 @@ export const getReportYieldLtmFromApi = async (startDate, endDate, tickerList) =
     }
 }
 
-export const getReportSpreadFromApi = async (tickerList) => {
-    const response = await fetch(
-        `${CONSTANTS.FINMARKET_API}/api/futures/report/spread-analyse`, {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                tickerList: tickerList
-            })
-        })
-
-    if (response.ok) {
-        return await response.json()
-    }
-}
-
 export const getReportMarketEventFromApi = async (tickerList) => {
     const response = await fetch(
         `${CONSTANTS.FINMARKET_API}/api/futures/report/active-market-events-analyse`, {

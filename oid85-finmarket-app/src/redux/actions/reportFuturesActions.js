@@ -4,7 +4,6 @@ import {
     SAGA_REPORT_FUTURES_CANDLE_VOLUME,
     SAGA_REPORT_FUTURES_RSI,
     SAGA_REPORT_FUTURES_YIELD_LTM,
-    SAGA_REPORT_SPREAD,
     SAGA_REPORT_FUTURES_AGGREGATED_ANALYSE,
     SAGA_REPORT_FUTURES_MARKET_EVENT,
 	SAGA_REPORT_FUTURES_ATR,
@@ -15,7 +14,6 @@ import {
     FETCH_REPORT_FUTURES_CANDLE_VOLUME,
     FETCH_REPORT_FUTURES_RSI,
     FETCH_REPORT_FUTURES_YIELD_LTM,
-    FETCH_REPORT_SPREAD,
     FETCH_REPORT_FUTURES_AGGREGATED_ANALYSE,
     FETCH_REPORT_FUTURES_MARKET_EVENT,
 	FETCH_REPORT_FUTURES_ATR,
@@ -83,19 +81,6 @@ export const sagaReportFuturesYieldLtm = () => {
 export const fetchReportFuturesYieldLtm = (reportData) => {
     return {
         type: FETCH_REPORT_FUTURES_YIELD_LTM,
-        payload: reportData
-    }
-}
-
-export const sagaReportFuturesSpread = () => {
-    return {
-        type: SAGA_REPORT_SPREAD
-    }
-}
-
-export const fetchReportFuturesSpread = (reportData) => {
-    return {
-        type: FETCH_REPORT_SPREAD,
         payload: reportData
     }
 }
