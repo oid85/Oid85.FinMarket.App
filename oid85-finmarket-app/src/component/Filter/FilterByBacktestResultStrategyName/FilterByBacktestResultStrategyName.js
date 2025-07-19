@@ -16,7 +16,7 @@ export const FilterByBacktestResultStrategyName = ({strategyName}) => {
                         margin: 1,
                         fontSize: 10
                     }}
-                    key={days}
+                    key={strategyName}
                     className='btn btn-outline-primary'
                     onClick={() => {
                         dispatch(setBacktestResultStrategyName(strategyName))

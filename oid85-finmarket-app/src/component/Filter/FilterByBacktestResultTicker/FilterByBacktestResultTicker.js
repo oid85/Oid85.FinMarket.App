@@ -16,7 +16,7 @@ export const FilterByBacktestResultTicker = ({ticker}) => {
                         margin: 1,
                         fontSize: 10
                     }}
-                    key={days}
+                    key={ticker}
                     className='btn btn-outline-primary'
                     onClick={() => {
                         dispatch(setBacktestResultTicker(ticker))
