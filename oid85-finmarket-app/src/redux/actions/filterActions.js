@@ -7,7 +7,8 @@ import {
     SET_CURRENCIES_TICKERLIST,
     SET_INDEXES_TICKERLIST,
     SET_BACKTEST_RESULT_ID,
-    SET_BACKTEST_RESULT_TICKER
+    SET_BACKTEST_RESULT_TICKER,
+    SET_BACKTEST_RESULT_STRATEGY_NAME
 } from '../types/filterTypes'
 
 export const setStartDate = (date) => {
@@ -70,5 +71,12 @@ export const setBacktestResultTicker = (backtestResultTicker) => {
     return {
         type: SET_BACKTEST_RESULT_TICKER,
         payload: backtestResultTicker
+    }
+}
+
+export const setBacktestResultStrategyName = (backtestResultStrategyName) => {
+    return {
+        type: SET_BACKTEST_RESULT_STRATEGY_NAME,
+        payload: backtestResultStrategyName
     }
 }

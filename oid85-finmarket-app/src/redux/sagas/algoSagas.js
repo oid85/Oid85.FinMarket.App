@@ -33,6 +33,7 @@ export function* eventSagaWatcherAlgo() {
 
 const getBacktestResultId = (state) => state.filter.backtestResultId
 const getBacktestResultTicker = (state) => state.filter.backtestResultTicker
+const getBacktestResultStrategyName = (state) => state.filter.backtestResultStrategyName
 
 // SagaWorker'ы
 function* sagaWorkerAlgoStrategySignals() {
@@ -55,9 +56,11 @@ function* sagaWorkerAlgoBacktestResults() {
     try {
         yield put(showLoader())
 
-        let reportData = yield call(getAlgoBacktestResultsFromApi)
+        let backtestResultTicker = yield select(getBacktestResultTicker)
+        let backtestResultStrategyName = yield select(getBacktestResultStrategyName)
+        let backtestResultData = yield call(getAlgoBacktestResultsFromApi, backtestResultTicker, backtestResultStrategyName)
 
-        yield put(fetchAlgoBacktestResults(reportData))
+        yield put(fetchAlgoBacktestResults(backtestResultData))
         yield put(hideLoader())
     }
 

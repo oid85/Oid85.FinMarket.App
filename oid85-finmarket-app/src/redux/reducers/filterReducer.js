@@ -1,6 +1,6 @@
 import moment from 'moment'
-import { 
-    SET_START_DATE, 
+import {
+    SET_START_DATE,
     SET_END_DATE,
     SET_SHARES_TICKERLIST,
     SET_BONDS_TICKERLIST,
@@ -8,7 +8,7 @@ import {
     SET_CURRENCIES_TICKERLIST,
     SET_INDEXES_TICKERLIST,
     SET_BACKTEST_RESULT_ID,
-    SET_BACKTEST_RESULT_TICKER
+    SET_BACKTEST_RESULT_TICKER, SET_BACKTEST_RESULT_STRATEGY_NAME
 } from '../types/filterTypes'
 import { CONSTANTS } from '../../constants'
 
@@ -30,7 +30,8 @@ const initialState = {
     currenciesTickerList: 'currencies/watchlist',
     indexesTickerList: 'indexes/watchlist',
     backtestResultId: '',
-    backtestResultTicker: ''
+    backtestResultTicker: 'SBER',
+    backtestResultStrategyName: 'SupertrendLong'
 }
 
 export const filterReducer = (state = initialState, action) => {
@@ -63,6 +64,9 @@ export const filterReducer = (state = initialState, action) => {
 
         case SET_BACKTEST_RESULT_TICKER:
             return {...state, backtestResultTicker: action.payload.toString()}
+
+        case SET_BACKTEST_RESULT_STRATEGY_NAME:
+            return {...state, backtestResultStrategyName: action.payload.toString()}
 
         default: return state
     }

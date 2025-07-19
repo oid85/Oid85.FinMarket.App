@@ -15,14 +15,18 @@ export const getAlgoStrategySignalsFromApi = async () => {
     }
 }
 
-export const getAlgoBacktestResultsFromApi = async () => {
+export const getAlgoBacktestResultsFromApi = async (ticker, strategyName) => {
     const response = await fetch(
         `${CONSTANTS.FINMARKET_API}/api/algo/backtest-results`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
-            }
+            },
+            body: JSON.stringify({
+                ticker: ticker,
+                strategyName: strategyName
+            })
         })
 
     if (response.ok) {
