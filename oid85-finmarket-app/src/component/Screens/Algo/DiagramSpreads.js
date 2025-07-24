@@ -20,7 +20,7 @@ export const DiagramSpreads = () => {
     useEffect(() => {
         dispatch(sagaAlgoSpreads())
         dispatch(setStartDate(moment()
-            .subtract(CONSTANTS.DEFAULT_PERIOD_DAYS_FOR_DIAGRAMS - 1, 'days')
+            .subtract(365, 'days')
             .format('YYYY-MM-DD')
             .toString()))
     }, [])
