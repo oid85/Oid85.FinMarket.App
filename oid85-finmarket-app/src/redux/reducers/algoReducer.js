@@ -3,12 +3,14 @@ import {
     FETCH_BACKTEST_RESULTS,
     FETCH_BACKTEST_RESULT_BY_ID,
     FETCH_BACKTEST_RESULT_BY_TICKER,
-    FETCH_BACKTEST_RESULT_PORTFOLIO
+    FETCH_BACKTEST_RESULT_PORTFOLIO,
+    FETCH_DIAGRAM_SPREADS
 } from '../types/algoTypes'
 
 const initialState = {
     reportData: {},
-    backtestResultData: {}
+    backtestResultData: {},
+    spreadDiagramData: {}
 }
 
 export const algoReducer = (state = initialState, action) => {
@@ -28,6 +30,9 @@ export const algoReducer = (state = initialState, action) => {
 
         case FETCH_BACKTEST_RESULT_PORTFOLIO:
             return {...state, backtestResultData: {...action.payload}}
+
+        case FETCH_DIAGRAM_SPREADS:
+            return {...state, spreadDiagramData: {...action.payload}}
 
         default: return state
     }

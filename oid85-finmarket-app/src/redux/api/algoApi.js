@@ -84,3 +84,23 @@ export const getAlgoBacktestResultPortfolioFromApi = async () => {
         return await response.json()
     }
 }
+
+export const getAlgoSpreadsFromApi = async (startDate, endDate) => {
+    const response = await fetch(
+        `${CONSTANTS.FINMARKET_API}/api/algo/diagram/spreads`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                from: startDate,
+                to: endDate,
+                tickerList: ""
+            })
+        })
+
+    if (response.ok) {
+        return await response.json()
+    }
+}

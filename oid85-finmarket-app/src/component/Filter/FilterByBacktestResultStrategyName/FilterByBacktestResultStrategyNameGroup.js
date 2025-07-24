@@ -14,7 +14,7 @@ export const FilterByBacktestResultStrategyNameGroup = () => {
             <div className='filter-container'>
                 {
                     strategyNames.map((item, index) => (
-                        <FilterByBacktestResultStrategyName key={index} days={item} />
+                        <FilterByBacktestResultStrategyName key={index} strategyName={item} />
                     ))
                 }
             </div>

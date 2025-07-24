@@ -13,7 +13,7 @@ export const FilterByBacktestResultTickerGroup = () => {
             <div className='filter-container'>
                 {
                     tickers.map((item, index) => (
-                        <FilterByBacktestResultTicker key={index} days={item} />
+                        <FilterByBacktestResultTicker key={index} ticker={item} />
                     ))
                 }
             </div>

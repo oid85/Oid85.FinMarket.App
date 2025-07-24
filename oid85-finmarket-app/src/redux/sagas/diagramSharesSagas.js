@@ -10,7 +10,6 @@ import {
 } from '../types/diagramSharesTypes'
 import {
     getDiagramDailyClosePricesFromApi,
-    getDiagramFiveMinutesClosePricesFromApi,
     getDiagramMultiplicatorsMcapPeNetDebtEbitdaFromApi
 } from "../api/diagramSharesApi"
 
