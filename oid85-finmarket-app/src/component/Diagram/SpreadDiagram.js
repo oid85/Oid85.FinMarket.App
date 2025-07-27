@@ -7,7 +7,7 @@ export const SpreadDiagram = ({ key, title, series }) => {
     return (
         <div>
             <Attention visible={false}/>
-            <div>{title}</div>
+            <h3>{title}</h3>
             <BarChart key = {key} width={1900} height={300} data={series}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <YAxis type="number" domain={[-3, 3]} />
