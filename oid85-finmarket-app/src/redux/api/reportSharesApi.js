@@ -220,7 +220,7 @@ export const getReportDividendFromApi = async (tickerList) => {
 
 export const getReportMultiplicatorFromApi = async (tickerList) => {
     const response = await fetch(
-        `${CONSTANTS.FINMARKET_API}/api/shares/report/multiplicator-analyse`, {
+        `${CONSTANTS.FINMARKET_API}/api/shares/report/share-multiplicator-analyse`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
