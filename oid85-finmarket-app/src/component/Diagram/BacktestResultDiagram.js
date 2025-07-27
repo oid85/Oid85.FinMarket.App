@@ -24,6 +24,8 @@ export const BacktestResultDiagram = ({ data }) => {
             <YAxis type="number" domain={['auto', 'auto']} />
             <Tooltip/>
             <Area type="monotone" dataKey="channelBands" stroke="none" fill="#cccccc" dot={false} activeDot={false}/>
+            <Line type="natural" dataKey="indicator" dot={false} activeDot={false} stroke={CONSTANTS.COLOR_DARKSLATEGRAY}/>
+            <Line type="natural" dataKey="filter" dot={false} activeDot={false} stroke={CONSTANTS.COLOR_DARKSLATEGRAY}/>
             <Line type="natural" dataKey="price" dot={false} activeDot={false} stroke={CONSTANTS.COLOR_DARKSLATEGRAY}/>
             <Area type="natural" dataKey="price" stroke={CONSTANTS.COLOR_DARKSLATEGRAY} fill={CONSTANTS.COLOR_LIGHTSKYBLUE}/>
             <Scatter name="buy" dataKey="buyPrice" fill={CONSTANTS.COLOR_GREEN}/>
