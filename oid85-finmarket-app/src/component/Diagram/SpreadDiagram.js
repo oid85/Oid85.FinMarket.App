@@ -1,5 +1,5 @@
 ﻿import React from 'react'
-import {BarChart, YAxis, CartesianGrid, Tooltip, Bar, ReferenceLine} from 'recharts'
+import {BarChart, YAxis, Tooltip, Bar, ReferenceLine} from 'recharts'
 import {CONSTANTS} from "../../constants";
 
 export const SpreadDiagram = ({ key, title, series }) => {
@@ -10,7 +10,6 @@ export const SpreadDiagram = ({ key, title, series }) => {
             }}>
             <h6>{title}</h6>
             <BarChart key = {key} width={450} height={150} data={series}>
-                <CartesianGrid strokeDasharray="3 3" />
                 <YAxis type="number" domain={[-3, 3]} />
                 <Tooltip />
                 <ReferenceLine y={1} stroke={CONSTANTS.COLOR_GRAY} />
