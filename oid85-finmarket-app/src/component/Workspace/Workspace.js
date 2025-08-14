@@ -9,6 +9,7 @@ import {CurrenciesScreen} from "../Screens/Currencies/CurrenciesScreen"
 import {FuturesScreen} from "../Screens/Futures/FuturesScreen"
 import {IndexesScreen} from "../Screens/Indexes/IndexesScreen"
 import {AlgoScreen} from "../Screens/Algo/AlgoScreen";
+import {StatisticalArbitrageScreen} from "../Screens/StatisticalArbitrage/StatisticalArbitrageScreen";
 
 export const Workspace = () => {
     const alert = useSelector(state => state.app.alert)
@@ -19,6 +20,7 @@ export const Workspace = () => {
             <Tabs>
                 <TabList>
                     <Tab>Алго</Tab>
+                    <Tab>Стат. арбитраж</Tab>
                     <Tab>Акции</Tab>
                     <Tab>Облигации</Tab>
                     <Tab>Валюты</Tab>
@@ -27,6 +29,9 @@ export const Workspace = () => {
                 </TabList>
                 <TabPanel>
                     <AlgoScreen />
+                </TabPanel>
+                <TabPanel>
+                    <StatisticalArbitrageScreen />
                 </TabPanel>
                 <TabPanel>
                     <SharesScreen />

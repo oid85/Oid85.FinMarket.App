@@ -6,7 +6,6 @@ import { Alert } from '../../Alert/Alert'
 import {ReportStrategySignals} from "./ReportStrategySignals";
 import {ReportBacktestResults} from "./ReportBacktestResults";
 import {ReportBacktestResultPortfolio} from "./ReportBacktestResultPortfolio";
-import {DiagramSpreads} from "./DiagramSpreads";
 
 export const AlgoScreen = () => {
     const alert = useSelector(state => state.app.alert)
@@ -19,7 +18,6 @@ export const AlgoScreen = () => {
                     <Tab>Сигналы</Tab>
                     <Tab>Результаты бэктеста</Tab>
                     <Tab>Бэктест портфеля стратегий</Tab>
-                    <Tab>Графики спредов</Tab>
                 </TabList>
                 <TabPanel>
                     <ReportStrategySignals />
@@ -29,9 +27,6 @@ export const AlgoScreen = () => {
                 </TabPanel>
                 <TabPanel>
                     <ReportBacktestResultPortfolio />
-                </TabPanel>
-                <TabPanel>
-                    <DiagramSpreads />
                 </TabPanel>
             </Tabs>
         </React.Fragment>
