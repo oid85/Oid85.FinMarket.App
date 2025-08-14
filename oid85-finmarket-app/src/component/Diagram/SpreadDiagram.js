@@ -1,6 +1,5 @@
 ﻿import React from 'react'
 import {BarChart, YAxis, CartesianGrid, Tooltip, Bar, ReferenceLine} from 'recharts'
-import {Attention} from "../Icon/Attention"
 import {CONSTANTS} from "../../constants";
 
 export const SpreadDiagram = ({ key, title, series }) => {
