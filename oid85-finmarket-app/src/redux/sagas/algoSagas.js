@@ -5,41 +5,35 @@ import {
     fetchAlgoBacktestResults,
     fetchAlgoBacktestResultById,
     fetchAlgoBacktestResultByTicker,
-    fetchAlgoBacktestResultPortfolio,
-    fetchAlgoSpreads
+    fetchAlgoBacktestResultPortfolio
 } from '../actions/algoActions'
 import {
-    SAGA_STRATEGY_SIGNALS,
-    SAGA_BACKTEST_RESULTS,
-    SAGA_BACKTEST_RESULT_BY_ID,
-    SAGA_BACKTEST_RESULT_BY_TICKER,
-    SAGA_BACKTEST_RESULT_PORTFOLIO,
-    SAGA_DIAGRAM_SPREADS
+    SAGA_ALGO_STRATEGY_SIGNALS,
+    SAGA_ALGO_BACKTEST_RESULTS,
+    SAGA_ALGO_BACKTEST_RESULT_BY_ID,
+    SAGA_ALGO_BACKTEST_RESULT_BY_TICKER,
+    SAGA_ALGO_BACKTEST_RESULT_PORTFOLIO
 } from '../types/algoTypes'
 import {
     getAlgoStrategySignalsFromApi,
     getAlgoBacktestResultsFromApi,
     getAlgoBacktestResultByIdFromApi,
     getAlgoBacktestResultByTickerFromApi,
-    getAlgoBacktestResultPortfolioFromApi,
-    getAlgoSpreadsFromApi
+    getAlgoBacktestResultPortfolioFromApi
 } from "../api/algoApi"
 
 // SagaWatcher'ы
 export function* eventSagaWatcherAlgo() {
-    yield takeEvery(SAGA_STRATEGY_SIGNALS, sagaWorkerAlgoStrategySignals)
-    yield takeEvery(SAGA_BACKTEST_RESULTS, sagaWorkerAlgoBacktestResults)
-    yield takeEvery(SAGA_BACKTEST_RESULT_BY_ID, sagaWorkerAlgoBacktestResultById)
-    yield takeEvery(SAGA_BACKTEST_RESULT_BY_TICKER, sagaWorkerAlgoBacktestResultByTicker)
-    yield takeEvery(SAGA_BACKTEST_RESULT_PORTFOLIO, sagaWorkerAlgoBacktestResultPortfolio)
-    yield takeEvery(SAGA_DIAGRAM_SPREADS, sagaWorkerAlgoSpreads)
+    yield takeEvery(SAGA_ALGO_STRATEGY_SIGNALS, sagaWorkerAlgoStrategySignals)
+    yield takeEvery(SAGA_ALGO_BACKTEST_RESULTS, sagaWorkerAlgoBacktestResults)
+    yield takeEvery(SAGA_ALGO_BACKTEST_RESULT_BY_ID, sagaWorkerAlgoBacktestResultById)
+    yield takeEvery(SAGA_ALGO_BACKTEST_RESULT_BY_TICKER, sagaWorkerAlgoBacktestResultByTicker)
+    yield takeEvery(SAGA_ALGO_BACKTEST_RESULT_PORTFOLIO, sagaWorkerAlgoBacktestResultPortfolio)
 }
 
 const getBacktestResultId = (state) => state.filter.backtestResultId
 const getBacktestResultTicker = (state) => state.filter.backtestResultTicker
 const getBacktestResultStrategyName = (state) => state.filter.backtestResultStrategyName
-const getStartDate = (state) => state.filter.startDate
-const getEndDate = (state) => state.filter.endDate
 
 // SagaWorker'ы
 function* sagaWorkerAlgoStrategySignals() {
@@ -117,25 +111,6 @@ function* sagaWorkerAlgoBacktestResultPortfolio() {
         let backtestResultData = yield call(getAlgoBacktestResultPortfolioFromApi)
 
         yield put(fetchAlgoBacktestResultPortfolio(backtestResultData))
-        yield put(hideLoader())
-    }
-
-    catch (error) {
-        yield put(showAlert('Ошибка при получении данных'))
-        yield put(hideLoader())
-    }
-}
-
-function* sagaWorkerAlgoSpreads() {
-    try {
-        yield put(showLoader())
-
-        let startDate = yield select(getStartDate)
-        let endDate = yield select(getEndDate)
-
-        let diagramData = yield call(getAlgoSpreadsFromApi, startDate, endDate)
-
-        yield put(fetchAlgoSpreads(diagramData))
         yield put(hideLoader())
     }
 

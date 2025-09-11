@@ -12,6 +12,7 @@ import { diagramFuturesReducer } from "./diagramFuturesReducer"
 import { diagramCurrenciesReducer } from "./diagramCurrenciesReducer"
 import { diagramIndexesReducer } from "./diagramIndexesReducer"
 import { algoReducer } from "./algoReducer";
+import {pairArbitrageReducer} from "./pairArbitrageReducer";
 
 export const rootReducer = combineReducers({
     app: appReducer,
@@ -26,5 +27,6 @@ export const rootReducer = combineReducers({
 	reportFutures: reportFuturesReducer,
 	reportCurrencies: reportCurrenciesReducer,
 	reportIndexes: reportIndexesReducer,
-	algo: algoReducer
+	algo: algoReducer,
+	pairArbitrage: pairArbitrageReducer
 })

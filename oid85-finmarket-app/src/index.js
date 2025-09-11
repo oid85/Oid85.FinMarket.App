@@ -19,6 +19,7 @@ import {eventSagaWatcherDiagramIndexes} from "./redux/sagas/diagramIndexesSagas"
 import {eventSagaWatcherDiagramCurrencies} from "./redux/sagas/diagramCurrenciesSagas";
 import {eventSagaWatcherDiagramFutures} from "./redux/sagas/diagramFuturesSagas";
 import {eventSagaWatcherAlgo} from "./redux/sagas/algoSagas";
+import {eventSagaWatcherPairArbitrage} from "./redux/sagas/pairArbitrageSagas";
 
 const saga = createSagaMiddleware()
 
@@ -40,6 +41,7 @@ saga.run(eventSagaWatcherDiagramCurrencies)
 saga.run(eventSagaWatcherDiagramIndexes)
 
 saga.run(eventSagaWatcherAlgo)
+saga.run(eventSagaWatcherPairArbitrage)
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'))

@@ -4,10 +4,8 @@ import Loader from '../../Loader/Loader'
 import { sagaAlgoStrategySignals } from '../../../redux/actions/algoActions'
 import '../../Report/Report.css'
 import { Table } from '../../Report/Table'
-import {FilterByLastDaysGroup} from "../../Filter/FilterByLastDays/FilterByLastDaysGroup";
-import {FilterBySharesTickerListGroup} from "../../Filter/FilterByTickerList/FilterBySharesTickerListGroup";
 
-export const ReportStrategySignals = () => {
+export const AlgoReportStrategySignals = () => {
 
     const dispatch = useDispatch()
     const loading = useSelector(state => state.app.loading)

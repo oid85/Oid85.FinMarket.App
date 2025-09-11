@@ -7,7 +7,7 @@ import { Table } from '../../Report/Table'
 import { FilterByBacktestResultTickerGroup } from "../../Filter/FilterByBacktestResultTicker/FilterByBacktestResultTickerGroup";
 import { FilterByBacktestResultStrategyNameGroup} from "../../Filter/FilterByBacktestResultStrategyName/FilterByBacktestResultStrategyNameGroup";
 
-export const ReportBacktestResults = () => {
+export const AlgoReportBacktestResults = () => {
 
     const dispatch = useDispatch()
     const loading = useSelector(state => state.app.loading)

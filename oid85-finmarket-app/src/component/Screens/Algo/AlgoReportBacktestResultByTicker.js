@@ -1,19 +1,21 @@
 import React, { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import Loader from '../../Loader/Loader'
-import {sagaAlgoBacktestResultPortfolio} from '../../../redux/actions/algoActions'
-import './BacktestResult.css'
-import {BacktestResultPortfolioDiagram} from "../../Diagram/BacktestResultPortfolioDiagram";
+import {sagaAlgoBacktestResultByTicker} from '../../../redux/actions/algoActions'
+import './AlgoBacktestResult.css'
+import {BacktestResultDiagram} from "../../Diagram/BacktestResultDiagram";
 
-export const ReportBacktestResultPortfolio = () => {
+export const AlgoReportBacktestResultByTicker = () => {
 
     const dispatch = useDispatch()
     const loading = useSelector(state => state.app.loading)
     const backtestResultData = useSelector(state => state.algo.backtestResultData)
 
     useEffect(() => {
-        dispatch(sagaAlgoBacktestResultPortfolio())
+        dispatch(sagaAlgoBacktestResultByTicker())
     }, [])
+
+    console.log(backtestResultData)
 
     return (
         <React.Fragment>
@@ -22,7 +24,8 @@ export const ReportBacktestResultPortfolio = () => {
                     ? <Loader/>
                     :
                     <div className='backtest-result-container'>
-                        <BacktestResultPortfolioDiagram data = {{...{...{...backtestResultData.result}.diagramData}.data}.series} />
+                        <h3>{{...{...backtestResultData.result}.diagramData}.title}</h3>
+                        <BacktestResultDiagram data={{...{...{...backtestResultData.result}.diagramData}.data}.series}/>
                     </div>
             }
         </React.Fragment>

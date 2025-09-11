@@ -3,11 +3,12 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import { useSelector } from 'react-redux'
 import 'react-tabs/style/react-tabs.css'
 import { Alert } from '../../Alert/Alert'
-import {AlgoReportStrategySignals} from "./AlgoReportStrategySignals";
-import {AlgoReportBacktestResults} from "./AlgoReportBacktestResults";
-import {AlgoReportBacktestResultPortfolio} from "./AlgoReportBacktestResultPortfolio";
+import {PairArbitrageDiagramSpreads} from "./PairArbitrageDiagramSpreads";
+import {PairArbitrageReportStrategySignals} from "./PairArbitrageReportStrategySignals";
+import {PairArbitrageReportBacktestResults} from "./PairArbitrageReportBacktestResults";
+import {PairArbitrageReportBacktestResultPortfolio} from "./PairArbitrageReportBacktestResultPortfolio";
 
-export const AlgoScreen = () => {
+export const PairArbitrageScreen = () => {
     const alert = useSelector(state => state.app.alert)
 
     return (
@@ -15,18 +16,22 @@ export const AlgoScreen = () => {
             {alert && <Alert text={alert} />}
             <Tabs>
                 <TabList>
+                    <Tab>Графики спредов</Tab>
                     <Tab>Сигналы</Tab>
                     <Tab>Результаты бэктеста</Tab>
                     <Tab>Бэктест портфеля стратегий</Tab>
                 </TabList>
                 <TabPanel>
-                    <AlgoReportStrategySignals />
+                    <PairArbitrageDiagramSpreads />
                 </TabPanel>
                 <TabPanel>
-                    <AlgoReportBacktestResults />
+                    <PairArbitrageReportStrategySignals />
                 </TabPanel>
                 <TabPanel>
-                    <AlgoReportBacktestResultPortfolio />
+                    <PairArbitrageReportBacktestResults />
+                </TabPanel>
+                <TabPanel>
+                    <PairArbitrageReportBacktestResultPortfolio />
                 </TabPanel>
             </Tabs>
         </React.Fragment>
