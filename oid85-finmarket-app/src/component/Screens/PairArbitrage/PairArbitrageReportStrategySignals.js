@@ -15,6 +15,8 @@ export const PairArbitrageReportStrategySignals = () => {
         dispatch(sagaPairArbitrageStrategySignals())
     }, [])
 
+    console.log(reportData)
+
     return (
         <React.Fragment>
             {

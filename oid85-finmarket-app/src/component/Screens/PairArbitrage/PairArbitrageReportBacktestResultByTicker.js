@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import Loader from '../../Loader/Loader'
 import {sagaPairArbitrageBacktestResultByTicker} from '../../../redux/actions/pairArbitrageActions'
 import './PairArbitrageBacktestResult.css'
-import {BacktestResultDiagram} from "../../Diagram/BacktestResultDiagram";
+import {PairArbitrageBacktestResultDiagram} from "../../Diagram/PairArbitrageBacktestResultDiagram";
 
 export const PairArbitrageReportBacktestResultByTicker = () => {
 
@@ -25,7 +25,7 @@ export const PairArbitrageReportBacktestResultByTicker = () => {
                     :
                     <div className='backtest-result-container'>
                         <h3>{{...{...backtestResultData.result}.diagramData}.title}</h3>
-                        <BacktestResultDiagram data={{...{...{...backtestResultData.result}.diagramData}.data}.series}/>
+                        <PairArbitrageBacktestResultDiagram data={{...{...{...backtestResultData.result}.diagramData}.data}.series}/>
                     </div>
             }
         </React.Fragment>
