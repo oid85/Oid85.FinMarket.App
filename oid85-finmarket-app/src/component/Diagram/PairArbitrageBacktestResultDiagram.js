@@ -23,13 +23,19 @@ export const PairArbitrageBacktestResultDiagram = ({ data }) => {
             <XAxis dataKey="date"/>
             <YAxis type="number" domain={['auto', 'auto']} />
             <Tooltip/>
-            <Area type="monotone" dataKey="channelBands" stroke="none" fill="#cccccc" dot={false} activeDot={false}/>
-            <Line type="natural" dataKey="indicator" dot={false} activeDot={false} stroke={CONSTANTS.COLOR_DARKSLATEGRAY}/>
-            <Line type="natural" dataKey="filter" dot={false} activeDot={false} stroke={CONSTANTS.COLOR_DARKSLATEGRAY}/>
-            <Line type="natural" dataKey="price" dot={false} activeDot={false} stroke={CONSTANTS.COLOR_DARKSLATEGRAY}/>
-            <Area type="natural" dataKey="price" stroke={CONSTANTS.COLOR_DARKSLATEGRAY} fill={CONSTANTS.COLOR_LIGHTSKYBLUE}/>
-            <Scatter name="buy" dataKey="buyPrice" fill={CONSTANTS.COLOR_GREEN}/>
-            <Scatter name="sell" dataKey="sellPrice" fill={CONSTANTS.COLOR_RED}/>
+            <Line type="natural" dataKey="priceFirst" dot={false} activeDot={false} stroke={CONSTANTS.COLOR_DARKSLATEGRAY}/>
+            <Line type="natural" dataKey="priceSecond" dot={false} activeDot={false} stroke={CONSTANTS.COLOR_MIDNIGHTBLUE}/>
+            <Scatter name="buyFirst" dataKey="buyPriceFirst" fill={CONSTANTS.COLOR_GREEN}/>
+            <Scatter name="buySecond" dataKey="buyPriceSecond" fill={CONSTANTS.COLOR_GREEN}/>
+            <Scatter name="sellFirst" dataKey="sellPriceFirst" fill={CONSTANTS.COLOR_RED}/>
+            <Scatter name="sellSecond" dataKey="sellPriceSecond" fill={CONSTANTS.COLOR_RED}/>
+          </ComposedChart>
+          <ComposedChart width={1900} height={100} data={data} margin={{top: 0, right: 0, left: 0, bottom: 0,}}>
+            <CartesianGrid strokeDasharray="3 3"/>
+            <YAxis type="number" domain={['auto', 'auto']} />
+            <Tooltip/>
+            <Line type="natural" dataKey="spread" dot={false} activeDot={false} stroke={CONSTANTS.COLOR_MIDNIGHTBLUE}/>
+            <Area type="natural" dataKey="spread" stroke={CONSTANTS.COLOR_MIDNIGHTBLUE} fill={CONSTANTS.COLOR_BLUE}/>
           </ComposedChart>
           <ComposedChart width={1900} height={100} data={data} margin={{top: 0, right: 0, left: 0, bottom: 0,}}>
             <CartesianGrid strokeDasharray="3 3"/>
