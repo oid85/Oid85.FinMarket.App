@@ -19,20 +19,14 @@ export const Workspace = () => {
             {alert && <Alert text={alert} />}
             <Tabs>
                 <TabList>
-                    <Tab>Алго</Tab>
-                    <Tab>Парный арбитраж</Tab>
                     <Tab>Акции</Tab>
                     <Tab>Облигации</Tab>
                     <Tab>Валюты</Tab>
                     <Tab>Фьючерсы</Tab>
                     <Tab>Индексы</Tab>
+                    <Tab>Алго</Tab>
+                    <Tab>Парный арбитраж</Tab>                    
                 </TabList>
-                <TabPanel>
-                    <AlgoScreen />
-                </TabPanel>
-                <TabPanel>
-                    <PairArbitrageScreen />
-                </TabPanel>
                 <TabPanel>
                     <SharesScreen />
                 </TabPanel>
@@ -48,6 +42,12 @@ export const Workspace = () => {
                 <TabPanel>
                     <IndexesScreen />
                 </TabPanel>
+                <TabPanel>
+                    <AlgoScreen />
+                </TabPanel>
+                <TabPanel>
+                    <PairArbitrageScreen />
+                </TabPanel>                
             </Tabs>
         </React.Fragment>
     )    
